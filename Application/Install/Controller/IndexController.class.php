@@ -1,8 +1,51 @@
 <?php
+// +----------------------------------------------------------------------
+// | OneThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// +----------------------------------------------------------------------
+
 namespace Install\Controller;
 use Think\Controller;
-class IndexController extends Controller {
+use Think\Storage;
+
+class IndexController extends Controller{
+    //安装首页
     public function index(){
-        $this->show('<style type="text/css">*{ padding: 0; margin: 0; } div{ padding: 4px 48px;} body{ background: #fff; font-family: "微软雅黑"; color: #333;font-size:24px} h1{ font-size: 100px; font-weight: normal; margin-bottom: 12px; } p{ line-height: 1.8em; font-size: 36px } a,a:hover{color:blue;}</style><div style="padding: 24px 48px;"> <h1>:)</h1><p>欢迎使用 <b>ThinkPHP</b>！</p><br/>版本 V{$Think.version}</div><script type="text/javascript" src="http://ad.topthink.com/Public/static/client.js"></script><thinkad id="ad_55e75dfae343f5a1"></thinkad><script type="text/javascript" src="http://tajs.qq.com/stats?sId=9347272" charset="UTF-8"></script>','utf-8');
+        if(is_file(APP_PATH . 'User/Conf/config.php')){
+            // 已经安装过了 执行更新程序
+            session('update',true);
+            $msg = '请删除install.lock文件后再运行升级!';
+        }else{
+            $msg = '已经成功安装了OneThink，请不要重复安装!';
+        }
+        if(Storage::has('./Data/install.lock')){
+            $this->error($msg);
+        }
+        $this->display();
+    }
+
+    //安装完成
+    public function complete(){
+        $step = session('step');
+
+        if(!$step){
+            $this->redirect('index');
+        } elseif($step != 3) {
+            $this->redirect("Install/step{$step}");
+        }
+
+        // 写入安装锁定文件
+        Storage::put('./Data/install.lock', 'lock');
+        if(!session('update')){
+            //创建配置文件
+            $this->assign('info',session('config_file'));
+        }
+        session('step', null);
+        session('error', null);
+        session('update',null);
+        $this->display();
     }
 }

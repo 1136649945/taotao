@@ -1,39 +1,33 @@
 <?php
+// +----------------------------------------------------------------------
+// | OneThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// +----------------------------------------------------------------------
+
 namespace Home\Controller;
+use OT\DataDictionary;
 
-use Think\Controller;
+/**
+ * 前台首页控制器
+ * 主要获取首页聚合数据
+ */
+class IndexController extends HomeController {
 
-class IndexController extends Controller
-{
+	//系统首页
+    public function index(){
 
-    /**
-     * 控制器方法的访问
-     * 网址/入口文件/分组/控制器/方法
-     * http://localhost:8080/taotao/index.php/home/index/index
-     */
-    public function index()
-    {
-        /**
-         * 跨控制器访问
-         * 1 直接实例化 $mode = new GoodsController();
-         * 2 A() $mode = A("Goods");
-         * 3 R() $mode = A("Goods/showlist");
-         */
-        
-        // var_dump($_GET);
-        // $mode = M("model");
-        // echo $mode->max('name')."<br/>";
-        // echo $mode->min('name')."<br/>";
-        // echo $mode->sum('id')."<br/>";
-        // echo $mode->count()."<br/>";
-        // echo "<br/>";
-        // var_dump($_POST);
-        // $list = M()->query("select * from zscy_model");
-        // $list = M()->execute("delete|update");
-        // $list = M("model")->limit(3)->select();
-        $list = M("model")->select();
-        $this->assign("core", 60);
-        $this->assign("list_grid", $list);
+        $category = D('Category')->getTree();
+        $lists    = D('Document')->lists(null);
+
+        $this->assign('category',$category);//栏目
+        $this->assign('lists',$lists);//列表
+        $this->assign('page',D('Document')->page);//分页
+
+                 
         $this->display();
     }
+
 }
