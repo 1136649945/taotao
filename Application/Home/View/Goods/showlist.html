@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>taotao</title>
+</head>
+<body>
+	<span>
+		<if condition="$core elt 60 "> 
+			加油，差点就及格了再接在励
+		<elseif	condition="$core elt 80 " /> 
+			加油，不错哟
+		<else />
+			  good 
+		</if>
+	</span>
+	<hr/>
+	<table>
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>序号</th>
+				<th>名称</th>
+				<th>标题</th>
+			</tr>
+		</thead>
+		<tbody>
+			<volist name="list_grid" id="vo">
+				<tr>
+				  <td>{$key}</td>
+				  <td>{$i}</td>
+				  <td>{$vo.name}</td>
+				  <td>{$vo.title}</td>
+				</tr>
+			</volist>
+		</tbody>
+	</table>
+	<hr/>
+	<table>
+		<thead>
+			<tr>
+				<th>序号</th>
+				<th>序号</th>
+				<th>名称</th>
+				<th>标题</th>
+			</tr>
+		</thead>
+		<tbody>
+			<foreach name="list_grid" item="vo" >    
+				<tr>
+				  <td>{$key}</td>
+				  <td>{$key+1}</td>
+				  <td>{$vo.name}</td>
+				  <td>{$vo.title}</td>
+				</tr>
+			</foreach>
+		</tbody>
+	</table>
+	<a src="__STATIC__"></a>
+</body>
+</html>

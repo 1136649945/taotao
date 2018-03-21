@@ -1,0 +1,55 @@
+[ 2018-03-05T14:39:58+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000014s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000832s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.008398s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008472s ]
+SQL: SHOW COLUMNS FROM `zscy_model` [ RunTime:0.0792s ]
+SQL: SELECT * FROM `zscy_model`  [ RunTime:0.0036s ]
+ERR: 模板不存在:./Application/Home/View/Index/index.html
+
+[ 2018-03-05T14:41:09+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000673s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000722s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000776s ]
+SQL: SHOW COLUMNS FROM `zscy_model` [ RunTime:0.0091s ]
+SQL: SELECT * FROM `zscy_model`  [ RunTime:0.0008s ]
+ERR: 模板不存在:./Application/Home/View/Index/index.html
+
+[ 2018-03-05T14:42:57+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000020s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000766s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004213s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004450s ]
+SQL: SHOW COLUMNS FROM `zscy_model` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `zscy_model`  [ RunTime:0.0016s ]
+ERR: 模板不存在:./Application/Home/View/Index/index.html
+
+[ 2018-03-05T14:59:20+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000013s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000449s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000710s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000802s ]
+SQL: SHOW COLUMNS FROM `zscy_model` [ RunTime:0.0556s ]
+SQL: SELECT * FROM `zscy_model`  [ RunTime:0.0009s ]
+ERR: 模板不存在:./Application/Home/View/Index/index.html
+
+[ 2018-03-05T14:59:22+08:00 ] ::1 /
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000023s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001315s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000854s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000960s ]
+SQL: SHOW COLUMNS FROM `zscy_model` [ RunTime:0.0114s ]
+SQL: SELECT * FROM `zscy_model`  [ RunTime:0.0018s ]
+ERR: 模板不存在:./Application/Home/View/Index/index.html
+
