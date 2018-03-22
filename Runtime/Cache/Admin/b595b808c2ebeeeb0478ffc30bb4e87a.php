@@ -1,23 +1,26 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{$meta_title}|后台管理平台</title>
-    <link href="__ROOT__/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
-    <link rel="stylesheet" type="text/css" href="__CSS__/base.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/common.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/module.css">
-    <link rel="stylesheet" type="text/css" href="__CSS__/style.css" media="all">
-	<link rel="stylesheet" type="text/css" href="__CSS__/{$Think.config.COLOR_STYLE}.css" media="all">
-    <link rel="stylesheet" type="text/css" href="__CSS__/layui.css" media="all">
+    <title><?php echo ($meta_title); ?>|后台管理平台</title>
+    <link href="/Public/favicon.ico" type="image/x-icon" rel="shortcut icon">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/base.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/common.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/module.css">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/style.css" media="all">
+	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/<?php echo (C("COLOR_STYLE")); ?>.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/layui.css" media="all">
      <!--[if lt IE 9]>
-    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
     <![endif]--><!--[if gte IE 9]><!-->
-    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="__JS__/jquery.mousewheel.js"></script>
-    <script type="text/javascript" src="__JS__/md5.js"></script>
+    <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
     <!--<![endif]-->
-    <block name="style"></block>
+    
+    <style>
+        body{padding: 0}
+    </style>
+
 </head>
 <body>
     <!-- 头部 -->
@@ -28,9 +31,7 @@
 
         <!-- 主导航 -->
         <ul class="main-nav">
-            <volist name="__MENU__.main" id="menu">
-                <li class="{$menu.class|default=''}"><a href="{$menu.url|U}">{$menu.title}</a></li>
-            </volist>
+            <?php if(is_array($__MENU__["main"])): $i = 0; $__LIST__ = $__MENU__["main"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($i % 2 );++$i;?><li class="<?php echo ((isset($menu["class"]) && ($menu["class"] !== ""))?($menu["class"]):''); ?>"><a href="<?php echo (U($menu["url"])); ?>"><?php echo ($menu["title"]); ?></a></li><?php endforeach; endif; else: echo "" ;endif; ?>
         </ul>
         <!-- /主导航 -->
 
@@ -38,10 +39,10 @@
         <div class="user-bar">
             <a href="javascript:;" class="user-entrance"><i class="icon-user"></i></a>
             <ul class="nav-list user-menu hidden">
-                <li class="manager">你好，<em title="{:session('user_auth.username')}">{:session('user_auth.username')}</em></li>
-                <li><a href="{:U('User/updatePassword')}">修改密码</a></li>
-                <li><a href="{:U('User/updateNickname')}">修改昵称</a></li>
-                <li><a href="{:U('Public/logout')}">退出</a></li>
+                <li class="manager">你好，<em title="<?php echo session('user_auth.username');?>"><?php echo session('user_auth.username');?></em></li>
+                <li><a href="<?php echo U('User/updatePassword');?>">修改密码</a></li>
+                <li><a href="<?php echo U('User/updateNickname');?>">修改昵称</a></li>
+                <li><a href="<?php echo U('Public/logout');?>">退出</a></li>
             </ul>
         </div>
     </div>
@@ -50,28 +51,7 @@
     <!-- 边栏 -->
     <div class="sidebar">
         <!-- 子导航 -->
-        <block name="sidebar">
-            <div id="subnav" class="subnav">
-                <notempty name="_extra_menu">
-                    {// 动态扩展菜单 //}
-                    {:extra_menu($_extra_menu,$__MENU__)}
-                </notempty>
-                <volist name="__MENU__.child" id="sub_menu">
-                    <!-- 子导航 -->
-                    <notempty name="sub_menu">
-                        <notempty name="key"><h3><i class="icon icon-unfold"></i>{$key}</h3></notempty>
-                        <ul class="side-sub-menu">
-                            <volist name="sub_menu" id="menu">
-                                <li>
-                                    <a class="item" href="{$menu.url|U}">{$menu.title}</a>
-                                </li>
-                            </volist>
-                        </ul>
-                    </notempty>
-                    <!-- /子导航 -->
-                </volist>
-            </div>
-        </block>
+        
         <!-- /子导航 -->
     </div>
     <!-- /边栏 -->
@@ -83,43 +63,43 @@
             <div class="alert-content">这是内容</div>
         </div>
         <div id="main" class="main">
-            <block name="nav">
+            
             <!-- nav -->
-            <notempty name="_show_nav">
-            <div class="breadcrumb">
+            <?php if(!empty($_show_nav)): ?><div class="breadcrumb">
                 <span>您的位置:</span>
-                <assign name="i" value="1" />
-                <foreach name="_nav" item="v" key="k">
-                    <if condition="$i eq count($_nav)">
-                    <span>{$v}</span>
-                    <else />
-                    <span><a href="{$k}">{$v}</a>&gt;</span>
-                    </if>
-                    <assign name="i" value="$i+1" />
-                </foreach>
-            </div>
-            </notempty>
+                <?php $i = '1'; ?>
+                <?php if(is_array($_nav)): foreach($_nav as $k=>$v): if($i == count($_nav)): ?><span><?php echo ($v); ?></span>
+                    <?php else: ?>
+                    <span><a href="<?php echo ($k); ?>"><?php echo ($v); ?></a>&gt;</span><?php endif; ?>
+                    <?php $i = $i+1; endforeach; endif; ?>
+            </div><?php endif; ?>
             <!-- nav -->
-            </block>
+            
 
-            <block name="body"> </block>
+            
+    <!-- 主体 -->
+    <div id="indexMain" class="index-main">
+       <!-- 插件块 -->
+       <div class="container-span"><?php echo hook('AdminIndex');?></div>
+    </div>
+
         </div>
     </div>
     <!-- /内容区 -->
     <script type="text/javascript">
     (function(){
         var ThinkPHP = window.Think = {
-            "ROOT"   : "__ROOT__", //当前网站地址
-            "APP"    : "__APP__", //当前项目地址
-            "PUBLIC" : "__PUBLIC__", //项目公共目录地址
-            "DEEP"   : "{:C('URL_PATHINFO_DEPR')}", //PATHINFO分割符
-            "MODEL"  : ["{:C('URL_MODEL')}", "{:C('URL_CASE_INSENSITIVE')}", "{:C('URL_HTML_SUFFIX')}"],
-            "VAR"    : ["{:C('VAR_MODULE')}", "{:C('VAR_CONTROLLER')}", "{:C('VAR_ACTION')}"]
+            "ROOT"   : "", //当前网站地址
+            "APP"    : "/admin.php?s=", //当前项目地址
+            "PUBLIC" : "/Public", //项目公共目录地址
+            "DEEP"   : "<?php echo C('URL_PATHINFO_DEPR');?>", //PATHINFO分割符
+            "MODEL"  : ["<?php echo C('URL_MODEL');?>", "<?php echo C('URL_CASE_INSENSITIVE');?>", "<?php echo C('URL_HTML_SUFFIX');?>"],
+            "VAR"    : ["<?php echo C('VAR_MODULE');?>", "<?php echo C('VAR_CONTROLLER');?>", "<?php echo C('VAR_ACTION');?>"]
         }
     })();
     </script>
-    <script type="text/javascript" src="__STATIC__/think.js"></script>
-    <script type="text/javascript" src="__JS__/common.js"></script>
+    <script type="text/javascript" src="/Public/static/think.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/common.js"></script>
     <script type="text/javascript">
         +function(){
             var $window = $(window), $subnav = $("#subnav"), url;
@@ -189,6 +169,21 @@
             }
         }();
     </script>
-    <block name="script"></block>
+    
+<script type="text/javascript">
+    /* 插件块关闭操作 */
+    $(".title-opt .wm-slide").each(function(){
+        $(this).click(function(){
+            $(this).closest(".columns-mod").find(".bd").toggle();
+            $(this).find("i").toggleClass("mod-up");
+        });
+    })
+    $(function(){
+        // $('#main').attr({'id': 'indexMain','class': 'index-main'});
+        $('.copyright').html('<div class="copyright"> ©2013-2014 上海顶想信息科技有限公司版权所有</div>');
+        $('.sidebar').remove();
+    })
+</script>
+
 </body>
 </html>

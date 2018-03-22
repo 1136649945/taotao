@@ -1,10 +1,10 @@
-<!doctype html>
+<?php if (!defined('THINK_PATH')) exit();?><!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <title>欢迎您登录后台管理系统</title>
-        <link rel="stylesheet" type="text/css" href="__CSS__/login.css" media="all">
-       	<link rel="stylesheet" type="text/css" href="__CSS__/{$Think.config.COLOR_STYLE}.css" media="all">
+        <link rel="stylesheet" type="text/css" href="/Public/Admin/css/login.css" media="all">
+       	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/<?php echo (C("COLOR_STYLE")); ?>.css" media="all">
     </head>
     <body id="login-page">
         <div id="main-content">
@@ -12,7 +12,7 @@
             <!-- 主体 -->
             <div class="login-body">
                 <div class="login-main pr">
-                    <form action="{:U('login')}" method="post" class="login-form">
+                    <form action="<?php echo U('login');?>" method="post" class="login-form">
                         <h3 class="welcome"><i class="login-logo"></i>后台管理平台</h3>
                         <div id="itemBox" class="item-box">
                             <div class="item">
@@ -32,7 +32,7 @@
                             </div>
                             <span class="placeholder_copy placeholder_check">请填写验证码</span>
                             <div>
-                                <img class="verifyimg reloadverify" alt="点击切换" src="{:U('Public/verify')}">
+                                <img class="verifyimg reloadverify" alt="点击切换" src="<?php echo U('Public/verify');?>">
                             </div>
                         </div>
                         <div class="login_btn_panel">
@@ -47,10 +47,10 @@
             </div>
         </div>
 	<!--[if lt IE 9]>
-    <script type="text/javascript" src="__STATIC__/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
     <![endif]-->
     <!--[if gte IE 9]><!-->
-    <script type="text/javascript" src="__STATIC__/jquery-2.0.3.min.js"></script>
+    <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <!--<![endif]-->
     <script type="text/javascript">
     	/* 登陆表单获取焦点变色 */
