@@ -87,26 +87,51 @@
             
 
             
-	<div class="main-title">
-		<h2>分类管理</h2>
-	</div>
+    <div class="main-title">
+        <h2>导航分组管理 </h2>
+    </div>
 
-	<!-- 表格列表 -->
-	<div class="tb-unit posr">
-		<div class="tb-unit-bar">
-			<a class="btn" href="<?php echo U('add');?>">新 增</a>
-		</div>
-		<div class="category">
-			<div class="hd cf">
-				<div class="fold">折叠</div>
-				<div class="order">排序</div>
-				<div class="order">发布</div>
-				<div class="name">名称</div>
-			</div>
-			<?php echo R('Category/tree', array($tree));?>
-		</div>
-	</div>
-	<!-- /表格列表 -->
+    <div class="cf">
+        <a class="btn" href="<?php echo U('add');?>">新 增</a>
+    </div>
+
+    <div class="data-table table-striped">
+        <form class="ids">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>名称</th>
+                        <th>排序</th>
+                        <th>隐藏</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+				<?php if(!empty($data)): if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$group): $mod = ($i % 2 );++$i;?><tr>
+                        <td><?php echo ($group["id"]); ?></td>
+                        <td><?php echo ($group["title"]); ?></td>
+                        <td><?php echo ($group["sort"]); ?></td>
+                        <td>
+                            <?php if($group['status'] == 1): ?>否    
+                            <?php else: ?>
+                            	是<?php endif; ?>
+                        </td>
+                        <td>
+                            <a title="编辑" href="<?php echo U('edit?id='.$group['id']);?>">编辑</a>
+                            <a class="confirm" title="删除" href="javascript:del(<?php echo ($group['id']); ?>);">删除</a>
+                        </td>
+                    </tr><?php endforeach; endif; else: echo "" ;endif; ?>
+				<?php else: ?>
+				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td><?php endif; ?>
+                </tbody>
+            </table>
+        </form>
+        <!-- 分页 -->
+        <div class="page">
+
+        </div>
+    </div>
 
         </div>
     </div>
@@ -195,59 +220,32 @@
         }();
     </script>
     
-	<script type="text/javascript">
-		(function($){
-			/* 分类展开收起 */
-			$(".category dd").prev().find(".fold i").addClass("icon-unfold")
-				.click(function(){
-					var self = $(this);
-					if(self.hasClass("icon-unfold")){
-						self.closest("dt").next().slideUp("fast", function(){
-							self.removeClass("icon-unfold").addClass("icon-fold");
-						});
-					} else {
-						self.closest("dt").next().slideDown("fast", function(){
-							self.removeClass("icon-fold").addClass("icon-unfold");
-						});
-					}
-				});
-
-			/* 三级分类删除新增按钮 */
-			$(".category dd dd .add-sub").remove();
-
-			/* 实时更新分类信息 */
-			$(".category")
-				.on("submit", "form", function(){
-					var self = $(this);
-					$.post(
-						self.attr("action"),
-						self.serialize(),
-						function(data){
-							/* 提示信息 */
-							var name = data.status ? "success" : "error", msg;
-							msg = self.find(".msg").addClass(name).text(data.info)
-									  .css("display", "inline-block");
-							setTimeout(function(){
-								msg.fadeOut(function(){
-									msg.text("").removeClass(name);
-								});
-							}, 1000);
-						},
-						"json"
-					);
-					return false;
-				})
-                .on("focus","input",function(){
-                    $(this).data('param',$(this).closest("form").serialize());
-
-                })
-                .on("blur", "input", function(){
-                    if($(this).data('param')!=$(this).closest("form").serialize()){
-                        $(this).closest("form").submit();
-                    }
-                });
-		})(jQuery);
-	</script>
+    <script type="text/javascript">
+        $(function() {
+            //导航高亮
+          //  highlight_subnav('<?php echo U('index');?>');
+        });
+        function del(id){
+        	if(id){
+        		$.ajax(
+        		{
+        			url:"/ChannelGroup/del",
+        			type:"POST",
+        			dataType:"json",
+        			data:{"id":id},
+        			success:function(data){
+        				if(data.status){
+        					window.location.reload();
+        				}else{
+        					alert(data.info);
+        				}
+        			},error:function(data){
+        				alert("服务器出错了！");
+        			}
+        		});
+        	}
+        }
+    </script>
 
 </body>
 </html>

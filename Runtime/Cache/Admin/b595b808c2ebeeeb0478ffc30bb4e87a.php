@@ -15,6 +15,7 @@
     <![endif]--><!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/md5.js"></script>
     <!--<![endif]-->
     
     <style>

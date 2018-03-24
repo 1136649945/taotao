@@ -22,16 +22,22 @@ class ChannelController extends AdminController {
      */
     public function index(){
         $pid = I('get.pid', 0);
-        /* 获取频道列表 */
-        $map  = array('status' => array('gt', -1), 'pid'=>$pid);
-        $list = M('Channel')->where($map)->order('sort asc,id asc')->select();
-
-        $this->assign('list', $list);
-        $this->assign('pid', $pid);
+        C('_SYS_GET_CHANNEL_TREE_', true);
+        $tree=D('Channel')->getTree(0,'id,pid,title,url,status,sort');
+         $this->assign('tree', $tree);
         $this->meta_title = '导航管理';
         $this->display();
     }
-
+    /**
+     * 显示分类树，仅支持内部调
+     * @param  array $tree 分类树
+     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     */
+    public function tree($tree = null){
+        C('_SYS_GET_CHANNEL_TREE_') || $this->_empty();
+        $this->assign('tree', $tree);
+        $this->display('tree');
+    }
     /**
      * 添加频道
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
@@ -97,14 +103,12 @@ class ChannelController extends AdminController {
             }
 
             $pid = I('get.pid', 0);
-            //获取父导航
-            if(!empty($pid)){
-            	$parent = M('Channel')->where(array('id'=>$pid))->field('title')->find();
-            	$this->assign('parent', $parent);
-            }
-
-            $this->assign('pid', $pid);
-            $this->assign('info', $info);
+            $parent = M('Channel')->where('pid=0')->field('id,title')->select();
+            $group = M('ChannelGroup')->where('status=1')->order('sort')->field('id,title')->select();
+            $this->assign("parent", $parent);
+            $this->assign("group", $group);
+            $this->assign("pid", $pid);
+            $this->assign("info", $info);
             $this->meta_title = '编辑导航';
             $this->display();
         }

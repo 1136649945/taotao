@@ -9,11 +9,13 @@
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/module.css">
     <link rel="stylesheet" type="text/css" href="/Public/Admin/css/style.css" media="all">
 	<link rel="stylesheet" type="text/css" href="/Public/Admin/css/<?php echo (C("COLOR_STYLE")); ?>.css" media="all">
+    <link rel="stylesheet" type="text/css" href="/Public/Admin/css/layui.css" media="all">
      <!--[if lt IE 9]>
     <script type="text/javascript" src="/Public/static/jquery-1.10.2.min.js"></script>
     <![endif]--><!--[if gte IE 9]><!-->
     <script type="text/javascript" src="/Public/static/jquery-2.0.3.min.js"></script>
     <script type="text/javascript" src="/Public/Admin/js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="/Public/Admin/js/md5.js"></script>
     <!--<![endif]-->
     
 </head>
@@ -154,12 +156,6 @@
 	</div>
 
         </div>
-       <!-- <div class="cont-ft">
-            <div class="copyright">
-                <div class="fl">感谢使用<a href="http://www.onethink.cn" target="_blank">OneThink</a>管理平台</div>
-                <div class="fr">V<?php echo (ONETHINK_VERSION); ?></div>
-            </div>
-        </div> --> 
     </div>
     <!-- /内容区 -->
     <script type="text/javascript">

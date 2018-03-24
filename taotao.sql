@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2018-03-21 17:57:44
+Date: 2018-03-24 17:54:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,11 +64,22 @@ CREATE TABLE `ta_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ta_action_log
 -- ----------------------------
+INSERT INTO `ta_action_log` VALUES ('1', '1', '1', '0', 'member', '1', 'admin在2018-03-22 11:22登录了后台', '1', '1521688961');
+INSERT INTO `ta_action_log` VALUES ('2', '9', '1', '0', 'channel', '2', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521689026');
+INSERT INTO `ta_action_log` VALUES ('3', '1', '1', '0', 'member', '1', 'admin在2018-03-22 11:25登录了后台', '1', '1521689155');
+INSERT INTO `ta_action_log` VALUES ('4', '1', '1', '0', 'member', '1', 'admin在2018-03-22 11:27登录了后台', '1', '1521689267');
+INSERT INTO `ta_action_log` VALUES ('5', '9', '1', '0', 'channel', '2', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521689426');
+INSERT INTO `ta_action_log` VALUES ('6', '1', '1', '0', 'member', '1', 'admin在2018-03-22 13:47登录了后台', '1', '1521697639');
+INSERT INTO `ta_action_log` VALUES ('7', '10', '1', '0', 'Menu', '43', '操作url：/admin.php?s=/Menu/edit.html', '1', '1521713010');
+INSERT INTO `ta_action_log` VALUES ('8', '1', '1', '0', 'member', '1', 'admin在2018-03-22 18:39登录了后台', '1', '1521715144');
+INSERT INTO `ta_action_log` VALUES ('9', '1', '1', '0', 'member', '1', 'admin在2018-03-24 10:31登录了后台', '1', '1521858685');
+INSERT INTO `ta_action_log` VALUES ('10', '10', '1', '0', 'Menu', '124', '操作url：/admin.php?s=/Menu/add.html', '1', '1521874593');
+INSERT INTO `ta_action_log` VALUES ('11', '9', '1', '0', 'channel', '4', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521881929');
 
 -- ----------------------------
 -- Table structure for `ta_addons`
@@ -93,7 +104,7 @@ CREATE TABLE `ta_addons` (
 -- ----------------------------
 INSERT INTO `ta_addons` VALUES ('15', 'EditorForAdmin', '后台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"500px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1383126253', '0');
 INSERT INTO `ta_addons` VALUES ('2', 'SiteStat', '站点统计信息', '统计站点的基础信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"1\",\"display\":\"1\",\"status\":\"0\"}', 'thinkphp', '0.1', '1379512015', '0');
-INSERT INTO `ta_addons` VALUES ('3', 'DevTeam', '开发团队信息', '开发团队成员信息', '1', '{\"title\":\"OneThink\\u5f00\\u53d1\\u56e2\\u961f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512022', '0');
+INSERT INTO `ta_addons` VALUES ('3', 'DevTeam', '开发团队信息', '开发团队成员信息', '0', '{\"title\":\"OneThink\\u5f00\\u53d1\\u56e2\\u961f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512022', '0');
 INSERT INTO `ta_addons` VALUES ('4', 'SystemInfo', '系统环境信息', '用于显示一些服务器的信息', '1', '{\"title\":\"\\u7cfb\\u7edf\\u4fe1\\u606f\",\"width\":\"2\",\"display\":\"1\"}', 'thinkphp', '0.1', '1379512036', '0');
 INSERT INTO `ta_addons` VALUES ('5', 'Editor', '前台编辑器', '用于增强整站长文本的输入和显示', '1', '{\"editor_type\":\"2\",\"editor_wysiwyg\":\"1\",\"editor_height\":\"300px\",\"editor_resize_type\":\"1\"}', 'thinkphp', '0.1', '1379830910', '0');
 INSERT INTO `ta_addons` VALUES ('6', 'Attachment', '附件', '用于文档模型上传附件', '1', 'null', 'thinkphp', '0.1', '1379842319', '1');
@@ -538,6 +549,7 @@ CREATE TABLE `ta_channel` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级频道ID',
   `title` char(30) NOT NULL COMMENT '频道标题',
+  `group` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分组',
   `url` char(100) NOT NULL COMMENT '频道连接',
   `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '导航排序',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
@@ -546,14 +558,32 @@ CREATE TABLE `ta_channel` (
   `target` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '新窗口打开',
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ta_channel
 -- ----------------------------
-INSERT INTO `ta_channel` VALUES ('1', '0', '首页', 'Index/index', '1', '1379475111', '1379923177', '1', '0');
-INSERT INTO `ta_channel` VALUES ('2', '0', '博客', 'Article/index?category=blog', '2', '1379475131', '1379483713', '1', '0');
-INSERT INTO `ta_channel` VALUES ('3', '0', '官网', 'http://www.onethink.cn', '3', '1379475154', '1387163458', '1', '0');
+INSERT INTO `ta_channel` VALUES ('1', '0', '首页', '0', 'Index/index', '1', '1379475111', '1379923177', '1', '0');
+INSERT INTO `ta_channel` VALUES ('2', '0', '博客', '0', 'Article/index?category=blog', '2', '1379475131', '1521689426', '1', '0');
+INSERT INTO `ta_channel` VALUES ('3', '0', '官网', '0', 'http://www.onethink.cn', '3', '1379475154', '1387163458', '1', '0');
+INSERT INTO `ta_channel` VALUES ('4', '3', '测试', '1', 'ss', '0', '0', '1521881929', '1', '0');
+
+-- ----------------------------
+-- Table structure for `ta_channel_group`
+-- ----------------------------
+DROP TABLE IF EXISTS `ta_channel_group`;
+CREATE TABLE `ta_channel_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分组ID',
+  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
+  `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
+  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ta_channel_group
+-- ----------------------------
+INSERT INTO `ta_channel_group` VALUES ('1', '官网导航', '1', '1');
 
 -- ----------------------------
 -- Table structure for `ta_config`
@@ -581,9 +611,9 @@ CREATE TABLE `ta_config` (
 -- ----------------------------
 -- Records of ta_config
 -- ----------------------------
-INSERT INTO `ta_config` VALUES ('1', 'WEB_SITE_TITLE', '1', '网站标题', '1', '', '网站标题前台显示标题', '1378898976', '1379235274', '1', 'OneThink内容管理框架', '0');
-INSERT INTO `ta_config` VALUES ('2', 'WEB_SITE_DESCRIPTION', '2', '网站描述', '1', '', '网站搜索引擎描述', '1378898976', '1379235841', '1', 'OneThink内容管理框架', '1');
-INSERT INTO `ta_config` VALUES ('3', 'WEB_SITE_KEYWORD', '2', '网站关键字', '1', '', '网站搜索引擎关键字', '1378898976', '1381390100', '1', 'ThinkPHP,OneThink', '8');
+INSERT INTO `ta_config` VALUES ('1', 'WEB_SITE_TITLE', '1', '网站标题', '1', '', '网站标题前台显示标题', '1378898976', '1379235274', '1', '后台管理', '0');
+INSERT INTO `ta_config` VALUES ('2', 'WEB_SITE_DESCRIPTION', '2', '网站描述', '1', '', '网站搜索引擎描述', '1378898976', '1379235841', '1', '学院后台管理', '1');
+INSERT INTO `ta_config` VALUES ('3', 'WEB_SITE_KEYWORD', '2', '网站关键字', '1', '', '网站搜索引擎关键字', '1378898976', '1381390100', '1', '', '8');
 INSERT INTO `ta_config` VALUES ('4', 'WEB_SITE_CLOSE', '4', '关闭站点', '1', '0:关闭,1:开启', '站点关闭后其他用户不能访问，管理员可以正常访问', '1378898976', '1379235296', '1', '1', '1');
 INSERT INTO `ta_config` VALUES ('9', 'CONFIG_TYPE_LIST', '3', '配置类型列表', '4', '', '主要用于数据解析和页面表单的生成', '1378898976', '1379235348', '1', '0:数字\r\n1:字符\r\n2:文本\r\n3:数组\r\n4:枚举', '2');
 INSERT INTO `ta_config` VALUES ('10', 'WEB_SITE_ICP', '1', '网站备案号', '1', '', '设置在网站底部显示的备案号，如“沪ICP备12007941号-2', '1378900335', '1379235859', '1', '', '9');
@@ -765,7 +795,7 @@ CREATE TABLE `ta_member` (
 -- ----------------------------
 -- Records of ta_member
 -- ----------------------------
-INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '0', '1', '0', '1521626231', '0', '1521626231', '1');
+INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '7', '0', '1521626231', '0', '1521858685', '1');
 
 -- ----------------------------
 -- Table structure for `ta_menu`
@@ -785,7 +815,7 @@ CREATE TABLE `ta_menu` (
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ta_menu
@@ -832,7 +862,7 @@ INSERT INTO `ta_menu` VALUES ('39', '分类授权', '27', '0', 'AuthManager/cate
 INSERT INTO `ta_menu` VALUES ('40', '保存分类授权', '27', '0', 'AuthManager/addToCategory', '0', '\"分类授权\"页面的\"保存\"按钮', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('41', '模型授权', '27', '0', 'AuthManager/modelauth', '0', '\"后台 \\ 用户 \\ 权限管理\"列表页的\"模型授权\"操作按钮', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('42', '保存模型授权', '27', '0', 'AuthManager/addToModel', '0', '\"分类授权\"页面的\"保存\"按钮', '', '0', '1');
-INSERT INTO `ta_menu` VALUES ('43', '扩展', '0', '7', 'Addons/index', '0', '', '', '0', '1');
+INSERT INTO `ta_menu` VALUES ('43', '扩展', '0', '7', 'Addons/index', '1', '', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('44', '插件管理', '43', '1', 'Addons/index', '0', '', '扩展', '0', '1');
 INSERT INTO `ta_menu` VALUES ('45', '创建', '44', '0', 'Addons/create', '0', '服务器上创建插件结构向导', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('46', '检测创建', '44', '0', 'Addons/checkForm', '0', '检测插件是否可以创建', '', '0', '1');
@@ -901,6 +931,7 @@ INSERT INTO `ta_menu` VALUES ('120', '排序', '75', '0', 'Menu/sort', '1', '', 
 INSERT INTO `ta_menu` VALUES ('121', '排序', '76', '0', 'Channel/sort', '1', '', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('122', '数据列表', '58', '0', 'think/lists', '1', '', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('123', '审核列表', '3', '0', 'Article/examine', '1', '', '', '0', '1');
+INSERT INTO `ta_menu` VALUES ('124', '导航分组管理', '68', '7', 'ChannelGroup/index', '0', '', '系统设置', '0', '1');
 
 -- ----------------------------
 -- Table structure for `ta_model`
@@ -1020,7 +1051,7 @@ CREATE TABLE `ta_ucenter_member` (
 -- ----------------------------
 -- Records of ta_ucenter_member
 -- ----------------------------
-INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '0', '0', '1521626231', '1');
+INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1521858685', '0', '1521626231', '1');
 
 -- ----------------------------
 -- Table structure for `ta_ucenter_setting`

@@ -90,8 +90,6 @@
 <div class="main-title">
 	<h2>
 		<?php echo ($info['id']?'编辑':'新增'); ?>导航
-		<?php if(!empty($pid)): ?>[&nbsp;父导航：<a
-			href="<?php echo U('index','pid='.$pid);?>"><?php echo ($parent["title"]); ?></a>&nbsp;]<?php endif; ?>
 	</h2>
 </div>
 <form action="<?php echo U();?>" method="post" class="form-horizontal">
@@ -130,6 +128,35 @@
 			<div class="layui-input-inline" style="width: 490px;">
 				<input type="text" class="layui-input" name="url"
 					value="<?php echo ((isset($info["url"]) && ($info["url"] !== ""))?($info["url"]):''); ?>">
+			</div>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">父级</label>
+			<div class="layui-input-inline" style="width: 490px;">
+				<select name="pid" style="margin-top: 5px;width: 200px;">
+					<option value="0" >顶级</option>
+					<?php if(is_array($parent)): $i = 0; $__LIST__ = $parent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($pid == $vo['id']): ?><option value="<?php echo ($vo["id"]); ?>" selected="selected"><?php echo ($vo["title"]); ?></option>
+						<?php else: ?>
+							<option value="<?php echo ($vo["id"]); ?>" ><?php echo ($vo["title"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+				</select>
+			</div>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">分组</label>
+			<div class="layui-input-inline" style="width: 490px;">
+				<select name="group" style="margin-top: 5px;width: 200px;">
+				<?php if(is_array($group)): $i = 0; $__LIST__ = $group;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($info['group'] == $vo['id']): ?><option value="<?php echo ($vo["id"]); ?>" selected="selected"><?php echo ($vo["title"]); ?></option>
+					<?php else: ?>
+						<option value="<?php echo ($vo["id"]); ?>" ><?php echo ($vo["title"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+				</select>
 			</div>
 		</div>
 	</div>

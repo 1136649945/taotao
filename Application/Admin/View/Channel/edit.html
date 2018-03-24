@@ -4,8 +4,6 @@
 <div class="main-title">
 	<h2>
 		{$info['id']?'编辑':'新增'}导航
-		<notempty name="pid"> [&nbsp;父导航：<a
-			href="{:U('index','pid='.$pid)}">{$parent.title}</a>&nbsp;] </notempty>
 	</h2>
 </div>
 <form action="{:U()}" method="post" class="form-horizontal">
@@ -44,6 +42,43 @@
 			<div class="layui-input-inline" style="width: 490px;">
 				<input type="text" class="layui-input" name="url"
 					value="{$info.url|default=''}">
+			</div>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">父级</label>
+			<div class="layui-input-inline" style="width: 490px;">
+				<select name="pid" style="margin-top: 5px;width: 200px;">
+					<option value="0" >顶级</option>
+					<volist name="parent" id="vo">
+						<if condition="$pid eq $vo['id']"> 
+							<option value="{$vo.id}" selected="selected">{$vo.title}</option>
+						<else />
+							<option value="{$vo.id}" >{$vo.title}</option>
+						</if>
+					</volist>
+				</select>
+			</div>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">分组</label>
+			<div class="layui-input-inline" style="width: 490px;">
+				<select name="group" style="margin-top: 5px;width: 200px;">
+				<volist name="group" id="vo">
+					<if condition="$info['group'] eq $vo['id']"> 
+						<option value="{$vo.id}" selected="selected">{$vo.title}</option>
+					<else />
+						<option value="{$vo.id}" >{$vo.title}</option>
+					</if>
+				</volist>
+				</select>
 			</div>
 		</div>
 	</div>

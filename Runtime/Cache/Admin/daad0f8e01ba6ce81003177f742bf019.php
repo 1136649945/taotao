@@ -87,26 +87,36 @@
             
 
             
-	<div class="main-title">
-		<h2>分类管理</h2>
+	<div class="main-title cf">
+		<h2>
+			菜单排序 [ <a href="<?php echo U('index',array('pid'=>I('pid')));?>">返回列表</a> ]
+		</h2>
 	</div>
-
-	<!-- 表格列表 -->
-	<div class="tb-unit posr">
-		<div class="tb-unit-bar">
-			<a class="btn" href="<?php echo U('add');?>">新 增</a>
-		</div>
-		<div class="category">
-			<div class="hd cf">
-				<div class="fold">折叠</div>
-				<div class="order">排序</div>
-				<div class="order">发布</div>
-				<div class="name">名称</div>
+	<div class="sort">
+		<form action="<?php echo U('sort');?>" method="post">
+<!-- 			<div class="sort_top">
+				查找：<input type="text"><button class="btn search" type="button">查找</button>
+			</div> -->
+			<div class="sort_center">
+				<div class="sort_option">
+					<select value="" size="8">
+						<?php if(is_array($list)): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><option class="ids" title="<?php echo ($vo["title"]); ?>" value="<?php echo ($vo["id"]); ?>"><?php echo ($vo["title"]); ?></option><?php endforeach; endif; else: echo "" ;endif; ?>
+					</select>
+				</div>
+				<div class="sort_btn">
+					<button class="top btn" type="button">第 一</button>
+					<button class="up btn" type="button">上 移</button>
+					<button class="down btn" type="button">下 移</button>
+					<button class="bottom btn" type="button">最 后</button>
+				</div>
 			</div>
-			<?php echo R('Category/tree', array($tree));?>
-		</div>
+			<div class="sort_bottom">
+				<input type="hidden" name="ids">
+				<button class="sort_confirm btn submit-btn" type="button">确 定</button>
+				<button class="sort_cancel btn btn-return" type="button" url="<?php echo (cookie('__forward__')); ?>">返 回</button>
+			</div>
+		</form>
 	</div>
-	<!-- /表格列表 -->
 
         </div>
     </div>
@@ -196,57 +206,78 @@
     </script>
     
 	<script type="text/javascript">
-		(function($){
-			/* 分类展开收起 */
-			$(".category dd").prev().find(".fold i").addClass("icon-unfold")
-				.click(function(){
-					var self = $(this);
-					if(self.hasClass("icon-unfold")){
-						self.closest("dt").next().slideUp("fast", function(){
-							self.removeClass("icon-unfold").addClass("icon-fold");
-						});
-					} else {
-						self.closest("dt").next().slideDown("fast", function(){
-							self.removeClass("icon-fold").addClass("icon-unfold");
-						});
-					}
+	//导航高亮
+	highlight_subnav('<?php echo U('Menu/index');?>');
+		$(function(){
+			sort();
+			$(".top").click(function(){
+				rest();
+				$("option:selected").prependTo("select");
+				sort();
+			})
+			$(".bottom").click(function(){
+				rest();
+				$("option:selected").appendTo("select");
+				sort();
+			})
+			$(".up").click(function(){
+				rest();
+				$("option:selected").after($("option:selected").prev());
+				sort();
+			})
+			$(".down").click(function(){
+				rest();
+				$("option:selected").before($("option:selected").next());
+				sort();
+			})
+			$(".search").click(function(){
+				var v = $("input").val();
+				$("option:contains("+v+")").attr('selected','selected');
+			})
+			function sort(){
+				$('option').text(function(){return ($(this).index()+1)+'.'+$(this).text()});
+			}
+
+			//重置所有option文字。
+			function rest(){
+				$('option').text(function(){
+					return $(this).text().split('.')[1]
 				});
+			}
 
-			/* 三级分类删除新增按钮 */
-			$(".category dd dd .add-sub").remove();
+			//获取排序并提交
+			$('.sort_confirm').click(function(){
+				var arr = new Array();
+				$('.ids').each(function(){
+					arr.push($(this).val());
+				});
+				$('input[name=ids]').val(arr.join(','));
+				$.post(
+					$('form').attr('action'),
+					{
+					'ids' :  arr.join(',')
+					},
+					function(data){
+						if (data.status) {
+	                        updateAlert(data.info + ' 页面即将自动跳转~','alert-success');
+	                    }else{
+	                        updateAlert(data.info,'alert-success');
+	                    }
+	                    setTimeout(function(){
+	                        if (data.status) {
+	                        	$('.sort_cancel').click();
+	                        }
+	                    },1500);
+					},
+					'json'
+				);
+			});
 
-			/* 实时更新分类信息 */
-			$(".category")
-				.on("submit", "form", function(){
-					var self = $(this);
-					$.post(
-						self.attr("action"),
-						self.serialize(),
-						function(data){
-							/* 提示信息 */
-							var name = data.status ? "success" : "error", msg;
-							msg = self.find(".msg").addClass(name).text(data.info)
-									  .css("display", "inline-block");
-							setTimeout(function(){
-								msg.fadeOut(function(){
-									msg.text("").removeClass(name);
-								});
-							}, 1000);
-						},
-						"json"
-					);
-					return false;
-				})
-                .on("focus","input",function(){
-                    $(this).data('param',$(this).closest("form").serialize());
-
-                })
-                .on("blur", "input", function(){
-                    if($(this).data('param')!=$(this).closest("form").serialize()){
-                        $(this).closest("form").submit();
-                    }
-                });
-		})(jQuery);
+			//点击取消按钮
+			$('.sort_cancel').click(function(){
+				window.location.href = $(this).attr('url');
+			});
+		})
 	</script>
 
 </body>
