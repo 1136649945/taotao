@@ -86,8 +86,25 @@
 		style="margin-top: 10px;"></fieldset>
 	<div class="layui-form-item">
 		<div class="layui-inline">
-			<label class="layui-form-label">新窗口打开</label> <select name="target"
-				style="margin-top: 5px;">
+			<label class="layui-form-label" style="margin-top: -10px;">隐藏</label> 
+				<if condition="$vo['status'] eq 1">
+	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
+	            <elseif condition="$vo['status'] eq -1"/>
+	            	<label class="radio"><input type="radio" name="status" value="-1" checked="checked" >是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" >否</label>
+	            <else />
+	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
+				</if>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">新窗口打开</label> 
+			<select name="target" style="margin-top: 5px;">
 				<option value="0"<eq name="info.target" value="0">selected</eq>>否
 				</option>
 				<option value="1"<eq name="info.target" value="1">selected</eq>>是

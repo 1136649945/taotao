@@ -119,7 +119,7 @@
                         </td>
                         <td>
                             <a title="编辑" href="<?php echo U('edit?id='.$group['id']);?>">编辑</a>
-                            <a class="confirm" title="删除" href="javascript:del(<?php echo ($group['id']); ?>);">删除</a>
+                            <a class="confirm" title="删除" href="javascript:deleteGroup(<?php echo ($group['id']); ?>);">删除</a>
                         </td>
                     </tr><?php endforeach; endif; else: echo "" ;endif; ?>
 				<?php else: ?>
@@ -223,14 +223,14 @@
     <script type="text/javascript">
         $(function() {
             //导航高亮
-          //  highlight_subnav('<?php echo U('index');?>');
+            highlight_subnav('<?php echo U('index');?>');
         });
-        function del(id){
+        function deleteGroup(id){
         	if(id){
         		$.ajax(
         		{
-        			url:"/ChannelGroup/del",
-        			type:"POST",
+        			url:"<?php echo U('del');?>",
+        			type:"GET",
         			dataType:"json",
         			data:{"id":id},
         			success:function(data){

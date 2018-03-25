@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : localhost_sql_3306
-Source Server Version : 50624
+Source Server         : mysql
+Source Server Version : 50067
 Source Host           : localhost:3306
 Source Database       : taotao
 
 Target Server Type    : MYSQL
-Target Server Version : 50624
+Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2018-03-24 17:54:13
+Date: 2018-03-25 23:02:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -19,16 +19,16 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_action`;
 CREATE TABLE `ta_action` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` char(30) NOT NULL DEFAULT '' COMMENT '行为唯一标识',
-  `title` char(80) NOT NULL DEFAULT '' COMMENT '行为说明',
-  `remark` char(140) NOT NULL DEFAULT '' COMMENT '行为描述',
+  `id` int(11) unsigned NOT NULL auto_increment COMMENT '主键',
+  `name` char(30) NOT NULL default '' COMMENT '行为唯一标识',
+  `title` char(80) NOT NULL default '' COMMENT '行为说明',
+  `remark` char(140) NOT NULL default '' COMMENT '行为描述',
   `rule` text COMMENT '行为规则',
   `log` text COMMENT '日志规则',
-  `type` tinyint(2) unsigned NOT NULL DEFAULT '1' COMMENT '类型',
-  `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '修改时间',
-  PRIMARY KEY (`id`)
+  `type` tinyint(2) unsigned NOT NULL default '1' COMMENT '类型',
+  `status` tinyint(2) NOT NULL default '0' COMMENT '状态',
+  `update_time` int(11) unsigned NOT NULL default '0' COMMENT '修改时间',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='系统行为表';
 
 -- ----------------------------
@@ -51,20 +51,20 @@ INSERT INTO `ta_action` VALUES ('11', 'update_category', '更新分类', '新增
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_action_log`;
 CREATE TABLE `ta_action_log` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `action_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '行为id',
-  `user_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '执行用户id',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '主键',
+  `action_id` int(10) unsigned NOT NULL default '0' COMMENT '行为id',
+  `user_id` int(10) unsigned NOT NULL default '0' COMMENT '执行用户id',
   `action_ip` bigint(20) NOT NULL COMMENT '执行行为者ip',
-  `model` varchar(50) NOT NULL DEFAULT '' COMMENT '触发行为的表',
-  `record_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '触发行为的数据id',
-  `remark` varchar(255) NOT NULL DEFAULT '' COMMENT '日志备注',
-  `status` tinyint(2) NOT NULL DEFAULT '1' COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '执行行为的时间',
-  PRIMARY KEY (`id`),
+  `model` varchar(50) NOT NULL default '' COMMENT '触发行为的表',
+  `record_id` int(10) unsigned NOT NULL default '0' COMMENT '触发行为的数据id',
+  `remark` varchar(255) NOT NULL default '' COMMENT '日志备注',
+  `status` tinyint(2) NOT NULL default '1' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '执行行为的时间',
+  PRIMARY KEY  (`id`),
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ta_action_log
@@ -80,23 +80,40 @@ INSERT INTO `ta_action_log` VALUES ('8', '1', '1', '0', 'member', '1', 'admin在
 INSERT INTO `ta_action_log` VALUES ('9', '1', '1', '0', 'member', '1', 'admin在2018-03-24 10:31登录了后台', '1', '1521858685');
 INSERT INTO `ta_action_log` VALUES ('10', '10', '1', '0', 'Menu', '124', '操作url：/admin.php?s=/Menu/add.html', '1', '1521874593');
 INSERT INTO `ta_action_log` VALUES ('11', '9', '1', '0', 'channel', '4', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521881929');
+INSERT INTO `ta_action_log` VALUES ('12', '1', '1', '0', 'member', '1', 'admin在2018-03-24 22:57登录了后台', '1', '1521903425');
+INSERT INTO `ta_action_log` VALUES ('13', '1', '1', '0', 'member', '1', 'admin在2018-03-24 23:37登录了后台', '1', '1521905833');
+INSERT INTO `ta_action_log` VALUES ('14', '1', '1', '0', 'member', '1', 'admin在2018-03-25 00:19登录了后台', '1', '1521908354');
+INSERT INTO `ta_action_log` VALUES ('15', '1', '1', '0', 'member', '1', 'admin在2018-03-25 00:21登录了后台', '1', '1521908468');
+INSERT INTO `ta_action_log` VALUES ('16', '1', '1', '0', 'member', '1', 'admin在2018-03-25 00:23登录了后台', '1', '1521908586');
+INSERT INTO `ta_action_log` VALUES ('17', '1', '1', '0', 'member', '1', 'admin在2018-03-25 00:41登录了后台', '1', '1521909707');
+INSERT INTO `ta_action_log` VALUES ('18', '1', '1', '0', 'member', '1', 'admin在2018-03-25 00:46登录了后台', '1', '1521910003');
+INSERT INTO `ta_action_log` VALUES ('19', '1', '1', '0', 'member', '1', 'admin在2018-03-25 15:34登录了后台', '1', '1521963296');
+INSERT INTO `ta_action_log` VALUES ('20', '1', '1', '0', 'member', '1', 'admin在2018-03-25 17:07登录了后台', '1', '1521968847');
+INSERT INTO `ta_action_log` VALUES ('21', '9', '1', '0', 'channel', '4', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521983210');
+INSERT INTO `ta_action_log` VALUES ('22', '9', '1', '0', 'channel', '4', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521983236');
+INSERT INTO `ta_action_log` VALUES ('23', '9', '1', '0', 'channel', '4', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521989094');
+INSERT INTO `ta_action_log` VALUES ('24', '9', '1', '0', 'channel', '4', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521989123');
+INSERT INTO `ta_action_log` VALUES ('25', '9', '1', '0', 'channel', '3', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521989674');
+INSERT INTO `ta_action_log` VALUES ('26', '9', '1', '0', 'channel', '2', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521989680');
+INSERT INTO `ta_action_log` VALUES ('27', '9', '1', '0', 'channel', '1', '操作url：/admin.php?s=/Channel/edit.html', '1', '1521989686');
+INSERT INTO `ta_action_log` VALUES ('28', '9', '1', '0', 'channel', '0', '操作url：/admin.php?s=/Channel/del/id/4.html', '1', '1521989805');
 
 -- ----------------------------
 -- Table structure for `ta_addons`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_addons`;
 CREATE TABLE `ta_addons` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '主键',
   `name` varchar(40) NOT NULL COMMENT '插件名或标识',
-  `title` varchar(20) NOT NULL DEFAULT '' COMMENT '中文名',
+  `title` varchar(20) NOT NULL default '' COMMENT '中文名',
   `description` text COMMENT '插件描述',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `status` tinyint(1) NOT NULL default '1' COMMENT '状态',
   `config` text COMMENT '配置',
-  `author` varchar(40) DEFAULT '' COMMENT '作者',
-  `version` varchar(20) DEFAULT '' COMMENT '版本号',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '安装时间',
-  `has_adminlist` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否有后台列表',
-  PRIMARY KEY (`id`)
+  `author` varchar(40) default '' COMMENT '作者',
+  `version` varchar(20) default '' COMMENT '版本号',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '安装时间',
+  `has_adminlist` tinyint(1) unsigned NOT NULL default '0' COMMENT '是否有后台列表',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=utf8 COMMENT='插件表';
 
 -- ----------------------------
@@ -115,20 +132,20 @@ INSERT INTO `ta_addons` VALUES ('9', 'SocialComment', '通用社交化评论', '
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_attachment`;
 CREATE TABLE `ta_attachment` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `title` char(30) NOT NULL DEFAULT '' COMMENT '附件显示名',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '附件类型',
-  `source` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '资源ID',
-  `record_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '关联记录ID',
-  `download` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '下载次数',
-  `size` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '附件大小',
-  `dir` int(12) unsigned NOT NULL DEFAULT '0' COMMENT '上级目录ID',
-  `sort` int(8) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
-  PRIMARY KEY (`id`),
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `uid` int(10) unsigned NOT NULL default '0' COMMENT '用户ID',
+  `title` char(30) NOT NULL default '' COMMENT '附件显示名',
+  `type` tinyint(3) unsigned NOT NULL default '0' COMMENT '附件类型',
+  `source` int(10) unsigned NOT NULL default '0' COMMENT '资源ID',
+  `record_id` int(10) unsigned NOT NULL default '0' COMMENT '关联记录ID',
+  `download` int(10) unsigned NOT NULL default '0' COMMENT '下载次数',
+  `size` bigint(20) unsigned NOT NULL default '0' COMMENT '附件大小',
+  `dir` int(12) unsigned NOT NULL default '0' COMMENT '上级目录ID',
+  `sort` int(8) unsigned NOT NULL default '0' COMMENT '排序',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(11) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(1) NOT NULL default '0' COMMENT '状态',
+  PRIMARY KEY  (`id`),
   KEY `idx_record_status` (`record_id`,`status`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='附件表';
 
@@ -141,28 +158,28 @@ CREATE TABLE `ta_attachment` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_attribute`;
 CREATE TABLE `ta_attribute` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL DEFAULT '' COMMENT '字段名',
-  `title` varchar(100) NOT NULL DEFAULT '' COMMENT '字段注释',
-  `field` varchar(100) NOT NULL DEFAULT '' COMMENT '字段定义',
-  `type` varchar(20) NOT NULL DEFAULT '' COMMENT '数据类型',
-  `value` varchar(100) NOT NULL DEFAULT '' COMMENT '字段默认值',
-  `remark` varchar(100) NOT NULL DEFAULT '' COMMENT '备注',
-  `is_show` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否显示',
-  `extra` varchar(255) NOT NULL DEFAULT '' COMMENT '参数',
-  `model_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '模型id',
-  `is_must` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否必填',
-  `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
-  `update_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `create_time` int(11) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `validate_rule` varchar(255) NOT NULL DEFAULT '',
-  `validate_time` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `error_info` varchar(100) NOT NULL DEFAULT '',
-  `validate_type` varchar(25) NOT NULL DEFAULT '',
-  `auto_rule` varchar(100) NOT NULL DEFAULT '',
-  `auto_time` tinyint(1) unsigned NOT NULL DEFAULT '0',
-  `auto_type` varchar(25) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id`),
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `name` varchar(30) NOT NULL default '' COMMENT '字段名',
+  `title` varchar(100) NOT NULL default '' COMMENT '字段注释',
+  `field` varchar(100) NOT NULL default '' COMMENT '字段定义',
+  `type` varchar(20) NOT NULL default '' COMMENT '数据类型',
+  `value` varchar(100) NOT NULL default '' COMMENT '字段默认值',
+  `remark` varchar(100) NOT NULL default '' COMMENT '备注',
+  `is_show` tinyint(1) unsigned NOT NULL default '1' COMMENT '是否显示',
+  `extra` varchar(255) NOT NULL default '' COMMENT '参数',
+  `model_id` int(10) unsigned NOT NULL default '0' COMMENT '模型id',
+  `is_must` tinyint(1) unsigned NOT NULL default '0' COMMENT '是否必填',
+  `status` tinyint(2) NOT NULL default '0' COMMENT '状态',
+  `update_time` int(11) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `create_time` int(11) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `validate_rule` varchar(255) NOT NULL default '',
+  `validate_time` tinyint(1) unsigned NOT NULL default '0',
+  `error_info` varchar(100) NOT NULL default '',
+  `validate_type` varchar(25) NOT NULL default '',
+  `auto_rule` varchar(100) NOT NULL default '',
+  `auto_time` tinyint(1) unsigned NOT NULL default '0',
+  `auto_type` varchar(25) NOT NULL default '',
+  PRIMARY KEY  (`id`),
   KEY `model_id` (`model_id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COMMENT='模型属性表';
 
@@ -232,14 +249,14 @@ INSERT INTO `ta_auth_extend` VALUES ('1', '37', '1');
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_auth_group`;
 CREATE TABLE `ta_auth_group` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户组id,自增主键',
-  `module` varchar(20) NOT NULL DEFAULT '' COMMENT '用户组所属模块',
-  `type` tinyint(4) NOT NULL DEFAULT '0' COMMENT '组类型',
-  `title` char(20) NOT NULL DEFAULT '' COMMENT '用户组中文名称',
-  `description` varchar(80) NOT NULL DEFAULT '' COMMENT '描述信息',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '用户组状态：为1正常，为0禁用,-1为删除',
-  `rules` varchar(500) NOT NULL DEFAULT '' COMMENT '用户组拥有的规则id，多个规则 , 隔开',
-  PRIMARY KEY (`id`)
+  `id` mediumint(8) unsigned NOT NULL auto_increment COMMENT '用户组id,自增主键',
+  `module` varchar(20) NOT NULL default '' COMMENT '用户组所属模块',
+  `type` tinyint(4) NOT NULL default '0' COMMENT '组类型',
+  `title` char(20) NOT NULL default '' COMMENT '用户组中文名称',
+  `description` varchar(80) NOT NULL default '' COMMENT '描述信息',
+  `status` tinyint(1) NOT NULL default '1' COMMENT '用户组状态：为1正常，为0禁用,-1为删除',
+  `rules` varchar(500) NOT NULL default '' COMMENT '用户组拥有的规则id，多个规则 , 隔开',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -269,16 +286,16 @@ CREATE TABLE `ta_auth_group_access` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_auth_rule`;
 CREATE TABLE `ta_auth_rule` (
-  `id` mediumint(8) unsigned NOT NULL AUTO_INCREMENT COMMENT '规则id,自增主键',
+  `id` mediumint(8) unsigned NOT NULL auto_increment COMMENT '规则id,自增主键',
   `module` varchar(20) NOT NULL COMMENT '规则所属module',
-  `type` tinyint(2) NOT NULL DEFAULT '1' COMMENT '1-url;2-主菜单',
-  `name` char(80) NOT NULL DEFAULT '' COMMENT '规则唯一英文标识',
-  `title` char(20) NOT NULL DEFAULT '' COMMENT '规则中文描述',
-  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '是否有效(0:无效,1:有效)',
-  `condition` varchar(300) NOT NULL DEFAULT '' COMMENT '规则附加条件',
-  PRIMARY KEY (`id`),
+  `type` tinyint(2) NOT NULL default '1' COMMENT '1-url;2-主菜单',
+  `name` char(80) NOT NULL default '' COMMENT '规则唯一英文标识',
+  `title` char(20) NOT NULL default '' COMMENT '规则中文描述',
+  `status` tinyint(1) NOT NULL default '1' COMMENT '是否有效(0:无效,1:有效)',
+  `condition` varchar(300) NOT NULL default '' COMMENT '规则附加条件',
+  PRIMARY KEY  (`id`),
   KEY `module` (`module`,`status`,`type`)
-) ENGINE=MyISAM AUTO_INCREMENT=217 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=220 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ta_auth_rule
@@ -443,8 +460,8 @@ INSERT INTO `ta_auth_rule` VALUES ('159', 'admin', '2', 'Admin/Addons/adminList'
 INSERT INTO `ta_auth_rule` VALUES ('160', 'admin', '2', 'Admin/Addons/execute', 'URL方式访问插件', '-1', '');
 INSERT INTO `ta_auth_rule` VALUES ('161', 'admin', '2', 'Admin/Addons/hooks', '钩子管理', '-1', '');
 INSERT INTO `ta_auth_rule` VALUES ('162', 'admin', '2', 'Admin/Model/index', '模型管理', '-1', '');
-INSERT INTO `ta_auth_rule` VALUES ('163', 'admin', '2', 'Admin/model/add', '新增', '-1', '');
-INSERT INTO `ta_auth_rule` VALUES ('164', 'admin', '2', 'Admin/model/edit', '编辑', '-1', '');
+INSERT INTO `ta_auth_rule` VALUES ('163', 'admin', '2', 'Admin/Modell/add', '新增', '-1', '');
+INSERT INTO `ta_auth_rule` VALUES ('164', 'admin', '2', 'Admin/Model/edit', '编辑', '-1', '');
 INSERT INTO `ta_auth_rule` VALUES ('165', 'admin', '2', 'Admin/model/setStatus', '改变状态', '-1', '');
 INSERT INTO `ta_auth_rule` VALUES ('166', 'admin', '2', 'Admin/model/update', '保存数据', '-1', '');
 INSERT INTO `ta_auth_rule` VALUES ('167', 'admin', '2', 'Admin/Attribute/index', '属性管理', '-1', '');
@@ -496,41 +513,44 @@ INSERT INTO `ta_auth_rule` VALUES ('213', 'admin', '1', 'Admin/Menu/sort', '排�
 INSERT INTO `ta_auth_rule` VALUES ('214', 'admin', '1', 'Admin/Channel/sort', '排序', '1', '');
 INSERT INTO `ta_auth_rule` VALUES ('215', 'admin', '1', 'Admin/Category/operate/type/move', '移动', '1', '');
 INSERT INTO `ta_auth_rule` VALUES ('216', 'admin', '1', 'Admin/Category/operate/type/merge', '合并', '1', '');
+INSERT INTO `ta_auth_rule` VALUES ('217', 'admin', '2', 'Admin/Group/index', '分组', '1', '');
+INSERT INTO `ta_auth_rule` VALUES ('218', 'admin', '2', 'Admin/Group/add', '增加', '1', '');
+INSERT INTO `ta_auth_rule` VALUES ('219', 'admin', '2', 'Admin/Group/edit', '编辑', '1', '');
 
 -- ----------------------------
 -- Table structure for `ta_category`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_category`;
 CREATE TABLE `ta_category` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分类ID',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '分类ID',
   `name` varchar(30) NOT NULL COMMENT '标志',
   `title` varchar(50) NOT NULL COMMENT '标题',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
-  `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
-  `list_row` tinyint(3) unsigned NOT NULL DEFAULT '10' COMMENT '列表每页行数',
-  `meta_title` varchar(50) NOT NULL DEFAULT '' COMMENT 'SEO的网页标题',
-  `keywords` varchar(255) NOT NULL DEFAULT '' COMMENT '关键字',
-  `description` varchar(255) NOT NULL DEFAULT '' COMMENT '描述',
-  `template_index` varchar(100) NOT NULL DEFAULT '' COMMENT '频道页模板',
-  `template_lists` varchar(100) NOT NULL DEFAULT '' COMMENT '列表页模板',
-  `template_detail` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页模板',
-  `template_edit` varchar(100) NOT NULL DEFAULT '' COMMENT '编辑页模板',
-  `model` varchar(100) NOT NULL DEFAULT '' COMMENT '列表绑定模型',
-  `model_sub` varchar(100) NOT NULL DEFAULT '' COMMENT '子文档绑定模型',
-  `type` varchar(100) NOT NULL DEFAULT '' COMMENT '允许发布的内容类型',
-  `link_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '外链',
-  `allow_publish` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否允许发布内容',
-  `display` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '可见性',
-  `reply` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否允许回复',
-  `check` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '发布的文章是否需要审核',
-  `reply_model` varchar(100) NOT NULL DEFAULT '',
+  `pid` int(10) unsigned NOT NULL default '0' COMMENT '上级分类ID',
+  `sort` int(10) unsigned NOT NULL default '0' COMMENT '排序（同级有效）',
+  `list_row` tinyint(3) unsigned NOT NULL default '10' COMMENT '列表每页行数',
+  `meta_title` varchar(50) NOT NULL default '' COMMENT 'SEO的网页标题',
+  `keywords` varchar(255) NOT NULL default '' COMMENT '关键字',
+  `description` varchar(255) NOT NULL default '' COMMENT '描述',
+  `template_index` varchar(100) NOT NULL default '' COMMENT '频道页模板',
+  `template_lists` varchar(100) NOT NULL default '' COMMENT '列表页模板',
+  `template_detail` varchar(100) NOT NULL default '' COMMENT '详情页模板',
+  `template_edit` varchar(100) NOT NULL default '' COMMENT '编辑页模板',
+  `model` varchar(100) NOT NULL default '' COMMENT '列表绑定模型',
+  `model_sub` varchar(100) NOT NULL default '' COMMENT '子文档绑定模型',
+  `type` varchar(100) NOT NULL default '' COMMENT '允许发布的内容类型',
+  `link_id` int(10) unsigned NOT NULL default '0' COMMENT '外链',
+  `allow_publish` tinyint(3) unsigned NOT NULL default '0' COMMENT '是否允许发布内容',
+  `display` tinyint(3) unsigned NOT NULL default '0' COMMENT '可见性',
+  `reply` tinyint(3) unsigned NOT NULL default '0' COMMENT '是否允许回复',
+  `check` tinyint(3) unsigned NOT NULL default '0' COMMENT '发布的文章是否需要审核',
+  `reply_model` varchar(100) NOT NULL default '',
   `extend` text COMMENT '扩展设置',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '数据状态',
-  `icon` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分类图标',
-  `groups` varchar(255) NOT NULL DEFAULT '' COMMENT '分组定义',
-  PRIMARY KEY (`id`),
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '数据状态',
+  `icon` int(10) unsigned NOT NULL default '0' COMMENT '分类图标',
+  `groups` varchar(255) NOT NULL default '' COMMENT '分组定义',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `uk_name` (`name`),
   KEY `pid` (`pid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=39 DEFAULT CHARSET=utf8 COMMENT='分类表';
@@ -546,63 +566,45 @@ INSERT INTO `ta_category` VALUES ('2', 'default_blog', '默认分类', '1', '1',
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_channel`;
 CREATE TABLE `ta_channel` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级频道ID',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '频道ID',
+  `pid` int(10) unsigned NOT NULL default '0' COMMENT '上级频道ID',
   `title` char(30) NOT NULL COMMENT '频道标题',
-  `group` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分组',
+  `group` int(10) unsigned NOT NULL default '0' COMMENT '分组',
   `url` char(100) NOT NULL COMMENT '频道连接',
-  `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '导航排序',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
-  `target` tinyint(2) unsigned NOT NULL DEFAULT '0' COMMENT '新窗口打开',
-  PRIMARY KEY (`id`),
+  `sort` int(10) unsigned NOT NULL default '0' COMMENT '导航排序',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '状态',
+  `target` tinyint(2) unsigned NOT NULL default '0' COMMENT '新窗口打开',
+  PRIMARY KEY  (`id`),
   KEY `pid` (`pid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ta_channel
 -- ----------------------------
-INSERT INTO `ta_channel` VALUES ('1', '0', '首页', '0', 'Index/index', '1', '1379475111', '1379923177', '1', '0');
-INSERT INTO `ta_channel` VALUES ('2', '0', '博客', '0', 'Article/index?category=blog', '2', '1379475131', '1521689426', '1', '0');
-INSERT INTO `ta_channel` VALUES ('3', '0', '官网', '0', 'http://www.onethink.cn', '3', '1379475154', '1387163458', '1', '0');
-INSERT INTO `ta_channel` VALUES ('4', '3', '测试', '1', 'ss', '0', '0', '1521881929', '1', '0');
-
--- ----------------------------
--- Table structure for `ta_channel_group`
--- ----------------------------
-DROP TABLE IF EXISTS `ta_channel_group`;
-CREATE TABLE `ta_channel_group` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '分组ID',
-  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
-  `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of ta_channel_group
--- ----------------------------
-INSERT INTO `ta_channel_group` VALUES ('1', '官网导航', '1', '1');
+INSERT INTO `ta_channel` VALUES ('1', '0', '首页', '1', 'Index/index', '1', '1379475111', '1521989686', '1', '0');
+INSERT INTO `ta_channel` VALUES ('2', '0', '博客', '1', 'Article/index?category=blog', '2', '1379475131', '1521989680', '1', '0');
+INSERT INTO `ta_channel` VALUES ('3', '0', '官网', '1', 'http://www.onethink.cn', '3', '1379475154', '1521989674', '1', '0');
 
 -- ----------------------------
 -- Table structure for `ta_config`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_config`;
 CREATE TABLE `ta_config` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '配置ID',
-  `name` varchar(30) NOT NULL DEFAULT '' COMMENT '配置名称',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '配置类型',
-  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '配置说明',
-  `group` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '配置分组',
-  `extra` varchar(255) NOT NULL DEFAULT '' COMMENT '配置值',
-  `remark` varchar(100) NOT NULL DEFAULT '' COMMENT '配置说明',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '状态',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '配置ID',
+  `name` varchar(30) NOT NULL default '' COMMENT '配置名称',
+  `type` tinyint(3) unsigned NOT NULL default '0' COMMENT '配置类型',
+  `title` varchar(50) NOT NULL default '' COMMENT '配置说明',
+  `group` tinyint(3) unsigned NOT NULL default '0' COMMENT '配置分组',
+  `extra` varchar(255) NOT NULL default '' COMMENT '配置值',
+  `remark` varchar(100) NOT NULL default '' COMMENT '配置说明',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '状态',
   `value` text COMMENT '配置值',
-  `sort` smallint(3) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
-  PRIMARY KEY (`id`),
+  `sort` smallint(3) unsigned NOT NULL default '0' COMMENT '排序',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `uk_name` (`name`),
   KEY `type` (`type`),
   KEY `group` (`group`)
@@ -644,31 +646,31 @@ INSERT INTO `ta_config` VALUES ('37', 'SHOW_PAGE_TRACE', '4', '是否显示页�
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_document`;
 CREATE TABLE `ta_document` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
-  `uid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '用户ID',
-  `name` char(40) NOT NULL DEFAULT '' COMMENT '标识',
-  `title` char(80) NOT NULL DEFAULT '' COMMENT '标题',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '文档ID',
+  `uid` int(10) unsigned NOT NULL default '0' COMMENT '用户ID',
+  `name` char(40) NOT NULL default '' COMMENT '标识',
+  `title` char(80) NOT NULL default '' COMMENT '标题',
   `category_id` int(10) unsigned NOT NULL COMMENT '所属分类',
   `group_id` smallint(3) unsigned NOT NULL COMMENT '所属分组',
-  `description` char(140) NOT NULL DEFAULT '' COMMENT '描述',
-  `root` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '根节点',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '所属ID',
-  `model_id` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容模型ID',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '2' COMMENT '内容类型',
-  `position` smallint(5) unsigned NOT NULL DEFAULT '0' COMMENT '推荐位',
-  `link_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '外链',
-  `cover_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '封面',
-  `display` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '可见性',
-  `deadline` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '截至时间',
-  `attach` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '附件数量',
-  `view` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '浏览量',
-  `comment` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '评论数',
-  `extend` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '扩展统计字段',
-  `level` int(10) NOT NULL DEFAULT '0' COMMENT '优先级',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '数据状态',
-  PRIMARY KEY (`id`),
+  `description` char(140) NOT NULL default '' COMMENT '描述',
+  `root` int(10) unsigned NOT NULL default '0' COMMENT '根节点',
+  `pid` int(10) unsigned NOT NULL default '0' COMMENT '所属ID',
+  `model_id` tinyint(3) unsigned NOT NULL default '0' COMMENT '内容模型ID',
+  `type` tinyint(3) unsigned NOT NULL default '2' COMMENT '内容类型',
+  `position` smallint(5) unsigned NOT NULL default '0' COMMENT '推荐位',
+  `link_id` int(10) unsigned NOT NULL default '0' COMMENT '外链',
+  `cover_id` int(10) unsigned NOT NULL default '0' COMMENT '封面',
+  `display` tinyint(3) unsigned NOT NULL default '1' COMMENT '可见性',
+  `deadline` int(10) unsigned NOT NULL default '0' COMMENT '截至时间',
+  `attach` tinyint(3) unsigned NOT NULL default '0' COMMENT '附件数量',
+  `view` int(10) unsigned NOT NULL default '0' COMMENT '浏览量',
+  `comment` int(10) unsigned NOT NULL default '0' COMMENT '评论数',
+  `extend` int(10) unsigned NOT NULL default '0' COMMENT '扩展统计字段',
+  `level` int(10) NOT NULL default '0' COMMENT '优先级',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '数据状态',
+  PRIMARY KEY  (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
@@ -683,12 +685,12 @@ INSERT INTO `ta_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_document_article`;
 CREATE TABLE `ta_document_article` (
-  `id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文档ID',
-  `parse` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容解析类型',
+  `id` int(10) unsigned NOT NULL default '0' COMMENT '文档ID',
+  `parse` tinyint(3) unsigned NOT NULL default '0' COMMENT '内容解析类型',
   `content` text NOT NULL COMMENT '文章内容',
-  `template` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页显示模板',
-  `bookmark` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '收藏数',
-  PRIMARY KEY (`id`)
+  `template` varchar(100) NOT NULL default '' COMMENT '详情页显示模板',
+  `bookmark` int(10) unsigned NOT NULL default '0' COMMENT '收藏数',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文档模型文章表';
 
 -- ----------------------------
@@ -701,14 +703,14 @@ INSERT INTO `ta_document_article` VALUES ('1', '0', '<h1>\r\n	OneThink1.1开发�
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_document_download`;
 CREATE TABLE `ta_document_download` (
-  `id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文档ID',
-  `parse` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '内容解析类型',
+  `id` int(10) unsigned NOT NULL default '0' COMMENT '文档ID',
+  `parse` tinyint(3) unsigned NOT NULL default '0' COMMENT '内容解析类型',
   `content` text NOT NULL COMMENT '下载详细描述',
-  `template` varchar(100) NOT NULL DEFAULT '' COMMENT '详情页显示模板',
-  `file_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文件ID',
-  `download` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '下载次数',
-  `size` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '文件大小',
-  PRIMARY KEY (`id`)
+  `template` varchar(100) NOT NULL default '' COMMENT '详情页显示模板',
+  `file_id` int(10) unsigned NOT NULL default '0' COMMENT '文件ID',
+  `download` int(10) unsigned NOT NULL default '0' COMMENT '下载次数',
+  `size` bigint(20) unsigned NOT NULL default '0' COMMENT '文件大小',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文档模型下载表';
 
 -- ----------------------------
@@ -720,19 +722,19 @@ CREATE TABLE `ta_document_download` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_file`;
 CREATE TABLE `ta_file` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文件ID',
-  `name` char(30) NOT NULL DEFAULT '' COMMENT '原始文件名',
-  `savename` char(20) NOT NULL DEFAULT '' COMMENT '保存名称',
-  `savepath` char(30) NOT NULL DEFAULT '' COMMENT '文件保存路径',
-  `ext` char(5) NOT NULL DEFAULT '' COMMENT '文件后缀',
-  `mime` char(40) NOT NULL DEFAULT '' COMMENT '文件mime类型',
-  `size` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '文件大小',
-  `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
-  `sha1` char(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
-  `location` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '文件保存位置',
-  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '远程地址',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上传时间',
-  PRIMARY KEY (`id`),
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '文件ID',
+  `name` char(30) NOT NULL default '' COMMENT '原始文件名',
+  `savename` char(20) NOT NULL default '' COMMENT '保存名称',
+  `savepath` char(30) NOT NULL default '' COMMENT '文件保存路径',
+  `ext` char(5) NOT NULL default '' COMMENT '文件后缀',
+  `mime` char(40) NOT NULL default '' COMMENT '文件mime类型',
+  `size` int(10) unsigned NOT NULL default '0' COMMENT '文件大小',
+  `md5` char(32) NOT NULL default '' COMMENT '文件md5',
+  `sha1` char(40) NOT NULL default '' COMMENT '文件 sha1编码',
+  `location` tinyint(3) unsigned NOT NULL default '0' COMMENT '文件保存位置',
+  `url` varchar(255) NOT NULL default '' COMMENT '远程地址',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '上传时间',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `uk_md5` (`md5`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文件表';
 
@@ -741,18 +743,35 @@ CREATE TABLE `ta_file` (
 -- ----------------------------
 
 -- ----------------------------
+-- Table structure for `ta_group`
+-- ----------------------------
+DROP TABLE IF EXISTS `ta_group`;
+CREATE TABLE `ta_group` (
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '分组ID',
+  `title` varchar(50) NOT NULL default '' COMMENT '标题',
+  `sort` int(10) unsigned NOT NULL default '0' COMMENT '排序（同级有效）',
+  `status` tinyint(1) NOT NULL default '0' COMMENT '状态',
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ta_group
+-- ----------------------------
+INSERT INTO `ta_group` VALUES ('1', '官网导航', '1', '1');
+
+-- ----------------------------
 -- Table structure for `ta_hooks`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_hooks`;
 CREATE TABLE `ta_hooks` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `name` varchar(40) NOT NULL DEFAULT '' COMMENT '钩子名称',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '主键',
+  `name` varchar(40) NOT NULL default '' COMMENT '钩子名称',
   `description` text COMMENT '描述',
-  `type` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '类型',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `addons` varchar(255) NOT NULL DEFAULT '' COMMENT '钩子挂载的插件 ''，''分割',
-  `status` tinyint(1) unsigned NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`),
+  `type` tinyint(1) unsigned NOT NULL default '1' COMMENT '类型',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `addons` varchar(255) NOT NULL default '' COMMENT '钩子挂载的插件 ''，''分割',
+  `status` tinyint(1) unsigned NOT NULL default '1',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `name` (`name`)
 ) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
@@ -776,46 +795,46 @@ INSERT INTO `ta_hooks` VALUES ('16', 'app_begin', '应用开始', '2', '13844816
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_member`;
 CREATE TABLE `ta_member` (
-  `uid` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `nickname` char(16) NOT NULL DEFAULT '' COMMENT '昵称',
-  `sex` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '性别',
-  `birthday` date NOT NULL DEFAULT '0000-00-00' COMMENT '生日',
-  `qq` char(10) NOT NULL DEFAULT '' COMMENT 'qq号',
-  `score` mediumint(8) NOT NULL DEFAULT '0' COMMENT '用户积分',
-  `login` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '登录次数',
-  `reg_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '注册IP',
-  `reg_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '注册时间',
-  `last_login_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
-  `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '会员状态',
-  PRIMARY KEY (`uid`),
+  `uid` int(10) unsigned NOT NULL auto_increment COMMENT '用户ID',
+  `nickname` char(16) NOT NULL default '' COMMENT '昵称',
+  `sex` tinyint(3) unsigned NOT NULL default '0' COMMENT '性别',
+  `birthday` date NOT NULL default '0000-00-00' COMMENT '生日',
+  `qq` char(10) NOT NULL default '' COMMENT 'qq号',
+  `score` mediumint(8) NOT NULL default '0' COMMENT '用户积分',
+  `login` int(10) unsigned NOT NULL default '0' COMMENT '登录次数',
+  `reg_ip` bigint(20) NOT NULL default '0' COMMENT '注册IP',
+  `reg_time` int(10) unsigned NOT NULL default '0' COMMENT '注册时间',
+  `last_login_ip` bigint(20) NOT NULL default '0' COMMENT '最后登录IP',
+  `last_login_time` int(10) unsigned NOT NULL default '0' COMMENT '最后登录时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '会员状态',
+  PRIMARY KEY  (`uid`),
   KEY `status` (`status`)
 ) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='会员表';
 
 -- ----------------------------
 -- Records of ta_member
 -- ----------------------------
-INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '7', '0', '1521626231', '0', '1521858685', '1');
+INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '16', '0', '1521626231', '0', '1521968847', '1');
 
 -- ----------------------------
 -- Table structure for `ta_menu`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_menu`;
 CREATE TABLE `ta_menu` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '文档ID',
-  `title` varchar(50) NOT NULL DEFAULT '' COMMENT '标题',
-  `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级分类ID',
-  `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序（同级有效）',
-  `url` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
-  `hide` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否隐藏',
-  `tip` varchar(255) NOT NULL DEFAULT '' COMMENT '提示',
-  `group` varchar(50) DEFAULT '' COMMENT '分组',
-  `is_dev` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '是否仅开发者模式可见',
-  `status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '状态',
-  PRIMARY KEY (`id`),
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '文档ID',
+  `title` varchar(50) NOT NULL default '' COMMENT '标题',
+  `pid` int(10) unsigned NOT NULL default '0' COMMENT '上级分类ID',
+  `sort` int(10) unsigned NOT NULL default '0' COMMENT '排序（同级有效）',
+  `url` char(255) NOT NULL default '' COMMENT '链接地址',
+  `hide` tinyint(1) unsigned NOT NULL default '0' COMMENT '是否隐藏',
+  `tip` varchar(255) NOT NULL default '' COMMENT '提示',
+  `group` varchar(50) default '' COMMENT '分组',
+  `is_dev` tinyint(1) unsigned NOT NULL default '0' COMMENT '是否仅开发者模式可见',
+  `status` tinyint(1) NOT NULL default '0' COMMENT '状态',
+  PRIMARY KEY  (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ta_menu
@@ -931,35 +950,37 @@ INSERT INTO `ta_menu` VALUES ('120', '排序', '75', '0', 'Menu/sort', '1', '', 
 INSERT INTO `ta_menu` VALUES ('121', '排序', '76', '0', 'Channel/sort', '1', '', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('122', '数据列表', '58', '0', 'think/lists', '1', '', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('123', '审核列表', '3', '0', 'Article/examine', '1', '', '', '0', '1');
-INSERT INTO `ta_menu` VALUES ('124', '导航分组管理', '68', '7', 'ChannelGroup/index', '0', '', '系统设置', '0', '1');
+INSERT INTO `ta_menu` VALUES ('124', '导航分组管理', '68', '7', 'Group/index', '0', '', '系统设置', '0', '1');
+INSERT INTO `ta_menu` VALUES ('125', '新增', '124', '0', 'Group/add', '0', '', '', '0', '0');
+INSERT INTO `ta_menu` VALUES ('126', '编辑', '124', '0', 'Group/edit', '0', '', '', '0', '0');
 
 -- ----------------------------
 -- Table structure for `ta_model`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_model`;
 CREATE TABLE `ta_model` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '模型ID',
-  `name` char(30) NOT NULL DEFAULT '' COMMENT '模型标识',
-  `title` char(30) NOT NULL DEFAULT '' COMMENT '模型名称',
-  `extend` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '继承的模型',
-  `relation` varchar(30) NOT NULL DEFAULT '' COMMENT '继承与被继承模型的关联字段',
-  `need_pk` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '新建表时是否需要主键字段',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '模型ID',
+  `name` char(30) NOT NULL default '' COMMENT '模型标识',
+  `title` char(30) NOT NULL default '' COMMENT '模型名称',
+  `extend` int(10) unsigned NOT NULL default '0' COMMENT '继承的模型',
+  `relation` varchar(30) NOT NULL default '' COMMENT '继承与被继承模型的关联字段',
+  `need_pk` tinyint(1) unsigned NOT NULL default '1' COMMENT '新建表时是否需要主键字段',
   `field_sort` text COMMENT '表单字段排序',
-  `field_group` varchar(255) NOT NULL DEFAULT '1:基础' COMMENT '字段分组',
+  `field_group` varchar(255) NOT NULL default '1:基础' COMMENT '字段分组',
   `attribute_list` text COMMENT '属性列表（表的字段）',
-  `attribute_alias` varchar(255) NOT NULL DEFAULT '' COMMENT '属性别名定义',
-  `template_list` varchar(100) NOT NULL DEFAULT '' COMMENT '列表模板',
-  `template_add` varchar(100) NOT NULL DEFAULT '' COMMENT '新增模板',
-  `template_edit` varchar(100) NOT NULL DEFAULT '' COMMENT '编辑模板',
+  `attribute_alias` varchar(255) NOT NULL default '' COMMENT '属性别名定义',
+  `template_list` varchar(100) NOT NULL default '' COMMENT '列表模板',
+  `template_add` varchar(100) NOT NULL default '' COMMENT '新增模板',
+  `template_edit` varchar(100) NOT NULL default '' COMMENT '编辑模板',
   `list_grid` text COMMENT '列表定义',
-  `list_row` smallint(2) unsigned NOT NULL DEFAULT '10' COMMENT '列表数据长度',
-  `search_key` varchar(50) NOT NULL DEFAULT '' COMMENT '默认搜索字段',
-  `search_list` varchar(255) NOT NULL DEFAULT '' COMMENT '高级搜索的字段',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '状态',
-  `engine_type` varchar(25) NOT NULL DEFAULT 'MyISAM' COMMENT '数据库引擎',
-  PRIMARY KEY (`id`)
+  `list_row` smallint(2) unsigned NOT NULL default '10' COMMENT '列表数据长度',
+  `search_key` varchar(50) NOT NULL default '' COMMENT '默认搜索字段',
+  `search_list` varchar(255) NOT NULL default '' COMMENT '高级搜索的字段',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(3) unsigned NOT NULL default '0' COMMENT '状态',
+  `engine_type` varchar(25) NOT NULL default 'MyISAM' COMMENT '数据库引擎',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='文档模型表';
 
 -- ----------------------------
@@ -974,14 +995,14 @@ INSERT INTO `ta_model` VALUES ('3', 'download', '下载', '1', '', '1', '{\"1\":
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_picture`;
 CREATE TABLE `ta_picture` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',
-  `path` varchar(255) NOT NULL DEFAULT '' COMMENT '路径',
-  `url` varchar(255) NOT NULL DEFAULT '' COMMENT '图片链接',
-  `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
-  `sha1` char(40) NOT NULL DEFAULT '' COMMENT '文件 sha1编码',
-  `status` tinyint(2) NOT NULL DEFAULT '0' COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  PRIMARY KEY (`id`)
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '主键id自增',
+  `path` varchar(255) NOT NULL default '' COMMENT '路径',
+  `url` varchar(255) NOT NULL default '' COMMENT '图片链接',
+  `md5` char(32) NOT NULL default '' COMMENT '文件md5',
+  `sha1` char(40) NOT NULL default '' COMMENT '文件 sha1编码',
+  `status` tinyint(2) NOT NULL default '0' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
@@ -993,10 +1014,10 @@ CREATE TABLE `ta_picture` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_ucenter_admin`;
 CREATE TABLE `ta_ucenter_admin` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '管理员ID',
-  `member_id` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '管理员用户ID',
-  `status` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '管理员状态',
-  PRIMARY KEY (`id`)
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '管理员ID',
+  `member_id` int(10) unsigned NOT NULL default '0' COMMENT '管理员用户ID',
+  `status` tinyint(3) unsigned NOT NULL default '0' COMMENT '管理员状态',
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='管理员表';
 
 -- ----------------------------
@@ -1008,17 +1029,17 @@ CREATE TABLE `ta_ucenter_admin` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_ucenter_app`;
 CREATE TABLE `ta_ucenter_app` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '应用ID',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '应用ID',
   `title` varchar(30) NOT NULL COMMENT '应用名称',
   `url` varchar(100) NOT NULL COMMENT '应用URL',
-  `ip` char(15) NOT NULL DEFAULT '' COMMENT '应用IP',
-  `auth_key` varchar(100) NOT NULL DEFAULT '' COMMENT '加密KEY',
-  `sys_login` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '同步登陆',
-  `allow_ip` varchar(255) NOT NULL DEFAULT '' COMMENT '允许访问的IP',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '应用状态',
-  PRIMARY KEY (`id`),
+  `ip` char(15) NOT NULL default '' COMMENT '应用IP',
+  `auth_key` varchar(100) NOT NULL default '' COMMENT '加密KEY',
+  `sys_login` tinyint(1) unsigned NOT NULL default '0' COMMENT '同步登陆',
+  `allow_ip` varchar(255) NOT NULL default '' COMMENT '允许访问的IP',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(4) NOT NULL default '0' COMMENT '应用状态',
+  PRIMARY KEY  (`id`),
   KEY `status` (`status`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='应用表';
 
@@ -1031,18 +1052,18 @@ CREATE TABLE `ta_ucenter_app` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_ucenter_member`;
 CREATE TABLE `ta_ucenter_member` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '用户ID',
   `username` char(16) NOT NULL COMMENT '用户名',
   `password` char(32) NOT NULL COMMENT '密码',
   `email` char(32) NOT NULL COMMENT '用户邮箱',
-  `mobile` char(15) NOT NULL DEFAULT '' COMMENT '用户手机',
-  `reg_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '注册时间',
-  `reg_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '注册IP',
-  `last_login_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '最后登录时间',
-  `last_login_ip` bigint(20) NOT NULL DEFAULT '0' COMMENT '最后登录IP',
-  `update_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '更新时间',
-  `status` tinyint(4) DEFAULT '0' COMMENT '用户状态',
-  PRIMARY KEY (`id`),
+  `mobile` char(15) NOT NULL default '' COMMENT '用户手机',
+  `reg_time` int(10) unsigned NOT NULL default '0' COMMENT '注册时间',
+  `reg_ip` bigint(20) NOT NULL default '0' COMMENT '注册IP',
+  `last_login_time` int(10) unsigned NOT NULL default '0' COMMENT '最后登录时间',
+  `last_login_ip` bigint(20) NOT NULL default '0' COMMENT '最后登录IP',
+  `update_time` int(10) unsigned NOT NULL default '0' COMMENT '更新时间',
+  `status` tinyint(4) default '0' COMMENT '用户状态',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`),
   KEY `status` (`status`)
@@ -1051,17 +1072,17 @@ CREATE TABLE `ta_ucenter_member` (
 -- ----------------------------
 -- Records of ta_ucenter_member
 -- ----------------------------
-INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1521858685', '0', '1521626231', '1');
+INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1521968847', '0', '1521626231', '1');
 
 -- ----------------------------
 -- Table structure for `ta_ucenter_setting`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_ucenter_setting`;
 CREATE TABLE `ta_ucenter_setting` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '设置ID',
-  `type` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '配置类型（1-用户配置）',
+  `id` int(10) unsigned NOT NULL auto_increment COMMENT '设置ID',
+  `type` tinyint(3) unsigned NOT NULL default '0' COMMENT '配置类型（1-用户配置）',
   `value` text NOT NULL COMMENT '配置数据',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='设置表';
 
 -- ----------------------------
@@ -1073,12 +1094,12 @@ CREATE TABLE `ta_ucenter_setting` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_url`;
 CREATE TABLE `ta_url` (
-  `id` int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT '链接唯一标识',
-  `url` char(255) NOT NULL DEFAULT '' COMMENT '链接地址',
-  `short` char(100) NOT NULL DEFAULT '' COMMENT '短网址',
-  `status` tinyint(2) NOT NULL DEFAULT '2' COMMENT '状态',
-  `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
-  PRIMARY KEY (`id`),
+  `id` int(11) unsigned NOT NULL auto_increment COMMENT '链接唯一标识',
+  `url` char(255) NOT NULL default '' COMMENT '链接地址',
+  `short` char(100) NOT NULL default '' COMMENT '短网址',
+  `status` tinyint(2) NOT NULL default '2' COMMENT '状态',
+  `create_time` int(10) unsigned NOT NULL default '0' COMMENT '创建时间',
+  PRIMARY KEY  (`id`),
   UNIQUE KEY `idx_url` (`url`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='链接表';
 

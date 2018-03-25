@@ -87,114 +87,41 @@
             
 
             
-<div class="main-title">
-	<h2>
-		<?php echo ($info['id']?'编辑':'新增'); ?>导航
-	</h2>
-</div>
-<form action="<?php echo U();?>" method="post" class="form-horizontal">
-	<input type="hidden" name="pid" value="<?php echo ($pid); ?>">
-	<fieldset class="layui-elem-field" style="margin-top: 10px;">
-		<legend>导航标题<a href="javascript:translate('translate');" class="layui-btn layui-btn-xs" lay-event="edit">预翻译</a></legend>
-		<div class="layui-form-item">
-			<div class="layui-inline">
-				<label class="layui-form-label">中文</label>
-				<div class="layui-input-inline">
-					<input type="text" class="layui-input" name="title" id="translate"
-						value="<?php echo ((isset($info["title"]) && ($info["title"] !== ""))?($info["title"]):''); ?>">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label">英文</label>
-				<div class="layui-input-inline">
-					<input type="text" class="layui-input" name="en_title"
-						value="<?php echo ((isset($info["title"]) && ($info["title"] !== ""))?($info["title"]):''); ?>">
-				</div>
-			</div>
-			<div class="layui-inline">
-				<label class="layui-form-label">日文</label>
-				<div class="layui-input-inline">
-					<input type="text" class="layui-input" name="jp_title"
-						value="<?php echo ((isset($info["title"]) && ($info["title"] !== ""))?($info["title"]):''); ?>">
-				</div>
-			</div>
-		</div>
-	</fieldset>
-	<fieldset class="layui-elem-field layui-field-title"
-		style="margin-top: 10px;"></fieldset>
-	<div class="layui-form-item">
-		<div class="layui-inline">
-			<label class="layui-form-label">URL连接</label>
-			<div class="layui-input-inline" style="width: 490px;">
-				<input type="text" class="layui-input" name="url"
-					value="<?php echo ((isset($info["url"]) && ($info["url"] !== ""))?($info["url"]):''); ?>">
-			</div>
-		</div>
-	</div>
-	<fieldset class="layui-elem-field layui-field-title"
-		style="margin-top: 10px;"></fieldset>
-	<div class="layui-form-item">
-		<div class="layui-inline">
-			<label class="layui-form-label">父级</label>
-			<div class="layui-input-inline" style="width: 490px;">
-				<select name="pid" style="margin-top: 5px;width: 200px;">
-					<option value="0" >顶级</option>
-					<?php if(is_array($parent)): $i = 0; $__LIST__ = $parent;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($pid == $vo['id']): ?><option value="<?php echo ($vo["id"]); ?>" selected="selected"><?php echo ($vo["title"]); ?></option>
-						<?php else: ?>
-							<option value="<?php echo ($vo["id"]); ?>" ><?php echo ($vo["title"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
-				</select>
-			</div>
-		</div>
-	</div>
-	<fieldset class="layui-elem-field layui-field-title"
-		style="margin-top: 10px;"></fieldset>
-	<div class="layui-form-item">
-		<div class="layui-inline">
-			<label class="layui-form-label">分组</label>
-			<div class="layui-input-inline" style="width: 490px;">
-				<select name="group" style="margin-top: 5px;width: 200px;">
-					<option value="0"<?php if(($info["target"]) == "0"): ?>selected<?php endif; ?>>否
-					</option>
-					<option value="1"<?php if(($info["target"]) == "1"): ?>selected<?php endif; ?>>是
-					</option>
-				</select>
-			</div>
-		</div>
-	</div>
-	<fieldset class="layui-elem-field layui-field-title"
-		style="margin-top: 10px;"></fieldset>
-	<div class="layui-form-item">
-		<div class="layui-inline">
-			<label class="layui-form-label">新窗口打开</label> <select name="target"
-				style="margin-top: 5px;">
-				<option value="0"<?php if(($info["target"]) == "0"): ?>selected<?php endif; ?>>否
-				</option>
-				<option value="1"<?php if(($info["target"]) == "1"): ?>selected<?php endif; ?>>是
-				</option>
-			</select>
-		</div>
-	</div>
-
-	<fieldset class="layui-elem-field layui-field-title"
-		style="margin-top: 10px;"></fieldset>
-	<div class="layui-form-item">
-		<div class="layui-inline">
-			<label class="layui-form-label">优先级</label>
-			<div class="layui-input-inline" style="width: 55px;">
-				<input type="text" class="layui-input" name="sort"
-					value="<?php echo ((isset($info["sort"]) && ($info["sort"] !== ""))?($info["sort"]):'0'); ?>">
-			</div>
-		</div>
-	</div>
-	<div class="form-item"
-		style="bottom: 0px; position: fixed; margin-left: 400px;">
-		<input type="hidden" name="id" value="<?php echo ((isset($info["id"]) && ($info["id"] !== ""))?($info["id"]):''); ?>">
-		<button class="btn submit-btn ajax-post" id="submit" type="submit"
-			target-form="form-horizontal">确 定</button>
-		<button class="btn btn-return"
-			onclick="javascript:history.back(-1);return false;">返 回</button>
-	</div>
-</form>
+    <div class="main-title">
+        <h2><?php echo ($info['id']?'编辑':'新增'); ?>导航分组</h2>
+    </div>
+    <form action="<?php echo U();?>" method="post" class="form-horizontal">
+        <div class="form-item">
+            <label class="item-label">标题</label>
+            <div class="controls">
+                <input type="text" class="text input-large" name="title" value="<?php echo ((isset($info["title"]) && ($info["title"] !== ""))?($info["title"]):''); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">排序<span class="check-tips">（用于分组显示的顺序）</span></label>
+            <div class="controls">
+                <input type="text" class="text input-small" name="sort" value="<?php echo ((isset($info["sort"]) && ($info["sort"] !== ""))?($info["sort"]):0); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">是否隐藏<span class="check-tips"></span></label>
+            <div class="controls">
+	            <?php if($info['status'] == 1): ?><label class="radio"><input type="radio" name="status" value="-1">是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
+	            <?php elseif($info['status'] == -1): ?>
+	            	<label class="radio"><input type="radio" name="status" value="-1" checked="checked" >是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" >否</label>
+	            <?php else: ?>
+	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label><?php endif; ?>
+            </div>
+        </div>
+        <div class="form-item">
+            <input type="hidden" name="id" value="<?php echo ((isset($info["id"]) && ($info["id"] !== ""))?($info["id"]):''); ?>">
+            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+        </div>
+    </form>
 
         </div>
     </div>
@@ -282,52 +209,10 @@
             }
         }();
     </script>
-     <script type="text/javascript"
-	charset="utf-8">
-		//导航高亮
-		highlight_subnav('<?php echo U('index');?>');
-	</script> 
-	<script type="text/javascript">
-		
-		var transArr = ['en','jp'];
-		var trans = 0;
-		function translate(id){
-			trans = 0;
-			var text = $("#"+id).val();
-			if(text && transArr){
-				var appid = '2015063000000001';
-				var key = '12345678';
-				var salt = (new Date).getTime();
-				for(idx in transArr){
-					var query = text;
-					var from = 'zh';
-					var to = transArr[idx];
-					var str1 = appid + query + salt +key;
-					var sign = MD5(str1);
-					$.ajax({
-					    url: 'http://api.fanyi.baidu.com/api/trans/vip/translate',
-					    type: 'post',
-					    dataType: 'jsonp',
-					    data: {
-					        q: query,
-					        appid: appid,
-					        salt: salt,
-					        from: from,
-					        to: to,
-					        sign: sign
-					    },
-					    success: function (data) {
-					       $("input[name='"+transArr[trans%transArr.length]+"_title']").val(data['trans_result'][0]['dst']);
-					       trans++;
-					    } 
-					});
-				}
-			}
-			
-			
-		}
-		
-	</script> 
+    
+    <script type="text/javascript">
+    	highlight_subnav('<?php echo U('index');?>');
+    </script>
 
 </body>
 </html>

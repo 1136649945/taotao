@@ -21,33 +21,26 @@ class MenuController extends AdminController {
      */
     public function index(){
         $pid  = I('get.pid',0);
-        if($pid){
-            $data = M('Menu')->where("id={$pid}")->field(true)->find();
-            $this->assign('data',$data);
-        }
-        $title      =   trim(I('get.title'));
-        $type       =   C('CONFIG_GROUP_LIST');
-        $all_menu   =   M('Menu')->getField('id,title');
-        $map['pid'] =   $pid;
-        if($title)
-            $map['title'] = array('like',"%{$title}%");
-        $list       =   M("Menu")->where($map)->field(true)->order('sort asc,id asc')->select();
-        int_to_string($list,array('hide'=>array(1=>'是',0=>'否'),'is_dev'=>array(1=>'是',0=>'否')));
-        if($list) {
-            foreach($list as &$key){
-                if($key['pid']){
-                    $key['up_title'] = $all_menu[$key['pid']];
-                }
-            }
-            $this->assign('list',$list);
-        }
+        C('_SYS_GET_MENU_TREE_', true);
+        $tree = D('Menu')->getTree($pid,0,'id,pid,title,url,hide,group,sort');
+        $all_menu = M('Menu')->getField('id,title');
+        $this->assign('tree', $tree);
+        $this->assign('menu',$all_menu);
         // 记录当前列表页的cookie
         Cookie('__forward__',$_SERVER['REQUEST_URI']);
-
-        $this->meta_title = '菜单列表';
+        $this->meta_title = '菜单管理';
         $this->display();
     }
-
+    /**
+     * 显示分类树，仅支持内部调
+     * @param  array $tree 分类树
+     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     */
+    public function tree($tree = null){
+        C('_SYS_GET_MENU_TREE_') || $this->_empty();
+        $this->assign('tree', $tree);
+        $this->display('tree');
+    }
     /**
      * 新增菜单
      * @author yangweijie <yangweijiester@gmail.com>

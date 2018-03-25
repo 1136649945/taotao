@@ -37,7 +37,7 @@
                         </td>
                         <td>
                             <a title="编辑" href="{:U('edit?id='.$group['id'])}">编辑</a>
-                            <a class="confirm" title="删除" href="javascript:del({$group['id']});">删除</a>
+                            <a class="confirm" title="删除" href="javascript:deleteGroup({$group['id']});">删除</a>
                         </td>
                     </tr>
                 </volist>
@@ -60,11 +60,11 @@
             //导航高亮
             highlight_subnav('{:U('index')}');
         });
-        function del(id){
+        function deleteGroup(id){
         	if(id){
         		$.ajax(
         		{
-        			url:"/ChannelGroup/del",
+        			url:"{:U('del')}",
         			type:"POST",
         			dataType:"json",
         			data:{"id":id},

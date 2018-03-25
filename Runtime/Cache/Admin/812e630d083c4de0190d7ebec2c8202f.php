@@ -3,10 +3,7 @@
 			<form action="<?php echo U('edit');?>" method="post">
 				<div class="btn-toolbar opt-btn cf">
 					<a title="编辑" href="<?php echo U('edit?id='.$list['id'].'&pid='.$list['pid']);?>">编辑</a>
-					<a title="<?php echo (show_status_op($list["status"])); ?>" href="<?php echo U('setStatus?ids='.$list['id'].'&status='.abs(1-$list['status']));?>" class="ajax-get"><?php echo (show_status_op($list["status"])); ?></a>
-					<a title="删除" href="<?php echo U('remove?id='.$list['id']);?>" class="confirm ajax-get">删除</a>
-					<a title="移动" href="<?php echo U('operate?type=move&from='.$list['id']);?>">移动</a>
-					<a title="合并" href="<?php echo U('operate?type=merge&from='.$list['id']);?>">合并</a>
+					<a title="删除" href="<?php echo U('del?id='.$list['id']);?>" class="confirm ajax-get">删除</a>
 				</div>
 				<div class="fold"><i></i></div>
 				<div class="order"><input type="text" name="sort" class="text input-mini" value="<?php echo ($list["sort"]); ?>"></div>
@@ -20,6 +17,7 @@
 					</a>
 					<span class="help-inline msg"></span>
 				</div>
+				<div class="name" style="right: 280px; position: absolute;"><?php echo ($group[$list['group']]); ?></div>
 			</form>
 		</dt>
 		<?php if(!empty($list['_'])): ?><dd>

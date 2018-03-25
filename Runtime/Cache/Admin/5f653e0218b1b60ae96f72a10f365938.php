@@ -164,8 +164,23 @@
 		style="margin-top: 10px;"></fieldset>
 	<div class="layui-form-item">
 		<div class="layui-inline">
-			<label class="layui-form-label">新窗口打开</label> <select name="target"
-				style="margin-top: 5px;">
+			<label class="layui-form-label" style="margin-top: -10px;">隐藏</label> 
+				<?php if($vo['status'] == 1): ?><label class="radio"><input type="radio" name="status" value="-1">是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
+	            <?php elseif($vo['status'] == -1): ?>
+	            	<label class="radio"><input type="radio" name="status" value="-1" checked="checked" >是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" >否</label>
+	            <?php else: ?>
+	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
+	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label><?php endif; ?>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">新窗口打开</label> 
+			<select name="target" style="margin-top: 5px;">
 				<option value="0"<?php if(($info["target"]) == "0"): ?>selected<?php endif; ?>>否
 				</option>
 				<option value="1"<?php if(($info["target"]) == "1"): ?>selected<?php endif; ?>>是

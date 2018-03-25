@@ -7877,3 +7877,1932 @@ INFO: [ app_end ] --START--
 INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001800s ]
 INFO: [ app_end ] --END-- [ RunTime:0.001880s ]
 
+[ 2018-03-24T22:56:50+08:00 ] ::1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.045001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.050001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.025000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.025000s ]
+
+[ 2018-03-24T22:56:50+08:00 ] ::1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.025001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.027501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007500s ]
+NOTIC: [8] unserialize(): Error at offset 0 of 1835 bytes E:\web\Apache24\htdocs\taotao\ThinkPHP\Library\Think\Cache\Driver\File.class.php 第 104 行.
+SQL: SHOW COLUMNS FROM `ta_config` [ RunTime:0.0125s ]
+SQL: SELECT `type`,`name`,`value` FROM `ta_config` WHERE `status` = 1  [ RunTime:0.0150s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.012500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2018-03-24T22:56:51+08:00 ] ::1 /admin.php?s=/Public/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.020001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.022501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T22:57:05+08:00 ] ::1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lite E:\web\Apache24\htdocs\taotao\ThinkPHP\Library\Think\Db.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0150s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `ta_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_action` [ RunTime:0.0100s ]
+SQL: SELECT * FROM `ta_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_action_log` [ RunTime:0.0100s ]
+SQL: INSERT INTO `ta_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES ('1','1','0','member','1','1521903425','admin在2018-03-24 22:57登录了后台') [ RunTime:0.0100s ]
+SQL: SELECT * FROM `ta_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 1 E:\web\Apache24\htdocs\taotao\Application\Common\Common\function.php 第 679 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given E:\web\Apache24\htdocs\taotao\Application\Common\Common\function.php 第 679 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_action_log` WHERE `action_id` = 1 AND `user_id` = 1 AND `create_time` > 1521817025 LIMIT 1   [ RunTime:0.0025s ]
+SQL: UPDATE `ta_member` SET `login`=`login`+1,`last_login_time`='1521903425',`last_login_ip`='0' WHERE `uid` = 1 [ RunTime:0.0000s ]
+
+[ 2018-03-24T22:57:06+08:00 ] ::1 /admin.php?s=/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007500s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0250s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Index/index%' ) LIMIT 1   [ RunTime:0.0075s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `ta_addons` [ RunTime:0.0125s ]
+SQL: SELECT `config` FROM `ta_addons` WHERE `name` = 'SiteStat' AND `status` = 1 LIMIT 1   [ RunTime:0.0075s ]
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0125s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_member` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_action_log` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_action_log` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_document` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_document` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_category` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_category` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_model` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_model` LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.187503s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: Run Addons\SiteStat\SiteStatAddon [ RunTime:0.187503s ]
+SQL: SELECT `config` FROM `ta_addons` WHERE `name` = 'SystemInfo' AND `status` = 1 LIMIT 1   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.220004s ]
+SQL: select version() as v; [ RunTime:0.0025s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017500s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.017501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.032501s ]
+INFO: Run Addons\SystemInfo\SystemInfoAddon [ RunTime:0.032501s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.220004s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017500s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.017501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.032501s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T22:57:08+08:00 ] ::1 /admin.php?s=/User/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.015001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0125s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%User/index%' ) LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 16 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 16  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 16 AND `hide` = 0  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '用户管理' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '行为管理' AND `pid` = 16 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0125s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_member` WHERE `status` >= 0 AND `nickname` LIKE '%%' LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `ta_member` WHERE `status` >= 0 AND `nickname` LIKE '%%' ORDER BY uid desc LIMIT 0,10   [ RunTime:0.0025s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.067501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T22:57:11+08:00 ] ::1 /admin.php?s=/Config/group.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.012500s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Config/group%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `ta_config` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ta_config` WHERE `status` = 1 AND `group` = 1 ORDER BY sort  [ RunTime:0.0075s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.097502s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.097502s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2018-03-24T22:57:14+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.015001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002500s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0125s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0075s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0125s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0100s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.062500s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062500s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.032500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.032500s ]
+
+[ 2018-03-24T23:02:00+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.025001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.027501s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0075s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0025s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0025s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.067501s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067501s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002500s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002500s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007500s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007500s ]
+
+[ 2018-03-24T23:02:02+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0200s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0000s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0100s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:03:11+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.031002s ]
+INFO: [ app_init ] --END-- [ RunTime:0.034002s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.011000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.011000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0170s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0090s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0060s ]
+
+[ 2018-03-24T23:07:25+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.022001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0050s ]
+
+[ 2018-03-24T23:07:27+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.012001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0190s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0080s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.070004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.071004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009001s ]
+
+[ 2018-03-24T23:07:31+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0190s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.084005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.084005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-03-24T23:09:21+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.030001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.066004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.066004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-03-24T23:09:26+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0100s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0200s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:10:20+08:00 ] ::1 /admin.php?s=/Category/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Category/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_category` [ RunTime:0.0160s ]
+SQL: SELECT `id`,`name`,`title`,`sort`,`pid`,`allow_publish`,`status` FROM `ta_category` WHERE `status` > -1 ORDER BY sort  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.035002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.057003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.017001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.017001s ]
+
+[ 2018-03-24T23:18:35+08:00 ] ::1 /admin.php?s=/Category/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.015001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Category/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_category` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`name`,`title`,`sort`,`pid`,`allow_publish`,`status` FROM `ta_category` WHERE `status` > -1 ORDER BY sort  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.024001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.047003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005001s ]
+
+[ 2018-03-24T23:18:39+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0120s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0080s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.003001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.079005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.079005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.013001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.030002s ]
+
+[ 2018-03-24T23:18:41+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0100s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0200s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:24:37+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.057004s ]
+INFO: [ app_init ] --END-- [ RunTime:0.060004s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0200s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0080s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.065003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.065003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:24:46+08:00 ] ::1 /admin.php/ChannelGroup/del
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.010000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0100s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0200s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:25:05+08:00 ] ::1 /admin.php/ChannelGroup/del
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0170s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0050s ]
+
+[ 2018-03-24T23:25:31+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.023001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.041002s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0220s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.064003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.064003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-03-24T23:25:36+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0100s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0100s ]
+
+[ 2018-03-24T23:25:44+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0060s ]
+
+[ 2018-03-24T23:26:52+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-03-24T23:26:54+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.020000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0100s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0200s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:27:10+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.024001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.028001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0080s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0130s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:27:41+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.023001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0140s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:27:49+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0220s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0180s ]
+ERR: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'group=1 ) LIMIT 1' at line 1
+
+[ 2018-03-24T23:28:55+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.008001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0130s ]
+NOTIC: [8] Use of undefined constant group - assumed 'group' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\ChannelGroupController.class.php 第 94 行.
+SQL: SELECT * FROM `ta_channel` WHERE `group` = 1 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-03-24T23:29:15+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.011001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.012001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0120s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.069004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.069004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.145008s ]
+INFO: [ app_end ] --END-- [ RunTime:0.145008s ]
+
+[ 2018-03-24T23:29:19+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.020000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0200s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0000s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0100s ]
+NOTIC: [8] Use of undefined constant group - assumed 'group' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\ChannelGroupController.class.php 第 94 行.
+SQL: SELECT * FROM `ta_channel` WHERE `group` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-03-24T23:29:23+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0000s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0100s ]
+NOTIC: [8] Use of undefined constant group - assumed 'group' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\ChannelGroupController.class.php 第 94 行.
+SQL: SELECT * FROM `ta_channel` WHERE `group` = 1 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-03-24T23:29:26+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0000s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0100s ]
+NOTIC: [8] Use of undefined constant group - assumed 'group' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\ChannelGroupController.class.php 第 94 行.
+SQL: SELECT * FROM `ta_channel` WHERE `group` = 1 LIMIT 1   [ RunTime:0.0100s ]
+
+[ 2018-03-24T23:29:29+08:00 ] ::1 /admin.php?s=/ChannelGroup/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/add%' ) LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\504ca6ac29d91d3aed23d3e435d14fa4.php 第 91 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\504ca6ac29d91d3aed23d3e435d14fa4.php 第 109 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\504ca6ac29d91d3aed23d3e435d14fa4.php 第 111 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.061003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.062003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.006001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.010000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2018-03-24T23:29:35+08:00 ] ::1 /admin.php?s=/ChannelGroup/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/add%' ) LIMIT 1   [ RunTime:0.0110s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0130s ]
+SQL: INSERT INTO `ta_channel_group` (`title`,`sort`,`status`,`id`) VALUES ('试试','2','1','0') [ RunTime:0.2030s ]
+SQL: SHOW COLUMNS FROM `ta_action` [ RunTime:0.0330s ]
+SQL: SELECT * FROM `ta_action` WHERE `name` = 'update_channelgroup' LIMIT 1   [ RunTime:0.0060s ]
+
+[ 2018-03-24T23:29:37+08:00 ] ::1 /admin.php?s=/ChannelGroup/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/add%' ) LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\504ca6ac29d91d3aed23d3e435d14fa4.php 第 91 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\504ca6ac29d91d3aed23d3e435d14fa4.php 第 109 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\504ca6ac29d91d3aed23d3e435d14fa4.php 第 111 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.064004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.064004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.023002s ]
+INFO: [ app_end ] --END-- [ RunTime:0.023002s ]
+
+[ 2018-03-24T23:29:44+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.011001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0070s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0190s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0080s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.076004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004001s ]
+
+[ 2018-03-24T23:29:50+08:00 ] ::1 /admin.php?s=/ChannelGroup/del.html&id=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0100s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0100s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/del%' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0200s ]
+NOTIC: [8] Use of undefined constant group - assumed 'group' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\ChannelGroupController.class.php 第 94 行.
+SQL: SELECT * FROM `ta_channel` WHERE `group` = 2 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0100s ]
+NOTIC: [8] Use of undefined constant id - assumed 'id' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\ChannelGroupController.class.php 第 100 行.
+SQL: DELETE FROM `ta_channel_group` WHERE `id` = 2 [ RunTime:0.0500s ]
+SQL: SHOW COLUMNS FROM `ta_action` [ RunTime:0.0200s ]
+SQL: SELECT * FROM `ta_action` WHERE `name` = 'update_channelgroup' LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-03-24T23:29:51+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%ChannelGroup/index%' ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.063003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.063003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006000s ]
+
+[ 2018-03-24T23:32:04+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.021001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+ERR: 无法加载控制器:ChannelGroup
+
+[ 2018-03-24T23:32:13+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_channel_group` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `ta_channel_group` ORDER BY sort  [ RunTime:0.0040s ]
+ERR: 模板不存在:./Application/Admin/View/Group/index.html
+
+[ 2018-03-24T23:33:29+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.014001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.016001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.006000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0160s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'taotao.ta_channel_group' doesn't exist
+
+[ 2018-03-24T23:33:36+08:00 ] ::1 /admin.php?s=/ChannelGroup/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+ERR: 无法加载控制器:ChannelGroup
+
+[ 2018-03-24T23:33:39+08:00 ] ::1 /admin.php?s=/Category/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.013001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0210s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Category/index%' ) LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_category` [ RunTime:0.0240s ]
+SQL: SELECT `id`,`name`,`title`,`sort`,`pid`,`allow_publish`,`status` FROM `ta_category` WHERE `status` > -1 ORDER BY sort  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.023002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.046003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-03-24T23:33:41+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'taotao.ta_channel_group' doesn't exist
+
+[ 2018-03-24T23:36:51+08:00 ] ::1 /admin.php
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.020001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Index/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `ta_addons` [ RunTime:0.0170s ]
+SQL: SELECT `config` FROM `ta_addons` WHERE `name` = 'SiteStat' AND `status` = 1 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_member` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_action_log` [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_action_log` LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_document` [ RunTime:0.0210s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_document` LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_category` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_category` LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_model` [ RunTime:0.0190s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_model` LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.183010s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Addons\SiteStat\SiteStatAddon [ RunTime:0.176010s ]
+SQL: SELECT `config` FROM `ta_addons` WHERE `name` = 'SystemInfo' AND `status` = 1 LIMIT 1   [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.213012s ]
+SQL: select version() as v; [ RunTime:0.0030s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019002s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.033002s ]
+INFO: Run Addons\SystemInfo\SystemInfoAddon [ RunTime:0.032002s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.209012s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020002s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.017000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.034002s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:36:54+08:00 ] ::1 /admin.php?s=/Public/logout.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.015001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0130s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004001s ]
+
+[ 2018-03-24T23:36:56+08:00 ] ::1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.009000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-03-24T23:36:56+08:00 ] ::1 /admin.php?s=/Public/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.011000s ]
+
+[ 2018-03-24T23:37:13+08:00 ] ::1 /admin.php?s=/Public/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: lite E:\web\Apache24\htdocs\taotao\ThinkPHP\Library\Think\Db.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0100s ]
+SQL: SELECT `uid`,`nickname`,`sex`,`birthday`,`qq`,`score`,`login`,`reg_ip`,`reg_time`,`last_login_ip`,`last_login_time`,`status` FROM `ta_member` WHERE `uid` = 1 LIMIT 1   [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `ta_action` [ RunTime:0.0140s ]
+SQL: SELECT * FROM `ta_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_action_log` [ RunTime:0.0130s ]
+SQL: INSERT INTO `ta_action_log` (`action_id`,`user_id`,`action_ip`,`model`,`record_id`,`create_time`,`remark`) VALUES ('1','1','0','member','1','1521905833','admin在2018-03-24 23:37登录了后台') [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ta_action` WHERE `name` = 'user_login' LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [8] Undefined offset: 1 E:\web\Apache24\htdocs\taotao\Application\Common\Common\function.php 第 679 行.
+NOTIC: [2] array_key_exists() expects parameter 2 to be array, null given E:\web\Apache24\htdocs\taotao\Application\Common\Common\function.php 第 679 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_action_log` WHERE `action_id` = 1 AND `user_id` = 1 AND `create_time` > 1521819433 LIMIT 1   [ RunTime:0.0000s ]
+SQL: UPDATE `ta_member` SET `login`=`login`+1,`last_login_time`='1521905833',`last_login_ip`='0' WHERE `uid` = 1 [ RunTime:0.0000s ]
+
+[ 2018-03-24T23:37:13+08:00 ] ::1 /admin.php?s=/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.012001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.014001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Index/index%' ) LIMIT 1   [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ AdminIndex ] --START--
+SQL: SHOW COLUMNS FROM `ta_addons` [ RunTime:0.0150s ]
+SQL: SELECT `config` FROM `ta_addons` WHERE `name` = 'SiteStat' AND `status` = 1 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_member` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_member` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_action_log` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_action_log` LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_document` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_document` LIMIT 1   [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_category` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_category` LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_model` [ RunTime:0.0140s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_model` LIMIT 1   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.150009s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: Run Addons\SiteStat\SiteStatAddon [ RunTime:0.152009s ]
+SQL: SELECT `config` FROM `ta_addons` WHERE `name` = 'SystemInfo' AND `status` = 1 LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.180011s ]
+SQL: select version() as v; [ RunTime:0.0010s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.029001s ]
+INFO: Run Addons\SystemInfo\SystemInfoAddon [ RunTime:0.029001s ]
+INFO: [ AdminIndex ] --END-- [ RunTime:0.181010s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.029001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.012001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.012001s ]
+
+[ 2018-03-24T23:37:17+08:00 ] ::1 /admin.php?s=/Config/group.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.018001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.021001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0160s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Config/group%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0060s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_config` [ RunTime:0.0190s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ta_config` WHERE `status` = 1 AND `group` = 1 ORDER BY sort  [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.075004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.075004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.010000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2018-03-24T23:37:18+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0160s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'taotao.ta_channel_group' doesn't exist
+
+[ 2018-03-24T23:38:30+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.014001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0090s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_group` [ RunTime:0.0160s ]
+SQL: SELECT * FROM `ta_group` ORDER BY sort  [ RunTime:0.0060s ]
+ERR: 模板不存在:./Application/Admin/View/Group/index.html
+
+[ 2018-03-24T23:38:58+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.013001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0190s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_group` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `ta_group` ORDER BY sort  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.065004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.066004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:39:01+08:00 ] ::1 /admin.php?s=/Group/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.017001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.021001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0250s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0090s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/add%' ) LIMIT 1   [ RunTime:0.0100s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 91 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 109 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 111 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.085005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.085005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.195012s ]
+INFO: [ app_end ] --END-- [ RunTime:0.195012s ]
+
+[ 2018-03-24T23:39:06+08:00 ] ::1 /admin.php?s=/Group/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0170s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/add%' ) LIMIT 1   [ RunTime:0.0080s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 91 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 109 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 111 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.064003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.064003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.008001s ]
+
+[ 2018-03-24T23:49:34+08:00 ] ::1 /admin.php?s=/Group/edit/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.012000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.014001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/edit%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_group` [ RunTime:0.0120s ]
+SQL: SELECT `id`,`title`,`sort`,`status` FROM `ta_group` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.051003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.052003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-03-24T23:49:39+08:00 ] ::1 /admin.php?s=/Group/del.html&id=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/del%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0130s ]
+NOTIC: [8] Use of undefined constant group - assumed 'group' E:\web\Apache24\htdocs\taotao\Application\Admin\Controller\GroupController.class.php 第 94 行.
+SQL: SELECT * FROM `ta_channel` WHERE `group` = 1 LIMIT 1   [ RunTime:0.0070s ]
+
+[ 2018-03-24T23:49:52+08:00 ] ::1 /admin.php?s=/Config/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.024001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.027002s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0080s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Config/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_config` [ RunTime:0.0130s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_config` WHERE `status` = 1 LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT `id`,`name`,`type`,`title`,`group`,`extra`,`remark`,`create_time`,`update_time`,`status`,`value`,`sort` FROM `ta_config` WHERE `status` = 1 ORDER BY sort,id LIMIT 0,10   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.074004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.075004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:49:53+08:00 ] ::1 /admin.php?s=/Config/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.010001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.016001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Config/add%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 70 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.057003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.058003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2018-03-24T23:49:57+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.015001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0170s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0160s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0070s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `ta_group` [ RunTime:0.0310s ]
+SQL: SELECT * FROM `ta_group` ORDER BY sort  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.094005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.095005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.008000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006000s ]
+
+[ 2018-03-24T23:49:58+08:00 ] ::1 /admin.php?s=/Group/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.009001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/add%' ) LIMIT 1   [ RunTime:0.0180s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 91 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 109 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 111 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.082004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.082004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.008001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.008001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.010000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.010000s ]
+
+[ 2018-03-24T23:50:01+08:00 ] ::1 /admin.php?s=/Config/group.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.019001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0130s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Config/group%' ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0080s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_config` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`name`,`title`,`extra`,`value`,`remark`,`type` FROM `ta_config` WHERE `status` = 1 AND `group` = 1 ORDER BY sort  [ RunTime:0.0090s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.156009s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.156009s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.009001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009001s ]
+
+[ 2018-03-24T23:50:04+08:00 ] ::1 /admin.php?s=/Model/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.007001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0120s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Model/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `ta_model` [ RunTime:0.0150s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `ta_model` WHERE `status` > -1 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT `id`,`name`,`title`,`extend`,`relation`,`need_pk`,`field_sort`,`field_group`,`attribute_list`,`attribute_alias`,`template_list`,`template_add`,`template_edit`,`list_grid`,`list_row`,`search_key`,`search_list`,`create_time`,`update_time`,`status`,`engine_type` FROM `ta_model` WHERE `status` > -1 ORDER BY id desc LIMIT 0,10   [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.288017s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.288017s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.176010s ]
+INFO: [ app_end ] --END-- [ RunTime:0.176010s ]
+
+[ 2018-03-24T23:50:05+08:00 ] ::1 /admin.php?s=/Model/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.016001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0240s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0090s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Model/add%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 58 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0080s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_model` [ RunTime:0.0210s ]
+SQL: SELECT `id`,`title` FROM `ta_model` WHERE `extend` = 0  [ RunTime:0.0120s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.004001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.004001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.083005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.083005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.071004s ]
+INFO: [ app_end ] --END-- [ RunTime:0.071004s ]
+
+[ 2018-03-24T23:50:08+08:00 ] ::1 /admin.php?s=/Group/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.017001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0130s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/index%' ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_group` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `ta_group` ORDER BY sort  [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.055003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.055003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:50:12+08:00 ] ::1 /admin.php?s=/Group/add.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.011001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.013001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0170s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Group/add%' ) LIMIT 1   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 91 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 109 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\e9b3328accb48a34c6836db7985c28ca.php 第 111 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.048002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:58:54+08:00 ] ::1 /admin.php?s=/Channel/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.013000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.015000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.004000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0050s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Channel/index%' ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`status`,`sort` FROM `ta_channel` WHERE `status` > -1 ORDER BY sort  [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.026002s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.051003s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005000s ]
+
+[ 2018-03-24T23:58:56+08:00 ] ::1 /admin.php?s=/Channel/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.008001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Channel/index%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0070s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0180s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`status`,`sort` FROM `ta_channel` WHERE `status` > -1 ORDER BY sort  [ RunTime:0.0080s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.051003s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.007001s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.101006s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.035002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.035002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.007000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.007000s ]
+
+[ 2018-03-24T23:59:04+08:00 ] ::1 /admin.php?s=/Channel/edit/id/4/pid/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.007001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.010001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0140s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0070s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Channel/edit%' ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 76 LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0040s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0130s ]
+SQL: SELECT * FROM `ta_channel` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT `id`,`title` FROM `ta_channel` WHERE ( pid=0 )  [ RunTime:0.0020s ]
+ERR: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'taotao.ta_channel_group' doesn't exist
+
+[ 2018-03-24T23:59:27+08:00 ] ::1 /admin.php?s=/Channel/edit/id/4/pid/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: Run Common\Behavior\InitHookBehavior [ RunTime:0.013001s ]
+INFO: [ app_init ] --END-- [ RunTime:0.016001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `ta_menu` [ RunTime:0.0170s ]
+SQL: SELECT `id`,`title`,`url` FROM `ta_menu` WHERE `pid` = 0 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0080s ]
+SQL: SELECT `pid` FROM `ta_menu` WHERE ( pid !=0 AND url like '%Channel/edit%' ) LIMIT 1   [ RunTime:0.0080s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 76 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `ta_menu` WHERE `id` = 68 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT DISTINCT  `group` FROM `ta_menu` WHERE `group` <> '' AND `pid` = 68  [ RunTime:0.0050s ]
+SQL: SELECT `id`,`url` FROM `ta_menu` WHERE `pid` = 68 AND `hide` = 0  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '系统设置' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0030s ]
+SQL: SELECT `id`,`pid`,`title`,`url`,`tip` FROM `ta_menu` WHERE `group` = '数据备份' AND `pid` = 68 AND `hide` = 0 ORDER BY sort asc  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_channel` [ RunTime:0.0120s ]
+SQL: SELECT * FROM `ta_channel` WHERE `id` = 4 LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT `id`,`title` FROM `ta_channel` WHERE ( pid=0 )  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `ta_group` [ RunTime:0.0150s ]
+SQL: SELECT `id`,`title` FROM `ta_group` WHERE ( status=1 ) ORDER BY sort  [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\5f653e0218b1b60ae96f72a10f365938.php 第 92 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\5f653e0218b1b60ae96f72a10f365938.php 第 156 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\5f653e0218b1b60ae96f72a10f365938.php 第 169 行.
+NOTIC: [8] Undefined variable: info E:\web\Apache24\htdocs\taotao\Runtime\Cache\Admin\5f653e0218b1b60ae96f72a10f365938.php 第 171 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.066004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.067004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.017001s ]
+
