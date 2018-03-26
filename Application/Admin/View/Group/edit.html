@@ -20,16 +20,8 @@
         <div class="form-item">
             <label class="item-label">是否隐藏<span class="check-tips"></span></label>
             <div class="controls">
-	            <if condition="$info['status'] eq 1">
-	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
-	            <elseif condition="$info['status'] eq -1"/>
-	            	<label class="radio"><input type="radio" name="status" value="-1" checked="checked" >是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" >否</label>
-	            <else />
-	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
-				</if>
+	            <label class="radio"><input type="radio" name="hide" value="1">是</label>
+	            <label class="radio"><input type="radio" name="hide" value="0">否</label>
             </div>
         </div>
         <div class="form-item">
@@ -43,5 +35,6 @@
 <block name="script">
     <script type="text/javascript">
     	highlight_subnav('{:U('index')}');
+    	Think.setValue("hide", {$info.hide|default = 0});
     </script>
 </block>

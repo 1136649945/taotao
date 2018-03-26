@@ -40,7 +40,7 @@ class PictureModel extends Model{
 		$setting['removeTrash'] = array($this, 'removeTrash');
         $Upload = new Upload($setting, $driver, $config);
         $info   = $Upload->upload($files);
-
+        
         if($info){ //文件上传成功，记录文件信息
             foreach ($info as $key => &$value) {
                 /* 已经存在文件记录 */

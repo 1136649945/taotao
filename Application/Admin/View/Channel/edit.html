@@ -86,17 +86,9 @@
 		style="margin-top: 10px;"></fieldset>
 	<div class="layui-form-item">
 		<div class="layui-inline">
-			<label class="layui-form-label" style="margin-top: -10px;">隐藏</label> 
-				<if condition="$vo['status'] eq 1">
-	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
-	            <elseif condition="$vo['status'] eq -1"/>
-	            	<label class="radio"><input type="radio" name="status" value="-1" checked="checked" >是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" >否</label>
-	            <else />
-	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
-				</if>
+			<label class="layui-form-label" style="margin-top: -10px;">发布</label> 
+				<label class="radio"><input type="radio" name="hide" value="1">是</label>
+	            <label class="radio"><input type="radio" name="hide" value="0" >否</label>
 		</div>
 	</div>
 	<fieldset class="layui-elem-field layui-field-title"
@@ -138,6 +130,7 @@
 	charset="utf-8">
 		//导航高亮
 		highlight_subnav('{:U('index')}');
+	    Think.setValue("hide", {$info.hide|default = 0});
 	</script> 
 	<script type="text/javascript">
 		

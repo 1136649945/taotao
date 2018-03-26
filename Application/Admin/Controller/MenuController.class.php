@@ -22,7 +22,7 @@ class MenuController extends AdminController {
     public function index(){
         $pid  = I('get.pid',0);
         C('_SYS_GET_MENU_TREE_', true);
-        $tree = D('Menu')->getTree($pid,0,'id,pid,title,url,hide,group,sort');
+        $tree = D('Menu')->getTree($pid,0,'id,pid,title,url,hide,block,sort');
         $all_menu = M('Menu')->getField('id,title');
         $this->assign('tree', $tree);
         $this->assign('menu',$all_menu);
@@ -157,7 +157,7 @@ class MenuController extends AdminController {
                     'pid'=>$pid,
                     'hide'=>isset($value['hide'])? (int)$value['hide'] : 0,
                     'tip'=>isset($value['tip'])? $value['tip'] : '',
-                    'group'=>$value['group'],
+                    'block'=>$value['block'],
                 )
             );
             if($value['operator']){
@@ -186,7 +186,7 @@ class MenuController extends AdminController {
                             'hide'=>0,
                             'tip'=>'',
                             'is_dev'=>0,
-                            'group'=>'',
+                            'block'=>'',
                         ));
                     }
                 }

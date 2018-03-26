@@ -39,7 +39,7 @@ class MenuModel extends Model {
         if($pid){
             $where['pid'] = $pid;
         }
-        $list = $this->field($field)->where($where)->order(array('sort','group'))->select();
+        $list = $this->field($field)->where($where)->order(array('sort','block'))->select();
         $list = list_to_tree($list, $pk = 'id', $pid = 'pid', $child = '_', $root = $id);
         /* 获取返回数据 */
         if(isset($info)){ //指定菜单则返回当前菜单极其子菜单

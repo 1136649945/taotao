@@ -19,6 +19,16 @@
 	height: 20px;
 	vertical-align: middle;
 }
+.spantext {
+    width: 150px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 20px;
+	border-color: #eeeeee;
+    background-color: #fff;
+}
+
 .focus {
 	border: 1px solid #a6e1f3;
 	box-shadow: 0 0 12px #baf7ff;

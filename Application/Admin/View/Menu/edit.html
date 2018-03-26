@@ -36,7 +36,14 @@
         <div class="form-item">
             <label class="item-label">分组<span class="check-tips">（用于左侧分组二级菜单）</span></label>
             <div class="controls">
-                <input type="text" class="text input-large" name="group" value="{$info.group|default=''}">
+                <input type="text" class="text input-large" name="block" value="{$info.block|default=''}">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">类型<span class="check-tips"></span></label>
+            <div class="controls">
+            	<label class="radio"><input type="radio" name="type" value="1">菜单</label>
+	            <label class="radio"><input type="radio" name="type" value="0">按钮</label>
             </div>
         </div>
         <div class="form-item">
@@ -72,6 +79,7 @@
         Think.setValue("pid", {$info.pid|default = 0});
         Think.setValue("hide", {$info.hide|default = 0});
         Think.setValue("is_dev", {$info.is_dev|default = 0});
+        Think.setValue("type", {$info.type|default = 1});
         //导航高亮
         highlight_subnav('{:U('index')}');
     </script>

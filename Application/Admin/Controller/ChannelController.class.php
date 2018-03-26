@@ -23,7 +23,7 @@ class ChannelController extends AdminController {
     public function index(){
         $pid = I('get.pid', 0);
         C('_SYS_GET_CHANNEL_TREE_', true);
-        $tree=D('Channel')->getTree(0,'id,pid,group,title,url,status,sort');
+        $tree=D('Channel')->getTree(0,'id,pid,group,title,url,hide,sort');
         $group=D('Group')->getField('id,title');
         $this->assign('group', $group);
         $this->assign('tree', $tree);
@@ -106,7 +106,7 @@ class ChannelController extends AdminController {
 
             $pid = I('get.pid', 0);
             $parent = M('Channel')->where('pid=0')->field('id,title')->select();
-            $group = M('Group')->where('status=1')->order('sort')->field('id,title')->select();
+            $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
             $this->assign("parent", $parent);
             $this->assign("group", $group);
             $this->assign("pid", $pid);

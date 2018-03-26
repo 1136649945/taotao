@@ -267,7 +267,7 @@ class AdminController extends Controller {
                     if($item['id'] == $nav['id']){
                         $menus['main'][$key]['class']='current';
                         //生成child树
-                        $groups = M('Menu')->where(array('group'=>array('neq',''),'pid' =>$item['id']))->distinct(true)->getField("group",true);
+                        $groups = M('Menu')->where(array('block'=>array('neq',''),'pid' =>$item['id']))->distinct(true)->getField("block",true);
                         //获取二级分类的合法url
                         $where          =   array();
                         $where['pid']   =   $item['id'];
@@ -292,7 +292,7 @@ class AdminController extends Controller {
                         }
                         // 按照分组生成子菜单树
                         foreach ($groups as $g) {
-                            $map = array('group'=>$g);
+                            $map = array('block'=>$g);
                             if(isset($to_check_urls)){
                                 if(empty($to_check_urls)){
                                     // 没有任何权限
