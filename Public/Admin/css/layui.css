@@ -1431,7 +1431,7 @@ a cite {
 }
 
 .layui-field-title {
-	margin: 10px 0 20px;
+	margin: 10px;
 	border-width: 1px 0 0
 }
 
@@ -1641,10 +1641,36 @@ a cite {
 	font-size: 18px
 }
 
-.layui-text a:not (.layui-btn ){
-	color: #01AAED
-}
+.layui-text
 
+ 
+
+a
+
+
+:not
+
+ 
+
+(
+.layui-btn
+
+ 
+
+){
+color
+
+
+:
+
+ 
+
+#01AAED
+
+
+
+
+}
 .layui-text a:not (.layui-btn ):hover {
 	text-decoration: underline
 }
@@ -1719,6 +1745,7 @@ a cite {
 	font-size: 18px;
 	vertical-align: bottom;
 	vertical-align: middle\9
+
 }
 
 .layui-btn-primary {
@@ -2034,6 +2061,7 @@ a cite {
 	-webkit-transform: rotate(180deg);
 	transform: rotate(180deg);
 	margin-top: -3px\9
+
 }
 
 :root .layui-form-selected .layui-edge {
@@ -3043,9 +3071,11 @@ body .layui-table-tips .layui-layer-content {
 }
 
 .layui-code, .layui-upload-list {
-	margin: 10px 0
+	margin: 10px 0;
 }
-
+.layui-upload-list {
+	height: 80px;
+}
 .layui-table-tips-c {
 	position: absolute;
 	right: -3px;
@@ -4218,9 +4248,26 @@ to {
 
 100%{
 opacity
+
+
+
+
 :
-1;-webkit-transform
+
+
+
+
+1;
+-webkit-transform
+
+
+
+
 :scale(1)
+
+
+
+
 }
 }
 @
@@ -4232,11 +4279,37 @@ keyframes layui-scale { 0%{
 
 100%{
 opacity
+
+
+
+
 :
-1;-ms-transform
+
+
+
+
+1;
+-ms-transform
+
+
+
+
 :scale(1)
-;transform
+
+
+
+
+;
+transform
+
+
+
+
 :scale(1)
+
+
+
+
 }
 }
 .layui-anim-scale {
@@ -4252,19 +4325,61 @@ opacity
 
 80%{
 opacity
+
+
+
+
 :
+
+
+
+
 .8
-;-webkit-transform
+
+
+
+
+;
+-webkit-transform
+
+
+
+
 :scale
+
+
+
+
 (1
 .1
+
+
+
+
 )
 }
 100%{
 opacity
+
+
+
+
 :
-1;-webkit-transform
+
+
+
+
+1;
+-webkit-transform
+
+
+
+
 :scale(1)
+
+
+
+
 }
 }
 @
@@ -4275,19 +4390,61 @@ keyframes layui-scale-spring { 0%{
 
 80%{
 opacity
+
+
+
+
 :
+
+
+
+
 .8
-;transform
+
+
+
+
+;
+transform
+
+
+
+
 :scale
+
+
+
+
 (1
 .1
+
+
+
+
 )
 }
 100%{
 opacity
+
+
+
+
 :
-1;transform
+
+
+
+
+1;
+transform
+
+
+
+
 :scale(1)
+
+
+
+
 }
 }
 .layui-anim-scaleSpring {
@@ -4302,7 +4459,15 @@ opacity
 
 100%{
 opacity
+
+
+
+
 :
+
+
+
+
 1
 }
 }
@@ -4313,7 +4478,15 @@ keyframes layui-fadein { 0%{
 
 100%{
 opacity
+
+
+
+
 :
+
+
+
+
 1
 }
 }
@@ -4329,7 +4502,15 @@ opacity
 
 100%{
 opacity
+
+
+
+
 :
+
+
+
+
 0
 }
 }
@@ -4340,7 +4521,15 @@ keyframes layui-fadeout { 0%{
 
 100%{
 opacity
+
+
+
+
 :
+
+
+
+
 0
 }
 }
@@ -4348,3 +4537,50 @@ opacity
 	-webkit-animation-name: layui-fadeout;
 	animation-name: layui-fadeout
 }
+
+.ui-mask {
+	display: none;
+	background-color: #000;
+	height: 100%;
+	left: 200px;
+	opacity: 0.6;
+	filter: alpha(opacity = 60);
+	position: fixed;
+	top: 50px;
+	width: 100%;
+	z-index: -1000;
+}
+
+.dialog {
+	display: none;
+	z-index: -2000;
+	position: absolute;
+	background-color: #fff;
+	left: 35%;
+	top: 20%;
+	height: 420px;
+	overflow: auto;
+}
+
+.form-horizontal {
+	margin: 0px 35px;
+}
+
+.bottom-button {
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.view-image {
+	border: 1px solid #dce0e2;
+	height: 350px;
+	width: 350px;
+	position: absolute;
+	left: 700px;
+	top: 70px;
+	text-align: center;
+}
+.a4-page{
+	overflow: auto;
+}
+

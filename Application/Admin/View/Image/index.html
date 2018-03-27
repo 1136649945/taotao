@@ -1,65 +1,120 @@
-<extend name="Public/base"/>
+<extend name="Public/base" />
 
 <block name="body">
-    <div class="main-title">
-        <h2>导航分组管理 </h2>
-    </div>
+<div class="a4-page">
 
-    <div class="cf">
-        <a class="btn" href="{:U('add')}">新增图片</a>
-    </div>
 
-    <div class="data-table table-striped">
-        <form class="ids">
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>名称</th>
-                        <th>排序</th>
-                        <th>隐藏</th>
-                        <th>操作</th>
-                    </tr>
-                </thead>
-                <tbody>
-				<notempty name="data">
-                <volist name="data" id="group">
-                    <tr>
-                        <td>{$group.id}</td>
-                        <td>{$group.title}</td>
-                        <td>{$group.sort}</td>
-                        <td>
-                            <if condition="$group['hide'] eq 0">
-                            	否    
-                            <else />
-                            	是
-                            </if>
-                        </td>
-                        <td>
-                            <a title="编辑" href="{:U('edit?id='.$group['id'])}">编辑</a>
-                            <a class="confirm" title="删除" href="javascript:deleteGroup({$group['id']});">删除</a>
-                        </td>
-                    </tr>
-                </volist>
-				<else/>
-				<td colspan="10" class="text-center"> aOh! 暂时还没有内容! </td>
+	<div class="main-title">
+		<h2>导航图片管理</h2>
+	</div>
+
+	<div class="cf">
+		<a class="btn" href="javascript:dialog(false);">新增图片</a>
+	</div>
+
+	<div class="data-table table-striped">
+		<table>
+			<thead>
+				<tr>
+					<th>标题</th>
+					<th>描述</th>
+					<th>图片</th>
+					<th>排序</th>
+					<th>隐藏</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<notempty name="data"> <volist name="data" id="vo">
+				<tr style="height:80px;">
+					<td>{$vo.title}</td>
+					<td style="width: 200px;"><pre>{$vo.describe|htmlspecialchars_decode}</pre></td>
+					<td style="80px;"><img src="{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" style="max-height: 70px;max-width: 70px;" /></td>
+					<td>{$vo.sort}</td>
+					<td><if condition="$vo['hide'] eq 0"> 否 <else /> 是 </if></td>
+					<td><a title="编辑" href="{:U('edit?id='.$vo['id'])}">编辑</a>
+						<a class="confirm ajax-get" title="删除"
+						href="{:U('del?id='.$vo['id'])}">删除</a></td>
+				</tr>
+				</volist> <else />
+				<td colspan="10" class="text-center">aOh! 暂时还没有内容!</td>
 				</notempty>
-                </tbody>
-            </table>
-        </form>
-        <!-- 分页 -->
-        <div class="page">
+			</tbody>
+		</table>
+		<!-- 分页 -->
+	</div>
+</div>
+<div class="page" style="position: absolute; bottom: 0px;">{$page}</div>
+<div class="dialog">
+	<form action="{:U(add)}" method="post" enctype="multipart/form-data"
+		class="form-horizontal">
+		<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px;">
+			<legend>图片上传</legend>
+		</fieldset>
+		<input type="hidden" name="block" value="index"/>
+		<div class="layui-form-item">
+			<div class="layui-inline">
+				<label class="layui-form-label" style="width: 40px;">标题</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="title"
+						value="{$info.title|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label" style="width: 40px;">排序</label>
+				<div class="layui-input-inline" style="width: 100px;">
+					<input type="text" class="layui-input" name="sort"
+						value="{$info.sort|default=0}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label" style="width: 40px;">隐藏</label>
+				<div class="layui-input-inline"
+					style="margin-top: 10px; width: 90px;">
+					<label class="radio"><input type="radio" name="hide"
+						value="1">是</label> <label class="radio"><input
+						type="radio" name="hide" value="0" checked>否</label>
+				</div>
+			</div>
+		</div>
+		<div class="layui-form-item layui-form-text">
+			<label class="layui-form-label">描述</label>
+			<div>
+				<textarea name="describe" placeholder="请输入内容" class="layui-textarea">{$info.describe|default=''}</textarea>
+			</div>
+		</div>
 
-        </div>
-    </div>
+		<div class="layui-inline">
+			<label class="layui-form-label" style="width: 90px;">请选择文件</label>
+			<div class="layui-input-inline"
+				style="margin-top: 10px; width: 150px;">
+				<label class="radio">
+					<button type="button"
+						class="layui-btn layui-btn-primary layui-btn-xs" id="upload">选择文件</button>
+				</label>
+			</div>
+		</div>
+		<input type="file" name="image[]" accept="image/*" multiple id="file"
+			style="display: none;" />
+		<div class="layui-upload-list" id="viewimage">
+		</div>
+		<div class="form-item bottom-button">
+			<button class="btn submit-btn" type="submit"
+				target-form="form-horizontal">确定上传</button>
+			<button type="button" class="btn btn-return"
+				onclick="javascript:dialog(true);">关闭</button>
+		</div>
+	</form>
+</div>
+<div class="ui-mask"></div>
 </block>
 
-<block name="script">
-    <script type="text/javascript">
+<block name="script"> <script type="text/javascript">
         $(function() {
             //导航高亮
             highlight_subnav('{:U('index')}');
         });
+        
         function deleteGroup(id){
         	if(id){
         		$.ajax(
@@ -80,5 +135,4 @@
         		});
         	}
         }
-    </script>
-</block>
+    </script> </block>

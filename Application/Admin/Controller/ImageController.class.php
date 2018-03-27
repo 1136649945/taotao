@@ -6,78 +6,106 @@
 // +----------------------------------------------------------------------
 // | Author: yangweijie <yangweijiester@gmail.com> <http://www.zjzit.cn>
 // +----------------------------------------------------------------------
-
 namespace Admin\Controller;
 
 /**
  * 后台配置控制器
+ *
  * @author yangweijie <yangweijiester@gmail.com>
  */
-class ImageController extends AdminController {
+class ImageController extends AdminController
+{
 
     /**
      * 后台菜单首页
+     *
      * @return none
      */
-    public function index(){
-        $data = D('Group')->order(array('sort','id'))->select();
-        $this->assign('data',$data);
+    public function index()
+    {
+        $Picture = D('Channelpicture');
+        $count = $Picture->count();
+        $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
+        $Page->setConfig("prev", "上一页");
+        $Page->setConfig("next", "下一页");
+        $Page->setConfig("theme", '<span class="rows">共 %TOTAL_ROW% 条记录</span> %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
+        
+        $data = $Picture->order(array('sort','id'))->limit($Page->firstRow.','.$Page->listRows)->select();
+        $this->assign('data', $data);
+       
+        $show = $Page->show();// 分页显示输出
+        $this->assign('page',$show);// 赋值分页输出
         // 记录当前列表页的cookie
-        Cookie('__forward__',$_SERVER['REQUEST_URI']);
-        $this->meta_title = '导航分组管理';
+        Cookie('__forward__', $_SERVER['REQUEST_URI']);
+        $this->meta_title = '首页导航图片管理';
         $this->display();
     }
 
     /**
      * 新增菜单
+     *
      * @author yangweijie <yangweijiester@gmail.com>
      */
-    public function add(){
-        if(IS_POST){
-            $Group = D('Group');
-            $data = $Group->create();
-            if($data){
-                $id = $Group->add();
-                if($id){
-                    session('ADMIN_MENU_LIST',null);
-                    //记录行为
-                    action_log('update_Group', 'Group', $id, UID);
-                    $this->success('新增成功', Cookie('__forward__'));
-                } else {
-                    $this->error('新增失败');
+    public function add()
+    {
+        // 记录当前列表页的cookie
+        Cookie('__forward__', $_SERVER['REQUEST_URI']);
+        if (IS_POST) {
+            $Picture = D('Channelpicture');
+            $pic_driver = C('PICTURE_UPLOAD_DRIVER');
+            $info = $Picture->upload($_FILES, C('PICTURE_UPLOAD'), C('PICTURE_UPLOAD_DRIVER'), C("UPLOAD_{$pic_driver}_CONFIG"));
+            $data = $Picture->create();
+            $array = array();
+            if ($info) {
+                foreach ($info as $key => $value) {
+                    $data['path'] = substr(C('PICTURE_UPLOAD'), 1) . $value['savepath'] . $value['savename'];
+                    $data[$key] = $value[$key];
+                    array_push($array, $data);
                 }
-            } else {
-                $this->error($Group->getError());
+                $Picture->addAll($array);
             }
-        } else {
-            $this->meta_title = '新增导航分组';
-            $this->display('edit');
         }
+        echo "<script>location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
 
     /**
      * 编辑配置
+     *
      * @author yangweijie <yangweijiester@gmail.com>
      */
-    public function edit($id = -1){
-        if(IS_POST){
-            $Group = D('Group');
-            $data = $Group->create();
-            if($data){
-                if($Group->save()!== false){
-                    session('ADMIN_MENU_LIST',null);
-                    //记录行为
-                    action_log('update_Group', 'Group', $data['id'], UID);
-                    $this->success('更新成功',Cookie('__forward__'));
-                } else {
-                    $this->error('更新失败');
+    public function edit($id = -1)
+    {
+        if (IS_POST) {
+            $id = I("post.id");
+            if ($id) {
+                $Picture = D('Channelpicture');
+                $data = $Picture->create();
+                $pic_driver = C('PICTURE_UPLOAD_DRIVER');
+                $info = $Picture->upload($_FILES, C('PICTURE_UPLOAD'), C('PICTURE_UPLOAD_DRIVER'), C("UPLOAD_{$pic_driver}_CONFIG"));
+                if ($info) {
+                    $path = D('Channelpicture')->field("path")->find($id);
+                    $path = C('PICTURE_UPLOAD')['rootPath'] . $path['path'];
+                    if (is_file($path)) {
+                        unlink($path);
+                    }
+                    foreach ($info as $key => $value) {
+                        $data['path'] = substr(C('PICTURE_UPLOAD'), 1) . $value['savepath'] . $value['savename'];
+                        $data[$key] = $value[$key];
+                    }
                 }
-            } else {
-                $this->error($Group->getError());
+                if ($data) {
+                    if ($Picture->data($data)->save() !== false) {
+                        $this->success('更新成功', Cookie('__forward__'));
+                    } else {
+                        $this->error('更新失败');
+                    }
+                } else {
+                    $this->error($Picture->getError());
+                }
             }
         } else {
             /* 获取数据 */
-            $info = D('Group')->field(true)->find($id);
+            $info = D('Channelpicture')->field(true)->find($id);
             $this->assign('info', $info);
             $this->meta_title = '编辑后台菜单';
             $this->display();
@@ -85,35 +113,31 @@ class ImageController extends AdminController {
     }
 
     /**
-     * 删除后台菜单
+     * 删除图片
+     *
      * @author yangweijie <yangweijiester@gmail.com>
      */
-    public function del(){
-        if(IS_POST){
-            $id = I('id',-1);
-            if($id){
-                $data = array();
-                $id = I('id',-1);
-                $group=D('Channel')->where(array(group=>$id))->find();
-                if($group){
-                    $data['status']=false;
-                    $data['info']="禁止删除，分组已在使用！";
-                    $this->ajaxReturn($data,"json");
-                }else{
-                    if(D('Group')->where(array(id=>$id))->delete()){
-                        session('ADMIN_MENU_LIST',null);
-                        //记录行为
-                        action_log('update_Group', 'Group', $id, UID);
-                        $data['status']=true;
-                        $this->ajaxReturn($data,"json");
-                    } else {
-                        $data['status']=false;
-                        $data['info']="删除失败！";
-                        $this->ajaxReturn($data,"json");
-                    }
+    public function del()
+    {
+        $id = I('id', - 1);
+        if ($id) {
+            $path = D('Channelpicture')->field("path")->find($id);
+            $path = C('PICTURE_UPLOAD')['rootPath'] . $path['path'];
+            $data = D('Channelpicture')->delete($id);
+            $msg = array_merge(array(
+                'success' => '操作成功！',
+                'error' => '操作失败！',
+                'url' => '',
+                'ajax' => IS_AJAX
+            ), (array) $msg);
+            if ($data) {
+                if (is_file($path)) {
+                    unlink($path);
                 }
+                $this->success($msg['success'], $msg['url'], $msg['ajax']);
+            } else {
+                $this->error($msg['error'], $msg['url'], $msg['ajax']);
             }
         }
     }
-
 }

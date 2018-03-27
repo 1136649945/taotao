@@ -221,6 +221,10 @@
     }).blur(function(){
         $(this).closest(".textarea").removeClass("focus");
     });
+    $("#upload").bind("click",function(){$("#file").click()});
+	$("#file").bind('input property change', function(){viewImage()});
+	var widowHight = document.documentElement.clientHeight;
+	$(".a4-page").css({"height":(widowHight-100)+"px"});
 });
 
 /* 上传图片预览弹出层 */
@@ -263,6 +267,28 @@ function showBtn() {
         $("#submit").addClass("hidden");
         $("#submit-next").removeClass("hidden");
     }
+}
+//下一步按钮切换
+function dialog(hide) {
+    if(hide){
+    	$(".dialog").css({"diaplay":"none","z-index":-2000});
+    	$(".ui-mask").css({"diaplay":"none","z-index":-1});
+    	$(".a4-page").css({"z-index":2000});
+    }else{
+    	$(".dialog").css({"display":"inline-block","z-index":2000});
+    	$(".ui-mask").css({"display":"inline-block","z-index":1});
+    	$(".a4-page").css({"z-index":-2000});
+    }
+}
+
+function viewImage(){
+	var file=$("#file")[0].files;   // 获取input上传的图片数据;
+	if(file){
+		$('#viewimage').empty();
+		for(var i=0;i<file.length;i++){
+			$('#viewimage').append('<img src="'+ window.URL.createObjectURL(file[i]) +'" alt="'+ file.name +'" style="max-height:70px;max-width:70px;margin-right: 10px;margin-top: 10px;">')
+		}
+	}
 }
 
 //导航高亮

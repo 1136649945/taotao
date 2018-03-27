@@ -2,9 +2,12 @@
 
 <block name="body">
     <div class="main-title">
-        <h2>{$info['id']?'编辑':'新增'}导航分组</h2>
+        <h2>{$info['id']?'编辑':'新增'}导航图片</h2>
     </div>
-    <form action="{:U()}" method="post" enctype="multipart/form-data"  class="form-horizontal" >
+    <form action="{:U(edit)}" method="post" enctype="multipart/form-data"  class="form-horizontal" >
+        <input type="hidden" name="block" value="{$info['block']|default=''}"/>
+        <input type="hidden" name="path" value="{$info['path']|default=''}"/>
+         <input type="hidden" name="id" value="{$info['id']|default=''}"/>
         <div class="form-item">
             <label class="item-label">标题</label>
             <div class="controls">
@@ -14,7 +17,7 @@
        <div class="form-item">
             <label class="item-label">描述</label>
             <div class="controls">
-                <input type="text" class="text input-large" name="describe" value="{$info.describe|default=''}">
+                <input type="text" class="text input-large" name="describe" value="{$info.describe|htmlspecialchars_decode}">
             </div>
         </div>
         <div class="layui-form-item">
@@ -32,40 +35,27 @@
 	            </div>
         	</div>
 		</div>
-		<input type="file" name="image" accept="image/jpeg" multiple id="file" style="display:none;"/>
+		<input type="file" name="image" accept="image/*" id="file" style="display:none;"/>
         <div class="layui-upload" >
 	  		<button type="button" class="layui-btn" id="upload" >图片上传</button> 
-	  		<blockquote class="layui-elem-quote layui-quote-nm" >
+	  		<blockquote class="layui-elem-quote layui-quote-nm" style="width: 365px;">
 	    		预览图：
-	    		<div class="layui-upload-list" id="demo2"></div>
+	    		<div class="layui-upload-list" id="viewimage"></div>
 	 		</blockquote>
 		</div>
         <div class="form-item">
             <input type="hidden" name="id" value="{$info.id|default=''}">
-            <button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+            <button class="btn submit-btn" id="submit" type="submit" target-form="form-horizontal">确 定</button>
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
-    
+    <div class="view-image">
+       <img src="{:C('PICTURE_UPLOAD')['rootPath'].$info['path']}" style="max-height: 350px;max-width: 350px;"/>
+    </div>
 </block>
 <block name="script">
     <script type="text/javascript">
     	highlight_subnav('{:U('index')}');
     	Think.setValue("hide", {$info.hide|default = 0});
-    	$(function(){
-    		$("#upload").bind("click",function(){$("#file").click()});
-    		$("#file").bind('input property change', function(){viewImage()});
-    		
-    	});
-    	
-    	function viewImage(){
-    		var file=$("#file")[0].files;   // 获取input上传的图片数据;
-			if(file){
-				$('#demo2').empty();
-				for(var i=0;i<file.length;i++){
-					$('#demo2').append('<img src="'+ window.URL.createObjectURL(file[i]) +'" alt="'+ file.name +'" style="max-height:70px;max-width:70px;margin-right: 10px;margin-top: 10px;">')
-				}
-			}
-    	}
     </script>
 </block>

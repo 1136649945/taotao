@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2018-03-26 19:56:43
+Date: 2018-03-27 18:26:39
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,7 +64,7 @@ CREATE TABLE `ta_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ta_action_log
@@ -121,6 +121,13 @@ INSERT INTO `ta_action_log` VALUES ('49', '10', '1', '0', 'Menu', '128', '操作
 INSERT INTO `ta_action_log` VALUES ('50', '10', '1', '0', 'Menu', '128', '操作url：/admin.php?s=/Menu/edit.html', '1', '1522055648');
 INSERT INTO `ta_action_log` VALUES ('51', '10', '1', '0', 'Menu', '127', '操作url：/admin.php?s=/Menu/edit.html', '1', '1522055689');
 INSERT INTO `ta_action_log` VALUES ('52', '10', '1', '0', 'Menu', '129', '操作url：/admin.php?s=/Menu/add.html', '1', '1522056867');
+INSERT INTO `ta_action_log` VALUES ('53', '1', '1', '0', 'member', '1', 'admin在2018-03-27 11:20登录了后台', '1', '1522120818');
+INSERT INTO `ta_action_log` VALUES ('54', '10', '1', '0', 'Menu', '130', '操作url：/admin.php?s=/Menu/add.html', '1', '1522136756');
+INSERT INTO `ta_action_log` VALUES ('55', '7', '1', '0', 'model', '2', '操作url：/admin.php?s=/Model/update.html', '1', '1522145496');
+INSERT INTO `ta_action_log` VALUES ('56', '7', '1', '0', 'model', '2', '操作url：/admin.php?s=/Model/update.html', '1', '1522145557');
+INSERT INTO `ta_action_log` VALUES ('57', '7', '1', '0', 'model', '2', '操作url：/admin.php?s=/Model/update.html', '1', '1522145612');
+INSERT INTO `ta_action_log` VALUES ('58', '1', '1', '0', 'member', '1', 'admin在2018-03-27 18:23登录了后台', '1', '1522146202');
+INSERT INTO `ta_action_log` VALUES ('59', '1', '1', '0', 'member', '1', 'admin在2018-03-27 18:24登录了后台', '1', '1522146297');
 
 -- ----------------------------
 -- Table structure for `ta_addons`
@@ -614,6 +621,35 @@ INSERT INTO `ta_channel` VALUES ('2', '0', '博客', '1', 'Article/index?categor
 INSERT INTO `ta_channel` VALUES ('3', '0', '官网', '1', 'http://www.onethink.cn', '3', '1379475154', '1522037496', '1', '1', '0');
 
 -- ----------------------------
+-- Table structure for `ta_channelpicture`
+-- ----------------------------
+DROP TABLE IF EXISTS `ta_channelpicture`;
+CREATE TABLE `ta_channelpicture` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',
+  `title` text COMMENT '标题',
+  `describe` text COMMENT '描述',
+  `block` varchar(32) NOT NULL COMMENT '所属模块',
+  `sort` tinyint(1) NOT NULL DEFAULT '0' COMMENT '排序',
+  `path` varchar(255) NOT NULL DEFAULT '' COMMENT '路径',
+  `hide` tinyint(1) NOT NULL DEFAULT '0' COMMENT '是否隐藏',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of ta_channelpicture
+-- ----------------------------
+INSERT INTO `ta_channelpicture` VALUES ('22', '宿舍', '', 'index', '0', '2018-03-27/5aba1103a8cd3.jpg', '0');
+INSERT INTO `ta_channelpicture` VALUES ('20', '宿舍', '', 'index', '0', '2018-03-27/5aba1103a59e7.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('21', '宿舍', '', 'index', '0', '2018-03-27/5aba1103a73f6.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('28', '1', '1', 'index', '0', '2018-03-27/5aba13f20143e.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('27', '1', '1', 'index', '0', '2018-03-27/5aba13f1f0d8f.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('26', '1', '1', 'index', '0', '2018-03-27/5aba13f1eb2b4.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('25', '1', '1', 'index', '0', '2018-03-27/5aba13f1e393e.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('24', '1', '1', 'index', '0', '2018-03-27/5aba13f1e132b.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('23', '1', '1', 'index', '0', '2018-03-27/5aba13f1df84b.JPG', '0');
+INSERT INTO `ta_channelpicture` VALUES ('19', '宿舍1q', '宿舍qq', 'index', '0', '2018-03-27/5aba0d85379e3.JPG', '0');
+
+-- ----------------------------
 -- Table structure for `ta_config`
 -- ----------------------------
 DROP TABLE IF EXISTS `ta_config`;
@@ -699,12 +735,13 @@ CREATE TABLE `ta_document` (
   PRIMARY KEY (`id`),
   KEY `idx_category_status` (`category_id`,`status`),
   KEY `idx_status_type_pid` (`status`,`uid`,`pid`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='文档模型基础表';
 
 -- ----------------------------
 -- Records of ta_document
 -- ----------------------------
-INSERT INTO `ta_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '3', '1', '0', '0', '8', '0', '0', '0', '1406001360', '1522056801', '1');
+INSERT INTO `ta_document` VALUES ('1', '1', '', 'OneThink1.1开发版发布', '2', '0', '期待已久的OneThink最新版发布', '0', '0', '2', '2', '0', '0', '3', '1', '0', '0', '10', '0', '0', '0', '1406001360', '1522056801', '1');
+INSERT INTO `ta_document` VALUES ('2', '1', '', 'xx', '2', '0', '', '0', '0', '3', '2', '0', '0', '0', '1', '0', '0', '3', '0', '0', '0', '1522145662', '1522145662', '1');
 
 -- ----------------------------
 -- Table structure for `ta_document_article`
@@ -742,6 +779,7 @@ CREATE TABLE `ta_document_download` (
 -- ----------------------------
 -- Records of ta_document_download
 -- ----------------------------
+INSERT INTO `ta_document_download` VALUES ('2', '0', 'xx', '', '1', '1', '108171');
 
 -- ----------------------------
 -- Table structure for `ta_file`
@@ -762,11 +800,12 @@ CREATE TABLE `ta_file` (
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上传时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `uk_md5` (`md5`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COMMENT='文件表';
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='文件表';
 
 -- ----------------------------
 -- Records of ta_file
 -- ----------------------------
+INSERT INTO `ta_file` VALUES ('1', 'IMG_1088.JPG', '5aba1972b55a8.JPG', '2018-03-27/', 'JPG', 'image/jpeg', '108171', '82a0c09c92bd48eb9f4e7f522c4d33e5', '3a91ee2c65c10680850a4f09352c121ebab5324b', '0', '', '1522145650');
 
 -- ----------------------------
 -- Table structure for `ta_group`
@@ -842,7 +881,7 @@ CREATE TABLE `ta_member` (
 -- ----------------------------
 -- Records of ta_member
 -- ----------------------------
-INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '18', '0', '1521626231', '0', '1522054677', '1');
+INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '21', '0', '1521626231', '0', '1522146297', '1');
 
 -- ----------------------------
 -- Table structure for `ta_menu`
@@ -863,7 +902,7 @@ CREATE TABLE `ta_menu` (
   PRIMARY KEY (`id`),
   KEY `pid` (`pid`),
   KEY `status` (`status`)
-) ENGINE=MyISAM AUTO_INCREMENT=130 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=131 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of ta_menu
@@ -985,6 +1024,7 @@ INSERT INTO `ta_menu` VALUES ('126', '编辑', '124', '0', 'Group/edit', '0', '0
 INSERT INTO `ta_menu` VALUES ('127', '首页导航图片管理', '128', '0', 'Image/index', '1', '0', '', '图片', '0', '1');
 INSERT INTO `ta_menu` VALUES ('128', '图片管理', '0', '3', 'Image/index', '1', '0', '', '', '0', '1');
 INSERT INTO `ta_menu` VALUES ('129', '新增图片', '128', '0', 'Image/add', '0', '0', '', '', '0', '1');
+INSERT INTO `ta_menu` VALUES ('130', '编辑', '128', '0', 'Image/edit', '0', '0', '', '', '0', '1');
 
 -- ----------------------------
 -- Table structure for `ta_model`
@@ -1019,7 +1059,7 @@ CREATE TABLE `ta_model` (
 -- Records of ta_model
 -- ----------------------------
 INSERT INTO `ta_model` VALUES ('1', 'document', '基础文档', '0', '', '1', '{\"1\":[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\",\"10\",\"11\",\"12\",\"13\",\"14\",\"15\",\"16\",\"17\",\"18\",\"19\",\"20\",\"21\",\"22\"]}', '1:基础', '', '', '', '', '', 'id:编号\r\ntitle:标题:[EDIT]\r\ntype:类型\r\nupdate_time:最后更新\r\nstatus:状态\r\nview:浏览\r\nid:操作:[EDIT]|编辑,[DELETE]|删除', '0', '', '', '1383891233', '1384507827', '1', 'MyISAM');
-INSERT INTO `ta_model` VALUES ('2', 'article', '文章', '1', '', '1', '{\"1\":[\"3\",\"24\",\"2\",\"5\"],\"2\":[\"9\",\"13\",\"19\",\"10\",\"12\",\"16\",\"17\",\"26\",\"20\",\"14\",\"11\",\"25\"]}', '1:基础,2:扩展', '', '', '', '', '', '', '0', '', '', '1383891243', '1387260622', '1', 'MyISAM');
+INSERT INTO `ta_model` VALUES ('2', 'Article', '文章', '1', '', '1', '{\"1\":[\"3\",\"24\",\"2\",\"5\",\"12\"],\"2\":[\"9\",\"13\",\"19\",\"10\",\"16\",\"17\",\"26\",\"20\",\"14\",\"11\",\"25\"]}', '1:基础', '', '', '', '', '', '', '0', '', '', '1383891243', '1522145612', '1', 'MyISAM');
 INSERT INTO `ta_model` VALUES ('3', 'download', '下载', '1', '', '1', '{\"1\":[\"3\",\"28\",\"30\",\"32\",\"2\",\"5\",\"31\"],\"2\":[\"13\",\"10\",\"27\",\"9\",\"12\",\"16\",\"17\",\"19\",\"11\",\"20\",\"14\",\"29\"]}', '1:基础,2:扩展', '', '', '', '', '', '', '0', '', '', '1383891252', '1387260449', '1', 'MyISAM');
 
 -- ----------------------------
@@ -1028,9 +1068,6 @@ INSERT INTO `ta_model` VALUES ('3', 'download', '下载', '1', '', '1', '{\"1\":
 DROP TABLE IF EXISTS `ta_picture`;
 CREATE TABLE `ta_picture` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键id自增',
-  `title` text COMMENT '题标',
-  `describe` text COMMENT '描述',
-  `group` varchar(32) DEFAULT NULL COMMENT '所属模块',
   `path` varchar(255) NOT NULL DEFAULT '' COMMENT '路径',
   `url` varchar(255) NOT NULL DEFAULT '' COMMENT '图片链接',
   `md5` char(32) NOT NULL DEFAULT '' COMMENT '文件md5',
@@ -1043,9 +1080,9 @@ CREATE TABLE `ta_picture` (
 -- ----------------------------
 -- Records of ta_picture
 -- ----------------------------
-INSERT INTO `ta_picture` VALUES ('1', null, null, null, '/Uploads/Picture/2018-03-26/5ab8bca11dae3.jpg', '', '33511b31dbd1c29315d6ea568f66a8f9', '4053041769ca58f6c498566e91bf77b57a797f94', '1', '1522056353');
-INSERT INTO `ta_picture` VALUES ('2', null, null, null, '/Uploads/Picture/2018-03-26/5ab8be0d075c2.jpg', '', '5a1f10588eeff180579d9217f3d84373', '8ffa2d186a84fed2ae0327f14e7a18c40ab8f318', '1', '1522056716');
-INSERT INTO `ta_picture` VALUES ('3', null, null, null, '/Uploads/Picture/2018-03-26/5ab8be5443ac5.png', '', '87edc5dc079700901b0ec52a97249779', '597a86475e8dcbeba72989fe4bf452259b5d9d8c', '1', '1522056788');
+INSERT INTO `ta_picture` VALUES ('1', '/Uploads/Picture/2018-03-26/5ab8bca11dae3.jpg', '', '33511b31dbd1c29315d6ea568f66a8f9', '4053041769ca58f6c498566e91bf77b57a797f94', '1', '1522056353');
+INSERT INTO `ta_picture` VALUES ('2', '/Uploads/Picture/2018-03-26/5ab8be0d075c2.jpg', '', '5a1f10588eeff180579d9217f3d84373', '8ffa2d186a84fed2ae0327f14e7a18c40ab8f318', '1', '1522056716');
+INSERT INTO `ta_picture` VALUES ('3', '/Uploads/Picture/2018-03-26/5ab8be5443ac5.png', '', '87edc5dc079700901b0ec52a97249779', '597a86475e8dcbeba72989fe4bf452259b5d9d8c', '1', '1522056788');
 
 -- ----------------------------
 -- Table structure for `ta_ucenter_admin`
@@ -1110,7 +1147,7 @@ CREATE TABLE `ta_ucenter_member` (
 -- ----------------------------
 -- Records of ta_ucenter_member
 -- ----------------------------
-INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1522054677', '0', '1521626231', '1');
+INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1522146297', '0', '1521626231', '1');
 
 -- ----------------------------
 -- Table structure for `ta_ucenter_setting`
