@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50624
 File Encoding         : 65001
 
-Date: 2018-03-27 18:26:39
+Date: 2018-03-27 18:39:02
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -64,7 +64,7 @@ CREATE TABLE `ta_action_log` (
   KEY `action_ip_ix` (`action_ip`),
   KEY `action_id_ix` (`action_id`),
   KEY `user_id_ix` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
+) ENGINE=MyISAM AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 ROW_FORMAT=FIXED COMMENT='行为日志表';
 
 -- ----------------------------
 -- Records of ta_action_log
@@ -128,6 +128,8 @@ INSERT INTO `ta_action_log` VALUES ('56', '7', '1', '0', 'model', '2', '操作ur
 INSERT INTO `ta_action_log` VALUES ('57', '7', '1', '0', 'model', '2', '操作url：/admin.php?s=/Model/update.html', '1', '1522145612');
 INSERT INTO `ta_action_log` VALUES ('58', '1', '1', '0', 'member', '1', 'admin在2018-03-27 18:23登录了后台', '1', '1522146202');
 INSERT INTO `ta_action_log` VALUES ('59', '1', '1', '0', 'member', '1', 'admin在2018-03-27 18:24登录了后台', '1', '1522146297');
+INSERT INTO `ta_action_log` VALUES ('60', '1', '1', '0', 'member', '1', 'admin在2018-03-27 18:33登录了后台', '1', '1522146786');
+INSERT INTO `ta_action_log` VALUES ('61', '9', '1', '0', 'channel', '1', '操作url：/admin.php?s=/Channel/edit.html', '1', '1522147099');
 
 -- ----------------------------
 -- Table structure for `ta_addons`
@@ -601,7 +603,7 @@ CREATE TABLE `ta_channel` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '频道ID',
   `pid` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '上级频道ID',
   `title` char(30) NOT NULL COMMENT '频道标题',
-  `group` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分组',
+  `block` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '分组',
   `url` char(100) NOT NULL COMMENT '频道连接',
   `sort` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '导航排序',
   `create_time` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '创建时间',
@@ -616,7 +618,7 @@ CREATE TABLE `ta_channel` (
 -- ----------------------------
 -- Records of ta_channel
 -- ----------------------------
-INSERT INTO `ta_channel` VALUES ('1', '0', '首页', '1', 'Index/index', '1', '1379475111', '1521989686', '0', '1', '0');
+INSERT INTO `ta_channel` VALUES ('1', '0', '首页', '10', 'Index/index', '1', '1379475111', '1522147099', '0', '1', '0');
 INSERT INTO `ta_channel` VALUES ('2', '0', '博客', '1', 'Article/index?category=blog', '2', '1379475131', '1521989680', '0', '1', '0');
 INSERT INTO `ta_channel` VALUES ('3', '0', '官网', '1', 'http://www.onethink.cn', '3', '1379475154', '1522037496', '1', '1', '0');
 
@@ -824,7 +826,7 @@ CREATE TABLE `ta_group` (
 -- Records of ta_group
 -- ----------------------------
 INSERT INTO `ta_group` VALUES ('1', '官网导航', '1', '0', '1');
-INSERT INTO `ta_group` VALUES ('10', 'ss', '0', '1', '1');
+INSERT INTO `ta_group` VALUES ('10', 'ss', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for `ta_hooks`
@@ -881,7 +883,7 @@ CREATE TABLE `ta_member` (
 -- ----------------------------
 -- Records of ta_member
 -- ----------------------------
-INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '21', '0', '1521626231', '0', '1522146297', '1');
+INSERT INTO `ta_member` VALUES ('1', 'admin', '0', '0000-00-00', '', '20', '22', '0', '1521626231', '0', '1522146786', '1');
 
 -- ----------------------------
 -- Table structure for `ta_menu`
@@ -1147,7 +1149,7 @@ CREATE TABLE `ta_ucenter_member` (
 -- ----------------------------
 -- Records of ta_ucenter_member
 -- ----------------------------
-INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1522146297', '0', '1521626231', '1');
+INSERT INTO `ta_ucenter_member` VALUES ('1', 'admin', '9fe3863609ddebbefbf27c2e2e33f13c', '1136649945@qq.com', '', '1521626231', '0', '1522146786', '0', '1521626231', '1');
 
 -- ----------------------------
 -- Table structure for `ta_ucenter_setting`

@@ -23,9 +23,9 @@ class ChannelController extends AdminController {
     public function index(){
         $pid = I('get.pid', 0);
         C('_SYS_GET_CHANNEL_TREE_', true);
-        $tree=D('Channel')->getTree(0,'id,pid,group,title,url,hide,sort');
+        $tree=D('Channel')->getTree(0,'id,pid,block,title,url,hide,sort');
         $group=D('Group')->getField('id,title');
-        $this->assign('group', $group);
+        $this->assign('block', $group);
         $this->assign('tree', $tree);
         $this->meta_title = '导航管理';
         $this->display();
@@ -108,7 +108,7 @@ class ChannelController extends AdminController {
             $parent = M('Channel')->where('pid=0')->field('id,title')->select();
             $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
             $this->assign("parent", $parent);
-            $this->assign("group", $group);
+            $this->assign("block", $group);
             $this->assign("pid", $pid);
             $this->assign("info", $info);
             $this->meta_title = '编辑导航';

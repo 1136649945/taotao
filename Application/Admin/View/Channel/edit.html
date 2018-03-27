@@ -70,9 +70,9 @@
 		<div class="layui-inline">
 			<label class="layui-form-label">分组</label>
 			<div class="layui-input-inline" style="width: 490px;">
-				<select name="group" style="margin-top: 5px;width: 200px;">
-				<volist name="group" id="vo">
-					<if condition="$info['group'] eq $vo['id']"> 
+				<select name="block" style="margin-top: 5px;width: 200px;">
+				<volist name="block" id="vo">
+					<if condition="$info['block'] eq $vo['id']"> 
 						<option value="{$vo.id}" selected="selected">{$vo.title}</option>
 					<else />
 						<option value="{$vo.id}" >{$vo.title}</option>
