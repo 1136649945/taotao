@@ -7,17 +7,17 @@
 				</div>
 				<div class="fold"><i></i></div>
 				<div class="order"><input type="text" name="sort" class="text input-mini" value="<?php echo ($list["sort"]); ?>"></div>
-				<div class="fold"><?php echo ($list['status']?'是':'否'); ?></div>
+				<div class="fold"><?php echo ($list['hide']?'是':'否'); ?></div>
 				<div class="name">
 					<span class="tab-sign"></span>
 					<input type="hidden" name="id" value="<?php echo ($list["id"]); ?>">
-					<input type="text" name="title" class="text" value="<?php echo ($list["title"]); ?>">
+					<span class="spantext" ><?php echo ($list["title"]); ?></span>
 					<a class="add-sub-cate" title="添加子分类" href="<?php echo U('add?pid='.$list['id']);?>">
 						<i class="icon-add"></i>
 					</a>
 					<span class="help-inline msg"></span>
 				</div>
-				<div class="name" style="right: 280px; position: absolute;"><?php echo ($group[$list['group']]); ?></div>
+				<div class="name" style="right: 280px; position: absolute;"><?php echo ($block[$list['block']]); ?></div>
 			</form>
 		</dt>
 		<?php if(!empty($list['_'])): ?><dd>

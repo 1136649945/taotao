@@ -95,6 +95,13 @@
 	<div class="tb-unit posr">
 		<div class="tb-unit-bar">
 			<a class="btn" href="<?php echo U('add');?>">新 增</a>
+			<!-- 高级搜索 -->
+	        <div class="search-form fr cf">
+	            <div class="sleft">
+	                <input type="text" name="title" class="search-input" value="<?php echo I('title');?>" placeholder="请输入菜单名称">
+	                <a class="sch-btn" href="javascript:;" id="search" url="/admin.php?s=/Menu/index.html"><i class="btn-search"></i></a>
+	            </div>
+	        </div>
 		</div>
 		<div class="category">
 			<div class="hd cf">

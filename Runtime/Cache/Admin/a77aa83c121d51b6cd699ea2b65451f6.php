@@ -120,7 +120,14 @@
         <div class="form-item">
             <label class="item-label">分组<span class="check-tips">（用于左侧分组二级菜单）</span></label>
             <div class="controls">
-                <input type="text" class="text input-large" name="group" value="<?php echo ((isset($info["group"]) && ($info["group"] !== ""))?($info["group"]):''); ?>">
+                <input type="text" class="text input-large" name="block" value="<?php echo ((isset($info["block"]) && ($info["block"] !== ""))?($info["block"]):''); ?>">
+            </div>
+        </div>
+        <div class="form-item">
+            <label class="item-label">类型<span class="check-tips"></span></label>
+            <div class="controls">
+            	<label class="radio"><input type="radio" name="type" value="1">菜单</label>
+	            <label class="radio"><input type="radio" name="type" value="0">按钮</label>
             </div>
         </div>
         <div class="form-item">
@@ -241,6 +248,7 @@
         Think.setValue("pid", <?php echo ((isset($info["pid"]) && ($info["pid"] !== ""))?($info["pid"]): 0); ?>);
         Think.setValue("hide", <?php echo ((isset($info["hide"]) && ($info["hide"] !== ""))?($info["hide"]): 0); ?>);
         Think.setValue("is_dev", <?php echo ((isset($info["is_dev"]) && ($info["is_dev"] !== ""))?($info["is_dev"]): 0); ?>);
+        Think.setValue("type", <?php echo ((isset($info["type"]) && ($info["type"] !== ""))?($info["type"]): 1); ?>);
         //导航高亮
         highlight_subnav('<?php echo U('index');?>');
     </script>

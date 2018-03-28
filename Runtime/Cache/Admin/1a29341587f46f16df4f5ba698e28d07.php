@@ -100,7 +100,7 @@
 			<div class="hd cf">
 				<div class="fold">折叠</div>
 				<div class="order">排序</div>
-				<div class="fold">发布</div>
+				<div class="fold">隐藏</div>
 				<div class="name">名称</div>
 				<div class="name" style="right: 280px; position: absolute;">分组</div>
 			</div>

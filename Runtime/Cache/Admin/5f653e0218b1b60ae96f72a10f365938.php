@@ -152,8 +152,8 @@
 		<div class="layui-inline">
 			<label class="layui-form-label">分组</label>
 			<div class="layui-input-inline" style="width: 490px;">
-				<select name="group" style="margin-top: 5px;width: 200px;">
-				<?php if(is_array($group)): $i = 0; $__LIST__ = $group;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($info['group'] == $vo['id']): ?><option value="<?php echo ($vo["id"]); ?>" selected="selected"><?php echo ($vo["title"]); ?></option>
+				<select name="block" style="margin-top: 5px;width: 200px;">
+				<?php if(is_array($block)): $i = 0; $__LIST__ = $block;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i; if($info['block'] == $vo['id']): ?><option value="<?php echo ($vo["id"]); ?>" selected="selected"><?php echo ($vo["title"]); ?></option>
 					<?php else: ?>
 						<option value="<?php echo ($vo["id"]); ?>" ><?php echo ($vo["title"]); ?></option><?php endif; endforeach; endif; else: echo "" ;endif; ?>
 				</select>
@@ -164,15 +164,9 @@
 		style="margin-top: 10px;"></fieldset>
 	<div class="layui-form-item">
 		<div class="layui-inline">
-			<label class="layui-form-label" style="margin-top: -10px;">隐藏</label> 
-				<?php if($vo['status'] == 1): ?><label class="radio"><input type="radio" name="status" value="-1">是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label>
-	            <?php elseif($vo['status'] == -1): ?>
-	            	<label class="radio"><input type="radio" name="status" value="-1" checked="checked" >是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" >否</label>
-	            <?php else: ?>
-	            	<label class="radio"><input type="radio" name="status" value="-1">是</label>
-	                <label class="radio"><input type="radio" name="status" value="1" checked="checked" >否</label><?php endif; ?>
+			<label class="layui-form-label" style="margin-top: -10px;">发布</label> 
+				<label class="radio"><input type="radio" name="hide" value="1">是</label>
+	            <label class="radio"><input type="radio" name="hide" value="0" >否</label>
 		</div>
 	</div>
 	<fieldset class="layui-elem-field layui-field-title"
@@ -300,6 +294,7 @@
 	charset="utf-8">
 		//导航高亮
 		highlight_subnav('<?php echo U('index');?>');
+	    Think.setValue("hide", <?php echo ((isset($info["hide"]) && ($info["hide"] !== ""))?($info["hide"]): 0); ?>);
 	</script> 
 	<script type="text/javascript">
 		
