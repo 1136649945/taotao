@@ -17,7 +17,7 @@ return array(
     'TAGLIB_PRE_LOAD'     =>    'OT\\TagLib\\Article,OT\\TagLib\\Think',
         
     /* 主题设置 */
-    'DEFAULT_THEME' =>  'default',  // 默认模板主题名称
+    'DEFAULT_THEME' =>  '',  // 默认模板主题名称
 
     /* 数据缓存设置 */
     'DATA_CACHE_PREFIX' => 'onethink_', // 缓存前缀
@@ -94,5 +94,12 @@ return array(
         'hash'     => true, //是否生成hash编码
         'callback' => false, //检测文件是否存在回调函数，如果存在返回文件信息数组
     ), //附件上传配置（文件上传类配置）
-
+    /**
+     * 多语言
+     */
+    'LANG_SWITCH_ON' => true, //开启语言包功能
+    'LANG_AUTO_DETECT' => true, // 自动侦测语言
+    'DEFAULT_LANG' => 'en-us', // 默认语言
+    'LANG_LIST' => 'en-us,zh-cn,zh-tw', //必须写可允许的语言列表
+    'VAR_LANGUAGE' => 'l', // 默认语言切换变量
 );
