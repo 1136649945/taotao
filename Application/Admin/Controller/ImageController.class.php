@@ -23,16 +23,23 @@ class ImageController extends AdminController
      */
     public function index()
     {
+        $block = I("block",-1);
+        $where = "1=1 ";
+        if($block>-1){
+            $where = $where." and block=".$block;
+        }
         $Picture = D('Channelpicture');
-        $count = $Picture->count();
+        $count = $Picture->where($where)->count();
         $Page = new \Think\Page($count,10);// 实例化分页类 传入总记录数和每页显示的记录数
         $Page->setConfig("prev", "上一页");
         $Page->setConfig("next", "下一页");
         $Page->setConfig("theme", '<span class="rows">共 %TOTAL_ROW% 条记录</span> %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
-        
-        $data = $Picture->order(array('sort','id'))->limit($Page->firstRow.','.$Page->listRows)->select();
+        $data = $Picture->where($where)->order(array('block','sort','id'))->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('data', $data);
-       
+        $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+        $this->assign("block", $group);
+        $group = M('Group')->getField("id,title");
+        $this->assign("group", $group);
         $show = $Page->show();// 分页显示输出
         $this->assign('page',$show);// 赋值分页输出
         // 记录当前列表页的cookie
@@ -40,7 +47,6 @@ class ImageController extends AdminController
         $this->meta_title = '首页导航图片管理';
         $this->display();
     }
-
     /**
      * 新增菜单
      *
@@ -107,6 +113,8 @@ class ImageController extends AdminController
             /* 获取数据 */
             $info = D('Channelpicture')->field(true)->find($id);
             $this->assign('info', $info);
+            $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+            $this->assign("block", $group);
             $this->meta_title = '编辑后台菜单';
             $this->display();
         }

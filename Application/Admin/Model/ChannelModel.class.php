@@ -35,7 +35,7 @@ class ChannelModel extends Model {
      */
     public function getTree($id = 0, $field = true){
         /* 获取所有频道导航 */
-        $list = $this->field($field)->order('sort')->select();
+        $list = $this->field($field)->order(array('block','sort'))->select();
         $list = list_to_tree($list, $pk = 'id', $pid = 'pid', $child = '_', $root = $id);
     
         /* 获取返回数据 */

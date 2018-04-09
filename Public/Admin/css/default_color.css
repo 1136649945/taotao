@@ -17,7 +17,7 @@ a {
 	/*全局默认链接颜色*/
 }
 a:hover{
-	color: #4bbd00;
+	color: #009688;
 	/*全局默认链接悬停颜色*/
 }
 
@@ -91,7 +91,7 @@ a:hover{
     background: #E1E1E1;
 }
 .page .current {
-	border-top: 3px solid #4BBD00;
+	border-top: 3px solid #009688;
 	height: 28px;
 	line-height: 26px;
 }
@@ -226,11 +226,14 @@ select {
 /* 普通按钮 */
 .btn {
     color: #edffd1;
-	background-color: #4bbd00;
+	background-color: #009688;
+	border-radius: 3px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
 }
 .btn:hover {
     color: #ffffff;
-    background-color: #4cdb00;
+    background-color: #009688;
 }
 
 /* 表单返回按钮 */
@@ -245,7 +248,7 @@ select {
 }
 .submit-btn:hover {
     color: #fff;
-    background-color: #ff2610;
+    background-color: #CC3900;
 }
 
 /* 下拉弹出按钮 */
@@ -280,12 +283,13 @@ select {
 }
 .main-nav a:hover {
     background-color:#656565;
+	color:#fff;
 }
 .main-nav .current{
     background-color: #656565;
 }
 .main-nav .current a {
-    background-color: #86db00;
+    background-color: #009688;
 }
 
 /* 顶部右侧 用户bar */
@@ -384,7 +388,41 @@ select {
  ***********************************/
 
 /* body 配色*/
-#login-page {
+#login-page{overflow: hidden;}
+.bg{position:relative;background: url("../images/bg.jpg") no-repeat 100%;background-size:cover;width: 100%;height: 100%;}
+.login{width: 834px;height: 448px;position: absolute;top:50%;left:50%;margin-left:-417px;margin-top:-224px;background:url("../images/login_bg.png") no-repeat 100%;background-size: cover;}
+.form_log{width: 340px;margin: 20px 0;margin-left: 225px;}
+.form_log h1{text-align: center;font-size: 28px;color: #fff;margin-bottom: 35px;}
+.one{overflow:hidden;width: 100%;height: 46px;background-color: #fff;margin-bottom:25px;}
+.one span,.yzm span{float:left;display: inline-block;width: 48px;height: 46px;}
+.one input,.yzm input{outline: none;font-size:16px;float:left;display:inline-block;width: 270px;margin-left:10px;height: 36px;line-height: 36px;margin-top: 5px;border:0;}
+.one span.name{background: url("../images/user.png") no-repeat center;background-color: #dddddd;}
+.one span.mima{background: url("../images/password.png") no-repeat center;background-color: #dddddd;}
+.two{overflow: hidden;}
+.yzm{float: left;width: 185px;height: 46px;background-color: #fff;margin-bottom:25px;}
+.yzm span{background: url("../images/Verification.png") no-repeat center;background-color: #dddddd;}
+.yzm input{outline: none;width: 110px;}
+.two a,.two a.Verification{float: right;}
+.Verification,.Verification img{display: inline-block;width:130px;height: 46px;}
+._log{cursor:pointer;border:0;text-decoration: none;display:block;width: 100%;height: 46px;text-align:center;line-height: 46px;font-size: 18px;color: #fff;background-color: #31a3a9;margin-top: 5px;}
+.one,.one span,.yzm,.yzm span,._log{
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    border-radius:10px;
+}
+.check-tips {
+    margin-top: 10px;
+    text-align: center;
+}
+.check-tips span{
+    background-color: #fff;
+    padding: 2px 5px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    border-radius:5px;
+    color: #ff0000;
+}
+/*#login-page {
     color: #000;
     background-color: #30333F;
 }
@@ -393,7 +431,7 @@ select {
 #login-page .login-form {
     background-color: #fff;
     box-shadow: 0 0 26px #041A36;
-    border-top-color: #42EC00;
+    border-top-color: #009688;
 }
 #login-page .login-form h3 {
     color: #8D9CAA;
@@ -461,4 +499,4 @@ select {
 
 #login-page img.verifyimg{
 	border-color: #ececec;
-}
+}*/

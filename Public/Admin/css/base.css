@@ -32,7 +32,7 @@ a {
 }
 a:hover{
 	color: #4bbd00;
-	border-bottom: 1px solid;
+	/*border-bottom: 1px solid;*/
 }
 input,button,textarea,select,option {
 	font-family:inherit;

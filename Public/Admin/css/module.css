@@ -173,7 +173,7 @@ label.textarea ~ .check-tips {
 	margin-top: 5px;
 	width: 16px;
 	height: 16px;
-	background: url(../images/bg_icon.png) no-repeat -50px 0;
+	
 }
 
 /* 高级搜索 */
@@ -296,7 +296,7 @@ label.textarea ~ .check-tips {
     display: inline-block;
     margin-right: 5px;
     padding: 6px 16px;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 18px;
     color: #edffd1;
     text-align: center;

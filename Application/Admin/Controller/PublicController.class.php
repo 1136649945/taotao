@@ -21,6 +21,7 @@ class PublicController extends \Think\Controller {
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
     public function login($username = null, $password = null, $verify = null){
+        $this->meta_title = "对外经济贸易大学";
         if(IS_POST){
             /* 检测验证码 TODO: */
             if(!check_verify($verify)){

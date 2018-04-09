@@ -6,6 +6,7 @@ html,body {
     margin: 0;
     padding: 0;
 }
+body{overflow:hidden;}
 img {
     border: 0;
 }
@@ -40,12 +41,12 @@ img {
     height: 448px;
 }
 .login-form {
-    width: 290px;
+    width: 320px;
     margin: 100px auto;
     padding: 25px 30px 13px;
     background-color: #fff;
     box-shadow: 0 0 26px #041A36;
-    border-top: 8px solid #42EC00;
+    border-top: 6px solid #42EC00;
 }
 .login-form h3 {
     font-size: 26px;
@@ -147,9 +148,7 @@ img {
 .login-form .verifycode img {
     vertical-align: middle;
 }
-.login-form .login_btn_panel {
-    margin: 20px 0 10px;
-}
+
 .login-form .login-btn {
     padding: 3px 0;
     width: 100%;

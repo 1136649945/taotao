@@ -21,15 +21,57 @@
 			<div class="layui-inline">
 				<label class="layui-form-label">英文</label>
 				<div class="layui-input-inline">
-					<input type="text" class="layui-input" name="en_title"
-						value="{$info.title|default=''}">
+					<input type="text" class="layui-input" name="titleen"
+						value="{$info.titleen|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">韩文</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="titleko"
+						value="{$info.titleko|default=''}">
 				</div>
 			</div>
 			<div class="layui-inline">
 				<label class="layui-form-label">日文</label>
 				<div class="layui-input-inline">
-					<input type="text" class="layui-input" name="jp_title"
-						value="{$info.title|default=''}">
+					<input type="text" class="layui-input" name="titleja"
+						value="{$info.titleja|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">法文</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="titlefr"
+						value="{$info.titlefr|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">俄文</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="titleru"
+						value="{$info.titleru|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">西班牙</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="titlees"
+						value="{$info.titlees|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">德语</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="titlede"
+						value="{$info.titlede|default=''}">
+				</div>
+			</div>
+			<div class="layui-inline">
+				<label class="layui-form-label">阿拉伯语</label>
+				<div class="layui-input-inline">
+					<input type="text" class="layui-input" name="titlear"
+						value="{$info.titlear|default=''}">
 				</div>
 			</div>
 		</div>
@@ -52,7 +94,9 @@
 			<label class="layui-form-label">父级</label>
 			<div class="layui-input-inline" style="width: 490px;">
 				<select name="pid" style="margin-top: 5px;width: 200px;">
-					<option value="0" >顶级</option>
+				    <if condition="$childe neq true">
+				    	<option value="0" >顶级</option>
+				    </if>
 					<volist name="parent" id="vo">
 						<if condition="$pid eq $vo['id']"> 
 							<option value="{$vo.id}" selected="selected">{$vo.title}</option>

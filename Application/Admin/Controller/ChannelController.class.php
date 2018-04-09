@@ -23,13 +23,14 @@ class ChannelController extends AdminController {
     public function index(){
         $pid = I('get.pid', 0);
         C('_SYS_GET_CHANNEL_TREE_', true);
-        $tree=D('Channel')->getTree(0,'id,pid,block,title,url,hide,sort');
+        $tree=D('Channel')->getTree(0,true);
         $group=D('Group')->getField('id,title');
         $this->assign('block', $group);
         $this->assign('tree', $tree);
         $this->meta_title = '导航管理';
         $this->display();
     }
+   
     /**
      * 显示分类树，仅支持内部调
      * @param  array $tree 分类树
@@ -63,11 +64,16 @@ class ChannelController extends AdminController {
         } else {
             $pid = I('get.pid', 0);
             //获取父导航
-            if(!empty($pid)){
-                $parent = M('Channel')->where(array('id'=>$pid))->field('title')->find();
+            if($pid==0){
+                $parent = M('Channel')->field('id,title')->select();
                 $this->assign('parent', $parent);
+            }else{
+                $parent = M('Channel')->where(array('id'=>$pid))->field('id,title')->select();
+                $this->assign('parent', $parent);
+                $this->assign('childe', true);
             }
-
+            $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+            $this->assign("block", $group);
             $this->assign('pid', $pid);
             $this->assign('info',null);
             $this->meta_title = '新增导航';
@@ -105,7 +111,7 @@ class ChannelController extends AdminController {
             }
 
             $pid = I('get.pid', 0);
-            $parent = M('Channel')->where('pid=0')->field('id,title')->select();
+            $parent = M('Channel')->field('id,title')->select();
             $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
             $this->assign("parent", $parent);
             $this->assign("block", $group);

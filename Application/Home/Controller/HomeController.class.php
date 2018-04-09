@@ -30,7 +30,7 @@ class HomeController extends Controller {
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');
         }
-        $this->assign(C("VAR_LANGUAGE"),LANG_SET);
+        $this->assign(C("VAR_LANGUAGE"),substr(LANG_SET,0,2));
     }
 
 	/* 用户登录检测 */
