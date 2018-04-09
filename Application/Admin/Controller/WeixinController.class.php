@@ -20,14 +20,24 @@ class WeixinController extends \Think\Controller {
      * 后台用户登录
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
-    public function login(){
+    public function applogin($username, $password){
         if(IS_POST){
+            /* 调用UC登录接口登录 */
+            $User = new UserApi;
+            $uid = $User->login($username, $password);
             $data = array();
-            $data['e'] = $_POST['email'];
+            $data['status'] = false;
+            if(0 < $uid){ //UC登录成功
+                /* 登录用户 */
+                $Member = D('Member');
+                if($Member->login($uid)){ //登录用户
+                    //TODO:跳转到登录前页面
+                   $data['status'] = true;
+                } else {
+                   $data['status'] = false;
+                }
+            }
             $this->ajaxReturn($data,"json");
         }
     }
-
-    
-
 }

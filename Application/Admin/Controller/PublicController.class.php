@@ -77,7 +77,7 @@ class PublicController extends \Think\Controller {
         }
     }
 
-public function verify()
+    public function verify()
     {
         $config = array(
             'useCurve' => false, // 是否画混淆曲线
