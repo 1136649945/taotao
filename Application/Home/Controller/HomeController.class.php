@@ -27,17 +27,18 @@ class HomeController extends Controller {
         $config = api('Config/lists');
         C($config); //添加配置
         if(C('WEB_SITE_CLOSE')){
-            $channel = D('Channel')->lists(true,"hide=0 and status=1 and block=1");
-            $this->assign('channelf',$channel);//一级导航
-            $channel = D('Channel')->lists(true,"hide=0 and status=1 and (block=10 or block=27)");
-            $this->assign('channels',$channel);//二级导航
-            $channel = D('Channel')->lists(true,"hide=0 and status=1 and (block=10 or block=1)");
-            $this->assign('channelfs',$channel);//一级二级导航
-            if("zh"==LANG_SET){
-                $this->assign('title','title');
-            }else{
-                $this->assign('title','title'.LANG_SET);
+            $title = "title";
+            if("zh"!=LANG_SET){
+                $title = $title.LANG_SET;
             }
+            define('TITLE',$title);
+            $this->assign("title",TITLE);
+            $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and block=1");
+            $this->assign('channelf',$channel);//一级导航
+            $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=27)");
+            $this->assign('channels',$channel);//二级导航
+            $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=1)");
+            $this->assign('channelfs',$channel);//手机端使用一级二级导航
         }
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');

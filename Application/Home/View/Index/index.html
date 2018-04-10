@@ -1,4 +1,4 @@
-﻿<include file="Public/header"/>
+<include file="Public/header"/>
 <!--banner-->
 <div class="banner">
     <div>
@@ -31,9 +31,15 @@
 <div class="item">
     <div class="wrap">
         <div class="title">
-            <span class="tit_l fl">特色项目</span>
-            <a href="" class="tit_more fr">查看更多 >></a>
-            <div class="cb"></div>
+        	<volist name="fixedchannel" id="vo">
+        		<if condition="$vo['block'] eq 31"> 
+		            <span class="tit_l fl">{$vo[$title]}</span>
+	            </if>
+	            <if condition="$vo['block'] eq 34"> 
+		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
+		        </if>
+	        </volist>
+		    <div class="cb"></div>
         </div>
         <div class="tit_br">
             <span> >> </span>
@@ -175,8 +181,14 @@
 <div class="announcement">
     <div class="wrap">
         <div class="title">
-            <span class="tit_l fl">通知公告</span>
-            <a href="" class="tit_more fr">查看更多 >></a>
+            <volist name="fixedchannel" id="vo">
+        		<if condition="$vo['block'] eq 32"> 
+		            <span class="tit_l fl">{$vo[$title]}</span>
+	            </if>
+	            <if condition="$vo['block'] eq 34"> 
+		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
+		        </if>
+	        </volist>
             <div class="cb"></div>
         </div>
         <div class="tit_br">
@@ -251,8 +263,14 @@
 <div class="news">
     <div class="wrap">
         <div class="title">
-            <span class="tit_l fl">学院新闻</span>
-            <a href="" class="tit_more fr">查看更多 >></a>
+            <volist name="fixedchannel" id="vo">
+        		<if condition="$vo['block'] eq 33"> 
+		            <span class="tit_l fl">{$vo[$title]}</span>
+	            </if>
+	            <if condition="$vo['block'] eq 34"> 
+		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
+		        </if>
+	        </volist>
             <div class="cb"></div>
         </div>
         <div class="tit_br">
