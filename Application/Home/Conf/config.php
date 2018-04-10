@@ -22,7 +22,7 @@ return array(
     /* 数据缓存设置 */
     'DATA_CACHE_PREFIX' => 'onethink_', // 缓存前缀
     'DATA_CACHE_TYPE'   => 'File', // 数据缓存类型
-
+    'DATA_CACHE_TIME'   => 1, // 数据缓存时间
     /* 文件上传相关配置 */
     'DOWNLOAD_UPLOAD' => array(
         'mimes'    => '', //允许上传的文件MiMe类型
@@ -99,7 +99,7 @@ return array(
      */
     'LANG_SWITCH_ON' => true, //开启语言包功能
     'LANG_AUTO_DETECT' => true, // 自动侦测语言
-    'DEFAULT_LANG' => 'en-us', // 默认语言
+    'DEFAULT_LANG' => 'zh-cn', // 默认语言
     'LANG_LIST' => 'en-us,zh-cn,zh-tw', //必须写可允许的语言列表
     'VAR_LANGUAGE' => 'l', // 默认语言切换变量
 );

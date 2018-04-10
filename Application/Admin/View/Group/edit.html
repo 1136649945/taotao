@@ -12,6 +12,14 @@
             </div>
         </div>
         <div class="form-item">
+            <label class="item-label">用途</label>
+            <div class="controls">
+                <input type="radio"  name="purpose" value="0"/>适用于所有
+                <input type="radio"  name="purpose" value="1"/>仅用于图片管理
+                <input type="radio"  name="purpose" value="2"/>仅用于导航管理
+            </div>
+        </div>
+        <div class="form-item">
             <label class="item-label">排序<span class="check-tips">（用于分组显示的顺序）</span></label>
             <div class="controls">
                 <input type="text" class="text input-small" name="sort" value="{$info.sort|default=0}">
@@ -36,5 +44,6 @@
     <script type="text/javascript">
     	highlight_subnav('{:U('index')}');
     	Think.setValue("hide", {$info.hide|default = 0});
+    	Think.setValue("purpose", {$info.purpose|default = 0});
     </script>
 </block>

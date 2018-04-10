@@ -72,7 +72,7 @@ class ChannelController extends AdminController {
                 $this->assign('parent', $parent);
                 $this->assign('childe', true);
             }
-            $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+            $group = M('Group')->where('hide=0 and (purpose=0 or purpose=2)')->order('sort')->field('id,title')->select();
             $this->assign("block", $group);
             $this->assign('pid', $pid);
             $this->assign('info',null);
@@ -112,7 +112,7 @@ class ChannelController extends AdminController {
 
             $pid = I('get.pid', 0);
             $parent = M('Channel')->field('id,title')->select();
-            $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+            $group = M('Group')->where('hide=0 and (purpose=0 or purpose=2)')->order('sort')->field('id,title')->select();
             $this->assign("parent", $parent);
             $this->assign("block", $group);
             $this->assign("pid", $pid);

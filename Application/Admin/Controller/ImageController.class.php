@@ -36,9 +36,9 @@ class ImageController extends AdminController
         $Page->setConfig("theme", '<span class="rows">共 %TOTAL_ROW% 条记录</span> %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
         $data = $Picture->where($where)->order(array('block','sort','id'))->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('data', $data);
-        $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+        $group = M('Group')->where('hide=0 and (purpose=0 or purpose=1)')->order('sort')->field('id,title')->select();
         $this->assign("block", $group);
-        $group = M('Group')->getField("id,title");
+        $group = M('Group')->where('hide=0 and (purpose=0 or purpose=1)')->getField("id,title");
         $this->assign("group", $group);
         $show = $Page->show();// 分页显示输出
         $this->assign('page',$show);// 赋值分页输出
@@ -113,7 +113,7 @@ class ImageController extends AdminController
             /* 获取数据 */
             $info = D('Channelpicture')->field(true)->find($id);
             $this->assign('info', $info);
-            $group = M('Group')->where('hide=0')->order('sort')->field('id,title')->select();
+            $group = M('Group')->where('hide=0 and (purpose=0 or purpose=1)')->order('sort')->field('id,title')->select();
             $this->assign("block", $group);
             $this->meta_title = '编辑后台菜单';
             $this->display();

@@ -21,10 +21,8 @@ class ChannelModel extends Model{
 	 * @return array          导航树
 	 * @author 麦当苗儿 <zuojiazi@vip.qq.com>
 	 */
-	public function lists($field = true){
-		$map = array('status' => 1);
-		$list = $this->field($field)->where($map)->order('sort')->select();
-
+	public function lists($field = true,$where="1=1"){
+		$list = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order('sort')->select();
 		return list_to_tree($list, 'id', 'pid', '_');
 	}
 

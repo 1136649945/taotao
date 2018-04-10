@@ -1,47 +1,163 @@
-<!-- 导航条
-================================================== -->
-<div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-        <div class="container">
-            <a class="brand" href="{:U('index/index')}">OneThink</a>
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <div class="nav-collapse collapse">
-                <ul class="nav">
-                    <think:nav name="nav">
-                    	<eq name="nav.pid" value="0">
-                        <li>
-                            <a href="{$nav.url|get_nav_url}" target="<eq name='nav.target' value='1'>_blank<else/>_self</eq>">{$nav.title}</a>
-                        </li>
-                        </eq>
-                    </think:nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>{:C('WEB_SITE_TITLE')}</title>
+    <link rel="shortcut icon" href="__ROOT__/Public/favicon.ico">
+    <meta name="keywords" content="{:C('WEB_SITE_TITLE')}"/>
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="{:C('WEB_SITE_TITLE')}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <link rel="stylesheet" type="text/css" href="css/demo.css"/>
+    <!--<link rel="stylesheet" type="text/css" href="iconfont/iconfont.css"/>-->
+    <link rel="stylesheet" type="text/css" href="__CSS__/common.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/slide.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/csshake.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/home.css"/>
+    <link rel="stylesheet" type="text/css" href="__CSS__/list.css"/>
+    <script type="text/javascript" src="__STATIC__/jquery-1.8.3.js"></script>
+    <script type="text/javascript" src="__JS__/slide.js"></script>
+    <script type="text/javascript" src="__JS__/prism.min.js"></script>
+    <script type="text/javascript" src="__JS__/home.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="wrap">
+        <div id="nav" class="header_left fl">
+        <volist name="channelf" id="vo1">
+        {$title}
+            <a href="javaScript:;">{$vo1[$title]}</a>
+            <em></em>
+        </volist>
+        </div>
+        <div class="fl header_phone">
+            <img src="__IMG__/logo.png" alt=""/>
+        </div>
+        <div class="header_right fr">
+            <div class="fr language">
+                <div class="languageCur">
+                    <div class="languageBox">
+                        <span class="current" data-language="zh">中文</span>
+                        <span data-language="en">EN</span>
+                    </div>
+                    <img src="__IMG__/push.png" alt="" id="push"/>
+                </div>
+                <ul class="languageMore">
+                    <li data-language="en">EN</li>
+                    <li data-language="ko">&#54620;&#44397;&#50612;</li>
+                    <li data-language="ja">日本語</li>
+                    <li data-language="fr">FRAN&Ccedil;AIS</li>
+                    <li data-language="ru">РУССКИЙ</li>
+                    <li data-language="es">Espa&ntilde;ol</li>
+                    <li data-language="de">Deutsch</li>
+                    <li data-language="ar">&#1575;&#1604;&#1604;&#1594;&#1577; &#1575;&#1604;&#1593;&#1585;&#1576;&#1610;&#1577;</li>
                 </ul>
             </div>
-            <div class="nav-collapse collapse pull-right">
-                <if condition="is_login()">
-                    <ul class="nav" style="margin-right:0">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="padding-left:0;padding-right:0">{:get_username()} <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{:U('User/profile')}">修改密码</a></li>
-                                <li><a href="{:U('User/logout')}">退出</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                <else/>
-                    <ul class="nav" style="margin-right:0">
-                        <li>
-                            <a href="{:U('User/login')}">登录</a>
-                        </li>
-                        <li>
-                            <a href="{:U('User/register')}" style="padding-left:0;padding-right:0">注册</a>
-                        </li>
-                    </ul>
-                </if>
+            <div class="fr _share">
+                <a href=""><img src="__IMG__/share01.png" alt=""/></a>
+                <a href=""><img src="__IMG__/share02.png" alt=""/></a>
+                <a href=""><img src="__IMG__/share03.png" alt=""/></a>
             </div>
         </div>
+        <div class="cb"></div>
     </div>
+</div>
+<div class="logo-search">
+    <div class="wrap">
+        <a class="fl logoImg" href="index.php"><img src="__IMG__/logo.png" alt=""></a>
+        <div class="fl logoEn"><img src="__IMG__/logoEn.png" alt=""/></div>
+        <a href="" target="_blank" class="fr problem current">
+            常见问题
+            <i class="preview-item big transp shake-constant shake-constant--hover shake-little" id="pr2">
+                <img src="__IMG__/promptCur.png" alt=""/>
+            </i>
+        </a>
+        <div class="fr search">
+            <div class="fl key_box">
+                <input type="text" placeholder="请输入关键词...." id="keywords"/>
+            </div>
+            <a href="javaScript:;" class="_search" id="search">
+                <img src="__IMG__/search.png" alt=""/>
+            </a>
+            <div class="cb"></div>
+        </div>
+        <div class="cb"></div>
+    </div>
+</div>
+<div class="menu">
+    <div class="wrap">
+        <ul class="menu_ul">
+        	<volist name="channels" id="vo2">
+	            <li>
+	                <a href="javaScript:;">项目介绍</a>
+	                <div class="nav">
+	                <notempty name="list['_']">
+	                	<volist name="vo2['_']" id="vo2">
+						2
+						</volist>
+					</notempty>
+	                    <p><a href="project.html">非学历项目</a></p>
+	                    <p><a href="project.html">本科学历项目</a></p>
+	                    <p><a href="project.html">硕士研究生学历项目</a></p>
+	                    <p><a href="project.html">博士研究生学历项目</a></p>
+	                    <p><a href="project.html">学分项目</a></p>
+	                    <p><a href="project.html">互惠生项目</a></p>
+	                    <p><a href="project.html">留学生创业培训项目</a></p>
+	                    <p><a href="project.html">国际英语资格证书培训项目</a></p>
+	                    <p><a href="project.html">外籍人士CATTI口译、笔译培训班项目</a></p>
+	                </div>
+	            </li>
+            </volist>
+            <li>
+                <a href="javaScript:;">在线报名</a>
+                <div class="nav">
+                    <p><a href="online.html">报名指南</a></p>
+                    <p><a href="online.html">在线申请</a></p>
+                </div>
+            </li>
+            <li>
+                <a href="javaScript:;">奖学金</a>
+                <div class="nav">
+                    <p><a href="scholarship.html">中国政府奖学金</a></p>
+                    <p><a href="scholarship.html">北京市政府奖学金</a></p>
+                    <p><a href="scholarship.html">对外经济贸易大学奖学金</a></p>
+                    <p><a href="scholarship.html">高端及卓越项目奖学金</a></p>
+                    <p><a href="scholarship.html">中国孔子学院奖学金</a></p>
+                </div>
+            </li>
+            <li><a href="abroad.html">留学贸大</a></li>
+            <li><a href="news.html">新闻通告</a></li>
+            <li><a href="job.html">实习就业</a></li>
+            <li>
+                <a href="javaScript:;">学生组织</a>
+                <div class="nav">
+                    <p><a href="organization.html">学生支持</a></p>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--mouble_nav-->
+<div class="mouble" style="background-image: url('__IMG__/mouble.png')"></div>
+<div class="mouble_nav">
+    <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="about.html">关于我们</a></li>
+        <li><a href="video.html">视频</a></li>
+        <li><a href="self_study.html">在线自学</a></li>
+        <li><a href="download.html">下载专区</a></li>
+        <li><a href="link.html">友情链接</a></li>
+        <li><a href="contact.html">联系我们</a></li>
+        <li><a href="project.html">项目介绍</a></li>
+        <li><a href="online.html">在线报名</a></li>
+        <li><a href="scholarship.html">奖学金</a></li>
+        <li><a href="abroad.html">留学贸大</a></li>
+        <li><a href="news.html">新闻通告</a></li>
+        <li><a href="job.html">实习就业</a></li>
+        <li><a href="organization.html">学生组织</a></li>
+    </ul>
 </div>

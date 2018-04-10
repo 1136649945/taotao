@@ -7,8 +7,8 @@
         <link rel="stylesheet" type="text/css" href="__CSS__/login.css" media="all">
        	<link rel="stylesheet" type="text/css" href="__CSS__/{$Think.config.COLOR_STYLE}.css" media="all">
     </head>
-    <body id="login-page">
-        <div id="bg" class="bg">
+    <body id="login-page" class="login-bg">
+        <!--<div id="bg" class="bg">-->
             <div class="login">
                 <form  action="{:U('login')}" method="post" class="form_log">
                     <h1>后台管理系统</h1>
@@ -36,7 +36,7 @@
                     <div class="check-tips"></div>
                 </form>
             </div>
-        </div>
+        <!--</div>-->
         <!--<div id="main-content">
 
             &lt;!&ndash; 主体 &ndash;&gt;
@@ -84,11 +84,11 @@
     <!--<![endif]-->
     <script type="text/javascript">
 
-        $('#bg').width($(window).width());
-        $('#bg').height($(window).height());
+        $('body.login-bg').width($(window).width());
+        $('body.login-bg').height($(window).height());
         $(window).resize(function () {
-            $('#bg').width($(window).width());
-            $('#bg').height($(window).height());
+            $('body.login-bg').width($(window).width());
+            $('body.login-bg').height($(window).height());
         });
 
     	/* 登陆表单获取焦点变色 */

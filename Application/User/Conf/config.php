@@ -15,5 +15,5 @@
 define('UC_APP_ID', 1); //应用ID
 define('UC_API_TYPE', 'Model'); //可选值 Model / Service
 define('UC_AUTH_KEY', ']P7BjR&Y@l6us:9nIK#{aq=SG*tw50`_2Vg}<$ib'); //加密KEY
-define('UC_DB_DSN', 'mysql://root:root@127.0.0.1:3306/taotao'); // 数据库连接，使用Model方式调用API必须配置此项
+define('UC_DB_DSN', 'mysql://h2127034614:A!a5ec6b4af8@sql.m75.vhostgo.com:3306/h2127034614'); // 数据库连接，使用Model方式调用API必须配置此项
 define('UC_TABLE_PREFIX', 'ta_'); // 数据表前缀，使用Model方式调用API必须配置此项
