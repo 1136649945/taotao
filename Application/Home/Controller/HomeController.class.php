@@ -39,6 +39,8 @@ class HomeController extends Controller {
             $this->assign('channels',$channel);//二级导航
             $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=1)");
             $this->assign('channelfs',$channel);//手机端使用一级二级导航
+            $channel = D("Channel")->getChannel("block,url,".TITLE,"hide=0 and status=1 and block in (31,32,33,34,36,37)");
+            $this->assign("fixedchannel",$channel);
         }
         if(!C('WEB_SITE_CLOSE')){
             $this->error('站点已经关闭，请稍后访问~');

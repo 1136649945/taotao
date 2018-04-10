@@ -17,8 +17,6 @@ class IndexController extends HomeController {
 
 	//系统首页
     public function index(){
-        $channel = D("Channel")->getChannel("block,url,".TITLE,"hide=0 and status=1 and block in (31,32,33,34,36,37)");
-        $this->assign("fixedchannel",$channel);
         $this->display();
     }
 
