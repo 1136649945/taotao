@@ -17,6 +17,9 @@ class IndexController extends HomeController {
 
 	//系统首页
     public function index(){
+        $this->assign("scroll",D('Channelpicture')->picture("path","block=12 and hide=0"));//首页轮播图
+        $channel = D('Channel')->lists("id,pid,url,gattr1,".TITLE,"hide=0 and status=1 and (block=30 or pid=63)");
+        $this->assign('depset',$channel);//部门设置
         $this->display();
     }
 

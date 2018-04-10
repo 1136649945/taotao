@@ -6,16 +6,9 @@
             <div class="img">
                 <div class="imgBox">
                     <span>
-                        <!--<a href="javaScript:;"><img src="images/1.png"/></a>-->
-                        <!--<a href="javaScript:;"><img src="images/2.png"/></a>-->
-                        <!--<a href="javaScript:;"><img src="images/3.png"/></a>-->
-                        <a href="javaScript:;"><img src="images/banner01.jpg"/></a>
-                        <a href="javaScript:;"><img src="images/banner02.jpg"/></a>
-                        <a href="javaScript:;"><img src="images/banner03.jpg"/></a>
-                        <a href="javaScript:;"><img src="images/banner04.jpg"/></a>
-                        <a href="javaScript:;"><img src="images/banner05.jpg"/></a>
-                        <a href="javaScript:;"><img src="images/banner06.jpg"/></a>
-                        <!--<a href="javaScript:;"><img src="images/banner03.jpg"/></a>-->
+	                    <volist name="scroll" id="vo">
+	                    	<a href="javaScript:;"><img src="{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}"/></a>
+	                    </volist>
                     </span>
                 </div>
                 <div class="masks mk1"></div>
@@ -25,7 +18,7 @@
     </div>
 </div>
 <div class="banner_bg">
-    <img src="images/banner_bg.png" alt=""/>
+    <img src="__IMG__/banner_bg.png" alt=""/>
 </div>
 <!--特色项目-->
 <div class="item">
@@ -341,108 +334,30 @@
 <!--部门设置-->
 <div class="department">
     <div class="wrap">
-        <h2 class="depar_tit">
-            <span>部门设置</span>
+    	<volist name="depset" id="list">
+    	<h2 class="depar_tit">
+            <span>{$list[$title]}</span>
         </h2>
         <div class="depar_box">
             <ul class="fl depar_list">
-                <li data-point="116.43424,39.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar01.png" alt=""/>
-                            <span>学院办公室</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">学院办公室</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,40.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar02.png" alt=""/>
-                            <span>非学历教育事务部</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">非学历教育事务部</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,41.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar03.png" alt=""/>
-                            <span>招生及项目开发部</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">招生及项目开发部</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,42.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar04.png" alt=""/>
-                            <span>教学部</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">教学部</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,43.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar05.png" alt=""/>
-                            <span>学生事务部</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">学生事务部</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,44.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar06.png" alt=""/>
-                            <span>预科项目管理办公室</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">预科项目管理办公室</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,45.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar07.png" alt=""/>
-                            <span>学历教育办公室</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">学历教育办公室</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
-                <li data-point="116.43424,46.98642">
-                    <a href="about.html">
-                        <div class="type">
-                            <img src="images/depar08.png" alt=""/>
-                            <span>服务中心</span>
-                        </div>
-                        <div class="type2">
-                            <span class="fl">服务中心</span>
-                            <img class="fr" src="images/depar_add.png" alt=""/>
-                        </div>
-                    </a>
-                </li>
+	            <notempty name="list['_']">
+		            <volist name="list['_']" id="vo">
+		            	<li data-point="{$vo['gattr1']}">
+		                    <a href="javaScript:;">
+		                        <div class="type">
+		                            <img src="__IMG__/{$vo['url']}" alt=""/>
+		                            <span>{$vo[$title]}</span>
+		                        </div>
+		                        <div class="type2">
+		                            <span class="fl">{$vo[$title]}</span>
+		                            <img class="fr" src="__IMG__/depar_add.png" alt=""/>
+		                        </div>
+		                    </a>
+	                	</li>
+					</volist>
+				</notempty>
             </ul>
+            
             <div class="fr depar_map">
                 <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
                 <div class="dituContent" id="dituContent"></div>
@@ -450,29 +365,30 @@
                 <div class="share">
                     <ul>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="images/icon01.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="images/icon11.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon01.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon11.png" alt=""/></a>
                         </li>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="images/icon02.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="images/icon12.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon02.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon12.png" alt=""/></a>
                         </li>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="images/icon03.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="images/icon13.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon03.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon13.png" alt=""/></a>
                         </li>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="images/icon04.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="images/icon14.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon04.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon14.png" alt=""/></a>
                         </li>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="images/icon05.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="images/icon15.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon05.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon15.png" alt=""/></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
+        </volist>
     </div>
 </div>
 <script>
