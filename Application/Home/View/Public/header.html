@@ -29,7 +29,6 @@
     <div class="wrap">
         <div id="nav" class="header_left fl">
         <volist name="channelf" id="vo1">
-        {$title}
             <a href="javaScript:;">{$vo1[$title]}</a>
             <em></em>
         </volist>
@@ -93,51 +92,17 @@
         <ul class="menu_ul">
         	<volist name="channels" id="vo2">
 	            <li>
-	                <a href="javaScript:;">项目介绍</a>
+	                <a href="javaScript:;">{$vo2[$title]}</a>
 	                <div class="nav">
 	                <notempty name="list['_']">
 	                	<volist name="vo2['_']" id="vo2">
 						2
 						</volist>
 					</notempty>
-	                    <p><a href="project.html">非学历项目</a></p>
-	                    <p><a href="project.html">本科学历项目</a></p>
-	                    <p><a href="project.html">硕士研究生学历项目</a></p>
-	                    <p><a href="project.html">博士研究生学历项目</a></p>
-	                    <p><a href="project.html">学分项目</a></p>
-	                    <p><a href="project.html">互惠生项目</a></p>
-	                    <p><a href="project.html">留学生创业培训项目</a></p>
-	                    <p><a href="project.html">国际英语资格证书培训项目</a></p>
-	                    <p><a href="project.html">外籍人士CATTI口译、笔译培训班项目</a></p>
 	                </div>
 	            </li>
             </volist>
-            <li>
-                <a href="javaScript:;">在线报名</a>
-                <div class="nav">
-                    <p><a href="online.html">报名指南</a></p>
-                    <p><a href="online.html">在线申请</a></p>
-                </div>
-            </li>
-            <li>
-                <a href="javaScript:;">奖学金</a>
-                <div class="nav">
-                    <p><a href="scholarship.html">中国政府奖学金</a></p>
-                    <p><a href="scholarship.html">北京市政府奖学金</a></p>
-                    <p><a href="scholarship.html">对外经济贸易大学奖学金</a></p>
-                    <p><a href="scholarship.html">高端及卓越项目奖学金</a></p>
-                    <p><a href="scholarship.html">中国孔子学院奖学金</a></p>
-                </div>
-            </li>
-            <li><a href="abroad.html">留学贸大</a></li>
-            <li><a href="news.html">新闻通告</a></li>
-            <li><a href="job.html">实习就业</a></li>
-            <li>
-                <a href="javaScript:;">学生组织</a>
-                <div class="nav">
-                    <p><a href="organization.html">学生支持</a></p>
-                </div>
-            </li>
+            
         </ul>
     </div>
 </div>
@@ -145,6 +110,7 @@
 <div class="mouble" style="background-image: url('__IMG__/mouble.png')"></div>
 <div class="mouble_nav">
     <ul>
+    
         <li><a href="index.html">首页</a></li>
         <li><a href="about.html">关于我们</a></li>
         <li><a href="video.html">视频</a></li>
