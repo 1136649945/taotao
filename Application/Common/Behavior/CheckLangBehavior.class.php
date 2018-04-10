@@ -51,7 +51,7 @@ class CheckLangBehavior {
             }
         }
         // 定义当前语言
-        define('LANG_SET',strtolower($langSet));
+        define('LANG_SET',substr(strtolower($langSet),0,2));
         // 读取框架语言包
         $file   =   THINK_PATH.'Lang/'.LANG_SET.'.php';
         if(LANG_SET != C('DEFAULT_LANG') && is_file($file))

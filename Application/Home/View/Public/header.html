@@ -29,7 +29,7 @@
     <div class="wrap">
         <div id="nav" class="header_left fl">
         <volist name="channelf" id="vo1">
-            <a href="javaScript:;">{$vo1[$title]}</a>
+            <a href="{$vo1['url']}">{$vo1[$title]}</a>
             <em></em>
         </volist>
         </div>
@@ -90,13 +90,13 @@
 <div class="menu">
     <div class="wrap">
         <ul class="menu_ul">
-        	<volist name="channels" id="vo2">
+        	<volist name="channels" id="list">
 	            <li>
-	                <a href="javaScript:;">{$vo2[$title]}</a>
+	                <a href="{$list['url']}">{$list[$title]}</a>
 	                <div class="nav">
 	                <notempty name="list['_']">
-	                	<volist name="vo2['_']" id="vo2">
-						2
+	                	<volist name="list['_']" id="vo2">
+						 	<p><a href="{$vo2['url']}">{$vo2[$title]}</a></p>
 						</volist>
 					</notempty>
 	                </div>
@@ -110,20 +110,8 @@
 <div class="mouble" style="background-image: url('__IMG__/mouble.png')"></div>
 <div class="mouble_nav">
     <ul>
-    
-        <li><a href="index.html">首页</a></li>
-        <li><a href="about.html">关于我们</a></li>
-        <li><a href="video.html">视频</a></li>
-        <li><a href="self_study.html">在线自学</a></li>
-        <li><a href="download.html">下载专区</a></li>
-        <li><a href="link.html">友情链接</a></li>
-        <li><a href="contact.html">联系我们</a></li>
-        <li><a href="project.html">项目介绍</a></li>
-        <li><a href="online.html">在线报名</a></li>
-        <li><a href="scholarship.html">奖学金</a></li>
-        <li><a href="abroad.html">留学贸大</a></li>
-        <li><a href="news.html">新闻通告</a></li>
-        <li><a href="job.html">实习就业</a></li>
-        <li><a href="organization.html">学生组织</a></li>
+    	<volist name="channelfs" id="vo3">
+            <li><a href="{$vo3['url']}">{$vo3[$title]}</a></li>
+        </volist>
     </ul>
 </div>

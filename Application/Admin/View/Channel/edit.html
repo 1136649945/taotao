@@ -80,10 +80,21 @@
 		style="margin-top: 10px;"></fieldset>
 	<div class="layui-form-item">
 		<div class="layui-inline">
-			<label class="layui-form-label">URL连接</label>
+			<label class="layui-form-label">连接</label>
 			<div class="layui-input-inline" style="width: 490px;">
 				<input type="text" class="layui-input" name="url"
 					value="{$info.url|default=''}">
+			</div>
+		</div>
+	</div>
+	<fieldset class="layui-elem-field layui-field-title"
+		style="margin-top: 10px;"></fieldset>
+	<div class="layui-form-item">
+		<div class="layui-inline">
+			<label class="layui-form-label">其他信息</label>
+			<div class="layui-input-inline" style="width: 490px;">
+				<input type="text" class="layui-input" name="gattr1"
+					value="{$info.gattr1|default=''}">
 			</div>
 		</div>
 	</div>
