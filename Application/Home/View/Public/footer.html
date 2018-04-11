@@ -1,22 +1,54 @@
-<div class="footer_addr">
-    <div class="wrap">
-        <h4>CopyRight &copy;2016-2018 版权：对外经济贸易大学国际学院</h4>
-        <p>地址：中国·北京市朝阳区惠新东街10号 <em>邮编：100029</em></p>
-    </div>
-</div>
-<div class="footer_tel">
-    <span>
-        <img src="__IMG__/emile.png" alt=""/>
-        邮 箱: sie@uibe.edu.cn
-    </span>
-    <span>
-        <img src="__IMG__/tel.png" alt=""/>
-        电 话: (86-10) 6449-2327 / (86-10) 6449-2329
-    </span>
-    <span>
-        <img src="__IMG__/fax.png" alt=""/>
-        传 真: (86-10) 6449-3820
-    </span>
-</div>
+
+	<div class="footer_addr">
+	    <div class="wrap">
+	    	<volist name="fixedchannel" id="vo">
+				<if condition="$vo['block'] eq 38"> 
+			     	<h4>{$vo[$title]}</h4>
+			    </if>
+		    </volist>
+		    <p>
+		    	<volist name="fixedchannel" id="vo">
+			    	<if condition="$vo['block'] eq 39"> 
+		        		{$vo[$title]}
+		        	</if>
+	        	</volist>
+	        	<em>
+		        	<volist name="fixedchannel" id="vo">
+			        	<if condition="$vo['block'] eq 40"> 
+			        		{$vo[$title]}
+			        	</if>
+			        </volist>
+	        	</em>
+	        </p>
+	        
+		
+	    </div>
+	</div>
+	<div class="footer_tel">
+	    <span>
+	        <img src="__IMG__/emile.png" alt=""/>
+	        <volist name="fixedchannel" id="vo">
+		        <if condition="$vo['block'] eq 41"> 
+			        {$vo[$title]}
+			    </if>
+		    </volist>
+	    </span>
+	    <span>
+	        <img src="__IMG__/tel.png" alt=""/>
+	        <volist name="fixedchannel" id="vo">
+		        <if condition="$vo['block'] eq 42"> 
+			        {$vo[$title]}
+			    </if>
+		    </volist>
+	    </span>
+	    <span>
+	        <img src="__IMG__/fax.png" alt=""/>
+	        <volist name="fixedchannel" id="vo">
+		        <if condition="$vo['block'] eq 43"> 
+			        {$vo[$title]}
+			    </if>
+		    </volist>
+	    </span>
+	</div>
 </body>
 </html>
