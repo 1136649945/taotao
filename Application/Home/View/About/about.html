@@ -1,0 +1,218 @@
+<include file="Public/header"/>
+<!-- matter-->
+<div class="matter">
+    <div class="wrap">
+        <div class="matter_box">
+            <div class="navL">
+            	<volist name="about" id="list">
+                <div class="navL_h">
+                    <img src="__IMG__/about/icon.png" alt=""/>
+                    <em>|</em>
+                    {$list[$title]}
+                </div>
+                <ul class="navUl">
+                	<notempty name="list['_']">
+		                <volist name="list['_']" id="vo">
+	                    <li>
+	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                            <em>{$vo[$title]}</em>
+	                            <notempty name="vo['_']">
+	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
+	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+	                            </notempty>
+	                        </a>
+	                        <notempty name="vo['_']">
+		                	<ol class="navOl">
+		                	<volist name="vo['_']" id="vo1">
+	                            <li><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
+	                        </volist>
+	                        </ol>
+	                        </notempty>
+	                    </li>
+	                    </volist>
+                    </notempty>
+                </ul>
+                </volist>
+                <volist name="document" id="vo">
+                <div class="dime">
+                    <div class="_dime">
+                        <a href="javaScript:;"><img src="{$vo['cover_id']}" alt=""/></a>
+                    </div>
+                    <p>{$vo[$title]}</p>
+                </div>
+                </volist>
+                <img src="__IMG__/navHide.png" alt="" id="goBack" class="goBack"/>
+            </div>
+            <div class="contR">
+                <div class="cont_box">
+                    <div class="bannerR">
+                    <volist name="picture" id="vo">
+                        <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+                    </volist>
+                    </div>
+                    <div class="headline">
+                        <span class="hl_icon"></span>
+                        当前位置：
+                        <a href="javaScript:;">首页</a>
+                        >
+                        <a href="javaScript:;">关于我们</a>
+                        >
+                        <a href="javaScript:;">部门设置</a>
+                    </div>
+                    <div class="matterBox">
+                        <div class="set_box">
+                            <ul class="setup">
+                                <li>
+                                    <div class="set_tit">
+                                        <em>学院办公室</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp01.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">分类1</a></p>
+                                        <p><span> > </span><a href="">分类2</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="set_tit">
+                                        <em>招生及项目开发部</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp03.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">来华留学教育项目开发</a></p>
+                                        <p><span> > </span><a href="">招生咨询</a></p>
+                                        <p><span> > </span><a href="">招生资格审核及录取</a></p>
+                                        <p><span> > </span><a href="">对外宣传</a></p>
+                                        <p><span> > </span><a href="">合作院校及机构联络及接待</a></p>
+                                        <p><span> > </span><a href="">奖学金申请</a></p>
+                                        <p><span> > </span><a href="">录取文件制作及发放</a></p>
+                                        <p><span> > </span><a href="">短期团队接待</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="set_tit">
+                                        <em>教学部</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp05.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">分类1</a></p>
+                                        <p><span> > </span><a href="">分类2</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="set_tit">
+                                        <em>学历教育办公室</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp07.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">分类1</a></p>
+                                        <p><span> > </span><a href="">分类2</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="setup">
+                                <li>
+                                    <div class="set_tit">
+                                        <em>非学历教育事务部</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp02.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">分类1</a></p>
+                                        <p><span> > </span><a href="">分类2</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="set_tit">
+                                        <em>学生事务部</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp04.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">签证申请</a></p>
+                                        <p><span> > </span><a href="">组织学生活动</a></p>
+                                        <p><span> > </span><a href="">管理学生组织</a></p>
+                                        <p><span> > </span><a href="">应对突发及特殊事件</a></p>
+                                        <p><span> > </span><a href="">心理咨询</a></p>
+                                        <p><span> > </span><a href="">保险理赔</a></p>
+                                        <p><span> > </span><a href="">部分奖学金评定</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="set_tit">
+                                        <em>预科项目管理办公室</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp06.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">分类1</a></p>
+                                        <p><span> > </span><a href="">分类2</a></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="set_tit">
+                                        <em>服务中心</em>
+                                        <span mark="1">+</span>
+                                        <img src="images/about/triangle.png" alt=""/>
+                                        <div class="cb"></div>
+                                    </div>
+                                    <a href="javaScript:;" class="set_img"><img src="images/about/setUp08.jpg" alt=""/></a>
+                                    <div class="set_type">
+                                        <p><span> > </span><a href="">分类1</a></p>
+                                        <p><span> > </span><a href="">分类2</a></p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#nav a:eq(1)').addClass('current');
+    $('ul.navUl li:first-child a').css('border-top','0');
+    //默认
+    $('ul.navUl>li:eq(0)').addClass('current');
+    $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
+    $('ul.navUl>li a.navUl_a').bind('click',function(){
+        var _this = $(this).parent();
+        _this.addClass('current').siblings('li').removeClass('current');
+        $('ul.navUl>li ol.navOl').hide();
+        _this.find('ol.navOl').fadeIn();
+    });
+//    var setup = $('.setup li');
+//    if($(window).width()<480){
+//
+//    }else{
+//        for(var i=0;i<setup.length;i++) {
+//            var setupCur = setup.eq(i);
+//            if (i % 2 == 0) {
+//                setupCur.css('padding-left', '0');
+//            } else if (i % 2 == 1) {
+//                setupCur.css('padding-right', '0');
+//            }
+//            setup.eq(setup.length - 2).css('border-bottom', '0').css('padding-bottom', '0');
+//            setup.eq(setup.length - 1).css('border-bottom', '0').css('padding-bottom', '0');
+//        }
+//    }
+</script>
+<include file="Public/footer"/>

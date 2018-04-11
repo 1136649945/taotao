@@ -21,9 +21,9 @@ class ChannelModel extends Model{
 	 * @return array          导航树
 	 * @author 麦当苗儿 <zuojiazi@vip.qq.com>
 	 */
-	public function lists($field = true,$where="1=1"){
+	public function lists($field = true,$where="1=1",$root=0){
 		$list = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order('sort')->select();
-		return list_to_tree($list, 'id', 'pid', '_');
+		return list_to_tree($list, 'id', 'pid', '_',$root);
 	}
 	/**
 	 * 获取导航列表，支持多级导航
