@@ -50,6 +50,7 @@ return array(
     ), //导入模型上传配置（文件上传类配置）
 
     'PICTURE_UPLOAD_DRIVER'=>'local',
+    'VIDEO_UPLOAD_DRIVER'=>'local',
     //本地上传文件驱动配置
     'UPLOAD_LOCAL_CONFIG'=>array(),
     'UPLOAD_BCS_CONFIG'=>array(

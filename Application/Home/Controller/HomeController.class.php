@@ -26,6 +26,10 @@ class HomeController extends Controller {
         /* 读取站点配置 */
         $config = api('Config/lists');
         C($config); //添加配置
+        if(!C('WEB_SITE_CLOSE')){
+            $this->error('站点已经关闭，请稍后访问~');
+            exit();
+        }
         if(C('WEB_SITE_CLOSE')){
             $title = "title";
             $description = "description";
@@ -45,9 +49,6 @@ class HomeController extends Controller {
             $this->assign('channelfs',$channel);//手机端使用一级二级导航
             $channel = D("Channel")->getChannel("block,url,".TITLE,"hide=0 and status=1 and block in (31,32,33,34,36,37,38,39,40,41,42,43)");
             $this->assign("fixedchannel",$channel);//固定字段
-        }
-        if(!C('WEB_SITE_CLOSE')){
-            $this->error('站点已经关闭，请稍后访问~');
         }
     }
 

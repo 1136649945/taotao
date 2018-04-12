@@ -5,13 +5,13 @@
 
 
 	<div class="main-title">
-		<h2>图片管理</h2>
+		<h2>视频管理</h2>
 	</div>
 
 	<div class="cf">
-		<a class="btn" href="javascript:dialog(false);">新增图片</a>
+		<a class="btn" href="javascript:dialog(false);">上传</a>
 		<div class="search-form fr cf">
-			<label class="layui-form-label">图片分类</label>
+			<label class="layui-form-label">视频分类</label>
 			<div class="layui-input-inline" style="width: 200px;">
 				<select name="block" style="margin-top: 5px;width: 200px;" id="select">
 				<option value="-1" >所有分类</option>
@@ -29,9 +29,8 @@
 				<tr>
 					<th>标题</th>
 					<th>描述</th>
-					<th>图片</th>
-					<th>链接地址</th>
-					<th>图片分类</th>
+					<th>视频</th>
+					<th>分类</th>
 					<th>排序</th>
 					<th>隐藏</th>
 					<th>操作</th>
@@ -42,8 +41,7 @@
 				<tr style="height:80px;">
 					<td>{$vo.title}</td>
 					<td style="width: 200px;"><pre>{$vo.describe|htmlspecialchars_decode}</pre></td>
-					<td style="80px;"><img src="{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" style="max-height: 70px;max-width: 70px;" /></td>
-					<td>{$vo.link}</td>
+					<td style="80px;"><video src="/{$vo['path']}" style="max-height: 70px;max-width: 70px;"></video></td>
 					<td>{$group[$vo['block']]}</td>
 					<td>{$vo.sort}</td>
 					<td><if condition="$vo['hide'] eq 0"> 否 <else /> 是 </if></td>
@@ -64,7 +62,7 @@
 	<form action="{:U(add)}" method="post" enctype="multipart/form-data"
 		class="form-horizontal">
 		<fieldset class="layui-elem-field layui-field-title" style="margin-bottom: 0px;">
-			<legend>图片上传</legend>
+			<legend>视频上传</legend>
 		</fieldset>
 		<div class="layui-form-item">
 			<div class="layui-inline">
@@ -93,15 +91,8 @@
 		</div>
 		<div class="layui-form-item">
 			<div class="layui-inline">
-				<label class="layui-form-label" style="width: 90px;">链接地址</label>
-				<div class="layui-input-inline" style="width: 300px;">
-					<input type="text" class="layui-input" name="link"
-						value="{$info.link}">
-				</div>
-			</div>
-			<div class="layui-inline">
 				<div class="layui-inline">
-					<label class="layui-form-label">图片分类</label>
+					<label class="layui-form-label">视频分类</label>
 					<div class="layui-input-inline" style="width: 100px;">
 						<select name="block" style="margin-top: 5px;width: 100px;">
 						<volist name="block" id="vo">
@@ -129,9 +120,9 @@
 				</label>
 			</div>
 		</div>
-		<input type="file" name="image[]" accept="image/*" multiple id="img"
+		<input type="file" name="video" accept="video/mp4" id="video"
 			style="display: none;" />
-		<div class="layui-upload-list" id="viewimage">
+		<div class="layui-upload-list" id="viewvideo">
 		</div>
 		<div class="form-item bottom-button">
 			<button class="btn submit-btn" type="submit"

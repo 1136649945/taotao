@@ -51,12 +51,12 @@
 					</div>
 				</div>
 			</div>
-		<input type="file" name="image" accept="image/*" id="img" style="display:none;"/>
+		<input type="file" name="video" accept="video/mp4" id="video" style="display:none;"/>
         <div class="layui-upload" >
-	  		<button type="button" class="layui-btn" id="upload" >图片选择</button> 
+	  		<button type="button" class="layui-btn" id="upload" >选择视频</button> 
 	  		<blockquote class="layui-elem-quote layui-quote-nm" style="width: 365px;">
 	    		预览：
-	    		<div class="layui-upload-list" id="viewimage"></div>
+	    		<div class="layui-upload-list" id="viewvideo"></div>
 	 		</blockquote>
 		</div>
         <div class="form-item">
@@ -66,7 +66,7 @@
         </div>
     </form>
     <div class="view-image">
-       <img src="{:C('PICTURE_UPLOAD')['rootPath'].$info['path']}" style="max-height: 350px;max-width: 350px;"/>
+       <video src="/{$info['path']}" style="max-height: 350px;max-width: 350px;"></video>
     </div>
 </block>
 <block name="script">

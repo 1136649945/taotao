@@ -221,8 +221,9 @@
     }).blur(function(){
         $(this).closest(".textarea").removeClass("focus");
     });
-    $("#upload").bind("click",function(){$("#file").click()});
-	$("#file").bind('input property change', function(){viewImage()});
+    $("#upload").bind("click",function(){$("input[type='file']").click()});
+	$("#img").bind('input property change', function(){viewImage()});
+	$("#video").bind('input property change', function(){viewVideo()});
 	var widowHight = document.documentElement.clientHeight;
 	$(".a4-page").css({"height":(widowHight-100)+"px"});
 });
@@ -282,7 +283,7 @@ function dialog(hide) {
 }
 
 function viewImage(){
-	var file=$("#file")[0].files;   // 获取input上传的图片数据;
+	var file=$("#img")[0].files;   // 获取input上传的图片数据;
 	if(file){
 		$('#viewimage').empty();
 		for(var i=0;i<file.length;i++){
@@ -290,7 +291,15 @@ function viewImage(){
 		}
 	}
 }
-
+function viewVideo(){
+	var file=$("#video")[0].files;   // 获取input上传的图片数据;
+	if(file){
+		$('#viewvideo').empty();
+		for(var i=0;i<file.length;i++){
+			$('#viewvideo').append('<video src="'+ window.URL.createObjectURL(file[i]) +'" alt="'+ file.name +'" style="max-height:70px;max-width:70px;margin-right: 10px;margin-top: 10px;"></video>')
+		}
+	}
+}
 //导航高亮
 function highlight_subnav(url){
     $('.side-sub-menu').find('a[href="'+url+'"]').closest('li').addClass('current');

@@ -96,7 +96,8 @@ class GroupController extends AdminController {
                 $id = I('id',-1);
                 $group1=D('Channel')->where('block='.$id)->find();
                 $group2=D('Channelpicture')->where('block='.$id)->find();
-                if($group1 || $group2){
+                $group3=D('Video')->where('block='.$id)->find();
+                if($group1 || $group2 || $group3){
                     $data['status']=false;
                     $data['info']="禁止删除，分组已在使用！";
                     $this->ajaxReturn($data,"json");
