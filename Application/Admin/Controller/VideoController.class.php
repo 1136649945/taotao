@@ -129,9 +129,10 @@ class VideoController extends AdminController
     {
         $id = I('id', - 1);
         if ($id) {
-            $path = D('Channelpicture')->field("path")->find($id);
-            $path = C('PICTURE_UPLOAD')['rootPath'] . $path['path'];
-            $data = D('Channelpicture')->delete($id);
+            $Video = D('Video');
+            $path = $Video->field("path")->find($id);
+            $path = $path['path'];
+            $data = $Video->delete($id);
             $msg = array_merge(array(
                 'success' => '操作成功！',
                 'error' => '操作失败！',
