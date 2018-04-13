@@ -98,17 +98,27 @@
 .item_left{padding-right: 15px;}
 .il_box{width: 100%;border:solid 1px #898989;}
 .ir_list{width: 100%;}
-.ir_list li{width: 100%;overflow: hidden;padding:35px 20px;background-color: #fafafa;}
+.ir_list li{width: 100%;overflow: hidden;padding:32px 20px;background-color: #fafafa;}
 .ir_list li:hover,
 .ir_list li.current{background-color: #fff;}
-.ir_date{width: 15%;}
+.ir_date{width: 15%;position: relative;}
 .ir_date h5{width: 45px;height: 45px;text-align:center;line-height:46px;background-color: #e7e7e7;font-size:20px;color:#8c8b8b;}
 .ir_date p{background-color:#fff;width: 45px;height: 45px;line-height:25px;text-align:center;border:solid 1px #fff;border-top:0;padding: 6px 3px;}
 .ir_date p em{display: block;margin-bottom:6px;width: 7px;height:1px;background-color: #8c8b8b;}
 .ir_date span{font-size: 24px;color: #a6a6a6;}
+
+.tit_sg{position:absolute;top:5px;right:10px;width:1px;height:18px;background-color:#6a6a6a;}
+
 .ir_cont{width: 85%;}
-.ir_cont h3{overflow: hidden;}
-.ir_cont h3 a{font-size: 20px;display: inline-block;color: #727272;}
+.ir_cont h3{width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.ir_cont h3 a{width:90%;font-size: 20px;display: inline-block;color: #727272;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;}
 .ir_cont h3 .item_add{float:right;display: block;width: 18px;height:18px;margin-top: 7px;position: relative;}
 .item_add img:last-child{position: absolute;top:0;left: 0;
     filter:alpha(opacity=0);
@@ -325,7 +335,7 @@
 .set_tit img{position: absolute;top:0;right: 0;}
 .set_img{display:block;width: 100%;overflow:hidden;margin-top: 45px;}
 .set_img img{display:block;width: 100%;}
-.set_type{margin-top: 35px;display: none;}
+.set_type{margin-top: 35px;/*display: none;*/}
 .set_type p{margin: 10px 0;font-size: 20px;color:#494949;
     overflow: hidden;
     white-space: nowrap;
@@ -575,9 +585,9 @@
 .organ_cont p a{color:#b51c26;}
 .organ_cont p{text-align: justify;}
 
-/*左侧菜单-返回*/
+/*左侧菜单*/
 .goBack{display: none;}
-
+.Floating{display: none;}
 
 
 

@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 /* CSS Document */
 /* 初始化CSS  重置浏览器样式*/
 html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend, img span{ margin:0; padding:0; font:12px "微软雅黑"; }
@@ -356,12 +356,12 @@ em{font-style: inherit;}
     .depar_list{width: 50%;}
     .depar_map{width: 50%;margin-top: 10px;}
     .footer_addr{height: 75px;padding-top: 20px;}
-    .footer_tel{height: inherit;line-height: inherit;font-size: 12px;padding: 8px 0;}
+    .footer_tel{height: inherit;line-height: inherit;font-size: 12px;padding: 5px 0;}
     .footer_addr h4{font-size: 14px;margin-bottom: 5px;}
     .footer_addr p{font-size: 12px;}
     .footer_addr p em{font-size: 12px;margin-left: 0;}
     .footer_tel span{display: block;}
-    .footer_tel span.ph_span{display: inline-block;margin-top:2px;}
+    .footer_tel span.ph_span{display: inline-block;}
     .footer_tel img{margin: 0;margin-bottom: -2px;}
 
     /*左侧菜单*/
@@ -488,12 +488,12 @@ em{font-style: inherit;}
     .depar_list{width: 100%;}
     .depar_map{width: 100%;margin-top: 10px;}
     .footer_addr{height: 90px;padding-top: 20px;}
-    .footer_tel{height: inherit;line-height: inherit;font-size: 12px;padding: 8px 0;}
+    .footer_tel{height: inherit;line-height: inherit;font-size: 12px;padding: 5px 0;}
     .footer_addr h4{font-size: 13px;margin-bottom: 5px;}
     .footer_addr p{font-size: 13px;}
     .footer_addr p em{font-size: 13px;margin-left: 0;}
     .footer_tel span{display: block;}
-    .footer_tel span.ph_span{display: inline-block;margin-top:2px;}
+    .footer_tel span.ph_span{display: inline-block;}
     .footer_tel img{margin: 0;margin-bottom: -2px;}
 
     /*/!*左侧菜单*!/

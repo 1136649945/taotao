@@ -16,10 +16,8 @@
 	                    <li>
 	                        <a href="javaScript:;" data-url="" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
-	                            <notempty name="vo['_']">
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
 	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-	                            </notempty>
 	                        </a>
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl">
@@ -52,12 +50,30 @@
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        当前位置：
-                        <a href="javaScript:;">首页</a>
-                        >
-                        <a href="javaScript:;">关于我们</a>
-                        >
-                        <a href="javaScript:;">部门设置</a>
+                        <volist name="crumb" id="vo">
+                        	<if condition="$vo.id eq 84">
+                        		{$vo[$title]}：
+                        	</if>
+                        </volist>
+                        <volist name="crumb" id="vo">
+                        	<if condition="$vo.id eq 1">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+                        </volist>
+                        <volist name="crumb" id="vo">
+	                        <if condition="$vo.id eq 2">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+                        </volist>
+                        <span>
+	                        <volist name="crumb" id="vo">
+		                        <if condition="$vo.id eq 24">
+			                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        </if>
+	                        </volist>
+                        </span>
                     </div>
                     <div class="matterBox">
                         <div class="set_box">
