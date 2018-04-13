@@ -28,7 +28,6 @@
 			<thead>
 				<tr>
 					<th>标题</th>
-					<th>描述</th>
 					<th>视频</th>
 					<th>分类</th>
 					<th>排序</th>
@@ -40,8 +39,7 @@
 				<notempty name="data"> <volist name="data" id="vo">
 				<tr style="height:80px;">
 					<td>{$vo.title}</td>
-					<td style="width: 200px;"><pre>{$vo.describe|htmlspecialchars_decode}</pre></td>
-					<td style="80px;"><video src="/{$vo['path']}" style="max-height: 70px;max-width: 70px;"></video></td>
+					<td style="80px;"><img src="/{$vo['imgpath']}" style="max-height: 70px;max-width: 70px;"/></td>
 					<td>{$group[$vo['block']]}</td>
 					<td>{$vo.sort}</td>
 					<td><if condition="$vo['hide'] eq 0"> 否 <else /> 是 </if></td>
@@ -103,24 +101,31 @@
 				</div>
 			</div>
 		</div>
-		<div class="layui-form-item layui-form-text">
-			<label class="layui-form-label">描述</label>
-			<div>
-				<textarea name="describe" placeholder="请输入内容" class="layui-textarea">{$info.describe|default=''}</textarea>
-			</div>
-		</div>
-
 		<div class="layui-inline">
-			<label class="layui-form-label" style="width: 90px;">请选择文件</label>
+			<label class="layui-form-label" style="width: 100px;">请选择视频封面</label>
 			<div class="layui-input-inline"
 				style="margin-top: 10px; width: 150px;">
 				<label class="radio">
 					<button type="button"
-						class="layui-btn layui-btn-primary layui-btn-xs" id="upload">选择文件</button>
+						class="layui-btn layui-btn-primary layui-btn-xs" id="uploadimg">选择文件</button>
 				</label>
 			</div>
 		</div>
-		<input type="file" name="video" accept="video/mp4" id="video"
+		<input type="file" name="img" data="img" accept="image/*" id="img" style="display:none;"/>
+        <div class="layui-upload-list" id="viewimg">
+		</div>
+
+		<div class="layui-inline">
+			<label class="layui-form-label" style="width: 100px;">请选择视频</label>
+			<div class="layui-input-inline"
+				style="margin-top: 10px; width: 150px;">
+				<label class="radio">
+					<button type="button"
+						class="layui-btn layui-btn-primary layui-btn-xs" id="uploadvideo">选择文件</button>
+				</label>
+			</div>
+		</div>
+		<input type="file" name="video" data="video" accept="video/mp4" id="video"
 			style="display: none;" />
 		<div class="layui-upload-list" id="viewvideo">
 		</div>

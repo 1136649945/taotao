@@ -15,8 +15,29 @@ use Think\Model;
  */
 class DocumentModel extends Model{
 
-    public $page = '';
 
+    public function getdocument($field = true,$where="1=1",$limit="0,5",$order="create_time desc"){
+        $document = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order($order)->limit($limit)->select();
+        $cover = array();
+        if($field || strpos($field,"cover_id")){
+            foreach ($document as $value){
+                array_push($cover, $value['cover_id']);
+            }
+        }
+        if(count($cover)){
+            $picture = D("Picture")->picture("id,path",$cover);
+            if(is_array($picture)){
+                $pictureTemp = array();
+                foreach ($picture as $value){
+                    $pictureTemp[$value['id']] = $value['path'];
+                }
+                foreach ($document as $key=>$value){
+                    $document[$key]['cover_id'] = $pictureTemp[$value['cover_id']];
+                }
+            }
+        }
+        return $document;
+    }
     /**
      * 获取文档列表
      * @param  integer  $category 分类ID
@@ -26,27 +47,9 @@ class DocumentModel extends Model{
      * @param  string   $field    字段 true-所有字段
      * @return array              文档列表
      */
-    public function lists($field = true,$where="1=1",$limit="0,5",$order="create_time desc"){
-        $document = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order($order)->limit($limit)->select();
-        $cover = array();
-        if($field || strpos($field,"cover_id")){
-            foreach ($document as $value){
-                array_push($cover, $value['cover_id']);
-            }
-        }
-        if(count($cover)){
-           $picture = D("Picture")->picture("id,path",$cover);
-           if(is_array($picture)){
-                $pictureTemp = array();
-                foreach ($picture as $value){
-                    $pictureTemp[$value['id']] = $value['path'];
-                }
-                foreach ($document as $key=>$value){
-                    $document[$key]['cover_id'] = $pictureTemp[$value['cover_id']];
-                }
-           }
-        }
-        return $document;
+    public function lists($category, $order = '`id` DESC', $status = 1, $field = true){
+        $map = $this->listMap($category, $status);
+        return $this->field($field)->where($map)->order($order)->select();
     }
 
     /**

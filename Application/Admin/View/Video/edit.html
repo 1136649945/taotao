@@ -14,12 +14,14 @@
                 <input type="text" class="text input-large" name="title" value="{$info.title|default=''}">
             </div>
         </div>
-       <div class="form-item">
-            <label class="item-label">描述</label>
-            <div class="controls">
-                <input type="text" class="text input-large" name="describe" value="{$info.describe|htmlspecialchars_decode}">
-            </div>
-        </div>
+       <input type="file" name="img" data="img" accept="image/*" id="img" style="display:none;"/>
+        <div class="layui-upload" >
+	  		<button type="button" class="layui-btn" id="uploadimg" >选择视频封面</button> 
+	  		<blockquote class="layui-elem-quote layui-quote-nm" style="width: 365px;">
+	    		预览：
+	    		<div class="layui-upload-list" id="viewimg"></div>
+	 		</blockquote>
+		</div>
         <div class="layui-form-item">
 			<div class="layui-inline">
 	            <label class="layui-form-label">排序</label>
@@ -37,7 +39,7 @@
 		</div>
 		<div class="layui-inline">
 				<div class="layui-inline">
-					<label class="layui-form-label">图片分类</label>
+					<label class="layui-form-label">视频分类</label>
 					<div class="layui-input-inline" style="width: 100px;">
 						<select name="block" style="margin-top: 5px;width: 200px;">
 						<volist name="block" id="vo">
@@ -51,9 +53,9 @@
 					</div>
 				</div>
 			</div>
-		<input type="file" name="video" accept="video/mp4" id="video" style="display:none;"/>
+		<input type="file" name="video" data="video" accept="video/mp4" id="video" style="display:none;"/>
         <div class="layui-upload" >
-	  		<button type="button" class="layui-btn" id="upload" >选择视频</button> 
+	  		<button type="button" class="layui-btn" id="uploadvideo" >选择视频</button> 
 	  		<blockquote class="layui-elem-quote layui-quote-nm" style="width: 365px;">
 	    		预览：
 	    		<div class="layui-upload-list" id="viewvideo"></div>
@@ -65,8 +67,14 @@
             <button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
         </div>
     </form>
-    <div class="view-image">
-       <video src="/{$info['path']}" style="max-height: 350px;max-width: 350px;"></video>
+    <div class="view-video">
+    	<label class="layui-form-label">视频封面</label>
+    	<br/>
+    	<img src="/{$info['imgpath']}" style="max-height: 350px;max-width: 350px;"/>
+    	<br/>
+       	<label class="layui-form-label">视频</label>
+    	<br/>
+       	<video src="/{$info['path']}" style="max-height: 350px;max-width: 350px;"></video>
     </div>
 </block>
 <block name="script">

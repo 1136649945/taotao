@@ -50,30 +50,25 @@
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        <volist name="crumb" id="vo">
-                        	<if condition="$vo.id eq 84">
+                        <!-- 面包屑 -->
+                       <volist name="crumb" id="vo">
+                        	<if condition="$key eq 0">
                         		{$vo[$title]}：
                         	</if>
-                        </volist>
-                        <volist name="crumb" id="vo">
-                        	<if condition="$vo.id eq 1">
+                        	<if condition="$key eq 1">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
 		                        >
 	                        </if>
-                        </volist>
-                        <volist name="crumb" id="vo">
-	                        <if condition="$vo.id eq 2">
+	                        <if condition="$key eq 2">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
 		                        >
 	                        </if>
-                        </volist>
-                        <span>
-	                        <volist name="crumb" id="vo">
-		                        <if condition="$vo.id eq 24">
+		                    <if condition="$key eq 3">
+		                        <span>
 			                        <a href="{$vo['url']}">{$vo[$title]}</a>
-		                        </if>
-	                        </volist>
-                        </span>
+                        		</span>
+		                    </if>
+                        </volist>
                     </div>
                     <div class="matterBox">
                         <div class="set_box">

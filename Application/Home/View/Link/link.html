@@ -1,0 +1,134 @@
+<include file="Public/header"/>
+<!-- matter-->
+<div class="matter">
+    <div class="wrap">
+        <div class="matter_box">
+            <div class="navL">
+                <volist name="link" id="list">
+                <div class="navL_h">
+                    <img src="__IMG__/link/icon.png" alt=""/>
+                    <em>|</em>
+                    {$list[$title]}
+                </div>
+                <ul class="navUl navUl_link">
+                	<notempty name="list['_']">
+		            <volist name="list['_']" id="vo">
+                    <li>
+                        <a href="javaScript:;" data-url="" class="navUl_a">
+                            <em>{$vo[$title]}</em>
+                        </a>
+                    </li>
+                    </volist>
+                    </notempty>
+                </ul>
+                </volist>
+                <volist name="relate" id="list">
+                <div class="navL_h">
+                    <img src="__IMG__/video/icon_link.png" alt=""/>
+                    <em>|</em>
+                    {$list[$title]}
+                </div>
+                <ul class="related_links">
+                <notempty name="list['_']">
+		            <volist name="list['_']" id="vo">
+		            <if condition="$key eq 0">
+                    	<li><a href="http://111.203.17.52:8080" target="_blank">{$vo[$title]}</a></li>
+                    <else/>
+                    	<li><a href="" >{$vo[$title]}</a></li>
+                    </if>
+                    </volist>
+                 </notempty>
+                </ul>
+                </volist>
+            </div>
+            <div class="contR">
+                <div class="cont_box">
+                    <div class="bannerR">
+                        <img src="images/link/banner.jpg" alt=""/>
+                    </div>
+                    <div class="headline">
+                        <span class="hl_icon"></span>
+                        当前位置：
+                        <a href="javaScript:;">首页</a>
+                        >
+                        <a href="javaScript:;">友情链接</a>
+                        >
+                        <a href="javaScript:;">政府机构</a>
+                    </div>
+                    <div class="matterBox">
+                        <ul class="links">
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link01.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">中华人民共和国教育部</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link02.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">中华人民共和国商务部</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link03.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">国家留学基金管理委员会</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link04.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">国际经济贸易学院</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link01.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">国际商学院</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link06.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">国际关系学院</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link07.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">国家汉办/孔子学院总部</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link08.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">对外经济贸易大学首页</a></p>
+                            </li>
+                            <li>
+                                <a href="" target="_blank" class="links_img">
+                                    <img src="images/link/link09.png" alt=""/>
+                                </a>
+                                <p><a href="" target="_blank">公共管理学院</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#nav a:eq(5)').addClass('current');//友情链接
+    $('ul.navUl li:first-child a').css('border-top','0');
+    //默认
+    $('ul.navUl>li:eq(0)').addClass('current');
+    $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
+    $('ul.navUl>li a.navUl_a').bind('click',function(){
+        var _this = $(this).parent();
+        _this.addClass('current').siblings('li').removeClass('current');
+        $('ul.navUl>li ol.navOl').hide();
+        _this.find('ol.navOl').fadeIn();
+    });
+</script>
+<include file="Public/footer"/>

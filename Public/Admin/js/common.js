@@ -221,7 +221,8 @@
     }).blur(function(){
         $(this).closest(".textarea").removeClass("focus");
     });
-    $("#upload").bind("click",function(){$("input[type='file']").click()});
+    $("#uploadimg").bind("click",function(){$("input[data='img']").click()});
+    $("#uploadvideo").bind("click",function(){$("input[data='video']").click()});
 	$("#img").bind('input property change', function(){viewImage()});
 	$("#video").bind('input property change', function(){viewVideo()});
 	var widowHight = document.documentElement.clientHeight;
@@ -287,7 +288,7 @@ function viewImage(){
 	if(file){
 		$('#viewimage').empty();
 		for(var i=0;i<file.length;i++){
-			$('#viewimage').append('<img src="'+ window.URL.createObjectURL(file[i]) +'" alt="'+ file.name +'" style="max-height:70px;max-width:70px;margin-right: 10px;margin-top: 10px;">')
+			$('#viewimg').append('<img src="'+ window.URL.createObjectURL(file[i]) +'" alt="'+ file.name +'" style="max-height:70px;max-width:70px;margin-right: 10px;margin-top: 10px;">')
 		}
 	}
 }

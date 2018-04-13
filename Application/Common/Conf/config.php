@@ -62,7 +62,7 @@ return array(
     'VIDEO_UPLOAD' => array(
         'mimes'    => '', //允许上传的文件MiMe类型
         'maxSize'  => 0, //上传的文件大小限制 (0-不做限制)
-        'exts'     => 'mp4', //允许上传的文件后缀
+        'exts'     => 'jpg,gif,png,jpeg,mp4', //允许上传的文件后缀
         'autoSub'  => true, //自动子目录保存文件
         'subName'  => array('date', 'Y-m-d'), //子目录创建方式，[0]-函数名，[1]-参数，多个参数使用数组
         'rootPath' => './Uploads/Video/', //保存根路径

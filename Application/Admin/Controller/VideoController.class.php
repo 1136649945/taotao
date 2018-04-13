@@ -59,17 +59,17 @@ class VideoController extends AdminController
         if (IS_POST) {
             $Video = D('Video');
             $video_driver = C('VIDEO_UPLOAD_DRIVER');
-            $info = $Video->upload($_FILES, C('VIDEO_UPLOAD'), $video_driver, C("UPLOAD_{$video_driver}_CONFIG"));
+            $infovideo = $Video->upload($_FILES, C('VIDEO_UPLOAD'), $video_driver, C("UPLOAD_{$video_driver}_CONFIG"));
             $data = $Video->create();
-            $array = array();
-            if ($info) {
-                foreach ($info as $key => $value) {
-                    $data['path'] = C('VIDEO_UPLOAD')['rootPath'] . $value['savepath'] . $value['savename'];
-                    $data[$key] = $value[$key];
-                    array_push($array, $data);
+            if (is_array($infovideo)) {
+                if(is_array($infovideo["video"])){
+                    $data['path'] = C('VIDEO_UPLOAD')['rootPath'] . $infovideo["video"]['savepath'] . $infovideo["video"]['savename'];
                 }
-                $Video->addAll($array);
+                if(is_array($infovideo["img"])){
+                    $data['imgpath'] = C('VIDEO_UPLOAD')['rootPath'] . $infovideo["img"]['savepath'] . $infovideo["img"]['savename'];
+                }
             }
+            $Video->add($data);
         }
         echo "<script>location.href='" . $_SERVER["HTTP_REFERER"] . "';</script>";
     }
@@ -130,8 +130,7 @@ class VideoController extends AdminController
         $id = I('id', - 1);
         if ($id) {
             $Video = D('Video');
-            $path = $Video->field("path")->find($id);
-            $path = $path['path'];
+            $path = $Video->field("path,imgpath")->find($id);
             $data = $Video->delete($id);
             $msg = array_merge(array(
                 'success' => '操作成功！',
@@ -140,8 +139,11 @@ class VideoController extends AdminController
                 'ajax' => IS_AJAX
             ), (array) $msg);
             if ($data) {
-                if (is_file($path)) {
-                    unlink($path);
+                if (is_file($path['path'])) {
+                    unlink($path['path']);
+                }
+                if (is_file($path['imgpath'])) {
+                    unlink($path['imgpath']);
                 }
                 $this->success($msg['success'], $msg['url'], $msg['ajax']);
             } else {

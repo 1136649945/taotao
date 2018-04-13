@@ -57,5 +57,17 @@ class HomeController extends Controller {
 		/* 用户登录检测 */
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 	}
-
+	/* 面包屑 */
+	protected function crumb($arr,$ids){
+	   $ids = split(",",$ids);
+	   $crumb = array();
+	   foreach ($ids as $val){
+	       foreach($arr as $value){
+	           if($val==$value["id"]){
+	               array_push($crumb, $value);
+	           }
+	       }
+	   }
+	   return $crumb;
+	}
 }

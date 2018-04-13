@@ -18,12 +18,12 @@ class AboutController extends HomeController {
 	//系统首页
     public function about(){
         $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,2,24,84)");
-        $this->assign('crumb',$channel);//面包屑
+        $this->assign('crumb',$this->crumb($channel,"84,1,2,24"));//面包屑
         $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=2 or block=27)");
         $this->assign('about',$channel);//关于我们菜单展示
         $picture = D('Channelpicture')->picture("path","block=13 and hide=0");
         $this->assign("picture",$picture);//banner图
-        $document =  D('Document')->lists("create_time,cover_id,".TITLE.",".DESCR,"category_id=99 and display=1 and status=1","0,3");
+        $document =  D('Document')->getdocument("create_time,cover_id,".TITLE.",".DESCR,"category_id=99 and display=1 and status=1","0,3");
         $this->assign('document',$document);//校院一角
         
         

@@ -1,0 +1,40 @@
+<?php
+// +----------------------------------------------------------------------
+// | OneThink [ WE CAN DO IT JUST THINK IT ]
+// +----------------------------------------------------------------------
+// | Copyright (c) 2013 http://www.onethink.cn All rights reserved.
+// +----------------------------------------------------------------------
+// | Author: 麦当苗儿 <zuojiazi@vip.qq.com> <http://www.zjzit.cn>
+// +----------------------------------------------------------------------
+
+namespace Home\Controller;
+
+/**
+ * 前台首页控制器
+ * 主要获取首页聚合数据
+ */
+class VideoController extends HomeController {
+
+	//系统首页
+    public function video(){
+        $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,3,28,84)");
+        $this->assign('crumb',$this->crumb($channel, "84,1,3,28"));//面包屑
+        $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=3 or block=27)");
+        $this->assign('video',$channel);//视频菜单展示
+        $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");
+        $this->assign('relate',$channel);//视频菜单展示
+        $picture = D('Channelpicture')->picture("path","block=14 and hide=0");
+        $this->assign("picture",$picture);//banner图
+        $picture = D('Channelpicture')->picture("path","block=25 and hide=0");
+        $this->assign("relatepicture",$picture);//相关连接banner图
+        $this->display();
+    }
+    //系统首页
+    public function videolist(){
+        $block = I("post.block",-1);
+        if($block>0){
+            $data = D("Video")->lists("title,path,imgpath","hide=0 and block=".$block );
+            $this->ajaxReturn($data,"json");
+        }
+    }
+}

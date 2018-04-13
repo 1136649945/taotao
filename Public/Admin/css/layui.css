@@ -4571,6 +4571,15 @@ opacity
 	margin-bottom: 10px;
 }
 
+.view-video {
+	border: 1px solid #dce0e2;
+	height: 720px;
+	width: 350px;
+	position: absolute;
+	left: 700px;
+	top: 70px;
+	text-align: center;
+}
 .view-image {
 	border: 1px solid #dce0e2;
 	height: 350px;
