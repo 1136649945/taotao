@@ -70,8 +70,8 @@
         <a class="fl logoImg" href="index.php"><img src="__IMG__/logo.png" alt=""></a>
         <div class="fl logoEn"><img src="__IMG__/logoEn.png" alt=""/></div>
         <a href="" target="_blank" class="fr problem current">
-            <volist name="fixedchannel" id="vo">
-        		<if condition="$vo['block'] eq 37"> 
+            <volist name="words" id="vo">
+        		<if condition="$vo.id eq 2"> 
 		           {$vo[$title]}
 	            </if>
 	        </volist>
@@ -81,8 +81,8 @@
         </a>
         <div class="fr search">
             <div class="fl key_box">
-             <volist name="fixedchannel" id="vo">
-        		<if condition="$vo['block'] eq 36"> 
+             <volist name="words" id="vo">
+        		<if condition="$vo.id eq 1"> 
 		           <input type="text" placeholder="{$vo[$title]}...." id="keywords"/>
 	            </if>
 	        </volist>

@@ -74,6 +74,8 @@ class ChannelController extends AdminController {
             }
             $group = M('Group')->where('hide=0 and (purpose=0 or purpose=2)')->order('sort')->field('id,title')->select();
             $this->assign("block", $group);
+            $cat = D("Category")->catinfo("1=1","id,title");
+            $this->assign("cat", $cat);
             $this->assign('pid', $pid);
             $this->assign('info',null);
             $this->meta_title = '新增导航';
@@ -117,6 +119,8 @@ class ChannelController extends AdminController {
             $this->assign("block", $group);
             $this->assign("pid", $pid);
             $this->assign("info", $info);
+            $cat = D("Category")->catinfo("1=1","id,title");
+            $this->assign("cat", $cat);
             $this->meta_title = '编辑导航';
             $this->display();
         }

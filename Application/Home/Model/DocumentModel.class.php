@@ -15,7 +15,6 @@ use Think\Model;
  */
 class DocumentModel extends Model{
 
-
     public function getdocument($field = true,$where="1=1",$limit="0,5",$order="create_time desc"){
         $document = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order($order)->limit($limit)->select();
         $cover = array();
@@ -39,6 +38,40 @@ class DocumentModel extends Model{
         return $document;
     }
     /**
+     * 获取文档
+     * @param unknown $where
+     * @param unknown $limit
+     * @param unknown $order
+     */
+    public function doclists($where=null,$order=null,$limit=null){
+        $sql = "select m.id as id,m.".TITLE." as title,m.".DESCR." as descr,m.view as view,m.create_time as create_time,m.auth as auth,h.path as path from ta_document m left join ta_picture h on m.cover_id=h.id ";
+        if($where){
+            $sql = $sql."where ".$where;
+        }
+        if($order){
+            $sql = $sql." order by ".$order;
+        }
+        if($limit){
+            $sql = $sql." limit ".$limit;
+        }
+        $data = $this->cache(true,C('DATA_CACHE_TIME'))->query($sql);
+        return $data;
+    }
+    /**
+     * 获取文档
+     * @param unknown $where
+     * @param unknown $limit
+     * @param unknown $order
+     */
+    public function docdetail($where=null){
+        $sql = "select m.id as id,m.".TITLE." as title,m.".DESCR." as descr,g.".CONTENT." as content,m.view as view,m.create_time as create_time,m.auth as auth from ta_document m left join ta_document_article g on m.id=g.id ";
+        if($where){
+            $sql = $sql."where ".$where;
+        }
+        $data = $this->cache(true,C('DATA_CACHE_TIME'))->query($sql);
+        return $data;
+    }
+    /**
      * 获取文档列表
      * @param  integer  $category 分类ID
      * @param  string   $order    排序规则
@@ -47,9 +80,13 @@ class DocumentModel extends Model{
      * @param  string   $field    字段 true-所有字段
      * @return array              文档列表
      */
-    public function lists($category, $order = '`id` DESC', $status = 1, $field = true){
+    public function lists($category, $order = 'id DESC', $status = 1, $field = true,$limit=null){
         $map = $this->listMap($category, $status);
-        return $this->field($field)->where($map)->order($order)->select();
+        if($limit==null){
+            return $this->field($field)->where($map)->order($order)->select();
+        }else{
+            return $this->field($field)->where($map)->order($order)->limit($limit)->select();
+        }
     }
 
     /**

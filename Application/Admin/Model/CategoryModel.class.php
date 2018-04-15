@@ -49,6 +49,16 @@ class CategoryModel extends Model{
      * @return array     分类信息
      * @author 麦当苗儿 <zuojiazi@vip.qq.com>
      */
+    public function catinfo($where, $field = true){
+        return $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->select();
+    }
+    /**
+     * 获取分类详细信息
+     * @param  milit   $id 分类ID或标识
+     * @param  boolean $field 查询字段
+     * @return array     分类信息
+     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     */
     public function info($id, $field = true){
         /* 获取分类信息 */
         $map = array();
@@ -59,7 +69,6 @@ class CategoryModel extends Model{
         }
         return $this->field($field)->where($map)->find();
     }
-
     /**
      * 获取分类树，指定分类则返回指定分类极其子分类，不指定则返回所有分类树
      * @param  integer $id    分类ID

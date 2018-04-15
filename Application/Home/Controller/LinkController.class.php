@@ -17,13 +17,13 @@ class LinkController extends HomeController {
 
 	//系统首页
     public function link(){
-        $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,7,16,84)");
-        $this->assign('crumb',$this->crumb($channel, "84,1,7,16"));//面包屑
+        $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,7,16)");
+        $this->assign('crumb',$this->crumb($channel, "1,7,16"));//面包屑
         $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=7 or block=26)");
         $this->assign('link',$channel);//友情链接菜单展示
         $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");
         $this->assign('relate',$channel);//相关连接菜单展示
-        $picture = D('Channelpicture')->picture("path","block=26 and hide=0");
+        $picture = D('Channelpicture')->picture("path","block=15 and hide=0");
         $this->assign("picture",$picture);//banner图
         $this->display();
     }

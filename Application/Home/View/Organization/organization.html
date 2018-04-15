@@ -4,58 +4,42 @@
     <div class="wrap">
         <div class="matter_box">
             <div class="navL">
+                <volist name="organization" id="list">
                 <div class="navL_h">
                     <img src="__IMG__/organization/icon.png" alt=""/>
                     <em>|</em>
-                    学生组织
+                    {$list[$title]}
                 </div>
                 <ul class="navUl navUl_organ">
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>学生活动</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>学生风采</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>学生捐赠</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>学生服务</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>学生交流</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>校友</em>
-                        </a>
-                    </li>
+                	<notempty name="list['_']">
+		                <volist name="list['_']" id="vo">
+	                    <li>
+	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                            <em>{$vo[$title]}</em>
+	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
+	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+	                        </a>
+	                        <notempty name="vo['_']">
+		                	<ol class="navOl">
+		                	<volist name="vo['_']" id="vo1">
+	                            <li><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
+	                        </volist>
+	                        </ol>
+	                        </notempty>
+	                    </li>
+	                    </volist>
+                    </notempty>
                 </ul>
+                </volist>
+                <img src="__IMG__/navHide.png" alt="" id="goBack" class="goBack"/>
                 <div class="meet meet_organ">
                     <div class="meet_imgs">
                         <ul>
+                        <volist name="rollpicture" id="vo">
                             <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
+                                <a href="javascript:;"><img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/></a>
                             </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                            </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                            </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                            </li>
+                         </volist>
                         </ul>
                     </div>
                 </div>
@@ -66,16 +50,33 @@
             <div class="contR">
                 <div class="cont_box">
                     <div class="bannerR">
-                        <img src="images/organization/banner.jpg" alt=""/>
+                        <volist name="picture" id="vo">
+	                        <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+	                    </volist>
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        当前位置：
-                        <a href="javaScript:;">首页</a>
-                        >
-                        <a href="javaScript:;">学生组织</a>
-                        >
-                        <a href="javaScript:;">学生活动</a>
+                        <!-- 面包屑 -->
+                       <volist name="words" id="vo">
+	                	<if condition="$vo.id eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               			</volist>
+                       <volist name="crumb" id="vo">
+                        	<if condition="$key eq 0">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+	                        <if condition="$key eq 1">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+		                    <if condition="$key eq 2">
+		                        <span id="activecrumb">
+			                        <a href="javascript:;">{$vo[$title]}</a>
+                        		</span>
+		                    </if>
+                        </volist>
                     </div>
                     <div class="matterBox">
                         <ul class="organization">
@@ -195,18 +196,14 @@
         </div>
     </div>
 </div>
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('ul.menu_ul li:eq(6)').addClass('current');//项目介绍
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
     $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
-    });
+
     $('.organization li:last-child').css('border-bottom','0');
 </script>
 <include file="Public/footer"/>

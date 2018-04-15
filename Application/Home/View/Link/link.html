@@ -44,16 +44,33 @@
             <div class="contR">
                 <div class="cont_box">
                     <div class="bannerR">
-                        <img src="images/link/banner.jpg" alt=""/>
+                        <volist name="picture" id="vo">
+                        	<img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+                    	</volist>
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        当前位置：
-                        <a href="javaScript:;">首页</a>
-                        >
-                        <a href="javaScript:;">友情链接</a>
-                        >
-                        <a href="javaScript:;">政府机构</a>
+                        <!-- 面包屑 -->
+                       <volist name="words" id="vo">
+	                	<if condition="$vo.id eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               		   </volist>
+                       <volist name="crumb" id="vo">
+                        	<if condition="$key eq 0">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+	                        <if condition="$key eq 1">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+		                    <if condition="$key eq 2">
+		                        <span id="activecrumb">
+			                        <a href="javascript:;">{$vo[$title]}</a>
+                        		</span>
+		                    </if>
+                        </volist>
                     </div>
                     <div class="matterBox">
                         <ul class="links">
@@ -118,17 +135,12 @@
         </div>
     </div>
 </div>
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('#nav a:eq(5)').addClass('current');//友情链接
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
     $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
-    });
 </script>
 <include file="Public/footer"/>

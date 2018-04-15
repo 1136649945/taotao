@@ -5,90 +5,52 @@
         <div class="matter_box">
             <div class="navL">
                 <div class="newsType">
-                    <a href="javaScript:;" class="current">学院新闻</a>
+                <volist name="news" id="vo">
+                <if condition="$key eq 0">
+                    <a href="javaScript:;" class="current">{$vo[$title]}</a>
                     <span>|</span>
-                    <a href="javaScript:;">通知公告</a>
+                <else />
+                 	<a href="javaScript:;">{$vo[$title]}</a>
+                </if>
+                </volist>
                 </div>
                 <div class="navL_h">
                     <img src="__IMG__/news/icon.png" alt=""/>
                     <em>|</em>
-                    新闻推荐
+                 <volist name="words" id="vo">
+                	<if condition="$vo.id eq 17">
+                		{$vo[$title]}
+                	</if>
+               	</volist>
+                  
                 </div>
                 <ul class="navUl navUl_news">
+                	<volist name="document1" id="vo">
                     <li>
                         <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>2018年春季法宣禁毒会议召开</em>
+                            <em>{$vo[$title]}</em>
                         </a>
                     </li>
+                    </volist>
+                </ul>
+                <ul class="navUl navUl_news" style="display: none;">
+                	<volist name="document2" id="vo">
                     <li>
                         <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>商务部高端援外硕博项目学员体验元宵节传统文化</em>
+                            <em>{$vo[$title]}</em>
                         </a>
                     </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>秋季学期报到注册工作顺利完成</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>我院组织奖学金生赴东北考察</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>我院组织高端硕士项目学员赴浙江考察</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>一堂特别的中国传统文化课</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>扬一带一路风帆，听贸大“青年”诉说</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>汉语之星大赛</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>国际学院召开本科教学工作审核评估动员会</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>我校召开来华留学生教育工作领导小组会议</em>
-                        </a>
-                    </li>
+                    </volist>
                 </ul>
                 <div class="meet">
                     <div class="meet_imgs">
                         <ul>
+                        	<volist name="scollpicture" id="vo">
                             <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                                <p>相约贸大</p>
+                                <a href=""><img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/></a>
+                                <p>相约贸大{$i}</p>
                             </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                                <p>相约贸大2</p>
-                            </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                                <p>相约贸大3</p>
-                            </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                                <p>相约贸大4</p>
-                            </li>
-                            <li>
-                                <a href=""><img src="images/news/meet.jpg" alt=""/></a>
-                                <p>相约贸大5</p>
-                            </li>
+                            </volist>
                         </ul>
                     </div>
                     <div class="meet_btn">
@@ -99,19 +61,38 @@
             <div class="contR">
                 <div class="cont_box">
                     <div class="bannerR">
-                        <img src="images/news/banner.jpg" alt=""/>
+                        <volist name="picture" id="vo">
+	                        <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+	                    </volist>
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        当前位置：
-                        <a href="javaScript:;">首页</a>
-                        >
-                        <a href="javaScript:;">新闻通告</a>
+                        <!-- 面包屑 -->
+                       <volist name="words" id="vo">
+	                	<if condition="$vo.id eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               			</volist>
+                       <volist name="crumb" id="vo">
+                        	<if condition="$key eq 0">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+	                        <if condition="$key eq 1">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+		                    <if condition="$key eq 2">
+		                        <span id="activecrumb">
+			                        <a href="javascript:;">{$vo[$title]}</a>
+                        		</span>
+		                    </if>
+                        </volist>
                     </div>
                     <div class="matterBox">
                         <ul class="notice">
                             <li>
-                                <a href="" class="noticeL"><img src="images/news/news01.jpg" alt=""/></a>
+                                <a href="/Home/News/news_details" class="noticeL"><img src="images/news/news01.jpg" alt=""/></a>
                                 <div class="noticeR">
                                     <h3><a href="">2018年顺丰奖学金颁奖典礼</a></h3>
                                     <p>
@@ -236,19 +217,9 @@
         </div>
     </div>
 </div>
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('ul.menu_ul li:eq(4)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
-    });
-    //新闻分类
-    $('.newsType a').bind('click',function(){
-        var ths = $(this);
-        ths.addClass('current').siblings('a').removeClass('current');
-    });
 </script>
 <include file="Public/footer"/>

@@ -33,7 +33,8 @@ class VideoModel extends Model{
         if($info){
             return $info; //文件上传成功
         } else {
-            $this->error = $Upload->getError();
+            var_dump($Upload->getError());
+            exit();
             return false;
         }
     }

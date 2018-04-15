@@ -17,8 +17,8 @@ class VideoController extends HomeController {
 
 	//系统首页
     public function video(){
-        $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,3,28,84)");
-        $this->assign('crumb',$this->crumb($channel, "84,1,3,28"));//面包屑
+        $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,3,28)");
+        $this->assign('crumb',$this->crumb($channel, "1,3,28"));//面包屑
         $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=3 or block=27)");
         $this->assign('video',$channel);//视频菜单展示
         $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");

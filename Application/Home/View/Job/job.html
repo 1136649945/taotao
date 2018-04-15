@@ -4,65 +4,66 @@
     <div class="wrap">
         <div class="matter_box">
             <div class="navL">
+                
+                <volist name="job" id="list">
                 <div class="navL_h">
                     <img src="__IMG__/job/icon.png" alt=""/>
                     <em>|</em>
-                    实习就业
+                    {$list[$title]}
                 </div>
-                <ul class="navUl" style='background: url("images/icon/bg.jpg") no-repeat 100% 100%;padding-bottom: 140px;'>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>就业指导</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                        <ol class="navOl">
-                            <li><a href="javaScript:;"> >> <span>求职宝典</span></a></li>
-                            <li><a href="javaScript:;"> >> <span>职业规划</span></a></li>
-                            <li><a href="javaScript:;"> >> <span>职业评测</span></a></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>自主创业</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                        <ol class="navOl">
-                            <li><a href="javaScript:;"> >> <span>创业政策</span></a></li>
-                            <li><a href="javaScript:;"> >> <span>创业指导</span></a></li>
-                            <li><a href="javaScript:;"> >> <span>典型事例</span></a></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>招聘专栏</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                        <ol class="navOl">
-                            <li><a href="javaScript:;"> >> <span>实习信息</span></a></li>
-                            <li><a href="javaScript:;"> >> <span>就业信息</span></a></li>
-                        </ol>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>实践考察</em>
-                        </a>
-                    </li>
+                <ul class="navUl">
+                	<notempty name="list['_']">
+		                <volist name="list['_']" id="vo">
+	                    <li>
+	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                            <em>{$vo[$title]}</em>
+	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
+	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+	                        </a>
+	                        <notempty name="vo['_']">
+		                	<ol class="navOl">
+		                	<volist name="vo['_']" id="vo1">
+	                            <li><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
+	                        </volist>
+	                        </ol>
+	                        </notempty>
+	                    </li>
+	                    </volist>
+                    </notempty>
                 </ul>
+                </volist>
+                <img src="__IMG__/navHide.png" alt="" id="goBack" class="goBack"/>
             </div>
             <div class="contR">
                 <div class="cont_box">
                     <div class="bannerR">
-                        <img src="images/job/banner.jpg" alt=""/>
+                        <volist name="picture" id="vo">
+	                        <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+	                    </volist>
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        当前位置：
-                        <a href="javaScript:;">首页</a>
-                        >
-                        <a href="javaScript:;">实习就业</a>
+						<!-- 面包屑 -->
+                       <volist name="words" id="vo">
+	                	<if condition="$vo.id eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               			</volist>
+                       <volist name="crumb" id="vo">
+                        	<if condition="$key eq 0">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+	                        <if condition="$key eq 1">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+		                    <if condition="$key eq 2">
+		                        <span id="activecrumb">
+			                        <a href="javascript:;">{$vo[$title]}</a>
+                        		</span>
+		                    </if>
+                        </volist>
                     </div>
                     <div class="matterBox">
                         <ul class="job">
@@ -277,18 +278,13 @@
         </div>
     </div>
 </div>
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('ul.menu_ul li:eq(5)').addClass('current');
     $('ul.navUl>li:last-child a').css('border-bottom','dashed 1px #aaaaaa');
     //默认
     $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
-    });
     $('.job li').bind('click',function(){
         $(this).addClass('current').siblings('li').removeClass('current');
     });

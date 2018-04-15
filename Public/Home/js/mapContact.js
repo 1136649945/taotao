@@ -16,7 +16,7 @@ function createMap(longitude,latitude){
     map.centerAndZoom(point, 15);              // 初始化地图,设置中心点坐标和地图级别。
     map.enableScrollWheelZoom();
     //3.1 增加自定义图标对象
-    var icon = new BMap.Icon('images/map_pot.png', new BMap.Size(28, 37));
+    var icon = new BMap.Icon('/Public/Home/images/map_pot.png', new BMap.Size(28, 37));
     //4.根据描点绘制地图图层(4.1添加带自定义图标对象的图层)
     var mkr = new BMap.Marker(point,{icon:icon});
     //5.将绘制的图层区域添加至地图中

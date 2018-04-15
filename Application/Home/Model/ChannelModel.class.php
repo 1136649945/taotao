@@ -26,7 +26,7 @@ class ChannelModel extends Model{
 		return list_to_tree($list, 'id', 'pid', '_',$root);
 	}
 	/**
-	 * 获取导航列表，支持多级导航
+	 * 获取导航列表
 	 * @param  boolean $field 要列出的字段
 	 * @return array          导航树
 	 * @author 麦当苗儿 <zuojiazi@vip.qq.com>

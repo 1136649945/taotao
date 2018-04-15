@@ -36,9 +36,9 @@ class VideoController extends AdminController
         $Page->setConfig("theme", '<span class="rows">共 %TOTAL_ROW% 条记录</span> %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%');
         $data = $Video->where($where)->order(array('block','sort','id'))->limit($Page->firstRow.','.$Page->listRows)->select();
         $this->assign('data', $data);
-        $group = M('Group')->where('hide=0 and (purpose=0 or purpose=3)')->order('sort')->field('id,title')->select();
+        $group = M('Group')->where('hide=0 and purpose=3')->order('sort')->field('id,title')->select();
         $this->assign("block", $group);
-        $group = M('Group')->where('hide=0 and (purpose=0 or purpose=3)')->getField("id,title");
+        $group = M('Group')->where('hide=0 and purpose=3')->getField("id,title");
         $this->assign("group", $group);
         $show = $Page->show();// 分页显示输出
         $this->assign('page',$show);// 赋值分页输出
@@ -87,20 +87,24 @@ class VideoController extends AdminController
             if ($id) {
                 $data = $Video->create();
                 $video_driver = C('VIDEO_UPLOAD_DRIVER');
-                $info = $Video->upload($_FILES, C('VIDEO_UPLOAD'), C('VIDEO_UPLOAD_DRIVER'), C("UPLOAD_{$pic_driver}_CONFIG"));
+                $info = $Video->upload($_FILES, C('VIDEO_UPLOAD'), C('VIDEO_UPLOAD_DRIVER'), C("UPLOAD_{$video_driver}_CONFIG"));
                 if ($info) {
-                    $path = $Video->field("path")->find($id);
-                    $path = C('VIDEO_UPLOAD')['rootPath'] . $path['path'];
-                    if (is_file($path)) {
-                        unlink($path);
+                    $path = $Video->field("path,imgpath")->find($id);
+                    if($info['img']){
+                        $data['imgpath'] = C('VIDEO_UPLOAD')['rootPath'] . $info["img"]['savepath'] . $info["img"]['savename'];
+                        if (is_file($path['img'])) {
+                            unlink($path['img']);
+                        }
                     }
-                    foreach ($info as $key => $value) {
-                        $data['path'] = substr(C('VIDEO_UPLOAD'), 1) . $value['savepath'] . $value['savename'];
-                        $data[$key] = $value[$key];
+                    if($info['video']){
+                        $data['path'] = C('VIDEO_UPLOAD')['rootPath'] . $info["video"]['savepath'] . $info["video"]['savename'];
+                        if (is_file($path['video'])) {
+                            unlink($path['video']);
+                        }
                     }
                 }
                 if ($data) {
-                    if ($Video->data($data)->save() !== false) {
+                    if ($Video->save($data) !== false) {
                         $this->success('更新成功', Cookie('__forward__'));
                     } else {
                         $this->error('更新失败');
@@ -113,7 +117,7 @@ class VideoController extends AdminController
             /* 获取数据 */
             $info = $Video->field(true)->find($id);
             $this->assign('info', $info);
-            $group = M('Group')->where('hide=0 and (purpose=0 or purpose=1)')->order('sort')->field('id,title')->select();
+            $group = M('Group')->where('hide=0 and purpose=3')->order('sort')->field('id,title')->select();
             $this->assign("block", $group);
             $this->meta_title = '编辑后台菜单';
             $this->display();

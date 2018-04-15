@@ -4,60 +4,65 @@
     <div class="wrap">
         <div class="matter_box">
             <div class="navL">
+                <volist name="abroad" id="list">
                 <div class="navL_h">
                     <img src="__IMG__/abroad/icon.png" alt=""/>
                     <em>|</em>
-                    留学贸大
+                    {$list[$title]}
                 </div>
                 <ul class="navUl navUl_abroad">
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>规章制度</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>签证提醒</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>留学生会</em>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>志愿服务</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
-                            <em>生活指南</em>
-                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
-                        </a>
-                    </li>
+                	<notempty name="list['_']">
+		                <volist name="list['_']" id="vo">
+	                    <li>
+	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                            <em>{$vo[$title]}</em>
+	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
+	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+	                        </a>
+	                        <notempty name="vo['_']">
+		                	<ol class="navOl">
+		                	<volist name="vo['_']" id="vo1">
+	                            <li><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
+	                        </volist>
+	                        </ol>
+	                        </notempty>
+	                    </li>
+	                    </volist>
+                    </notempty>
                 </ul>
+                </volist>
+                <img src="__IMG__/navHide.png" alt="" id="goBack" class="goBack"/>
             </div>
             <div class="contR">
                 <div class="cont_box">
                     <div class="bannerR">
-                        <img src="images/abroad/banner.jpg" alt=""/>
+                        <volist name="picture" id="vo">
+	                        <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+	                    </volist>
                     </div>
                     <div class="headline">
                         <span class="hl_icon"></span>
-                        当前位置：
-                        <a href="javaScript:;">首页</a>
-                        >
-                        <a href="javaScript:;">留学贸大</a>
-                        >
-                        <a href="javaScript:;">规章制度</a>
+						<!-- 面包屑 -->
+						<volist name="words" id="vo">
+	                	<if condition="$vo['id'] eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               			</volist>
+                       <volist name="crumb" id="vo">
+                        	<if condition="$key eq 0">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+	                        <if condition="$key eq 1">
+		                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                        >
+	                        </if>
+		                    <if condition="$key eq 2">
+		                        <span>
+			                        <a href="{$vo['url']}">{$vo[$title]}</a>
+                        		</span>
+		                    </if>
+                        </volist>
                     </div>
                     <div class="matterBox">
                         <ul class="abroad">
@@ -127,17 +132,12 @@
         </div>
     </div>
 </div>
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('ul.menu_ul li:eq(3)').addClass('current');
     $('ul.navUl>li:last-child a').css('border-bottom','dashed 1px #aaaaaa');
     //默认
     $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
-    });
 </script>
 <include file="Public/footer"/>

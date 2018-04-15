@@ -56,21 +56,23 @@
                     <div class="headline">
                         <span class="hl_icon"></span>
                         <!-- 面包屑 -->
-                        <volist name="crumb" id="vo">
+                        <volist name="words" id="vo">
+	                	<if condition="$vo.id eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               			</volist>
+                       <volist name="crumb" id="vo">
                         	<if condition="$key eq 0">
-                        		{$vo[$title]}：
-                        	</if>
-                        	<if condition="$key eq 1">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
 		                        >
 	                        </if>
-	                        <if condition="$key eq 2">
+	                        <if condition="$key eq 1">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
 		                        >
 	                        </if>
-		                    <if condition="$key eq 3">
-		                        <span>
-			                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                    <if condition="$key eq 2">
+		                        <span id="activecrumb">
+			                        <a href="javascript:;">{$vo[$title]}</a>
                         		</span>
 		                    </if>
                         </volist>
@@ -111,6 +113,7 @@
     </div>
 </div>
 <!-- end-->
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('#nav a:eq(2)').addClass('current');//视频
     $('ul.navUl li:first-child a').css('border-top','0');
@@ -144,10 +147,10 @@
         })
     });
     //视频窗口
-    if($(window).width()<1024){
+    if($(window).width()<=1024){
         var videoW = $(window).width();
         var videoH = $(window).height();
-    }else if($(window).width()>=1024 && $(window).width()<1600){
+    }else if($(window).width()>1024 && $(window).width()<1600){
         var videoW = 1024;
         var videoH = 576;
     }else if($(window).width()>1600){

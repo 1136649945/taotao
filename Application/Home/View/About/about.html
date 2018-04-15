@@ -13,7 +13,7 @@
                 <ul class="navUl">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li>
+	                    <li data-id="{$vo['category_id']}">
 	                        <a href="javaScript:;" data-url="" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
@@ -22,7 +22,7 @@
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl">
 		                	<volist name="vo['_']" id="vo1">
-	                            <li><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
+	                            <li data-id="{$vo1['category_id']}"><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
 	                        </volist>
 	                        </ol>
 	                        </notempty>
@@ -49,23 +49,25 @@
                     </volist>
                     </div>
                     <div class="headline">
-                        <span class="hl_icon"></span>
+                       <span class="hl_icon"></span>
                         <!-- 面包屑 -->
+                       <volist name="words" id="vo">
+	                	<if condition="$vo.id eq 3">
+	                		{$vo[$title]}：
+	                	</if>
+               			</volist>
                        <volist name="crumb" id="vo">
                         	<if condition="$key eq 0">
-                        		{$vo[$title]}：
-                        	</if>
-                        	<if condition="$key eq 1">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
 		                        >
 	                        </if>
-	                        <if condition="$key eq 2">
+	                        <if condition="$key eq 1">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
 		                        >
 	                        </if>
-		                    <if condition="$key eq 3">
-		                        <span>
-			                        <a href="{$vo['url']}">{$vo[$title]}</a>
+		                    <if condition="$key eq 2">
+		                        <span id="activecrumb">
+			                        <a href="javascript:;">{$vo[$title]}</a>
                         		</span>
 		                    </if>
                         </volist>
@@ -198,32 +200,58 @@
         </div>
     </div>
 </div>
+<img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('#nav a:eq(1)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
-    $('ul.navUl>li:eq(0)').addClass('current');
-    $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
+    $('ul.navUl>li:eq(1)').addClass('current');
+    $('ul.navUl>li:eq(1)').find('ol.navOl').fadeIn();
+
+
+    for(var i=1;i<=$('.setup li').length;i++){
+        scrollT($("#setA"+i),$("#setUp"+i));
+    }
+    function scrollT(ele,lis) {
+        ele.bind('click', function () {
+            $("html, body").animate({
+                scrollTop: lis.offset().top-50
+            }, {duration: 500, easing: "swing"});
+            if($(window).width()<768){
+                $('.navL').animate({'left':'-300px'});
+                $('#Floating').show();
+            }
+            return false;
+        });
+    }
+
+    //导航切换
+    $('.navUl>li').bind('click',function(){
+        var _this = $(this);
+        var idCur = $(this).attr('data-id');
+        if(!_this.hasClass('current')){
+            if(_this.find('ol').attr('class') != 'navOl'){
+                console.log(idCur);//_ajax(idCur);
+            }else{
+                var subId = _this.find('ol li:first-child').attr('data-id');
+                console.log(subId);//_ajax(subId);
+            }
+        }
     });
-//    var setup = $('.setup li');
-//    if($(window).width()<480){
-//
-//    }else{
-//        for(var i=0;i<setup.length;i++) {
-//            var setupCur = setup.eq(i);
-//            if (i % 2 == 0) {
-//                setupCur.css('padding-left', '0');
-//            } else if (i % 2 == 1) {
-//                setupCur.css('padding-right', '0');
-//            }
-//            setup.eq(setup.length - 2).css('border-bottom', '0').css('padding-bottom', '0');
-//            setup.eq(setup.length - 1).css('border-bottom', '0').css('padding-bottom', '0');
-//        }
-//    }
+
+    function _ajax(id){
+        var url = '/index.php/Home/About/detail/id/'+id;
+        $.ajax({
+            type: 'get',
+            url: url,
+            dataType: "json",
+            success: function(data){
+                console.log(data);
+            },
+            error: function(data){
+                //
+            }
+        });
+    }
 </script>
 <include file="Public/footer"/>

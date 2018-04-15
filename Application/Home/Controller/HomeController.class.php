@@ -33,12 +33,15 @@ class HomeController extends Controller {
         if(C('WEB_SITE_CLOSE')){
             $title = "title";
             $description = "description";
+            $content = "content";
             if("zh"!=LANG_SET){
                 $title = $title.LANG_SET;
                 $description = $description.LANG_SET;
+                $content = $content.LANG_SET;
             }
             define('TITLE',$title);
             define('DESCR',$description);
+            define('CONTENT',$content);
             $this->assign("title",TITLE);
             $this->assign("descr",DESCR);
             $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and block=1");
@@ -47,8 +50,8 @@ class HomeController extends Controller {
             $this->assign('channels',$channel);//二级导航
             $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=1)");
             $this->assign('channelfs',$channel);//手机端使用一级二级导航
-            $channel = D("Channel")->getChannel("block,url,".TITLE,"hide=0 and status=1 and block in (31,32,33,34,36,37,38,39,40,41,42,43)");
-            $this->assign("fixedchannel",$channel);//固定字段
+            $words = D("Words")->cache(true,C('DATA_CACHE_TIME'))->field("id,".TITLE)->order("id")->select();
+            $this->assign("words",$words);//固定字段
         }
     }
 
@@ -56,6 +59,40 @@ class HomeController extends Controller {
 	protected function login(){
 		/* 用户登录检测 */
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
+	}
+	
+	//文档列表
+	public function document(){
+	    if(IS_POST){
+	        $where = I("post.where",null);
+	        $order = I("post.order",null);
+	        $p = I("post.p",-1);
+	        $limit= null;
+	        if($p>0){
+	            $limit = (10*($p-1)).",10";
+	        }
+	        $this->ajaxReturn(D('Document')->doclists($where, $order , $limit),"json");
+	    }
+	}
+	//文档详情
+	public function detail(){
+	    if(IS_POST){
+	        $Doc = D('Document');
+	        $where = I("post.where",null);
+	        $more = I("post.more",null);
+	        $data = $Doc->docdetail($where);
+	        if($more){
+	            $data['more'] = $this->moredoc($data[0]['id']);
+	        }
+	        $Doc->where('id='.$data[0]['id'])->setInc('view');
+	        $this->ajaxReturn($data,"json");
+	    }
+	}
+	//系统首页
+	public function moredoc($id=-1){
+	    $Doc = D('Document');
+	    $docarr = $Doc->getdocument(TITLE.",".DESCR.",create_time","id<>".$id,"0,2");
+	    return $docarr;
 	}
 	/* 面包屑 */
 	protected function crumb($arr,$ids){

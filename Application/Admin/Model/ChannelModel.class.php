@@ -45,4 +45,21 @@ class ChannelModel extends Model {
         }
         return $info;
     }
+    /**
+     * 获取导航列表
+     * @param  boolean $field 要列出的字段
+     * @return array          导航树
+     * @author 麦当苗儿 <zuojiazi@vip.qq.com>
+     */
+    public function getChannel($field = true,$where="1=1"){
+        $data = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order('sort')->select();
+        $arr = array();
+        if(is_array($data)){
+            foreach ($data as $val){
+                $arr[$val['id']] = $val['title'];
+            }
+        }
+        return $arr;
+    
+    }
 }

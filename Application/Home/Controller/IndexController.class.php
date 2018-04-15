@@ -20,11 +20,11 @@ class IndexController extends HomeController {
         $this->assign("scroll",D('Channelpicture')->picture("path","block=12 and hide=0"));//首页轮播图
         $channel = D('Channel')->lists("id,pid,url,gattr1,".TITLE,"hide=0 and status=1 and (id=25 or pid=25)",2);
         $this->assign('depset',$channel);//部门设置
-        $document =  D('Document')->lists("create_time,cover_id,".TITLE.",".DESCR,"category_id=98 and display=1 and status=1","0,6");
+        $document =  D('Document')->getdocument("id,create_time,cover_id,".TITLE.",".DESCR,"category_id=98 and display=1 and status=1","0,6");
         $this->assign('document',$document);//特色项目
-        $document =  D('Document')->lists("create_time,cover_id,".TITLE.",".DESCR,"category_id=73 and display=1 and status=1","0,6");
+        $document =  D('Document')->getdocument("id,create_time,cover_id,".TITLE.",".DESCR,"category_id=73 and display=1 and status=1","0,6");
         $this->assign('document1',$document);//通知公告
-        $document =  D('Document')->lists("create_time,cover_id,".TITLE.",".DESCR,"category_id=72 and display=1 and status=1","0,3");
+        $document =  D('Document')->getdocument("id,create_time,cover_id,".TITLE.",".DESCR,"category_id=72 and display=1 and status=1","0,3");
         $this->assign('document2',$document);//学院新闻
         $this->display();
     }

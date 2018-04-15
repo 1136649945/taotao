@@ -1,0 +1,252 @@
+<include file="Public/header"/>
+<!-- banner-->
+<div class="banner_contact">
+	<volist name="picture" id="vo">
+    <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+    </volist>
+</div>
+<!-- contact-->
+<div class="contact">
+    <div class="wrap">
+        <div class="_contact">
+            <h1>
+            <!-- 面包屑 -->
+               <volist name="words" id="vo">
+                	<if condition="$vo.id eq 3">
+                		{$vo[$title]}：
+                	</if>
+               </volist>
+               <volist name="crumb" id="vo">
+                	<if condition="$key eq 0">
+                  	<a href="{$vo['url']}">{$vo[$title]}</a>
+                  	>
+                 	</if>
+                 	<if condition="$key eq 1">
+                  	<a href="javascript:;">{$vo[$title]}</a>
+                 	</if>
+                </volist>
+                <span></span>
+                <em></em>
+            </h1>
+            <div class="contact_box">
+                <div class="cL">
+                    <img src="__IMG__/contact/clock.png" alt="" class="clock"/>
+                    <h2>08:30—11:30</h2>
+                    <h2>13:30—16:30</h2>
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 25">
+                		<h4>{$vo[$title]}</h4>
+                	</if>
+               		</volist>
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 16">
+                		<img src="__IMG__/contact/code.jpg" alt="" class="code"/>
+                    	<p>{$vo[$title]}</p>
+                	</if>
+               		</volist>
+                    
+                </div>
+                <div class="cM">
+                	<volist name="words" id="vo">
+                	<if condition="$vo.id eq 18">
+                		<h2>{$vo[$title]}</h2>
+                	</if>
+               		</volist>
+                    <p class="cM_p1">
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 5">
+                		{$vo[$title]}
+                	</if>
+               		</volist>：（86-10）64492327，64492329</p>
+                    <p class="cM_p2">
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 7">
+                		{$vo[$title]}
+                	</if>
+               		</volist>：（86-10）64493820</p>
+                    <h2><volist name="words" id="vo">
+                	<if condition="$vo.id eq 11">
+                		{$vo[$title]}
+                	</if>
+               		</volist></h2>
+                    <p class="cM_p1">
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 5">
+                		{$vo[$title]}
+                	</if>
+               		</volist>：（86-10）64492327，64492329</p>
+                    <p class="cM_p2">
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 7">
+                		{$vo[$title]}
+                	</if>
+               		</volist>：（86-10）64493820</p>
+                    <h2><volist name="words" id="vo">
+                	<if condition="$vo.id eq 13">
+                		{$vo[$title]}
+                	</if>
+               		</volist></h2>
+                    <p class="cM_p1"><volist name="words" id="vo">
+                	<if condition="$vo.id eq 12">
+                		{$vo[$title]}
+                	</if>
+               		</volist></p>
+                    <p class="cM_p2">
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 9">
+                		{$vo[$title]}
+                	</if>
+               		</volist>：100029</p>
+                </div>
+                <div class="cR">
+                    <h2>
+                    <volist name="words" id="vo">
+                	<if condition="$vo.id eq 14">
+                		{$vo[$title]}
+                	</if>
+               		</volist>
+               		</h2>
+                    <form action="#" id="activity" class="activity">
+                        <select name="acttype" class="act_type">
+                        <volist name="activetype" id="vo">
+                            <option value="{$vo['id']}">{$vo[$title]}</option>
+                        </volist>
+                        </select>
+                        <input type="button" class="btn" onclick="subActive()" value=<volist name="words" id="vo">
+	                	<if condition="$vo.id eq 27">
+	                		"{$vo[$title]}"
+	                	</if>
+	               		</volist>/>
+                        <select name="activement" class="section">
+                        <volist name="activement" id="vo">
+                            <option value="{$vo['id']}">{$vo[$title]}</option>
+                        </volist>
+                        </select>
+                        <select name="actclass" class="act_class">
+                        <volist name="activtratype" id="vo">
+                            <option value="{$vo['id']}">{$vo[$title]}</option>
+                        </volist>
+                        </select>
+                        <input type="text" name="name" class="name" placeholder=<volist name="words" id="vo">
+                	<if condition="$vo.id eq 26">
+                		"{$vo[$title]}"
+                	</if>
+               		</volist>/>
+                    <input type="text" name="tel" class="tel" placeholder=<volist name="words" id="vo">
+                	<if condition="$vo.id eq 5">
+                		"{$vo[$title]}"
+                	</if>
+               		</volist>/>
+                        <textarea class='act_tex' name="content" placeholder=<volist name="words" id="vo">
+                	<if condition="$vo.id eq 24">
+                		"{$vo[$title]}"
+                	</if>
+               		</volist>></textarea>
+                    </form>
+                    <h2><volist name="words" id="vo">
+                	<if condition="$vo.id eq 15">
+                		{$vo[$title]}
+                	</if>
+               		</volist></h2>
+                    <p>E-mail:  sie@uibe.edu.cn</p>
+                    <p>nondegree@163.com（<volist name="words" id="vo">
+                	<if condition="$vo.id eq 20">
+                		{$vo[$title]}
+                	</if>
+               		</volist>）</p>
+                    <p>degreeinchinese@163.com（<volist name="words" id="vo">
+                	<if condition="$vo.id eq 21">
+                		{$vo[$title]}
+                	</if>
+               		</volist>）</p>
+                    <p>degreeinenglish@163.com（<volist name="words" id="vo">
+                	<if condition="$vo.id eq 22">
+                		{$vo[$title]}
+                	</if>
+               		</volist>）</p>
+                    <p>uibescholarship@163.com（<volist name="words" id="vo">
+                	<if condition="$vo.id eq 23">
+                		{$vo[$title]}
+                	</if>
+               		</volist>）</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ditu-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
+<div class="dituContent" id="dituContent" data-point="116.43424,39.98642"></div>
+<script type="text/javascript" src="__JS__/mapContact.js"></script>
+<script>
+	$.fn.serializeObject = function()
+	{
+	 var o = {};
+	 var a = this.serializeArray();
+	 $.each(a, function() {
+	 if (o[this.name] !== undefined) {
+	  if (!o[this.name].push) {
+	  o[this.name] = [o[this.name]];
+	  }
+	  o[this.name].push(this.value || '');
+	 } else {
+	  o[this.name] = this.value || '';
+	 }
+	 });
+	 return o;
+	};
+    $('#nav a:eq(6)').addClass('current');
+    function subActive(){
+    	if($('input.name').val()==''){
+    		$('input.name').addClass('ipt_color');
+    		$('input.name').focus();
+    		return;
+    	}else if($('input.tel').val()==''){
+    		$('input.tel').addClass('ipt_color');
+    		$('input.tel').focus();
+    		return;
+    	}else{
+    		var url = '/admin.php/Active/add';
+        	var from = $("#activity").serialize();
+        	var test = $('select.act_type option:selected').text()+'\n'
+        	+$('select.section option:selected').text()+'\n'
+        	+$('select.act_class option:selected').text()+'\n'
+        	+$('input.name').val()+'\n'
+        	+$('input.tel').val()+'\n'
+        	+$('textarea.act_tex').text();
+        	if(confirm(test)){
+        		$.ajax({
+	    			type: 'post',
+	    			url: url,
+	    			dataType: "json",
+	    			data: from,
+	    			success: function(data){
+	    				$('#activity')[0].reset();
+	    				alert(data.info);
+	    			},
+	    			error: function(data){
+	    				alert("提交失败");
+	    			}
+	    		});
+        	}else{
+	    		
+        	}
+    	}
+    	
+    }
+    $('input.name').bind('blur',function(){
+    	if($(this).val()==''){
+    		$(this).addClass('ipt_color');
+    	}else{
+    		$(this).removeClass('ipt_color');
+    	}
+    });
+    $('input.tel').bind('blur',function(){
+    	if($(this).val()==''){
+    		$(this).addClass('ipt_color');
+    	}else{
+    		$(this).removeClass('ipt_color');
+    	}
+    });
+</script>
+<include file="Public/footer"/>

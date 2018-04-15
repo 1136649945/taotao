@@ -24,11 +24,11 @@
 <div class="item">
     <div class="wrap">
         <div class="title">
-        	<volist name="fixedchannel" id="vo">
-        		<if condition="$vo['block'] eq 31"> 
+        	<volist name="words" id="vo">
+        		<if condition="$vo['id'] eq 29"> 
 		            <span class="tit_l fl">{$vo[$title]}</span>
 	            </if>
-	            <if condition="$vo['block'] eq 34"> 
+	            <if condition="$vo['id'] eq 4"> 
 		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
 		        </if>
 	        </volist>
@@ -62,7 +62,8 @@
 	                                            <em></em>
 	                                            <span>{$vo['create_time']|date="Y",###}</span>
 	                                        </p>
-	                                    </div>
+                                            <i class="tit_sg"></i>
+                                        </div>
 	                                    <div class="fr ir_cont">
 	                                        <h3>
 	                                            <a href="" target="_blank">{$vo[$title]}</a>
@@ -85,7 +86,7 @@
             <div class="fl item_right">
                 <ul class="ir_list">
                 <volist name="document" id="vo" >
-                <if condition="$key gt 2"> 
+                <if condition="$key gt 2">
                     <li>
                         <div class="fl ir_date">
                             <h5>{$vo['create_time']|date='M',###}</h5>
@@ -109,9 +110,13 @@
                     </volist>
                 </ul>
                 <div class="item_imgs">
-                    <img src="images/item01.jpg" alt=""/>
-                    <img src="images/item02.jpg" alt=""/>
-                    <img src="images/item03.jpg" alt=""/>
+                    <volist name="document" id="vo" >
+                        <if condition="$key gt 2">
+                            <a href="">
+                                <img src="{$vo['cover_id']}" alt=""/>
+                            </a>
+                        </if>
+                    </volist>
                 </div>
             </div>
         </div>
@@ -121,11 +126,11 @@
 <div class="announcement">
     <div class="wrap">
         <div class="title">
-            <volist name="fixedchannel" id="vo">
-        		<if condition="$vo['block'] eq 32"> 
+            <volist name="words" id="vo">
+        		<if condition="$vo['id'] eq 30"> 
 		            <span class="tit_l fl">{$vo[$title]}</span>
 	            </if>
-	            <if condition="$vo['block'] eq 34"> 
+	            <if condition="$vo['id'] eq 4"> 
 		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
 		        </if>
 	        </volist>
@@ -155,11 +160,11 @@
 <div class="news">
     <div class="wrap">
         <div class="title">
-            <volist name="fixedchannel" id="vo">
-        		<if condition="$vo['block'] eq 33"> 
+            <volist name="words" id="vo">
+        		<if condition="$vo['id'] eq 31"> 
 		            <span class="tit_l fl">{$vo[$title]}</span>
 	            </if>
-	            <if condition="$vo['block'] eq 34"> 
+	            <if condition="$vo['id'] eq 4"> 
 		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
 		        </if>
 	        </volist>
@@ -206,7 +211,7 @@
 	            <notempty name="list['_']">
 		            <volist name="list['_']" id="vo">
 		            	<li data-point="{$vo['gattr1']}">
-		                    <a href="/Home/About/index">
+		                    <a href="/index.php/Home/About/about?id=35">
 		                        <div class="type">
 		                            <img src="__IMG__/{$vo['url']}" alt=""/>
 		                            <span>{$vo[$title]}</span>

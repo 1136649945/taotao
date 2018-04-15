@@ -555,7 +555,7 @@
 .activity select.act_type,
 .activity select.section,
 .activity input.name{margin-left: 0;}
-
+.activity input.ipt_color{border-color:#8f000b;}
 
 /*项目组织*/
 .organization{width: 100%;}
