@@ -16,13 +16,31 @@ namespace Home\Controller;
 class ProjectController extends HomeController {
 
 	//系统首页
-    public function project(){
+    public function project($id=null,$category_id=53,$p=1){
         $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,9,31)");
         $this->assign('crumb',$this->crumb($channel,"1,9,31"));//面包屑
-        $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=9 or block=27)");
-        $this->assign('project',$channel);//项目介绍菜单展示
+        //项目介绍菜单展示
+        $channel = D('Channel')->lists("id,category_id,pid,url,".TITLE,"hide=0 and status=1 and (id=9 or block=27)");
+        $this->assign('project',$channel);
+        //banner图
         $picture = D('Channelpicture')->picture("path","block=17 and hide=0");
-        $this->assign("picture",$picture);//banner图
+        $this->assign("picture",$picture);
+        //分类id
+        $this->assign("category_id",$category_id);
+        //文章id
+        $this->assign("id",$id);
+        //获取文章
+        $Doc = D("Document");
+        if($id!=null){
+           $this->assign("content",$Doc->docdetail("m.id=".$id));
+        }else{
+            $limit= null;
+            if($p>0){
+                $limit = (10*($p-1)).",10";
+            }
+           $data = $Doc->doclists("m.category_id=".$category_id,"m.create_time desc",$limit);
+           $this->assign("contarr",json_encode($data));
+        }
         $this->display();
     }
 }

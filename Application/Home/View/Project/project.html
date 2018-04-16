@@ -13,8 +13,8 @@
                 <ul class="navUl">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li>
-	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                    <li <if condition="$category_id neq null"><if condition="$category_id eq $vo['category_id']">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if>      >
+	                        <a href="/index.php/Home/Project/project?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
 	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
@@ -65,67 +65,19 @@
                         </volist>
                     </div>
                     <div class="matterBox">
-                        <ul class="project">
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">外交汉语强化培训项目</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">普通预科</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">强化预科</a>
-                                <em>2018-03-20</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">基础汉语</a>
-                                <em>2018-03-22</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">商务汉语</a>
-                                <em>2018-03-23</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">强化汉语</a>
-                                <em>2018-03-23</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">中国经济贸易研修</a>
-                                <em>2018-03-23</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">中国商贸文化选修课程（外语授课）</a>
-                                <em>2018-03-24</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">商务汉语听说速成3A项目</a>
-                                <em>2018-03-25</em>
-                            </li>
-                        </ul>
-                        <div class="page">
-                            <a href="javaScript:;" class="btnPage" id="firstPage">首页</a>
-                            <a href="javaScript:;" id="prev">&lt;</a>
-                            <div style="display: inline-block;">
-                                <a href="javaScript:;">1</a>
-                                <a href="javaScript:;">2</a>
-                                <a href="javaScript:;" class="current">3</a>
-                                <a href="javaScript:;">4</a>
-                                <a href="javaScript:;">5</a>
-                                <a href="javaScript:;">6</a>
-                            </div>
-                            <a href="javaScript:;" id="next">&gt;</a>
-                            <a href="javaScript:;" class="btnPage" id="endPage">末页</a>
-                        </div>
+                    	<if condition="$id neq null">
+                    		<volist name="content" id="vo">
+                    			{$vo.content}
+                    		</volist>
+                    	<else/>
+                    		<ul class="project">
+		                    	<script>
+			                    	var contentarr = {$contarr};
+			                    	console.log(contentarr);
+		                    	</script>
+                        	</ul>
+                        	<div class="page"></div>
+                    	</if>
                     </div>
                 </div>
             </div>
@@ -134,10 +86,8 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
-    $('ul.menu_ul li:eq(0)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
-    $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
 </script>
 <include file="Public/footer"/>

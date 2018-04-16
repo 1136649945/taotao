@@ -84,7 +84,6 @@ class HomeController extends Controller {
 	        if($more){
 	            $data['more'] = $this->moredoc($data[0]['id']);
 	        }
-	        $Doc->where('id='.$data[0]['id'])->setInc('view');
 	        $this->ajaxReturn($data,"json");
 	    }
 	}
