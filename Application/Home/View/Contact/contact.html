@@ -239,8 +239,8 @@
 	    			dataType: "json",
 	    			data: from,
 	    			success: function(data){
-	    				$('#activity')[0].reset();
 	    				if(data.status){
+	    					$('#activity')[0].reset();
 	    					layer.msg(success, {time: 1000,icon: 1});
 	    				}else{
 	    					layer.msg(fail, {time: 1000,icon: 2});
