@@ -16,8 +16,4 @@ use Think\Model;
  */
 
 class WordsModel extends Model {
-   /* 自动验证规则 */
-    protected $_validate = array(
-        array('title', '', '中文已经存在', self::VALUE_VALIDATE, 'unique', self::MODEL_BOTH),
-    );
 }

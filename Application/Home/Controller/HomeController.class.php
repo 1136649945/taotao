@@ -90,6 +90,7 @@ class HomeController extends Controller {
 	}
 	//系统首页
 	public function moredoc($id=-1){
+	    /* 更新浏览数 */
 	    $Doc = D('Document');
 	    $docarr = $Doc->getdocument(TITLE.",".DESCR.",create_time","id<>".$id,"0,2");
 	    return $docarr;

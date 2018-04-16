@@ -119,6 +119,9 @@ $(function(){
         }
     });
 
+    //顶部导航
+    $('#nav em:last-child').hide();
+
     //通知公告
     if($(window).width()<480){
         for(var i=0;i<$('.anno_cont li').length;i++){
@@ -202,11 +205,19 @@ $(function(){
         var navL_h = $(window).height()-50;
         $('.navL').height(navL_h+'px');
     }
-    $('.hl_icon').bind('click',function(){
+    $(window).resize(function () {
+        if($(window).width()<768) {
+            var navL_h = $(window).height()-50;
+            $('.navL').height(navL_h+'px');
+        }
+    });
+    $('#Floating').bind('click',function(){
         $('.navL').animate({left:'0px'});
+        $('#Floating').hide();
     });
     $('#goBack').bind('click',function() {
         $('.navL').animate({left: '-300px'});
+        $('#Floating').show();
     });
 
     //关于我们--部门设置
@@ -225,6 +236,43 @@ $(function(){
             $(this).parent().siblings('.set_type').hide();
         }
 
+    });
+
+    /*//左侧菜单
+    $('ul.navUl>li a.navUl_a').bind('click',function(){
+        var _this = $(this).parent();
+        if(_this.hasClass('current') && _this.find('ol').attr('class') == 'navOl'){//收回子菜单
+            _this.removeClass('current');
+            _this.find('ol.navOl').fadeOut();
+        }else if(_this.hasClass('current') && _this.find('ol').attr('class') != 'navOl'){//收回主菜单
+            if($(window).width()<768){
+                $('.navL').animate({'left':'-300px'});
+                $('#Floating').show();
+            }
+        }else if(!_this.hasClass('current') && _this.find('ol').attr('class') == 'navOl'){//展开子菜单
+            _this.addClass('current').siblings('li').removeClass('current');
+            $('ul.navUl>li ol.navOl').hide();
+            _this.find('ol.navOl').fadeIn();
+        }else if(!_this.hasClass('current') && _this.find('ol').attr('class') != 'navOl'){//收回主菜单
+            _this.addClass('current').siblings('li').removeClass('current');
+            $('ul.navUl>li ol.navOl').hide();
+            if($(window).width()<768){
+                $('.navL').animate({'left':'-300px'});
+                $('#Floating').show();
+            }
+        }
+    });*/
+    $('ol.navOl li').bind('click',function () {
+        if($(window).width()<768){
+            $('.navL').animate({'left':'-300px'});
+            $('#Floating').show();
+        }
+    });
+
+    //新闻分类
+    $('.newsType a').bind('click',function(){
+        var ths = $(this);
+        ths.addClass('current').siblings('a').removeClass('current');
     });
 
     //新闻通告--轮播
@@ -260,42 +308,42 @@ $(function(){
     }
 });
 
-$(function(){
-    document.addEventListener('touchstart',touchstart,false);
-    function touchstart(d){
-//                console.log(e.touches[0].pageX);
-//                console.log(e.touches[0].pageY);
-        //不兼容的浏览器过滤掉
-        try{
-            if(d.touches[0]){
-                startx=d.touches[0].pageX;
-                starty=d.touches[0].pageY;
-            }
-        }catch(e){
-            console.log(e);
-        }
-    }
-    document.addEventListener('touchmove',touchmove,false);
-    function touchmove(d){
-        try{
-            if(d.touches[0]){
-                endx=d.touches[0].pageX;
-                endy=d.touches[0].pageY;
-            }
-        }catch(e){
-            console.log(e);
-        }
-    }
-    document.addEventListener('touchend',touchend,false);
-    function touchend(){
-        //比较两个是决定滑动方向
-        if(endx<startx && (startx-endx)>40){//左滑
-            $('.navL').animate({'left':'-300px'});
-        }else if(endx>startx && (endx-startx)>40){//右滑
-            $('.navL').animate({'left':'0px'});
-        }
-    }
-});
-function scoll(){
-    var arr = $(".new_scoll li");
-}
+/*$(function(){
+ document.addEventListener('touchstart',touchstart,false);
+ function touchstart(d){
+ //                console.log(e.touches[0].pageX);
+ //                console.log(e.touches[0].pageY);
+ //不兼容的浏览器过滤掉
+ try{
+ if(d.touches[0]){
+ startx=d.touches[0].pageX;
+ starty=d.touches[0].pageY;
+ }
+ }catch(e){
+ console.log(e);
+ }
+ }
+ document.addEventListener('touchmove',touchmove,false);
+ function touchmove(d){
+ try{
+ if(d.touches[0]){
+ endx=d.touches[0].pageX;
+ endy=d.touches[0].pageY;
+ }
+ }catch(e){
+ console.log(e);
+ }
+ }
+ document.addEventListener('touchend',touchend,false);
+ function touchend(){
+ //比较两个是决定滑动方向
+ if(endx<startx && (startx-endx)>40){//左滑
+ $('.navL').animate({'left':'-300px'});
+ }else if(endx>startx && (endx-startx)>40){//右滑
+ $('.navL').animate({'left':'0px'});
+ }
+ }
+ });
+ function scoll(){
+ var arr = $(".new_scoll li");
+ }*/

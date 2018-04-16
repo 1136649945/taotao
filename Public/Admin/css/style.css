@@ -24,12 +24,12 @@ body{
 }
 .header .logo {
     float: left;
-    margin-left: 20px;
+    margin-left: 40px;/*20px*/
     /*width: 184px;*/
     width: auto;
-    height: 28px;
-    margin-top: 11px;
-    margin-right: 32px;
+    height: 40px;/*28px*/
+    margin-top: 5px;/*11px*/
+    margin-right: 30px;/*32px*/
     /*background: url(../images/log_icon.png) no-repeat;*/
 }
 
@@ -40,7 +40,7 @@ body{
 }
 .main-nav li {
     float: left;
-    width: 82px;
+    width: auto;
 }
 .main-nav a {
     display: block;
@@ -49,6 +49,7 @@ body{
     font-size: 15px;
     color: #FFF;
     text-align: center; font-weight: bold;
+    padding: 0 18px;
 }
 .main-nav a:hover {
     text-decoration: none;

@@ -204,10 +204,6 @@
 <script>
     $('#nav a:eq(1)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
-    //默认
-    $('ul.navUl>li:eq(1)').addClass('current');
-    $('ul.navUl>li:eq(1)').find('ol.navOl').fadeIn();
-
 
     for(var i=1;i<=$('.setup li').length;i++){
         scrollT($("#setA"+i),$("#setUp"+i));
@@ -225,33 +221,116 @@
         });
     }
 
-    //导航切换
-    $('.navUl>li').bind('click',function(){
+    var initType = window.location.search;
+    console.log(initType);
+    var initIdx = null;
+    var liCur = null;
+    if(initType!=undefined && initType!=''){
+        initType = initType.split('=')[1];
+        initIdx = initType;
+        //展示菜单
+        for(var i=0;i<$('.navUl>li').length;i++){
+            var _lis = $('.navUl>li').eq(i);
+            if(_lis.attr('data-id')==initIdx){
+                liCur = _lis.find('a.navUl_a em').text();
+                init(liCur,3);
+            }
+        }
+    }else{
+        //默认展示第一个菜单
+        liCur = $('ul.navUl>li:first-child');
+        init(liCur,0);
+    }
+    function init(liCur,type){
+        var idCur = liCur.attr('data-id');
+        _ajax(idCur,type);
+        var nameCur = liCur.find('a.navUl_a em').text();
+        liCur.addClass('current');
+        liCur.find('ol.navOl').fadeIn();
+        //面包屑
+        crumbs(nameCur);
+    }
+    function crumbs(name){
+        $('#activecrumb a').text(name);
+    }
+
+    /**
+        0-详情
+        1-分类
+        2-详情-更多
+        3-特殊-部门设置
+     */
+    //左侧菜单
+    $('ul.navUl>li').bind('click',function(){
         var _this = $(this);
-        var idCur = $(this).attr('data-id');
-        if(!_this.hasClass('current')){
-            if(_this.find('ol').attr('class') != 'navOl'){
-                console.log(idCur);//_ajax(idCur);
-            }else{
-                var subId = _this.find('ol li:first-child').attr('data-id');
-                console.log(subId);//_ajax(subId);
+        if(_this.hasClass('current')){
+            if(_this.find('ol').attr('class') == 'navOl'){/*收回子菜单*/
+                _this.removeClass('current');
+                _this.find('ol.navOl').fadeOut();
+            }else{/*收回主菜单*/
+                if($(window).width()<768){
+                    $('.navL').animate({'left':'-300px'});
+                    $('#Floating').show();
+                }
+            }
+        }else{
+            if(_this.find('ol').attr('class') == 'navOl'){/*展开子菜单*/
+                /*展示第一个子菜单*/
+                var idCur = _this.find('ol li:first-child').attr('data-id');
+                if($(this).index() == 1){/*部门设置*/
+                    _ajax(idCur,3);
+                }else if($(this).index() == 3){/*校园风光*/
+                    _ajax(idCur,1);
+                }else{
+                    _ajax(idCur,0);
+                }
+                _this.addClass('current').siblings('li').removeClass('current');
+                $('ul.navUl>li ol.navOl').hide();
+                _this.find('ol.navOl').fadeIn();
+            }else{/*收回主菜单*/
+                var idCur = _this.attr('data-id');
+                if($(this).index() == 3){/*校园风光*/
+                    _ajax(idCur,1);
+                }else{
+                    _ajax(idCur,0);
+                }
+                _this.addClass('current').siblings('li').removeClass('current');
+                $('ul.navUl>li ol.navOl').hide();
+                if($(window).width()<768){
+                    $('.navL').animate({'left':'-300px'});
+                    $('#Floating').show();
+                }
             }
         }
     });
 
-    function _ajax(id){
-        var url = '/index.php/Home/About/detail/id/'+id;
+    function _ajax(id,type){
+        console.log(id+'--'+type);
+        /*var param = {};
+        param.where = "m.category_id="+id;
+        var url = '';
+        if(type == 0){/!*详情*!/
+            url = '/index.php/Home/About/detail';
+        }else if(type == 1){/!*分类*!/
+            url = '/index.php/Home/About/document/'
+        }else if(type == 2){/!*详情更多*!/
+            url = '/index.php/Home/About/detail';
+            param.more = true;
+        }else if(type == 3){/!*特殊部门设置*!/
+            url = '/index.php/Home/About/document/';
+        }
         $.ajax({
-            type: 'get',
+            type: 'post',
             url: url,
             dataType: "json",
+            data: param,
             success: function(data){
                 console.log(data);
             },
             error: function(data){
-                //
+                console.log(data);
             }
-        });
+        });*/
     }
 </script>
 <include file="Public/footer"/>

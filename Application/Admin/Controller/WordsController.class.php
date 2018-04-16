@@ -50,9 +50,6 @@ class WordsController extends AdminController
         if (IS_POST) {
             $Words = D('Words');
             $data = $Words->create();
-            if($Words->getError()){
-                $this->error($Words->getError());
-            }
             if ($data) {
                 if ($Words->add($data)!== false) {
                     $this->success('添加成功', U('index'));
