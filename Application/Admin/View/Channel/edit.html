@@ -106,6 +106,7 @@
 			<div class="layui-input-inline" style="width: 490px;">
 				<select name="category_id" style="margin-top: 5px;width: 200px;">
 					<volist name="cat" id="vo">
+						<option value="-1" >无对应文章分类</option>
 						<if condition="$info['category_id'] eq $vo['id']"> 
 							<option value="{$vo.id}" selected="selected">{$vo.title}</option>
 						<else />

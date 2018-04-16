@@ -29,7 +29,7 @@
     <div class="wrap">
         <div id="nav" class="header_left fl">
         <volist name="channelf" id="vo1">
-            <a href="{$vo1['url']}">{$vo1[$title]}</a>
+            <a href="{$vo1['url']}" <if condition="$vo1.target eq 1"> target="_blank"</if>   >{$vo1[$title]}</a>
             <em></em>
         </volist>
         </div>
@@ -101,11 +101,11 @@
         <ul class="menu_ul">
         	<volist name="channels" id="list">
 	            <li>
-	                <a href="{$list['url']}">{$list[$title]}</a>
+	                <a href="{$list['url']}" <if condition="$list.target eq 1"> target="_blank"</if>>{$list[$title]}</a>
 	                <div class="nav">
 	                <notempty name="list['_']">
 	                	<volist name="list['_']" id="vo2">
-						 	<p><a href="{$vo2['url']}">{$vo2[$title]}</a></p>
+						 	<p><a href="{$vo2['url']}" <if condition="$vo2.target eq 1"> target="_blank"</if>>{$vo2[$title]}</a></p>
 						</volist>
 					</notempty>
 	                </div>

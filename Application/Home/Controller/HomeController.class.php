@@ -44,11 +44,11 @@ class HomeController extends Controller {
             define('CONTENT',$content);
             $this->assign("title",TITLE);
             $this->assign("descr",DESCR);
-            $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and block=1");
+            $channel = D('Channel')->lists("id,pid,target,url,".TITLE,"hide=0 and status=1 and block=1");
             $this->assign('channelf',$channel);//一级导航
-            $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=27)");
+            $channel = D('Channel')->lists("id,pid,target,url,".TITLE,"hide=0 and status=1 and (block=10 or block=27)");
             $this->assign('channels',$channel);//二级导航
-            $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=1)");
+            $channel = D('Channel')->getChannel("id,target,pid,url,".TITLE,"hide=0 and status=1 and (block=10 or block=1)");
             $this->assign('channelfs',$channel);//手机端使用一级二级导航
             $words = D("Words")->cache(true,C('DATA_CACHE_TIME'))->field("id,".TITLE)->order("id")->select();
             $this->assign("words",$words);//固定字段

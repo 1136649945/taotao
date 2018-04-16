@@ -65,7 +65,7 @@
                                         </div>
 	                                    <div class="fr ir_cont">
 	                                        <h3>
-	                                            <a href="" target="_blank">{$vo.title}</a>
+	                                            <a href="/index.php/Home/Project/project?id={$vo['id']}&category_id={$vo['cat_id']}" target="_blank">{$vo.title}</a>
 	                                        </h3>
 	                                        <p>{$vo.descr}.......</p>
 	                                    </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="fr ir_cont">
                             <h3>
-                                <a href="javascript:;" >{$vo.title}</a>
+                                <a href="/index.php/Home/Project/project?id={$vo['id']}&category_id={$vo['cat_id']}" target="_blank" >{$vo.title}</a>
                                 <span class="item_add">
                                     <img src="__IMG__/item_add.png" alt=""/>
                                     <img src="__IMG__/item_addCur.png" alt=""/>
@@ -143,8 +143,8 @@
         <ul class="anno_cont">
         <volist name="document1" id="vo" >
 	        <li>
-	            <a href="" target="_blank"><img src="{$vo['path']}" alt=""/></a>
-	            <a href="" target="_blank" class="anno_tit">
+	            <a href="/index.php/Home/News/news?id={$vo['id']}&category_id={$vo['cat_id']}" target="_blank"><img src="{$vo['path']}" alt=""/></a>
+	            <a href="/index.php/Home/News/news?id={$vo['id']}&category_id={$vo['cat_id']}" target="_blank" class="anno_tit">
 	                <h3>
 	                    <span>{$vo['create_time']|date='Y-m-d',###}</span>
 	                    <em></em>
@@ -190,7 +190,7 @@
                     <a href="javascript:;"><img src="{$vo['path']}" alt=""/></a>
                 </div>
                 <div class="fl n_cont">
-                    <h3><a href="" >{$vo.title}</a></h3>
+                    <h3><a href="/index.php/Home/News/news?id={$vo['id']}&category_id={$vo['cat_id']}" target="_blank" >{$vo.title}</a></h3>
                     <p>{$vo.descr}....</p>
                 </div>
                 <div class="cb"></div>
@@ -211,7 +211,7 @@
 	            <notempty name="list['_']">
 		            <volist name="list['_']" id="vo">
 		            	<li data-point="{$vo['gattr1']}">
-		                    <a href="/index.php/Home/About/about?id=35">
+		                    <a href="/index.php/Home/About/about?category_id={$vo['category_id']}" target="_blank">
 		                        <div class="type">
 		                            <img src="__IMG__/{$vo['url']}" alt=""/>
 		                            <span>{$vo[$title]}</span>

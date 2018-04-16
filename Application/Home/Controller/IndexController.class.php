@@ -20,7 +20,7 @@ class IndexController extends HomeController {
         //首页轮播图
         $this->assign("scroll",D('Channelpicture')->picture("path","block=12 and hide=0"));
         //部门设置
-        $channel = D('Channel')->lists("id,pid,url,gattr1,".TITLE,"hide=0 and status=1 and (id=25 or pid=25)",2);
+        $channel = D('Channel')->lists("id,category_id,pid,url,gattr1,".TITLE,"hide=0 and status=1 and (id=25 or pid=25)",2);
         $this->assign('depset',$channel);
         $Doc = D('Document');
         //特色项目
