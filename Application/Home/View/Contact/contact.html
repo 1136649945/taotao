@@ -177,24 +177,40 @@
 <!-- ditu-->
 <script type="text/javascript" src="http://api.map.baidu.com/api?key=&v=1.1&services=true"></script>
 <div class="dituContent" id="dituContent" data-point="116.43424,39.98642"></div>
+<script src="__STATIC__/layer.js"></script>
 <script type="text/javascript" src="__JS__/mapContact.js"></script>
+<script type="text/javascript">
+	<volist name="words" id="vo">
+	<if condition="$vo.id eq 36">
+		var diatitle = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 32">
+		var type = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 33">
+		var ment = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 34">
+		var proj = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 26">
+		var name = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 5">
+		var tel = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 35">
+		var cont = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 37">
+		var success = "{$vo[$title]}";
+	</if>
+	<if condition="$vo.id eq 38">
+		var fail = "{$vo[$title]}";
+	</if>
+	</volist>
+</script>
 <script>
-	$.fn.serializeObject = function()
-	{
-	 var o = {};
-	 var a = this.serializeArray();
-	 $.each(a, function() {
-	 if (o[this.name] !== undefined) {
-	  if (!o[this.name].push) {
-	  o[this.name] = [o[this.name]];
-	  }
-	  o[this.name].push(this.value || '');
-	 } else {
-	  o[this.name] = this.value || '';
-	 }
-	 });
-	 return o;
-	};
     $('#nav a:eq(6)').addClass('current');
     function subActive(){
     	if($('input.name').val()==''){
@@ -208,13 +224,15 @@
     	}else{
     		var url = '/admin.php/Active/add';
         	var from = $("#activity").serialize();
-        	var test = $('select.act_type option:selected').text()+'\n'
-        	+$('select.section option:selected').text()+'\n'
-        	+$('select.act_class option:selected').text()+'\n'
-        	+$('input.name').val()+'\n'
-        	+$('input.tel').val()+'\n'
-        	+$('textarea.act_tex').text();
-        	if(confirm(test)){
+        	var test = 
+        	type+"："+$('select.act_type option:selected').text()+'<br/>'
+        	+ment+"："+$('select.section option:selected').text()+'<br/>'
+        	+proj+"："+$('select.act_class option:selected').text()+'<br/>'
+        	+name+"："+$('input.name').val()+'<br/>'
+        	+tel+"："+$('input.tel').val()+'<br/>'
+        	+cont+"："+$('textarea.act_tex').val();
+        	layer.alert(test, {title:diatitle});
+        	$('.layui-layer-btn0').on('click', function(){
         		$.ajax({
 	    			type: 'post',
 	    			url: url,
@@ -222,15 +240,17 @@
 	    			data: from,
 	    			success: function(data){
 	    				$('#activity')[0].reset();
-	    				alert(data.info);
+	    				if(data.status){
+	    					layer.msg(success, {time: 1000,icon: 1});
+	    				}else{
+	    					layer.msg(fail, {time: 1000,icon: 2});
+	    				}
 	    			},
 	    			error: function(data){
-	    				alert("提交失败");
+	    				layer.msg(fail, {time: 1000,icon: 2});
 	    			}
 	    		});
-        	}else{
-	    		
-        	}
+        	});
     	}
     	
     }
