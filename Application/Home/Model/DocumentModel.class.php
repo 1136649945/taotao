@@ -44,7 +44,7 @@ class DocumentModel extends Model{
      * @param unknown $order
      */
     public function doclists($where=null,$order=null,$limit=null){
-        $sql = "select m.id as id,m.".TITLE." as title,m.".DESCR." as descr,m.view as view,m.create_time as create_time,m.auth as auth,h.path as path from ta_document m left join ta_picture h on m.cover_id=h.id ";
+        $sql = "select m.id as id,m.category_id as cat_id,m.".TITLE." as title,m.".DESCR." as descr,m.view as view,m.create_time as create_time,m.auth as auth,h.path as path from ta_document m left join ta_picture h on m.cover_id=h.id ";
         if($where){
             $sql = $sql."where ".$where;
         }
