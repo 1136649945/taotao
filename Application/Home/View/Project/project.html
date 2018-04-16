@@ -13,7 +13,7 @@
                 <ul class="navUl">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li <if condition="$category_id neq null"><if condition="$category_id eq $vo['category_id']">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if>      >
+	                    <li <if condition="$category_id neq null"><if condition="$category_id eq $vo['category_id']">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if> >
 	                        <a href="/index.php/Home/Project/project?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
@@ -74,6 +74,9 @@
 		                    	<script>
 			                    	var contentarr = {$contarr};
 			                    	console.log(contentarr);
+			                    	function page(p){
+			                    		
+			                    	}
 		                    	</script>
                         	</ul>
                         	<div class="page"></div>

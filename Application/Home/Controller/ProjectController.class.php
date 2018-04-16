@@ -16,7 +16,7 @@ namespace Home\Controller;
 class ProjectController extends HomeController {
 
 	//系统首页
-    public function project($id=null,$category_id=53,$p=1){
+    public function project($id=null,$category_id=53){
         $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,9,31)");
         $this->assign('crumb',$this->crumb($channel,"1,9,31"));//面包屑
         //项目介绍菜单展示
@@ -34,11 +34,7 @@ class ProjectController extends HomeController {
         if($id!=null){
            $this->assign("content",$Doc->docdetail("m.id=".$id));
         }else{
-            $limit= null;
-            if($p>0){
-                $limit = (10*($p-1)).",10";
-            }
-           $data = $Doc->doclists("m.category_id=".$category_id,"m.create_time desc",$limit);
+           $data = $Doc->doclists("m.category_id=".$category_id,"m.create_time desc");
            $this->assign("contarr",json_encode($data));
         }
         $this->display();
