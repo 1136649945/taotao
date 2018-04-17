@@ -79,19 +79,18 @@
                         </volist>
                     </div>
                     <div class="matterBox">
+                        <script>
+                            var contentarr = null;
+                        </script>
                     	<if condition="$id neq null">
                     		<volist name="content" id="vo">
                     			{$vo.content}
                     		</volist>
                     	<else/>
+                            <script>
+                                contentarr = {$contarr};
+                            </script>
                     		<ul class="notice">
-		                    	<script>
-			                    	var contentarr = {$contarr};
-			                    	console.log(contentarr);
-			                    	function page(p){
-			                    		
-			                    	}
-		                    	</script>
 		                    	<!-- <li>
                                 <a href="/Home/News/news_details" class="noticeL"><img src="images/news/news01.jpg" alt=""/></a>
                                 <div class="noticeR">
@@ -108,7 +107,13 @@
                                 </div>
                             </li> -->
                         	</ul>
-                        	<div class="page"></div>
+                        	<div class="page">
+                                <a href="javaScript:;" class="btnPage" id="firstPage">首页</a>
+                                <a href="javaScript:;" id="prev">&lt;</a>
+                                <div style="display: inline-block;"></div>
+                                <a href="javaScript:;" id="next">&gt;</a>
+                                <a href="javaScript:;" class="btnPage" id="endPage">末页</a>
+                            </div>
                     	</if>
                     </div>
                 </div>
@@ -117,8 +122,133 @@
     </div>
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
+<input type="hidden" id="viewMore" value=""/>
 <script>
     $('ul.menu_ul li:eq(4)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
+    //新闻分类
+    for(var i=0;i<$('.newsType a').length;i++){
+        var aCur = $('.newsType a').eq(i);
+        if(aCur.hasClass('current')){
+            var cont = aCur.text();
+            $('#activecrumb').text(cont);
+        }
+    }
+</script>
+<script>
+    if(contentarr==null){
+        /*新闻推荐*/
+        var hrefcur = window.location.href;
+        for(var i=0;i<$('ul.navUl.navUl_news li').length;i++){
+            var licur = $('ul.navUl.navUl_news li').eq(i);
+            var a_h = licur.find('a').attr('href');
+            if(hrefcur.indexOf(a_h)!=-1){
+                licur.addClass('current');
+            }
+        }
+        console.log("这是详情页");
+    }else {
+        console.log("这是列表页");
+        console.log(contentarr);
+        var num = 7;
+        //分页
+        page(contentarr, num);
+        //调取内容
+        piecewiseCont(contentarr, num, 0);
+    }
+
+    function page(total, num) {
+        var totalL = total.length;
+        var n = Math.ceil(totalL / num);
+        var pageHtml = '';
+        for (var i = 0; i < n; i++) {
+            pageHtml += '<a href="javaScript:;" class="_page">' + (i + 1) + '</a>';
+        }
+        $('.page div').append(pageHtml);
+        //默认显示第一页
+        $('._page:first-child').addClass('current');
+        $('._page').bind('click', function () {
+            $(this).addClass('current').siblings().removeClass('current');
+            var curP = $(this).index();
+            piecewiseCont(total, num, curP);
+        });
+        //首页
+        $('#firstPage').bind('click', function () {
+            $('._page:first-child').addClass('current').siblings().removeClass('current');
+            piecewiseCont(total, num, 0);
+        });
+        //末页
+        $('#endPage').bind('click', function () {
+            $('._page:last-child').addClass('current').siblings().removeClass('current');
+            piecewiseCont(total, num, n - 1);
+        });
+        //上一页
+        $('#prev').bind('click', function () {
+            for (var i = 0; i < n; i++) {
+                if ($('._page:eq(' + i + ')').hasClass('current') && i != 0) {
+                    var curP = i - 1;
+                    $('._page:eq(' + curP + ')').addClass('current').siblings().removeClass('current');
+                    piecewiseCont(total, num, curP);
+                }
+            }
+        });
+        //下一页
+        $('#next').bind('click', function () {
+            for (var i = 0; i < n; i++) {
+                if ($('._page:eq(' + i + ')').hasClass('current') && i != n - 1) {
+                    var curP = i + 1;
+                    $('._page:eq(' + curP + ')').addClass('current').siblings().removeClass('current');
+                    piecewiseCont(total, num, curP);
+                }
+            }
+        });
+    }
+
+    function piecewiseCont(arr, num, curP) {
+        $('ul.notice').empty();
+        var arrL = arr.length;
+        var n = Math.ceil(arrL / num);
+        var html = '';
+        for (var i = curP * num; i < (curP + 1) * num && i < arrL; i++) {
+            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
+                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank" class="noticeL"><img src="' + arr[i].path + '" alt=""/></a>'
+                    + '<div class="noticeR">'
+                    + '<h3><a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">' + arr[i].title + '</a></h3>'
+                    + '<p>'
+                    + strLength(arr[i].descr)
+                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">[' + $('#viewMore').val() + ']</a></p>'
+                    + '<div class="date">'
+                    + '<span>' + $('#activecrumb').text() + '</span>'
+                    + '<em></em>'
+                    + '<span>' + timestampToTime(arr[i].create_time) + '</span>'
+                    + '</div>'
+                    + '</div>'
+                    + '</li>'
+        }
+        $('ul.notice').append(html);
+    }
+
+    /*日期转换*/
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = (date.getDate() + 1 < 10 ? '0' + (date.getDate() + 1) : date.getDate() + 1) + ' ';
+        h = (date.getHours() + 1 < 10 ? '0' + (date.getHours() + 1) : date.getHours() + 1) + ':';
+        m = (date.getMinutes() + 1 < 10 ? '0' + (date.getMinutes() + 1) : date.getMinutes() + 1) + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        return Y + M + D + h + m + s;
+    }
+
+    /*内容长度*/
+    function strLength(cont) {
+        var len = 65;
+        var l = cont.length;
+        if (l > len) {
+            cont = cont.substring(0, len) + '...';
+        }
+        return cont;
+    }
+
 </script>
 <include file="Public/footer"/>

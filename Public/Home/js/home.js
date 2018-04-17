@@ -282,6 +282,7 @@ $(function(){
         clearInterval(timer);
         var lis = ul.find('li');
         var liL = lis.length;
+        ul.css('width',100*liL+'%');
         lis.css('width',100/liL+'%');
         var liW = lis.width();
         var n = 0;
@@ -305,6 +306,12 @@ $(function(){
             ul.animate({'margin-left':-liW*n});
             $(this).addClass('current').siblings().removeClass('current');
         });
+    }
+
+    //右侧内容高度
+    if($(window).width()>=768) {
+        var minH = $('.navL').height() - $('.bannerR').height();
+        $('.matterBox').css('min-height', minH);
     }
 });
 
