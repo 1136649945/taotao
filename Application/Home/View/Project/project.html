@@ -65,6 +65,9 @@
                         </volist>
                     </div>
                     <div class="matterBox">
+                    <script>
+                    	var contentarr = null;
+                    </script>
                     	<if condition="$id neq null">
                     		<volist name="content" id="vo">
                     			{$vo.content}
@@ -72,11 +75,8 @@
                     	<else/>
                     		<ul class="project">
 		                    	<script>
-			                    	var contentarr = {$contarr};
+			                    	contentarr = {$contarr};
 			                    	console.log(contentarr);
-			                    	function page(p){
-			                    		
-			                    	}
 		                    	</script>
                         	</ul>
                         	<div class="page"></div>
