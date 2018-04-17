@@ -16,25 +16,28 @@ namespace Home\Controller;
 class VideoController extends HomeController {
 
 	//系统首页
-    public function video(){
+    public function video($block=45){
+        //面包屑
         $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,3,28)");
-        $this->assign('crumb',$this->crumb($channel, "1,3,28"));//面包屑
-        $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=3 or block=27)");
-        $this->assign('video',$channel);//视频菜单展示
+        $this->assign('crumb',$this->crumb($channel, "1,3,28"));
+        //视频菜单展示
+        $channel = D('Channel')->lists("id,pid,url,gattr1,".TITLE,"hide=0 and status=1 and (id=3 or block=27)");
+        $this->assign('video',$channel);
+        $this->assign("block",$block);
+        $this->assign("videolist",$this->videolist($block));
+        //相关连接展示
         $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");
-        $this->assign('relate',$channel);//视频菜单展示
+        $this->assign('relate',$channel);
+        //banner图
         $picture = D('Channelpicture')->picture("path","block=14 and hide=0");
-        $this->assign("picture",$picture);//banner图
+        $this->assign("picture",$picture);
+        //相关连接banner图
         $picture = D('Channelpicture')->picture("path","block=25 and hide=0");
-        $this->assign("relatepicture",$picture);//相关连接banner图
+        $this->assign("relatepicture",$picture);
         $this->display();
     }
-    //系统首页
-    public function videolist(){
-        $block = I("post.block",-1);
-        if($block>0){
-            $data = D("Video")->lists("title,path,imgpath","hide=0 and block=".$block );
-            $this->ajaxReturn($data,"json");
-        }
+    //视频列表
+    public function videolist($block){
+        return D("Video")->lists("title,path,imgpath","hide=0 and block=".$block);
     }
 }

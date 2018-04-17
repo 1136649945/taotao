@@ -13,8 +13,8 @@
                 <ul class="navUl navUl_video">
                 <notempty name="list['_']">
 		            <volist name="list['_']" id="vo">
-                    <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
+                    <li <if condition="$block eq $vo['gattr1']">class="current"</if>>
+                        <a href="/index.php/Home/Video/video?block={$vo['gattr1']}" class="navUl_a">
                             <em>{$vo[$title]}</em>
                         </a>
                     </li>
@@ -31,11 +31,7 @@
                 <ul class="related_links">
                 <notempty name="list['_']">
 		            <volist name="list['_']" id="vo">
-		            <if condition="$key eq 0">
-                    	<li><a href="http://111.203.17.52:8080" target="_blank">{$vo[$title]}</a></li>
-                    <else/>
-                    	<li><a href="" >{$vo[$title]}</a></li>
-                    </if>
+                    	<li><a href="{$vo['url']}" <if condition="$vo['target'] eq 1"> target="_blank"</if>>{$vo[$title]}</a></li>
                     </volist>
                  </notempty>
                 </ul>
@@ -80,20 +76,15 @@
                     </div>
                     <div class="matterBox">
                         <ul class="video">
-                            <li data-video="video/index.mp4">
-                                <div class="video_box">
-                                    <img src="images/video/videobg01.jpg" alt="" class="video_bg"/>
-                                    <img src="__IMG__/video/play.png" alt="" class="video_play"/>
-                                </div>
-                                <p>影像-惠园篇</p>
-                            </li>
-                            <li data-video="video/index.mp4">
-                                <div class="video_box">
-                                    <img src="images/video/videobg02.jpg" alt="" class="video_bg"/>
-                                    <img src="__IMG__/video/play.png" alt="" class="video_play"/>
-                                </div>
-                                <p>对外经贸大学宣传视频</p>
-                            </li>
+                         	<volist name="videolist" id="vo">
+	                            <li data-video="video/index.mp4">
+	                                <div class="video_box">
+	                                    <img src="{$vo['imgpath']}" alt="" class="video_bg"/>
+	                                    <img src="__IMG__/video/play.png" alt="" class="video_play"/>
+	                                </div>
+	                                <p>{$vo.title}</p>
+	                            </li>
+                            </volist>
                         </ul>
                     </div>
                 </div>
@@ -115,17 +106,7 @@
 <!-- end-->
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
-    $('#nav a:eq(2)').addClass('current');//视频
     $('ul.navUl li:first-child a').css('border-top','0');
-    //默认
-    $('ul.navUl>li:eq(0)').addClass('current');
-    $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-    $('ul.navUl>li a.navUl_a').bind('click',function(){
-        var _this = $(this).parent();
-        _this.addClass('current').siblings('li').removeClass('current');
-        $('ul.navUl>li ol.navOl').hide();
-        _this.find('ol.navOl').fadeIn();
-    });
     //视频切换
     $('.video li img.video_play').bind('click',function(){
         var ths = $(this).parents('li');

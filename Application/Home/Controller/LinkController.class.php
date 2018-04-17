@@ -16,12 +16,13 @@ namespace Home\Controller;
 class LinkController extends HomeController {
 
 	//系统首页
-    public function link($block=26){
+    public function link($block=11){
         //面包屑
         $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,7,16)");
         $this->assign('crumb',$this->crumb($channel, "1,7,16"));
         //友情链接菜单展示
-        $channel = D('Channel')->lists("id,pid,url,block,".TITLE,"hide=0 and status=1 and (id=7 or block=26)");
+        $channel = D('Channel')->lists("id,pid,url,gattr1,".TITLE,"hide=0 and status=1 and (id=7 or block=26)");
+        $this->assign("block",$block);
         $this->assign('link',$channel);
         //相关连接菜单展示
         $channel = D('Channel')->lists("id,target,pid,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");
