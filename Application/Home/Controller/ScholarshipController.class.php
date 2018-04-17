@@ -16,13 +16,19 @@ namespace Home\Controller;
 class ScholarshipController extends HomeController {
 
 	//系统首页
-    public function scholarship(){
+    public function scholarship($category_id=2){
+        //面包屑
         $channel = D('Channel')->getChannel("id,pid,url,".TITLE,"hide=0 and status=1 and id in (1,11,39)");
-        $this->assign('crumb',$this->crumb($channel,"1,11,39"));//面包屑
-        $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=11 or block=27)");
-        $this->assign('scholarship',$channel);//奖学金菜单展示
+        $this->assign('crumb',$this->crumb($channel,"1,11,39"));
+        //奖学金菜单展示
+        $channel = D('Channel')->lists("id,pid,url,category_id,".TITLE,"hide=0 and status=1 and (id=11 or block=27)");
+        $this->assign('scholarship',$channel);
+        //banner图
         $picture = D('Channelpicture')->picture("path","block=18 and hide=0");
-        $this->assign("picture",$picture);//banner图
+        $this->assign("picture",$picture);
+        $docinfo = D('Document')->docdetail("m.category_id=".$category_id." and m.display=1 and m.status=1 limit 0,1");
+        $this->assign("category_id",$category_id);
+        $this->assign("docinfo",$docinfo);
         $this->display();
     }
 
