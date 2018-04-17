@@ -15,28 +15,28 @@ use Think\Model;
  */
 class DocumentModel extends Model{
 
-    public function getdocument($field = true,$where="1=1",$limit="0,5",$order="create_time desc"){
-        $document = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order($order)->limit($limit)->select();
-        $cover = array();
-        if($field || strpos($field,"cover_id")){
-            foreach ($document as $value){
-                array_push($cover, $value['cover_id']);
-            }
-        }
-        if(count($cover)){
-            $picture = D("Picture")->picture("id,path",$cover);
-            if(is_array($picture)){
-                $pictureTemp = array();
-                foreach ($picture as $value){
-                    $pictureTemp[$value['id']] = $value['path'];
-                }
-                foreach ($document as $key=>$value){
-                    $document[$key]['cover_id'] = $pictureTemp[$value['cover_id']];
-                }
-            }
-        }
-        return $document;
-    }
+//     public function getdocument($field = true,$where="1=1",$limit="0,5",$order="create_time desc"){
+//         $document = $this->cache(true,C('DATA_CACHE_TIME'))->field($field)->where($where)->order($order)->limit($limit)->select();
+//         $cover = array();
+//         if($field || strpos($field,"cover_id")){
+//             foreach ($document as $value){
+//                 array_push($cover, $value['cover_id']);
+//             }
+//         }
+//         if(count($cover)){
+//             $picture = D("Picture")->picture("id,path",$cover);
+//             if(is_array($picture)){
+//                 $pictureTemp = array();
+//                 foreach ($picture as $value){
+//                     $pictureTemp[$value['id']] = $value['path'];
+//                 }
+//                 foreach ($document as $key=>$value){
+//                     $document[$key]['cover_id'] = $pictureTemp[$value['cover_id']];
+//                 }
+//             }
+//         }
+//         return $document;
+//     }
     /**
      * 获取文档
      * @param unknown $where
@@ -44,7 +44,7 @@ class DocumentModel extends Model{
      * @param unknown $order
      */
     public function doclists($where=null,$order=null,$limit=null){
-        $sql = "select m.id as id,m.category_id as cat_id,m.".TITLE." as title,m.".DESCR." as descr,m.view as view,m.create_time as create_time,m.auth as auth,h.path as path from ta_document m left join ta_picture h on m.cover_id=h.id ";
+        $sql = "select m.id as id,m.category_id as cat_id,m.".TITLE." as title,m.".DESCR." as descr,m.view as view,m.create_time as create_time,m.auth as auth,h.path as path from ".C("DB_PREFIX")."document m left join ".C("DB_PREFIX")."picture h on m.cover_id=h.id ";
         if($where){
             $sql = $sql."where ".$where;
         }
@@ -64,12 +64,12 @@ class DocumentModel extends Model{
      * @param unknown $order
      */
     public function docdetail($where=null){
-        $sql = "select m.id as id,m.".TITLE." as title,m.".DESCR." as descr,g.".CONTENT." as content,m.view as view,m.create_time as create_time,m.auth as auth from ta_document m left join ta_document_article g on m.id=g.id ";
+        $sql = "select m.id as id,m.".TITLE." as title,m.".DESCR." as descr,g.".CONTENT." as content,m.view as view,m.create_time as create_time,m.auth as auth from ".C("DB_PREFIX")."document m left join ".C("DB_PREFIX")."document_article g on m.id=g.id ";
         if($where){
             $sql = $sql."where ".$where;
         }
         $data = $this->cache(true,C('DATA_CACHE_TIME'))->query($sql);
-        $this->where('id='.$data[0]['id'])->setInc('view');
+        $this->where('id='.$data[0]['id'])->setInc('View');
         return $data;
     }
     /**

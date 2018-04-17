@@ -22,7 +22,7 @@
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl" data-id={$category_id} <if condition="$category_id neq null"><if condition="($category_id eq $vo['category_id']) OR ($parcat eq $vo['category_id'])">style="display:block;"</if> </if>>
 		                	<volist name="vo['_']" id="vo1">
-	                            <li data-id={$vo1['category_id']}><a href="javascript:;"> >> <span>{$vo1[$title]}</span></a></li>
+	                            <li data-id={$vo1['category_id']}><a <if condition="$id neq null">href="/index.php/Home/About/about?category_id={$vo1['category_id']}"<else/>href="javascript:;"</if>> >> <span>{$vo1[$title]}</span></a></li>
 	                        </volist>
 	                        </ol>
 	                        </notempty>
@@ -73,6 +73,9 @@
                         </volist>
                     </div>
                     <div class="matterBox">
+                    	<script>
+			               var contentarr = null;
+			            </script>
 	                    <if condition="$docinfo neq null">
 	                    	<volist name="docinfo" id="vo">
 	                    		{$vo.content}
@@ -80,7 +83,7 @@
 						<elseif condition="$docarr neq null"/>
 							<ul class="notice">
 		                    	<script>
-			                    	var contentarr = {$contarr};
+			                    	contentarr = {$contarr};
 			                    	console.log(contentarr);
 		                    	</script>
 		                    </ul>

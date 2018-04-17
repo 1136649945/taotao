@@ -30,18 +30,19 @@ class AboutController extends HomeController {
         //分类id
         $this->assign("category_id",$category_id);
         //文章id
-        $this->assign("id",$id);
         if($id){
             $this->assign("docinfo",$Doc->docdetail("m.id=".$id));
         }
         //学校简介
         if(74==$category_id){
            $docinfo = $Doc->docdetail("m.category_id=74 and m.display=1 and m.status=1 limit 0,1");
+           $id = $docinfo[0]['id'];
            $this->assign("docinfo",$docinfo);
         }
         //历史回顾
         if(76==$category_id){
             $docinfo = $Doc->docdetail("m.category_id=76 and m.display=1 and m.status=1 limit 0,1");
+            $id = $docinfo[0]['id'];
             $this->assign("docinfo",$docinfo);
         }
         //校园风光
@@ -52,13 +53,14 @@ class AboutController extends HomeController {
         if(in_array_case($category_id,array(101,102,103,104,105,106,107,108,109))){
             $this->assign("parcat",101);
             if($id==null){
-                $data = $Chan->query("select m.".TITLE." as title,g.path as path,h.id as id from ta_channel m left join ta_channelpicture g on m.title=g.title left join ta_category h  on g.title=h.title where m.pid=25");
+                $data = $Chan->query("select m.".TITLE." as title,g.path as path,h.id as id from ".C("DB_PREFIX")."channel m left join ".C("DB_PREFIX")."channelpicture g on m.title=g.title left join ".C("DB_PREFIX")."category h  on g.title=h.title where m.pid=25");
                 foreach ($data as $key=>$val){
                     $data[$key]['content'] = $Doc->doclists("m.category_id=".$data[$key]['id'],"m.create_time desc");
                 }
                 $this->assign("mentcont",$data);
             }
         }
+        $this->assign("id",$id);
         $this->display();
     }
 

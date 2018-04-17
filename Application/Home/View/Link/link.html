@@ -14,7 +14,7 @@
                 	<notempty name="list['_']">
 		            <volist name="list['_']" id="vo">
                     <li>
-                        <a href="javaScript:;" data-url="" class="navUl_a">
+                        <a href="/index.php/Home/Link/link?block={$vo['block']}" class="navUl_a">
                             <em>{$vo[$title]}</em>
                         </a>
                     </li>
@@ -31,11 +31,7 @@
                 <ul class="related_links">
                 <notempty name="list['_']">
 		            <volist name="list['_']" id="vo">
-		            <if condition="$key eq 0">
-                    	<li><a href="http://111.203.17.52:8080" target="_blank">{$vo[$title]}</a></li>
-                    <else/>
-                    	<li><a href="" >{$vo[$title]}</a></li>
-                    </if>
+                    	<li><a href="{$vo['url']}" <if condition="$vo['target'] eq 1"> target="_blank"</if>>{$vo[$title]}</a></li>
                     </volist>
                  </notempty>
                 </ul>
@@ -74,60 +70,16 @@
                     </div>
                     <div class="matterBox">
                         <ul class="links">
+                        	<if condition="linkpic neq null"> 
+                        	<volist name="linkpic" id="vo">
                             <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link01.png" alt=""/>
+                                <a href="{$vo['link']}" target="_blank" class="links_img">
+                                    <img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
                                 </a>
-                                <p><a href="" target="_blank">中华人民共和国教育部</a></p>
+                                <p><a href="{$vo['link']}" target="_blank">{$vo['title']}</a></p>
                             </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link02.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">中华人民共和国商务部</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link03.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">国家留学基金管理委员会</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link04.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">国际经济贸易学院</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link01.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">国际商学院</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link06.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">国际关系学院</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link07.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">国家汉办/孔子学院总部</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link08.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">对外经济贸易大学首页</a></p>
-                            </li>
-                            <li>
-                                <a href="" target="_blank" class="links_img">
-                                    <img src="images/link/link09.png" alt=""/>
-                                </a>
-                                <p><a href="" target="_blank">公共管理学院</a></p>
-                            </li>
+                           	</volist>
+                           	</if>
                         </ul>
                     </div>
                 </div>
