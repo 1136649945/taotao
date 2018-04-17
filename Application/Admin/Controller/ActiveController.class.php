@@ -39,31 +39,4 @@ class ActiveController extends AdminController
         $this->meta_title = '活动管理';
         $this->display();
     }
-    /**
-     * 新增菜单
-     *
-     * @author yangweijie <yangweijiester@gmail.com>
-     */
-    public function add()
-    {
-        //   /Admin/Active/add
-        // 记录当前列表页的cookie
-        if (IS_POST) {
-            $Actreg = D('Actreg');
-            $data = $Actreg->create();
-            if ($data) {
-                $info = array();
-                if ($Actreg->add($data)!== false) {
-                    $info['status'] = true;
-                    $info['info'] = '提交成功';
-                    $this->ajaxReturn($info, "json");
-                } else {
-                    $info['status'] = false;
-                    $info['info'] = '提交失败';
-                    $this->ajaxReturn($info, "json");
-                }
-            }
-        }
-    }
-
 }
