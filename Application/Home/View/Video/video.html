@@ -38,7 +38,13 @@
                 </volist>
                 <div class="dime">
                     <div class="_dime">
-                        <a href="javaScript:;"><img src="/{:C('PICTURE_UPLOAD')['rootPath'].$relatepicture}" alt=""/></a>
+                        <a href="javaScript:;">
+                        <volist name="relatepicture" id="vo">
+                        <if condition="$key eq 0">
+                        	<img src="/{:C('PICTURE_UPLOAD')['rootPath'].$vo['path']}" alt=""/>
+                        </if>
+                        </volist>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -77,9 +83,9 @@
                     <div class="matterBox">
                         <ul class="video">
                          	<volist name="videolist" id="vo">
-	                            <li data-video="video/index.mp4">
+	                            <li data-video="/{$vo['path']}">
 	                                <div class="video_box">
-	                                    <img src="{$vo['imgpath']}" alt="" class="video_bg"/>
+	                                    <img src="/{$vo['imgpath']}" alt="" class="video_bg"/>
 	                                    <img src="__IMG__/video/play.png" alt="" class="video_play"/>
 	                                </div>
 	                                <p>{$vo.title}</p>
