@@ -32,10 +32,10 @@ class ProjectController extends HomeController {
         //获取文章
         $Doc = D("Document");
         if($id!=null){
-           $this->assign("content",$Doc->docdetail("m.id=".$id));
+           $this->assign("docinfo",$Doc->docdetail("m.id=".$id));
         }else{
-           $data = $Doc->doclists("m.category_id=".$category_id,"m.create_time desc");
-           $this->assign("contarr",json_encode($data));
+           $data = $Doc->doclists("m.category_id=".$category_id." and m.display=1 and m.status=1","m.create_time desc");
+           $this->assign("docarr",json_encode($data));
         }
         $this->display();
     }

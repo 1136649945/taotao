@@ -33,8 +33,15 @@ class OrganizationController extends HomeController {
         $this->assign("rollpicture",$picture);
         //分类id
         $this->assign("category_id",$category_id);
-        $data = D("Document")->doclists("m.category_id=".$category_id,"m.create_time desc");
-        $this->assign("contarr",json_encode($data));
+        //文章id
+        $this->assign("id",$id);
+        $Doc = D("Document");
+        if($id>0){
+            $this->assign("docinfo",$Doc->docdetail("m.id=".$id));
+        }else{
+            $data = $Doc->doclists("m.category_id=".$category_id." and m.display=1 and m.status=1","m.create_time desc");
+            $this->assign("docarr",json_encode($data));
+        }
         $this->display();
     }
 }

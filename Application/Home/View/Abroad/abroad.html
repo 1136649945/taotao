@@ -65,9 +65,14 @@
                         </volist>
                     </div>
                     <div class="matterBox">
-                    	<script>
-			               var contentarr = null;
-			            </script>
+                   	<script>
+		               var contentarr = null;
+		            </script>
+			        <if condition="$docinfo neq null">
+                    	<volist name="docinfo" id="vo">
+	                    		{$vo.content}
+	                    </volist>
+                    <else/>
 			            <if condition="$docarr neq null">
                             <script>
                                 contentarr = {$docarr};
@@ -82,6 +87,7 @@
                             </li> -->
                         </ul>
                         <div id="page" class="page"></div>
+                    </if>
                     </div>
                 </div>
             </div>
@@ -127,9 +133,8 @@
         var arrL = arr.length;
         var html = '';
         for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
-            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
-                    +'<img src="__IMG__/project/play.png" alt=""/>'
-                    +'<a href="/index.php/Home/Abroad/abroad?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'+arr[i].title+'</a>'
+            html += '<li><img src="__IMG__/project/play.png" alt=""/>'
+                    +'<a href="/index.php/Home/Abroad/abroad?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">'+arr[i].title+'</a>'
                     +'<em>'+timestampToTime(arr[i].create_time)+'</em>'
                     +'</li>';
         }

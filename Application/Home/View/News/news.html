@@ -83,12 +83,12 @@
                             var contentarr = null;
                         </script>
                     	<if condition="$id neq null">
-                    		<volist name="content" id="vo">
+                    		<volist name="docinfo" id="vo">
                     			{$vo.content}
                     		</volist>
                     	<else/>
                             <script>
-                                contentarr = {$contarr};
+                                contentarr = {$docarr};
                             </script>
                     		<ul class="notice">
 		                    	<!-- <li>
@@ -168,13 +168,12 @@
         $('ul.notice').empty();
         var html = '';
         for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
-            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
-                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank" class="noticeL"><img src="' + arr[i].path + '" alt=""/></a>'
+            html += '<li><a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" class="noticeL"><img src="' + arr[i].path + '" alt=""/></a>'
                     + '<div class="noticeR">'
-                    + '<h3><a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">' + arr[i].title + '</a></h3>'
+                    + '<h3><a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">' + arr[i].title + '</a></h3>'
                     + '<p>'
                     + strLength(arr[i].descr)
-                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">[' + $('#viewMore').val() + ']</a></p>'
+                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">[' + $('#viewMore').val() + ']</a></p>'
                     + '<div class="date">'
                     + '<span>' + $('#activecrumb').text() + '</span>'
                     + '<em></em>'

@@ -22,7 +22,7 @@
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl" data-id={$category_id} <if condition="$category_id neq null"><if condition="($category_id eq $vo['category_id']) OR ($parcat eq $vo['category_id'])">style="display:block;"</if> </if>>
 		                	<volist name="vo['_']" id="vo1">
-	                            <li data-id={$vo1['category_id']}><a <if condition="$id neq null">href="/index.php/Home/About/about?category_id={$vo1['category_id']}"<else/>href="javascript:;"</if>> >> <span>{$vo1[$title]}</span></a></li>
+	                            <li data-id={$vo1['category_id']}><a href="#{$vo1['category_id']}"> >> <span>{$vo1[$title]}</span></a></li>
 	                        </volist>
 	                        </ol>
 	                        </notempty>
@@ -93,7 +93,7 @@
                             <ul class="setup">
 							<volist name="mentcont" id="vo">
 							<if condition="$i%2 eq 0 ">
-                                <li>
+                                <li id="{$vo['cat_id']}">
                                     <div class="set_tit">
                                         <em>{$vo.title}</em>
                                         <img src="__IMG__/about/triangle.png" alt=""/>
@@ -114,7 +114,7 @@
                             <ul class="setup">
 							<volist name="mentcont" id="vo">
 							<if condition="$i%2 neq 0 ">
-                                <li>
+                                <li id="{$vo['cat_id']}">
                                     <div class="set_tit">
                                         <em>{$vo.title}</em>
                                         <img src="__IMG__/about/triangle.png" alt=""/>
@@ -178,8 +178,7 @@
         var arrL = arr.length;
         var html = '';
         for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
-            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
-                    +'<a href="/index.php/Home/About/About?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'
+            html += '<li><a href="/index.php/Home/About/About?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">'
                     +'<div class="campus_img">'
                     +'<img src="'+arr[i].path+'" alt="">'
                     +'</div>'

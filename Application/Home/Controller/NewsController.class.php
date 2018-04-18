@@ -35,19 +35,16 @@ class NewsController extends HomeController {
         $Doc = D("Document");
         $document = $Doc->doclists("m.category_id in (72,73)","m.create_time desc","0,6");
         $this->assign("document",$document);
-//         //推荐新闻
-//         $document = $this->document(TITLE,73,1);
-//         $this->assign("document2",$document);
         //分类id
         $this->assign("category_id",$category_id);
         //文章id
         $this->assign("id",$id);
         //获取文章
         if($id!=null){
-            $this->assign("content",$Doc->docdetail("m.id=".$id));
+            $this->assign("docinfo",$Doc->docdetail("m.id=".$id));
         }else{
-            $data = $Doc->doclists("m.category_id=".$category_id,"m.create_time desc");
-            $this->assign("contarr",json_encode($data));
+            $data = $Doc->doclists("m.category_id=".$category_id." and m.display=1 and m.status=1","m.create_time desc");
+            $this->assign("docarr",json_encode($data));
         }
         $this->display();
     }

@@ -69,13 +69,12 @@
 	                    	var contentarr = null;
 	                   	</script>
                     	<if condition="$id neq null">
-                    		<volist name="content" id="vo">
+                    		<volist name="docinfo" id="vo">
                     			{$vo.content}
                     		</volist>
                     	<else/>
 							<script>
-								contentarr = {$contarr};
-								console.log(contentarr);
+								contentarr = {$docarr};
 							</script>
                     		<ul class="project">
 
@@ -127,9 +126,8 @@
 		var arrL = arr.length;
 		var html = '';
 		for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
-			html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
-					+'<img src="__IMG__/project/play.png" alt=""/>'
-					+'<a href="/index.php/Home/Project/project?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'+arr[i].title+'</a>'
+			html += '<li><img src="__IMG__/project/play.png" alt=""/>'
+					+'<a href="/index.php/Home/Project/project?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">'+arr[i].title+'</a>'
 					+'<em>'+timestampToTime(arr[i].create_time)+'</em>'
 					+'</li>';
 		}

@@ -69,7 +69,9 @@ class DocumentModel extends Model{
             $sql = $sql."where ".$where;
         }
         $data = $this->cache(true,C('DATA_CACHE_TIME'))->query($sql);
-        $this->where('id='.$data[0]['id'])->setInc('View');
+        if(count($data)>0){
+       // $this->where('id='.$data[0]['id'])->setInc('view');
+        }
         return $data;
     }
     /**

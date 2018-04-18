@@ -79,12 +79,17 @@
                         </volist>
                     </div>
                     <div class="matterBox">
-                    	<script>
+                    <script>
 			               var contentarr = null;
-			            </script>
-			            <if condition="$contarr neq null">
+			        </script>
+                    <if condition="$docinfo neq null">
+                    	<volist name="docinfo" id="vo">
+	                    		{$vo.content}
+	                    </volist>
+                    <else/>
+                     	<if condition="$docarr neq null">
                             <script>
-                                contentarr = {$contarr};
+                                contentarr = {$docarr};
                             </script>
                         </if>
                         <ul class="organization">
@@ -110,6 +115,7 @@
                             
                         </ul>
                         <div id="page" class="page"></div>
+                    </if>
                     </div>
                 </div>
             </div>
@@ -156,8 +162,7 @@
         var arrL = arr.length;
         var html = '';
         for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
-            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
-                    +'<div class="organ_date">'
+            html += '<li><div class="organ_date">'
                     +'<h4>'+_Date(arr[i].create_time)+'</h4>'
                     +'<h5>'+_Month(arr[i].create_time)+$('#month').val()+'</h5>'
                     +'</div>'
@@ -165,17 +170,17 @@
                     +'<em></em>'
                     +'</div>'
                     +'<div class="organ_img">'
-                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'
+                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">'
                     +'<img src="'+arr[i].path+'" alt=""/>'
                     +'</a>'
                     +'</div>'
                     +'<div class="organ_cont">'
-                    +'<h3><a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'
+                    +'<h3><a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">'
                     + arr[i].title
                     +'</a></h3>'
                     +'<p>'
                     + arr[i].descr
-                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">[]</a>'
+                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">[]</a>'
                     +'</p>'
                     +'</div>'
                     +'</li>';
