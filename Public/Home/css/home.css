@@ -290,7 +290,7 @@
 .navOl{display:none;margin-left:55px;padding: 15px 0;}
 .navOl li{margin: 5px auto;}
 .navOl li a{font-size: 14px;color: #666664;}
-.navOl li a:hover{color: #b51c26;}
+.navOl li a:hover,.navOl li.ol_li_current a{color: #b51c26;}
 
 /*视频*/
 .navUl_video li.current a.navUl_a{border-bottom: 0;}
@@ -390,7 +390,8 @@
 .page{text-align: right;margin-bottom: 50px;}
 /*.page input{font-size:14px;color:#4d5155;display: inline-block;width: 60px;height: 26px;line-height: 24px;text-align:center;border:solid 1px #ebebeb;background-color: transparent;}*/
 .page a{margin:0 3px;font-size: 14px;color:#4d5155;display: inline-block;width: 26px;height: 26px;line-height: 24px;text-align:center;border:solid 1px #ebebeb;}
-.page a.btnPage{width: 60px;}
+/*.page a.btnPage{width: 60px;}*/
+.page a#firstPage, .page a#lastPage{width: auto;padding: 0 10px;}
 /*.page input:hover,*/.page a:hover{color: #b51c26;}
 .page a.current{background-color: #860000;border: solid 1px #860000;color: #fff;}
 .meet{width: 100%;padding: 25px 15px;margin:10px 0;border:solid 1px #c9c9c9;

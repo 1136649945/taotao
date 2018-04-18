@@ -22,7 +22,7 @@
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl" data-id={$category_id} <if condition="$category_id neq null"><if condition="($category_id eq $vo['category_id']) OR ($parcat eq $vo['category_id'])">style="display:block;"</if> </if>>
 		                	<volist name="vo['_']" id="vo1">
-	                            <li data-id={$vo1['category_id']}><a href="#{$vo1['category_id']}"> >> <span>{$vo1[$title]}</span></a></li>
+	                            <li data-id={$vo1['category_id']}><a href="javaScript:;"> >> <span>{$vo1[$title]}</span></a></li>
 	                        </volist>
 	                        </ol>
 	                        </notempty>
@@ -92,8 +92,8 @@
 							<div class="set_box">
                             <ul class="setup">
 							<volist name="mentcont" id="vo">
-							<if condition="$i%2 eq 0 ">
-                                <li id="{$vo['cat_id']}">
+							<if condition="$key lt 4  ">
+                                <li id="setUp{$i}">
                                     <div class="set_tit">
                                         <em>{$vo.title}</em>
                                         <img src="__IMG__/about/triangle.png" alt=""/>
@@ -113,8 +113,8 @@
                             </ul>
                             <ul class="setup">
 							<volist name="mentcont" id="vo">
-							<if condition="$i%2 neq 0 ">
-                                <li id="{$vo['cat_id']}">
+							<if condition="$key gt 3 ">
+                                <li id="setUp{$i}">
                                     <div class="set_tit">
                                         <em>{$vo.title}</em>
                                         <img src="__IMG__/about/triangle.png" alt=""/>
@@ -143,6 +143,20 @@
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
     $('ul.navUl li:first-child a').css('border-top','0');
+
+    //部门设置
+    for(var i=1;i<=$('ol.navOl li').length;i++){
+        scrollT($('ol.navOl li:eq('+(i-1)+') a'),$("#setUp"+i));
+    }
+    function scrollT(ele,lis) {
+        ele.bind('click', function () {
+            console.log();
+            $("html, body").animate({
+                scrollTop: lis.offset().top-50
+            }, {duration: 500, easing: "swing"});
+            return false;
+        });
+    }
 
     /*面包屑*/
     for(var i=0;i<$('ul.navUl>li').length;i++){

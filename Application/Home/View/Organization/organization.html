@@ -179,7 +179,7 @@
                     + arr[i].title
                     +'</a></h3>'
                     +'<p>'
-                    + arr[i].descr
+                    + strLength(arr[i].descr)
                     +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">[]</a>'
                     +'</p>'
                     +'</div>'
@@ -187,6 +187,15 @@
         }
         $('ul.organization').append(html);
         $('.organization li:last-child').css('border-bottom','0');
+    }
+    /*内容长度*/
+    function strLength(cont) {
+        var len = 100;
+        var l = cont.length;
+        if (l > len) {
+            cont = cont.substring(0, len) + '...';
+        }
+        return cont;
     }
     /*月*/
     function _Month(timestamp) {

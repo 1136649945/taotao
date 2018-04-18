@@ -14,7 +14,7 @@
                 <ul class="navUl">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li <if condition="$pcate eq $vo['category_id']"> class="current"</if>>
+	                    <li <if condition="($pcate eq $vo['category_id']) OR ($category_id eq $vo['category_id'])"> class="current"</if>>
 	                        <a href="/index.php/Home/Job/job?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
@@ -79,7 +79,7 @@
                                 contentarr = {$docarr};
                             </script>
                         </if>
-                        <ul class="organization">
+                        <ul class="job">
                             
                         </ul>
                         <div id="page" class="page"></div>
@@ -94,5 +94,92 @@
 <script>
     $('ul.navUl>li:last-child a').css('border-bottom','dashed 1px #aaaaaa');
     //默认
+
+    /*面包屑*/
+    for(var i=0;i<$('ul.navUl>li').length;i++){
+        var liCur = $('ul.navUl>li').eq(i);
+        if(liCur.hasClass('current')){
+            var cont = liCur.find('a.navUl_a em').text();
+            $('#activecrumb a').text(cont);
+        }
+    }
+
+    console.log(contentarr);
+    if(contentarr!=null && contentarr.length>0){
+        var num = 7;
+        var total = contentarr.length;
+        var n = Math.ceil(total / num);
+        //调取内容
+        piecewiseCont(contentarr, 0);
+        //分页
+        $("#page").show();
+        $("#page").paging({
+            pageNo:1,//默认第一页
+            totalPage: n,//页数
+            totalSize: total,//总条数
+            callback: function(n) {
+                piecewiseCont(contentarr, n-1);
+            }
+        });
+    }else{
+        $('#page').hide();
+    }
+
+    function piecewiseCont(arr, n) {
+        var arrL = arr.length;
+        $('ul.job').empty();
+        var html = '';
+        for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
+            html += '<li>'
+                    +'<div class="job_list">'
+                    +'<img src="__IMG__/project/play.png" alt=""/>'
+                    +'<a href="javaScript:;">' + arr[i].title + '</a>'
+                    +'<em>' + timestampToTime(arr[i].create_time) + '</em>'
+                    +'</div>'
+                    +'<div class="job_box">'
+                    +'<a href="/index.php/Home/Job/job?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" class="job_img">'
+                    +'<img src="'+arr[i].path+'" alt=""/>'
+                    +'</a>'
+                    +'<div class="job_cont">'
+                    + '<h2><a href="/index.php/Home/Job/job?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">' + arr[i].title + '</a></h2>'
+                    +'<p>'
+                    + strLength(arr[i].descr)
+                    +'<a href="/index.php/Home/Job/job?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">' +
+                    '[详情]' +
+                    '</a>'
+                    +'</p>'
+                    +'</div>'
+                    +'</div>'
+                    +'</li>';
+        }
+        $('ul.job').append(html);
+        $('ul.job li:first-child').addClass('current');
+        $('ul.job li').bind('click',function(){
+            $(this).addClass('current').siblings('li').removeClass('current');
+        });
+
+    }
+
+    /*日期转换*/
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = (date.getDate() + 1 < 10 ? '0' + (date.getDate() + 1) : date.getDate() + 1) + ' ';
+        h = (date.getHours() + 1 < 10 ? '0' + (date.getHours() + 1) : date.getHours() + 1) + ':';
+        m = (date.getMinutes() + 1 < 10 ? '0' + (date.getMinutes() + 1) : date.getMinutes() + 1) + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        return Y + M + D + h + m + s;
+    }
+
+    /*内容长度*/
+    function strLength(cont) {
+        var len = 100;
+        var l = cont.length;
+        if (l > len) {
+            cont = cont.substring(0, len) + '...';
+        }
+        return cont;
+    }
 </script>
 <include file="Public/footer"/>
