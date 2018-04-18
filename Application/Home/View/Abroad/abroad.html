@@ -13,8 +13,8 @@
                 <ul class="navUl navUl_abroad">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li>
-	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                    <li <if condition="$category_id neq null"><if condition="$category_id eq $vo['category_id']">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if>>
+	                        <a href="/index.php/Home/Abroad/abroad?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
 	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
@@ -58,74 +58,30 @@
 		                        >
 	                        </if>
 		                    <if condition="$key eq 2">
-		                        <span>
+		                        <span id="activecrumb">
 			                        <a href="{$vo['url']}">{$vo[$title]}</a>
                         		</span>
 		                    </if>
                         </volist>
                     </div>
                     <div class="matterBox">
+                    	<script>
+			               var contentarr = null;
+			            </script>
+			            <if condition="$docarr neq null">
+                            <script>
+                                contentarr = {$docarr};
+                            </script>
+                        </if>
                         <ul class="abroad">
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">中华人民共和国外国人入境出境管理法</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">中华人民共和国境内外国人宗教活动管理规定</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">海关、卫生检疫及保险</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">非学历留学生在学管理规定</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">对外经济贸易大学留学生住宿管理规定</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">关于来华留学生驾驶摩托车的管理规定</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">签证制度</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
-                                <img src="__IMG__/project/play.png" alt=""/>
-                                <a href="">志愿者中心</a>
-                                <em>2018-03-11</em>
-                            </li>
-                            <li>
+                            
+                            <!-- <li>
                                 <img src="__IMG__/project/play.png" alt=""/>
                                 <a href="">留学生组织结构</a>
                                 <em>2018-03-11</em>
-                            </li>
+                            </li> -->
                         </ul>
-                        <div class="page">
-                            <a href="javaScript:;" class="btnPage" id="firstPage">首页</a>
-                            <a href="javaScript:;" id="prev">&lt;</a>
-                            <div style="display: inline-block;">
-                                <a href="javaScript:;">1</a>
-                                <a href="javaScript:;">2</a>
-                                <a href="javaScript:;" class="current">3</a>
-                                <a href="javaScript:;">4</a>
-                                <a href="javaScript:;">5</a>
-                                <a href="javaScript:;">6</a>
-                            </div>
-                            <a href="javaScript:;" id="next">&gt;</a>
-                            <a href="javaScript:;" class="btnPage" id="endPage">末页</a>
-                        </div>
+                        <div id="page" class="page"></div>
                     </div>
                 </div>
             </div>
@@ -134,10 +90,61 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
-    $('ul.menu_ul li:eq(3)').addClass('current');
     $('ul.navUl>li:last-child a').css('border-bottom','dashed 1px #aaaaaa');
     //默认
-    $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
+
+    /*面包屑*/
+    for(var i=0;i<$('ul.navUl>li').length;i++){
+        var liCur = $('ul.navUl>li').eq(i);
+        if(liCur.hasClass('current')){
+            var cont = liCur.find('a.navUl_a em').text();
+            $('#activecrumb a').text(cont);
+        }
+    }
+    /*内容*/
+    if(contentarr!=null && contentarr.length>0){
+        var num = 10;
+        var total = contentarr.length;
+        var n = Math.ceil(total / num);
+        //调取内容
+        piecewiseCont(contentarr, 0);
+        //分页
+        $("#page").show();
+        $("#page").paging({
+            pageNo:1,//默认第一页
+            totalPage: n,//页数
+            totalSize: total,//总条数
+            callback: function(n) {
+                piecewiseCont(contentarr, n-1);
+            }
+        });
+    }else{
+        $("#page").hide();
+    }
+    function piecewiseCont(arr, n){
+        $('ul.abroad').empty();
+        var arrL = arr.length;
+        var html = '';
+        for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
+            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
+                    +'<img src="__IMG__/project/play.png" alt=""/>'
+                    +'<a href="/index.php/Home/Abroad/abroad?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'+arr[i].title+'</a>'
+                    +'<em>'+timestampToTime(arr[i].create_time)+'</em>'
+                    +'</li>';
+        }
+        $('ul.abroad').append(html);
+    }
+    /*日期转换*/
+    function timestampToTime(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        Y = date.getFullYear() + '-';
+        M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+        D = (date.getDate() + 1 < 10 ? '0' + (date.getDate() + 1) : date.getDate() + 1) + ' ';
+        h = (date.getHours() + 1 < 10 ? '0' + (date.getHours() + 1) : date.getHours() + 1) + ':';
+        m = (date.getMinutes() + 1 < 10 ? '0' + (date.getMinutes() + 1) : date.getMinutes() + 1) + ':';
+        s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+        return Y + M + D + h + m + s;
+    }
 </script>
 <include file="Public/footer"/>

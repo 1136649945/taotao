@@ -26,7 +26,7 @@ class VideoController extends HomeController {
         $this->assign("block",$block);
         $this->assign("videolist",$this->videolist($block));
         //相关连接展示
-        $channel = D('Channel')->lists("id,pid,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");
+        $channel = D('Channel')->lists("id,pid,target,url,".TITLE,"hide=0 and status=1 and (id=19 or block=25)");
         $this->assign('relate',$channel);
         //banner图
         $picture = D('Channelpicture')->picture("path","block=14 and hide=0");

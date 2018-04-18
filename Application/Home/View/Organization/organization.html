@@ -13,8 +13,8 @@
                 <ul class="navUl navUl_organ">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li>
-	                        <a href="javaScript:;" data-url="" class="navUl_a">
+	                    <li <if condition="$category_id neq null"><if condition="($category_id eq $vo['category_id']) OR ($parcat eq $vo['category_id'])">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if>>
+	                        <a href="/index.php/Home/Organization/organization?category_id={$vo['category_id']}" data-url="" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
 	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
@@ -79,8 +79,16 @@
                         </volist>
                     </div>
                     <div class="matterBox">
+                    	<script>
+			               var contentarr = null;
+			            </script>
+			            <if condition="$contarr neq null">
+                            <script>
+                                contentarr = {$contarr};
+                            </script>
+                        </if>
                         <ul class="organization">
-                           <li>
+                          <!--  <li>
                                <div class="organ_date">
                                    <h4>17</h4>
                                    <h5>2月</h5>
@@ -98,98 +106,10 @@
                                        <a href="">[ 查看详情 ]</a>
                                    </p>
                                </div>
-                           </li>
-                            <li>
-                                <div class="organ_date">
-                                    <h4>06</h4>
-                                    <h5>1月</h5>
-                                </div>
-                                <div class="organ_br">
-                                    <em></em>
-                                </div>
-                                <div class="organ_img">
-                                    <a href=""><img src="images/organization/organ02.jpg" alt=""/></a>
-                                </div>
-                                <div class="organ_cont">
-                                    <h3><a href="">郊游：慕田峪长城</a></h3>
-                                    <p>
-                                        该活动对本校的来华留学生一律免费，不接受其他学校学生报名；由于学院要提前为留学生同学购买门票，活动要在报名时缴纳50元人民币押金，活动当天上车后马上退还。对于无故未参加活动的留学生同学，押金将不予退还.....
-                                        <a href="">[ 查看详情 ]</a>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="organ_date">
-                                    <h4>10</h4>
-                                    <h5>3月</h5>
-                                </div>
-                                <div class="organ_br">
-                                    <em></em>
-                                </div>
-                                <div class="organ_img">
-                                    <a href=""><img src="images/organization/organ03.jpg" alt=""/></a>
-                                </div>
-                                <div class="organ_cont">
-                                    <h3><a href="">非学历项目结业典礼</a></h3>
-                                    <p>
-                                        非学历项目结业典礼主要为证书颁发所设，请按照非学历教育事务部安排的指定时间和地点参加典礼；考试成绩合格的留学生同学将获得由学院颁发的结业证书，成绩优秀者还将有机会获得奖学金.....
-                                        <a href="">[ 查看详情 ]</a>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="organ_date">
-                                    <h4>08</h4>
-                                    <h5>3月</h5>
-                                </div>
-                                <div class="organ_br">
-                                    <em></em>
-                                </div>
-                                <div class="organ_img">
-                                    <a href=""><img src="images/organization/organ04.jpg" alt=""/></a>
-                                </div>
-                                <div class="organ_cont">
-                                    <h3><a href="">预科班开课</a></h3>
-                                    <p>
-                                        报名本科预科班项目的同学需要先参加面试进行分班；请携带本人护照、录取通知书或其他有效证件参加面试，不得找他人顶替；面试后将马上安排课程，请务必参加，不同班级将根据同学们的实际汉语水平安排课程.....
-                                        <a href="">[ 查看详情 ]</a>
-                                    </p>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="organ_date">
-                                    <h4>07</h4>
-                                    <h5>3月</h5>
-                                </div>
-                                <div class="organ_br">
-                                    <em></em>
-                                </div>
-                                <div class="organ_img">
-                                    <a href=""><img src="images/organization/organ05.jpg" alt=""/></a>
-                                </div>
-                                <div class="organ_cont">
-                                    <h3><a href="">2015年留学生汉语辩论赛</a></h3>
-                                    <p>
-                                        本次辩论赛采用淘汰制，初赛16支队伍抽签比赛，取胜的8支队伍进入复赛；复赛8支队伍抽签比赛， 取胜的4支队伍进入半决赛；半决赛4支队伍抽签比赛，取胜的2支队伍进入决赛；每队6人.....
-                                        <a href="">[ 查看详情 ]</a>
-                                    </p>
-                                </div>
-                            </li>
+                           </li> -->
+                            
                         </ul>
-                        <div class="page">
-                            <a href="javaScript:;" class="btnPage" id="firstPage">首页</a>
-                            <a href="javaScript:;" id="prev">&lt;</a>
-                            <div style="display: inline-block;">
-                                <a href="javaScript:;">1</a>
-                                <a href="javaScript:;">2</a>
-                                <a href="javaScript:;" class="current">3</a>
-                                <a href="javaScript:;">4</a>
-                                <a href="javaScript:;">5</a>
-                                <a href="javaScript:;">6</a>
-                            </div>
-                            <a href="javaScript:;" id="next">&gt;</a>
-                            <a href="javaScript:;" class="btnPage" id="endPage">末页</a>
-                        </div>
+                        <div id="page" class="page"></div>
                     </div>
                 </div>
             </div>
@@ -198,12 +118,82 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
-    $('ul.menu_ul li:eq(6)').addClass('current');//项目介绍
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
-    $('ul.navUl>li:eq(0)').addClass('current');
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
 
-    $('.organization li:last-child').css('border-bottom','0');
+    /*面包屑*/
+    for(var i=0;i<$('ul.navUl>li').length;i++){
+        var liCur = $('ul.navUl>li').eq(i);
+        if(liCur.hasClass('current')){
+            var cont = liCur.find('a.navUl_a em').text();
+            $('#activecrumb a').text(cont);
+        }
+    }
+    /*内容*/
+    if(contentarr!=null && contentarr.length>0){
+        console.log(contentarr);
+        var num = 5;
+        var total = contentarr.length;
+        var n = Math.ceil(total / num);
+        //调取内容
+        piecewiseCont(contentarr, 0);
+        //分页
+        $("#page").show();
+        $("#page").paging({
+            pageNo:1,//默认第一页
+            totalPage: n,//页数
+            totalSize: total,//总条数
+            callback: function(n) {
+                piecewiseCont(contentarr, n-1);
+            }
+        });
+    }else{
+        $("#page").hide();
+    }
+    function piecewiseCont(arr, n){
+        $('ul.organization').empty();
+        var arrL = arr.length;
+        var html = '';
+        for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
+            html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
+                    +'<div class="organ_date">'
+                    +'<h4>'+_Date(arr[i].create_time)+'</h4>'
+                    +'<h5>'+_Month(arr[i].create_time)+$('#month').val()+'</h5>'
+                    +'</div>'
+                    +'<div class="organ_br">'
+                    +'<em></em>'
+                    +'</div>'
+                    +'<div class="organ_img">'
+                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'
+                    +'<img src="'+arr[i].path+'" alt=""/>'
+                    +'</a>'
+                    +'</div>'
+                    +'<div class="organ_cont">'
+                    +'<h3><a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'
+                    + arr[i].title
+                    +'</a></h3>'
+                    +'<p>'
+                    + arr[i].descr
+                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">[]</a>'
+                    +'</p>'
+                    +'</div>'
+                    +'</li>';
+        }
+        $('ul.organization').append(html);
+        $('.organization li:last-child').css('border-bottom','0');
+    }
+    /*月*/
+    function _Month(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        M = date.getMonth();
+        return M;
+    }
+    /*日*/
+    function _Date(timestamp) {
+        var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+        D = (date.getDate() + 1 < 10 ? '0' + (date.getDate() + 1) : date.getDate() + 1) + ' ';
+        return D;
+    }
 </script>
 <include file="Public/footer"/>

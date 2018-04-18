@@ -65,21 +65,22 @@
                         </volist>
                     </div>
                     <div class="matterBox">
-                    <script>
-                    	var contentarr = null;
-                    </script>
+                    	<script>
+	                    	var contentarr = null;
+	                   	</script>
                     	<if condition="$id neq null">
                     		<volist name="content" id="vo">
                     			{$vo.content}
                     		</volist>
                     	<else/>
+							<script>
+								contentarr = {$contarr};
+								console.log(contentarr);
+							</script>
                     		<ul class="project">
-		                    	<script>
-			                    	contentarr = {$contarr};
-			                    	console.log(contentarr);
-		                    	</script>
-                        	</ul>
-                        	<div class="page"></div>
+
+							</ul>
+							<div id="page" class="page"></div>
                     	</if>
                     </div>
                 </div>
@@ -92,5 +93,58 @@
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
+
+	/*面包屑*/
+	for(var i=0;i<$('ul.navUl>li').length;i++){
+		var liCur = $('ul.navUl>li').eq(i);
+		if(liCur.hasClass('current')){
+			var cont = liCur.find('a.navUl_a em').text();
+			$('#activecrumb a').text(cont);
+		}
+	}
+	/*内容*/
+	if(contentarr!=null && contentarr.length>0){
+		var num = 10;
+		var total = contentarr.length;
+		var n = Math.ceil(total / num);
+		//调取内容
+		piecewiseCont(contentarr, 0);
+		//分页
+		$("#page").show();
+		$("#page").paging({
+			pageNo:1,//默认第一页
+			totalPage: n,//页数
+			totalSize: total,//总条数
+			callback: function(n) {
+				piecewiseCont(contentarr, n-1);
+			}
+		});
+	}else{
+		$("#page").hide();
+	}
+	function piecewiseCont(arr, n){
+		$('ul.project').empty();
+		var arrL = arr.length;
+		var html = '';
+		for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
+			html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
+					+'<img src="__IMG__/project/play.png" alt=""/>'
+					+'<a href="/index.php/Home/Project/project?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank">'+arr[i].title+'</a>'
+					+'<em>'+timestampToTime(arr[i].create_time)+'</em>'
+					+'</li>';
+		}
+		$('ul.project').append(html);
+	}
+	/*日期转换*/
+	function timestampToTime(timestamp) {
+		var date = new Date(timestamp * 1000);//时间戳为10位需*1000，时间戳为13位的话不需乘1000
+		Y = date.getFullYear() + '-';
+		M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+		D = (date.getDate() + 1 < 10 ? '0' + (date.getDate() + 1) : date.getDate() + 1) + ' ';
+		h = (date.getHours() + 1 < 10 ? '0' + (date.getHours() + 1) : date.getHours() + 1) + ':';
+		m = (date.getMinutes() + 1 < 10 ? '0' + (date.getMinutes() + 1) : date.getMinutes() + 1) + ':';
+		s = (date.getSeconds() + 1 < 10 ? '0' + (date.getSeconds() + 1) : date.getSeconds() + 1);
+		return Y + M + D + h + m + s;
+	}
 </script>
 <include file="Public/footer"/>

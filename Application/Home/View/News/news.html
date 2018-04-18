@@ -107,13 +107,7 @@
                                 </div>
                             </li> -->
                         	</ul>
-                        	<div class="page">
-                                <a href="javaScript:;" class="btnPage" id="firstPage">首页</a>
-                                <a href="javaScript:;" id="prev">&lt;</a>
-                                <div style="display: inline-block;"></div>
-                                <a href="javaScript:;" id="next">&gt;</a>
-                                <a href="javaScript:;" class="btnPage" id="endPage">末页</a>
-                            </div>
+                        	<div id="page" class="page"></div>
                     	</if>
                     </div>
                 </div>
@@ -147,69 +141,33 @@
             }
         }
         console.log("这是详情页");
-    }else {
+    }else if(contentarr.length>0){
         console.log("这是列表页");
         console.log(contentarr);
         var num = 7;
-        //分页
-        page(contentarr, num);
+        var total = contentarr.length;
+        var n = Math.ceil(total / num);
         //调取内容
-        piecewiseCont(contentarr, num, 0);
-    }
-
-    function page(total, num) {
-        var totalL = total.length;
-        var n = Math.ceil(totalL / num);
-        var pageHtml = '';
-        for (var i = 0; i < n; i++) {
-            pageHtml += '<a href="javaScript:;" class="_page">' + (i + 1) + '</a>';
-        }
-        $('.page div').append(pageHtml);
-        //默认显示第一页
-        $('._page:first-child').addClass('current');
-        $('._page').bind('click', function () {
-            $(this).addClass('current').siblings().removeClass('current');
-            var curP = $(this).index();
-            piecewiseCont(total, num, curP);
-        });
-        //首页
-        $('#firstPage').bind('click', function () {
-            $('._page:first-child').addClass('current').siblings().removeClass('current');
-            piecewiseCont(total, num, 0);
-        });
-        //末页
-        $('#endPage').bind('click', function () {
-            $('._page:last-child').addClass('current').siblings().removeClass('current');
-            piecewiseCont(total, num, n - 1);
-        });
-        //上一页
-        $('#prev').bind('click', function () {
-            for (var i = 0; i < n; i++) {
-                if ($('._page:eq(' + i + ')').hasClass('current') && i != 0) {
-                    var curP = i - 1;
-                    $('._page:eq(' + curP + ')').addClass('current').siblings().removeClass('current');
-                    piecewiseCont(total, num, curP);
-                }
+        piecewiseCont(contentarr, 0);
+        //分页
+        $("#page").show();
+        $("#page").paging({
+            pageNo:1,//默认第一页
+            totalPage: n,//页数
+            totalSize: total,//总条数
+            callback: function(n) {
+                piecewiseCont(contentarr, n-1);
             }
         });
-        //下一页
-        $('#next').bind('click', function () {
-            for (var i = 0; i < n; i++) {
-                if ($('._page:eq(' + i + ')').hasClass('current') && i != n - 1) {
-                    var curP = i + 1;
-                    $('._page:eq(' + curP + ')').addClass('current').siblings().removeClass('current');
-                    piecewiseCont(total, num, curP);
-                }
-            }
-        });
+    }else{
+        $("#page").hide();
     }
 
-    function piecewiseCont(arr, num, curP) {
-        $('ul.notice').empty();
+    function piecewiseCont(arr, n) {
         var arrL = arr.length;
-        var n = Math.ceil(arrL / num);
+        $('ul.notice').empty();
         var html = '';
-        for (var i = curP * num; i < (curP + 1) * num && i < arrL; i++) {
+        for (var i = n * num; i < (n + 1) * num && i < arrL; i++) {
             html += '<li data-id="' + arr[i].id + '" data-catId="' + arr[i].cat_id + '">'
                     + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '" target="_blank" class="noticeL"><img src="' + arr[i].path + '" alt=""/></a>'
                     + '<div class="noticeR">'

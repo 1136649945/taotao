@@ -48,7 +48,7 @@ class AboutController extends HomeController {
         //校园风光
         if(77==$category_id && $id==null){
             $docarr = $Doc->doclists("m.category_id=77 and m.display=1 and m.status=1","m.create_time desc");
-            $this->assign("docarr",$docarr);
+            $this->assign("docarr",json_encode($docarr));
         }
         if(in_array_case($category_id,array(101,102,103,104,105,106,107,108,109))){
             $this->assign("parcat",101);
