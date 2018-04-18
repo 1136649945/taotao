@@ -24,14 +24,8 @@
 <div class="item">
     <div class="wrap">
         <div class="title">
-        	<volist name="words" id="vo">
-        		<if condition="$vo['id'] eq 29"> 
-		            <span class="tit_l fl">{$vo[$title]}</span>
-	            </if>
-	            <if condition="$vo['id'] eq 4"> 
-		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
-		        </if>
-	        </volist>
+            <span class="tit_l fl">{$words['w29']}</span>
+            <a href="" class="tit_more fr">{$words['w4']} >></a>
 		    <div class="cb"></div>
         </div>
         <div class="tit_br">
@@ -126,14 +120,8 @@
 <div class="announcement">
     <div class="wrap">
         <div class="title">
-            <volist name="words" id="vo">
-        		<if condition="$vo['id'] eq 30"> 
-		            <span class="tit_l fl">{$vo[$title]}</span>
-	            </if>
-	            <if condition="$vo['id'] eq 4"> 
-		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
-		        </if>
-	        </volist>
+            <span class="tit_l fl">{$words['w30']}</span>
+            <a href="" class="tit_more fr">{$words['w4']} >></a>
             <div class="cb"></div>
         </div>
         <div class="tit_br">
@@ -160,14 +148,8 @@
 <div class="news">
     <div class="wrap">
         <div class="title">
-            <volist name="words" id="vo">
-        		<if condition="$vo['id'] eq 31"> 
-		            <span class="tit_l fl">{$vo[$title]}</span>
-	            </if>
-	            <if condition="$vo['id'] eq 4"> 
-		            <a href="" class="tit_more fr">{$vo[$title]} >></a>
-		        </if>
-	        </volist>
+            <span class="tit_l fl">{$words['w31']}</span>
+            <a href="" class="tit_more fr">{$words['w4']} >></a>
             <div class="cb"></div>
         </div>
         <div class="tit_br">
@@ -181,7 +163,7 @@
             <div class="wrap">
                 <div class="fl n_date">
                     <h4>{$vo['create_time']|date='d',###}</h4>
-                    <h5>{$vo['create_time']|date='m月',###}</h5>
+                    <h5>{$vo['create_time']|date='m',###}{$words['w93']}</h5>
                 </div>
                 <div class="fl n_br">
                     <em></em>

@@ -71,23 +71,14 @@
         <a class="fl logoImg" href="index.php"><img src="__IMG__/logo.png" alt=""></a>
         <div class="fl logoEn"><img src="__IMG__/logoEn.png" alt=""/></div>
         <a href="" target="_blank" class="fr problem current">
-            <volist name="words" id="vo">
-        		<if condition="$vo.id eq 2"> 
-		           {$vo[$title]}
-	            </if>
-	        </volist>
+            {$words['w2']}
             <i class="preview-item big transp shake-constant shake-constant--hover shake-little" id="pr2">
                 <img src="__IMG__/promptCur.png" alt=""/>
             </i>
         </a>
         <div class="fr search">
             <div class="fl key_box">
-             <volist name="words" id="vo">
-        		<if condition="$vo.id eq 1"> 
-		           <input type="text" placeholder="{$vo[$title]}...." id="keywords"/>
-	            </if>
-	        </volist>
-                
+		        <input type="text" placeholder="{$words['w1']}...." id="keywords"/>
             </div>
             <a href="javaScript:;" class="_search" id="search">
                 <img src="__IMG__/search.png" alt=""/>
@@ -125,7 +116,7 @@
     </ul>
 </div>
 <!--关键词-->
-<input type="hidden" value="" id="first_page"/>
-<input type="hidden" value="" id="last_page"/>
-<input type="hidden" value="" id="view_details"/>
-<input type="hidden" value="" id="month"/>
+<input type="hidden" value="{$words['w91']}" id="first_page"/>
+<input type="hidden" value="{$words['w92']}" id="last_page"/>
+<input type="hidden" value="{$words['w89']}" id="view_details"/>
+<input type="hidden" value="{$words['w93']}" id="month"/>

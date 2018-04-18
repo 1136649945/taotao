@@ -57,11 +57,7 @@
                     <div class="headline">
                         <span class="hl_icon"></span>
                         <!-- 面包屑 -->
-                       <volist name="words" id="vo">
-	                	<if condition="$vo.id eq 3">
-	                		{$vo[$title]}：
-	                	</if>
-               			</volist>
+	                	{$words['w3']}：
                        <volist name="crumb" id="vo">
                         	<if condition="$key eq 0">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
@@ -180,7 +176,7 @@
                     +'</a></h3>'
                     +'<p>'
                     + strLength(arr[i].descr)
-                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">[]</a>'
+                    +'<a href="/index.php/Home/Organization/organization?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">['+$('#view_details').val()+']</a>'
                     +'</p>'
                     +'</div>'
                     +'</li>';

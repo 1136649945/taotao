@@ -15,12 +15,7 @@
                 <div class="navL_h">
                     <img src="__IMG__/news/icon.png" alt=""/>
                     <em>|</em>
-                 <volist name="words" id="vo">
-                	<if condition="$vo.id eq 17">
-                		{$vo[$title]}
-                	</if>
-               	</volist>
-                  
+                	{$words['w17']}
                 </div>
                 <ul class="navUl navUl_news">
                 	<volist name="document" id="vo">
@@ -57,11 +52,7 @@
                     <div class="headline">
                         <span class="hl_icon"></span>
                         <!-- 面包屑 -->
-                       <volist name="words" id="vo">
-	                	<if condition="$vo.id eq 3">
-	                		{$vo[$title]}：
-	                	</if>
-               			</volist>
+	                	{$words['w3']}：
                        <volist name="crumb" id="vo">
                         	<if condition="$key eq 0">
 		                        <a href="{$vo['url']}">{$vo[$title]}</a>
@@ -83,29 +74,52 @@
                             var contentarr = null;
                         </script>
                     	<if condition="$id neq null">
-                    		<volist name="docinfo" id="vo">
-                    			{$vo.content}
-                    		</volist>
+                    		<volist name="docinfo" id="doc"> 
+                    		<div class="details">
+				                    <h1>{$doc[$title]}</h1>
+				                    <h3>
+			                            {$words['w84']}：{$doc.auth}
+			                             <em>|</em>  
+			                            {$words['w85']}：{$doc.view}
+			                            <em>|</em> 
+			                            {$words['w86']}：{$doc.create_time|date='Y-m-d',###}
+		                            </h3>
+				                    <div class="details_cont">
+				                        {$doc.content}
+				                        <div class="Dshare" id="share">
+				                            <div class="bdsharebuttonbox">
+				                                <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+				                                <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+				                                <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+				                                <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+				                            </div>
+				                            <span>
+					                            {$words['w87']}：
+				                           </span>
+				                        </div>
+				                    </div>
+				                    <h2>
+			                            {$words['w88']}：
+				                    </h2>
+			                    <ul class="news_more">
+			                    <volist name="moredoc" id="vo"> 
+			                        <li>
+			                            <h4>{$vo.title}</h4>
+			                            <h5><em>{$vo.create_time|date='Y-m-d',###}</em></h5>
+			                            <p>
+			                                {$vo.descr}......
+			                                <a href="/index.php/Home/News/news?category_id={$vo['cat_id']}&id={$vo['id']}">[{$words['w89']}]</a>
+			                            </p>
+			                        </li>
+			                     </volist>
+			                    </ul>
+				             </div>
+				             </volist>
                     	<else/>
                             <script>
                                 contentarr = {$docarr};
                             </script>
                     		<ul class="notice">
-		                    	<!-- <li>
-                                <a href="/Home/News/news_details" class="noticeL"><img src="images/news/news01.jpg" alt=""/></a>
-                                <div class="noticeR">
-                                    <h3><a href="">2018年顺丰奖学金颁奖典礼</a></h3>
-                                    <p>
-                                        对外经济贸易大学来华留学生2018年顺丰奖学金颁奖典礼在诚信楼三层国际会议厅举行，来自10个国家的20名留学生获顺丰奖学金。.....
-                                        <a href="">[查看详情]</a>
-                                    </p>
-                                    <div class="date">
-                                        <span>新闻通告</span>
-                                        <em></em>
-                                        <span>2018-03-27</span>
-                                    </div>
-                                </div>
-                            </li> -->
                         	</ul>
                         	<div id="page" class="page"></div>
                     	</if>
@@ -117,8 +131,31 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <input type="hidden" id="viewMore" value=""/>
+<style>
+    .bdsharebuttonbox{float: right;height: 40px;line-height: 40px;}
+    .bdsharebuttonbox a{margin: 0 5px;display: inline-block;width: 37px;height: 37px;}
+    .bdsharebuttonbox a.bds_tsina{background: url("__IMG__/news/sina.png") no-repeat;}
+    .bdsharebuttonbox a.bds_qzone{background: url("__IMG__/news/qq.png") no-repeat;}
+    .bdsharebuttonbox a.bds_weixin{background: url("__IMG__/news/weChat.png") no-repeat;}
+    .bdsharebuttonbox a.bds_tqq{background: url("__IMG__/news/xina.png") no-repeat;}
+</style>
 <script>
-    $('ul.menu_ul li:eq(4)').addClass('current');
+    window._bd_share_config = {
+            "common": {
+                "bdSnsKey": {},
+                "bdText": "",
+                "bdMini": "1",
+                "bdMiniList": false,
+                "bdPic": "",
+                "bdStyle": "0",
+                "bdSize": "16"
+            },
+            "share": {},
+            "selectShare": {
+                "bdContainerClass": null,
+                "bdSelectMiniList": ["tsina", "qzone", "weixin", "tqq"]
+            }
+        };with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
     $('ul.navUl li:first-child a').css('border-top','0');
     //新闻分类
     for(var i=0;i<$('.newsType a').length;i++){
@@ -140,9 +177,7 @@
                 licur.addClass('current');
             }
         }
-        console.log("这是详情页");
     }else if(contentarr.length>0){
-        console.log("这是列表页");
         console.log(contentarr);
         var num = 7;
         var total = contentarr.length;
@@ -173,7 +208,7 @@
                     + '<h3><a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">' + arr[i].title + '</a></h3>'
                     + '<p>'
                     + strLength(arr[i].descr)
-                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">[' + $('#viewMore').val() + ']</a></p>'
+                    + '<a href="/index.php/Home/News/news?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">[' + $('#view_details').val() + ']</a></p>'
                     + '<div class="date">'
                     + '<span>' + $('#activecrumb').text() + '</span>'
                     + '<em></em>'

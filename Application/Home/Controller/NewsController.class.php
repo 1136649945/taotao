@@ -31,16 +31,18 @@ class NewsController extends HomeController {
         //轮播图
         $picture = $Chap->picture("path","block=51 and hide=0");
         $this->assign("scollpicture",$picture);
-        //推荐新闻
-        $Doc = D("Document");
-        $document = $Doc->doclists("m.category_id in (72,73)","m.create_time desc","0,6");
-        $this->assign("document",$document);
         //分类id
         $this->assign("category_id",$category_id);
         //文章id
         $this->assign("id",$id);
-        //获取文章
+        $Doc = D("Document");
+        //推荐新闻
+        $document = $Doc->doclists("m.category_id in (72,73)","m.create_time desc","0,6");
+        $this->assign("document",$document);
         if($id!=null){
+            //查看更多新闻
+            $document = $Doc->doclists("m.category_id in (72,73) and m.id<>".$id,"m.create_time desc","0,2");
+            $this->assign("moredoc",$document);
             $this->assign("docinfo",$Doc->docdetail("m.id=".$id));
         }else{
             $data = $Doc->doclists("m.category_id=".$category_id." and m.display=1 and m.status=1","m.create_time desc");

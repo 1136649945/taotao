@@ -11,11 +11,7 @@
         <div class="_contact">
             <h1>
             <!-- 面包屑 -->
-               <volist name="words" id="vo">
-                	<if condition="$vo.id eq 3">
-                		{$vo[$title]}：
-                	</if>
-               </volist>
+               {$words['w3']}：
                <volist name="crumb" id="vo">
                 	<if condition="$key eq 0">
                   	<a href="{$vo['url']}">{$vo[$title]}</a>
@@ -33,78 +29,36 @@
                     <img src="__IMG__/contact/clock.png" alt="" class="clock"/>
                     <h2>08:30—11:30</h2>
                     <h2>13:30—16:30</h2>
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 25">
-                		<h4>{$vo[$title]}</h4>
-                	</if>
-               		</volist>
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 16">
-                		<img src="__IMG__/contact/code.jpg" alt="" class="code"/>
-                    	<p>{$vo[$title]}</p>
-                	</if>
-               		</volist>
+                	<h4>{$words['w25']}</h4>
+               		<img src="__IMG__/contact/code.jpg" alt="" class="code"/>
+                   	<p>{$words['w16']}</p>
                     
                 </div>
                 <div class="cM">
-                	<volist name="words" id="vo">
-                	<if condition="$vo.id eq 18">
-                		<h2>{$vo[$title]}</h2>
-                	</if>
-               		</volist>
+                	<h2>{$words['w18']}</h2>
                     <p class="cM_p1">
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 5">
-                		{$vo[$title]}
-                	</if>
-               		</volist>：（86-10）64492327，64492329</p>
+                		{$words['w5']}：（86-10）64492327，64492329</p>
                     <p class="cM_p2">
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 7">
-                		{$vo[$title]}
-                	</if>
-               		</volist>：（86-10）64493820</p>
-                    <h2><volist name="words" id="vo">
-                	<if condition="$vo.id eq 11">
-                		{$vo[$title]}
-                	</if>
-               		</volist></h2>
+                		{$words['w7']}：（86-10）64493820
+                	</p>
+                    <h2>{$words['w11']}</h2>
                     <p class="cM_p1">
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 5">
-                		{$vo[$title]}
-                	</if>
-               		</volist>：（86-10）64492327，64492329</p>
+                		{$words['w5']}：（86-10）64492327，64492329</p>
                     <p class="cM_p2">
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 7">
-                		{$vo[$title]}
-                	</if>
-               		</volist>：（86-10）64493820</p>
-                    <h2><volist name="words" id="vo">
-                	<if condition="$vo.id eq 13">
-                		{$vo[$title]}
-                	</if>
-               		</volist></h2>
-                    <p class="cM_p1"><volist name="words" id="vo">
-                	<if condition="$vo.id eq 12">
-                		{$vo[$title]}
-                	</if>
-               		</volist></p>
+                		{$words['w7']}：（86-10）64493820</p>
+                    <h2>
+                		{$words['w13']}
+                	</h2>
+                    <p class="cM_p1">
+                		{$words['w13']}
+                	</p>
                     <p class="cM_p2">
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 9">
-                		{$vo[$title]}
-                	</if>
-               		</volist>：100029</p>
+                		{$words['w9']}：100029
+                	</p>
                 </div>
                 <div class="cR">
                     <h2>
-                    <volist name="words" id="vo">
-                	<if condition="$vo.id eq 14">
-                		{$vo[$title]}
-                	</if>
-               		</volist>
+                		{$words['w14']}
                		</h2>
                     <form action="#" id="activity" class="activity">
                         <select name="acttype" class="act_type">
@@ -112,11 +66,7 @@
                             <option value="{$vo['id']}">{$vo[$title]}</option>
                         </volist>
                         </select>
-                        <input type="button" class="btn" onclick="subActive()" value=<volist name="words" id="vo">
-	                	<if condition="$vo.id eq 27">
-	                		"{$vo[$title]}"
-	                	</if>
-	               		</volist>/>
+                        <input type="button" class="btn" onclick="subActive()" value="{$words['w27']}"/>
                         <select name="activement" class="section">
                         <volist name="activement" id="vo">
                             <option value="{$vo['id']}">{$vo[$title]}</option>
@@ -127,48 +77,16 @@
                             <option value="{$vo['id']}">{$vo[$title]}</option>
                         </volist>
                         </select>
-                        <input type="text" name="name" class="name" placeholder=<volist name="words" id="vo">
-                	<if condition="$vo.id eq 26">
-                		"{$vo[$title]}"
-                	</if>
-               		</volist>/>
-                    <input type="text" name="tel" class="tel" placeholder=<volist name="words" id="vo">
-                	<if condition="$vo.id eq 5">
-                		"{$vo[$title]}"
-                	</if>
-               		</volist>/>
-                        <textarea class='act_tex' name="content" placeholder=<volist name="words" id="vo">
-                	<if condition="$vo.id eq 24">
-                		"{$vo[$title]}"
-                	</if>
-               		</volist>></textarea>
+                        <input type="text" name="name" class="name" placeholder="{$words['w26']}"/>
+                    <input type="text" name="tel" class="tel" placeholder="{$words['w5']}"/>
+                        <textarea class='act_tex' name="content" placeholder="{$words['w24']}"></textarea>
                     </form>
-                    <h2><volist name="words" id="vo">
-                	<if condition="$vo.id eq 15">
-                		{$vo[$title]}
-                	</if>
-               		</volist></h2>
+                    <h2>{$words['w15']}</h2>
                     <p>E-mail:  sie@uibe.edu.cn</p>
-                    <p>nondegree@163.com（<volist name="words" id="vo">
-                	<if condition="$vo.id eq 20">
-                		{$vo[$title]}
-                	</if>
-               		</volist>）</p>
-                    <p>degreeinchinese@163.com（<volist name="words" id="vo">
-                	<if condition="$vo.id eq 21">
-                		{$vo[$title]}
-                	</if>
-               		</volist>）</p>
-                    <p>degreeinenglish@163.com（<volist name="words" id="vo">
-                	<if condition="$vo.id eq 22">
-                		{$vo[$title]}
-                	</if>
-               		</volist>）</p>
-                    <p>uibescholarship@163.com（<volist name="words" id="vo">
-                	<if condition="$vo.id eq 23">
-                		{$vo[$title]}
-                	</if>
-               		</volist>）</p>
+                    <p>nondegree@163.com（{$words['w20']}）</p>
+                    <p>degreeinchinese@163.com（{$words['w21']}）</p>
+                    <p>degreeinenglish@163.com（{$words['w22']}）</p>
+                    <p>uibescholarship@163.com（{$words['w23']}）</p>
                 </div>
             </div>
         </div>
@@ -180,35 +98,15 @@
 <script src="__STATIC__/layer.js"></script>
 <script type="text/javascript" src="__JS__/mapContact.js"></script>
 <script type="text/javascript">
-	<volist name="words" id="vo">
-	<if condition="$vo.id eq 36">
-		var diatitle = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 32">
-		var type = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 33">
-		var ment = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 34">
-		var proj = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 26">
-		var name = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 5">
-		var tel = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 35">
-		var cont = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 37">
-		var success = "{$vo[$title]}";
-	</if>
-	<if condition="$vo.id eq 38">
-		var fail = "{$vo[$title]}";
-	</if>
-	</volist>
+	var diatitle = "{$words['w36']}";
+	var type = "{$words['w32']}";
+	var ment = "{$words['w33']}";
+	var proj = "{$words['w34']}";
+	var name = "{$words['w26']}";
+	var tel = "{$words['w5']}";
+	var cont = "{$words['w35']}";
+	var success = "{$words['w37']}";
+	var fail = "{$words['w38']}";
 </script>
 <script>
     $('#nav a:eq(6)').addClass('current');
