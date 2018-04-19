@@ -16,8 +16,9 @@
 	                    <li <if condition="$category_id neq null"><if condition="($category_id eq $vo['category_id']) OR ($parcat eq $vo['category_id'])">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if>>
 	                        <a href="/index.php/Home/About/about?category_id={$vo['category_id']}" class="navUl_a" >
 	                            <em>{$vo[$title]}</em>
-	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+                                <span class="iconfont iconAdd">&#xe6f1;</span>
+	                            <!--<img src="__IMG__/icon/add.png" class="ia" alt=""/>-->
+	                            <!--<img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>-->
 	                        </a>
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl" data-id={$category_id} <if condition="$category_id neq null"><if condition="($category_id eq $vo['category_id']) OR ($parcat eq $vo['category_id'])">style="display:block;"</if> </if>>
@@ -138,6 +139,7 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
+    $('#nav a:eq(1)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
 
     //部门设置

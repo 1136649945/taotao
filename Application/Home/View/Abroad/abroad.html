@@ -16,8 +16,7 @@
 	                    <li <if condition="$category_id neq null"><if condition="$category_id eq $vo['category_id']">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if>  </if>>
 	                        <a href="/index.php/Home/Abroad/abroad?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
-	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+                                <span class="iconfont iconAdd">&#xe6f1;</span>
 	                        </a>
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl">
@@ -92,6 +91,7 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
+    $('.menu_ul li:eq(3)').addClass('current');
     $('ul.navUl>li:last-child a').css('border-bottom','dashed 1px #aaaaaa');
     //默认
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();

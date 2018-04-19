@@ -3,7 +3,7 @@
 <div class="matter">
     <div class="wrap">
         <div class="matter_box">
-            <div class="navL">
+            <div class="navL"  style='background: url("__IMG__/icon/bg.jpg") no-repeat 100% 100%;padding-bottom: 140px;'>
                 
                 <volist name="job" id="list">
                 <div class="navL_h">
@@ -17,8 +17,7 @@
 	                    <li <if condition="($pcate eq $vo['category_id']) OR ($category_id eq $vo['category_id'])"> class="current"</if>>
 	                        <a href="/index.php/Home/Job/job?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
-	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
-	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
+                                <span class="iconfont iconAdd">&#xe6f1;</span>
 	                        </a>
 	                        <notempty name="vo['_']">
 		                	<ol class="navOl" <if condition="$pcate eq $vo['category_id']">style="display:block;"</if>>
@@ -88,6 +87,7 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
+    $('.menu_ul li:eq(5)').addClass('current');
     $('ul.navUl>li:last-child a').css('border-bottom','dashed 1px #aaaaaa');
     //默认
 
@@ -141,7 +141,7 @@
                     +'<p>'
                     + strLength(arr[i].descr)
                     +'<a href="/index.php/Home/Job/job?category_id=' + arr[i].cat_id + '&id=' + arr[i].id + '">' +
-                    '[' + $('#view_details').val() + ']' +
+                    '[' + $('#view_details').val().substring(2) + ']' +
                     '</a>'
                     +'</p>'
                     +'</div>'
@@ -170,7 +170,7 @@
 
     /*内容长度*/
     function strLength(cont) {
-        var len = 100;
+        var len = 120;
         var l = cont.length;
         if (l > len) {
             cont = cont.substring(0, len) + '...';

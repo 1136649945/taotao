@@ -159,6 +159,8 @@
                 "bdSelectMiniList": ["tsina", "qzone", "weixin", "tqq"]
             }
         };with (document)0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion=' + ~(-new Date() / 36e5)];
+
+    $('.menu_ul li:eq(4)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
     //新闻分类
     for(var i=0;i<$('.newsType a').length;i++){

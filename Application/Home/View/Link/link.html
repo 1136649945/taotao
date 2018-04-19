@@ -16,6 +16,7 @@
                     <li  <if condition="$block eq $vo['gattr1']">class="current"</if>>
                         <a href="/index.php/Home/Link/link?block={$vo['gattr1']}" class="navUl_a">
                             <em>{$vo[$title]}</em>
+                            <span class="iconfont iconAdd">&#xe6f1;</span>
                         </a>
                     </li>
                     </volist>
@@ -85,6 +86,7 @@
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
+    $('#nav a:eq(5)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
     //默认
     $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();

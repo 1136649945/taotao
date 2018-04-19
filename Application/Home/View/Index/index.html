@@ -91,9 +91,10 @@
                         <div class="fr ir_cont">
                             <h3>
                                 <a href="/index.php/Home/Project/project?id={$vo['id']}&category_id={$vo['cat_id']}" target="_blank" >{$vo.title}</a>
-                                <span class="item_add">
-                                    <img src="__IMG__/item_add.png" alt=""/>
-                                    <img src="__IMG__/item_addCur.png" alt=""/>
+                                <span class="item_add iconfont iconItem">
+                                    &#xe63d;
+                                    <!--<img src="__IMG__/item_add.png" alt=""/>-->
+                                    <!--<img src="__IMG__/item_addCur.png" alt=""/>-->
                                 </span>
                             </h3>
                             <p>{$vo.descr}.....</p>
@@ -107,7 +108,7 @@
                     <volist name="document" id="vo" >
                         <if condition="$key gt 2">
                             <a href="">
-                                <img src="{$vo['cover_id']}" alt=""/>
+                                <img src="{$vo['path']}" alt=""/>
                             </a>
                         </if>
                     </volist>
@@ -215,12 +216,13 @@
                 <div class="share">
                     <ul>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon01.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon11.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon iconfont iconShare">&#xe6ab;</a>
+                            <!--<a href="javaScript:;" class="icon2"><img src="__IMG__/icon11.png" alt=""/></a>-->
                         </li>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon02.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon12.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon iconfont iconShare2">&#xe65a;</a>
+                            <!--<a href="javaScript:;" class="icon"><img src="__IMG__/icon02.png" alt=""/></a>-->
+                            <!--<a href="javaScript:;" class="icon2"><img src="__IMG__/icon12.png" alt=""/></a>-->
                         </li>
                         <li>
                             <a href="javaScript:;" class="icon"><img src="__IMG__/icon03.png" alt=""/></a>
@@ -231,8 +233,9 @@
                             <a href="javaScript:;" class="icon2"><img src="__IMG__/icon14.png" alt=""/></a>
                         </li>
                         <li>
-                            <a href="javaScript:;" class="icon"><img src="__IMG__/icon05.png" alt=""/></a>
-                            <a href="javaScript:;" class="icon2"><img src="__IMG__/icon15.png" alt=""/></a>
+                            <a href="javaScript:;" class="icon iconfont iconShare">&#xe65b;</a>
+                            <!--<a href="javaScript:;" class="icon"><img src="__IMG__/icon05.png" alt=""/></a>-->
+                            <!--<a href="javaScript:;" class="icon2"><img src="__IMG__/icon15.png" alt=""/></a>-->
                         </li>
                     </ul>
                 </div>

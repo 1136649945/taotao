@@ -16,6 +16,7 @@
                     <li <if condition="$block eq $vo['gattr1']">class="current"</if>>
                         <a href="/index.php/Home/Video/video?block={$vo['gattr1']}" class="navUl_a">
                             <em>{$vo[$title]}</em>
+                            <span class="iconfont iconAdd">&#xe6f1;</span>
                         </a>
                     </li>
                     </volist>
@@ -108,6 +109,7 @@
 <!-- end-->
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
 <script>
+    $('#nav a:eq(2)').addClass('current');
     $('ul.navUl li:first-child a').css('border-top','0');
     //视频切换
     $('.video li img.video_play').bind('click',function(){
