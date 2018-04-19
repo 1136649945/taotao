@@ -13,12 +13,19 @@
                 <ul class="navUl navUl_ship">
                 	<notempty name="list['_']">
 		                <volist name="list['_']" id="vo">
-	                    <li <if condition="$category_id neq null"><if condition="$category_id eq $vo['category_id']">class="current"</if> <else/> <if condition="$key eq 0">class="current"</if> </if> >
+	                    <li <if condition="($pcate eq $vo['category_id']) OR ($category_id eq $vo['category_id'])"> class="current"</if> >
 	                        <a href="/index.php/Home/Scholarship/scholarship?category_id={$vo['category_id']}" class="navUl_a">
 	                            <em>{$vo[$title]}</em>
 	                            <img src="__IMG__/icon/add.png" class="ia" alt=""/>
 	                            <img src="__IMG__/icon/add_cur.png" class="ia2" alt=""/>
 	                        </a>
+	                        <notempty name="vo['_']">
+		                	<ol class="navOl" <if condition="$pcate eq $vo['category_id']">style="display:block;"</if>>
+		                	<volist name="vo['_']" id="vo1">
+	                            <li <if condition="$category_id eq $vo1['category_id']">class="ol_li_current"</if>><a href="/index.php/Home/Scholarship/scholarship?category_id={$vo1['category_id']}"> >> <span>{$vo1[$title]}</span></a></li>
+	                        </volist>
+	                        </ol>
+	                        </notempty>
 	                    </li>
 	                    </volist>
                     </notempty>
@@ -66,8 +73,4 @@
     </div>
 </div>
 <img src="__IMG__/Floating.png" alt="" id="Floating" class="Floating">
-<script>
-    $('ul.navUl li:first-child a').css('border-top','0');
-    $('ul.navUl>li:eq(0)').find('ol.navOl').fadeIn();
-</script>
 <include file="Public/footer"/>

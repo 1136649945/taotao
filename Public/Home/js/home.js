@@ -184,9 +184,24 @@ $(function(){
     });
 
     //language
+    var url = window.location.href;
     $('.languageBox span').bind('click',function(){
         $('.languageBox span').removeClass('current');
         $(this).addClass('current');
+        var l = $(this).attr("data-language");
+        if(url){
+        	if(url.indexOf("?")==-1){
+        		url = url+"?l="+l;
+        	}else{
+        		if(url.indexOf("l=")==-1){
+        			url = url+"&l="+l;
+        		}else{
+        			
+        		}
+        		url = url+"?l="+l;
+        	}
+        	window.location.href = url;
+        }
     });
     $('#push').bind('click',function(){
         $('.languageMore').css('height','auto');
@@ -310,7 +325,8 @@ $(function(){
 
     //右侧内容高度
     if($(window).width()>=768) {
-        var minH = $('.navL').height() - $('.bannerR').height();
+        //var minH = $('.navL').height() - $('.bannerR').height();
+        var minH = $('.navL').height();
         $('.matterBox').css('min-height', minH);
     }
 });

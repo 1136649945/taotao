@@ -64,7 +64,7 @@ class DocumentModel extends Model{
      * @param unknown $order
      */
     public function docdetail($where=null){
-        $sql = "select m.id as id,m.".TITLE." as title,m.".DESCR." as descr,g.".CONTENT." as content,m.view as view,m.create_time as create_time,m.auth as auth from ".C("DB_PREFIX")."document m left join ".C("DB_PREFIX")."document_article g on m.id=g.id ";
+        $sql = "select m.id as id,m.category_id as cat_id,m.".TITLE." as title,m.".DESCR." as descr,g.".CONTENT." as content,m.view as view,m.create_time as create_time,m.auth as auth from ".C("DB_PREFIX")."document m left join ".C("DB_PREFIX")."document_article g on m.id=g.id ";
         if($where){
             $sql = $sql."where ".$where;
         }
