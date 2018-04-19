@@ -41,6 +41,8 @@ class CheckLangBehavior {
             if(isset($_GET[$varLang])){
                 $langSet = $_GET[$varLang];// url中设置了语言变量
                 cookie('think_language',$langSet,3600);
+            }elseif(cookie('think_language')){// 获取上次用户的选择
+                $langSet = cookie('think_language');
             }else if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){// 自动侦测浏览器语言
                 preg_match('/^([a-z\d\-]+)/i', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches);
                 $langSet = $matches[1];
@@ -53,23 +55,23 @@ class CheckLangBehavior {
         // 定义当前语言
         define('LANG_SET',substr(strtolower($langSet),0,2));
         // 读取框架语言包
-        $file   =   THINK_PATH.'Lang/'.LANG_SET.'.php';
-        if(LANG_SET != C('DEFAULT_LANG') && is_file($file))
-            L(include $file);
+//         $file   =   THINK_PATH.'Lang/'.LANG_SET.'.php';
+//         if(LANG_SET != C('DEFAULT_LANG') && is_file($file))
+//             L(include $file);
 
-        // 读取应用公共语言包
-        $file   =  LANG_PATH.LANG_SET.'.php';
-        if(is_file($file))
-            L(include $file);
+//         // 读取应用公共语言包
+//         $file   =  LANG_PATH.LANG_SET.'.php';
+//         if(is_file($file))
+//             L(include $file);
         
-        // 读取模块语言包
-        $file   =   MODULE_PATH.'Lang/'.LANG_SET.'.php';
-        if(is_file($file))
-            L(include $file);
+//         // 读取模块语言包
+//         $file   =   MODULE_PATH.'Lang/'.LANG_SET.'.php';
+//         if(is_file($file))
+//             L(include $file);
 
-        // 读取当前控制器语言包
-        $file   =   MODULE_PATH.'Lang/'.LANG_SET.'/'.strtolower(CONTROLLER_NAME).'.php';
-        if (is_file($file))
-            L(include $file);
+//         // 读取当前控制器语言包
+//         $file   =   MODULE_PATH.'Lang/'.LANG_SET.'/'.strtolower(CONTROLLER_NAME).'.php';
+//         if (is_file($file))
+//             L(include $file);
     }
 }

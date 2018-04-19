@@ -182,8 +182,23 @@ $(function(){
         $('.il_list li').eq(num).fadeIn();
         $('#ilCur').val(num);
     });
-
     //language
+    if("zh"!=LANG_SET){
+    	$('.languageBox span').removeClass('current');
+    	var lang = $('.languageMore li');
+    	for(var i=0;i<lang.length;i++){
+    		var lang_d = $(lang[i]).attr('data-language');
+    		 if(LANG_SET==lang_d){
+				 var text = $(lang[i]).text();
+				 $(this).parent().css('height','0');
+	             $('.languageBox span:last-child').text(text);
+	             $('.languageBox span:last-child').attr('data-language',lang_d);
+	             $('.languageBox span:last-child').addClass('current');
+	             break;
+    		 }
+    	}
+    }
+ 
     var url = window.location.href;
     $('.languageBox span').bind('click',function(){
         $('.languageBox span').removeClass('current');
@@ -193,12 +208,12 @@ $(function(){
         	if(url.indexOf("?")==-1){
         		url = url+"?l="+l;
         	}else{
-        		if(url.indexOf("l=")==-1){
+        		var idx =url.indexOf("l=");
+        		if(idx==-1){
         			url = url+"&l="+l;
         		}else{
-        			
+        			url = url.substr(0,idx+2)+l;
         		}
-        		url = url+"?l="+l;
         	}
         	window.location.href = url;
         }
@@ -213,6 +228,19 @@ $(function(){
         $(this).parent().css('height','0');
         $('.languageBox span:last-child').text(lang);
         $('.languageBox span:last-child').attr('data-language',lang_d);
+        if(url){
+        	if(url.indexOf("?")==-1){
+        		url = url+"?l="+lang_d;
+        	}else{
+        		var idx =url.indexOf("l=");
+        		if(idx==-1){
+        			url = url+"&l="+lang_d;
+        		}else{
+        			url = url.substr(0,idx+2)+lang_d;
+        		}
+        	}
+        	window.location.href = url;
+        }
     });
 
     //左侧菜单

@@ -44,6 +44,7 @@ class HomeController extends Controller {
             define('CONTENT',$content);
             $this->assign("title",TITLE);
             $this->assign("descr",DESCR);
+            $this->assign("lang_set",LANG_SET);
             //一级导航
             $channel = D('Channel')->lists("id,pid,target,url,".TITLE,"hide=0 and status=1 and block=1");
             $this->assign('channelf',$channel);
