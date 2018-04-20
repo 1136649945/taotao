@@ -61,6 +61,15 @@ class HomeController extends Controller {
                 $word["w".$val['id']] = $val[TITLE];
             }
             $this->assign("words",$word);
+            $param = $_SERVER['QUERY_STRING']; 
+            if( stripos($param,C("VAR_LANGUAGE")."=")===false){
+                if(strlen($param)==0){
+                    $param = C("VAR_LANGUAGE")."=".LANG_SET;
+                }else{
+                    $param = $param."&".C("VAR_LANGUAGE")."=".LANG_SET;
+                }
+                echo "<script type='text/javascript'> location.href='http://".$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$param."'</script>";
+            }
         }
     }
 
@@ -70,39 +79,6 @@ class HomeController extends Controller {
 		is_login() || $this->error('您还没有登录，请先登录！', U('User/login'));
 	}
 	
-	//文档列表
-	public function document(){
-	    if(IS_POST){
-	        $where = I("post.where",null);
-	        $order = I("post.order",null);
-	        $p = I("post.p",-1);
-	        $limit= null;
-	        if($p>0){
-	            $limit = (10*($p-1)).",10";
-	        }
-	        $this->ajaxReturn(D('Document')->doclists($where, $order , $limit),"json");
-	    }
-	}
-	//文档详情
-	public function detail(){
-	    if(IS_POST){
-	        $Doc = D('Document');
-	        $where = I("post.where",null);
-	        $more = I("post.more",null);
-	        $data = $Doc->docdetail($where);
-	        if($more){
-	            $data['more'] = $this->moredoc($data[0]['id']);
-	        }
-	        $this->ajaxReturn($data,"json");
-	    }
-	}
-	//系统首页
-	public function moredoc($id=-1){
-	    /* 更新浏览数 */
-	    $Doc = D('Document');
-	    $docarr = $Doc->getdocument(TITLE.",".DESCR.",create_time","id<>".$id,"0,2");
-	    return $docarr;
-	}
 	/* 面包屑 */
 	protected function crumb($arr,$ids){
 	   $ids = split(",",$ids);
